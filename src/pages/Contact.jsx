@@ -44,52 +44,54 @@ const Contact = () => {
         <h1 className="text-center text-3xl font-bold">Get in Touch With Us</h1>
       </motion.div>
 
-      {/* Contact Info Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-wrap justify-center my-6 gap-6 px-4"
-      >
-        {[
-          {
-            title: "Office Address",
-            details: [
-              "Street: Behind Hotel Satluj, N.H No 8",
-              "Area: Opposite Bhagat Petrol, Naroda",
-              "City: Ahmedabad 382446, India",
-            ],
-          },
-          {
-            title: "24/7 Quick Contact",
-            details: [
-              "Phone 1: +91 70 48 50 1999",
-              "Phone 2: +91 98 24 99 1999",
-              "Email: work@modernmultiprint.in",
-            ],
-          },
-          {
-            title: "Working Hours",
-            details: [
-              "Monday - Saturday: 9:00 AM to 6:00 PM",
-              "Sunday: We are Closed",
-            ],
-          },
-        ].map((info, index) => (
-          <motion.div
-            key={index}
-            className="bg-gray-300 p-4 rounded-lg shadow-md"
-            whileHover={{ scale: 1.05 }}
-          >
-            <h3 className="text-lg font-semibold">{info.title}</h3>
-            {info.details.map((detail, i) => (
-              <p key={i} className="text-sm mt-2">
-                {detail}
-              </p>
-            ))}
-          </motion.div>
-        ))}
-      </motion.div>
+     {/* Contact Info Section */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="flex flex-wrap justify-center my-6 gap-4 px-4"
+>
+  {[
+    {
+      title: "Office Address",
+      details: [
+        { label: "Street", value: "Modern Corner Opp. National Handloom," },
+        { label: "Area", value: "Nr. J R Amin Petrol Pump & Jolly Auto, Above Hira Auto Naroda," },
+        { label: "City", value: "Ahmedabad, Gujarat 382330" },
+      ],
+    },
+    {
+      title: "24/7 Quick Contact",
+      details: [
+        { label: "Phone 1", value: "+91 9586192475" },
+        { label: "Phone 2", value: "+91 9913290354" },
+        { label: "Email", value: "designnprintsamd@gmail.com" },
+      ],
+    },
+    {
+      title: "Working Hours",
+      details: [
+        { label: "Monday - Saturday", value: "9:00 AM to 6:00 PM" },
+        { label: "Sunday", value: "We are Closed" },
+      ],
+    },
+  ].map((info, index) => (
+    <motion.div
+      key={index}
+      className="bg-gray-200 p-6 rounded-lg shadow-lg max-w-xs w-full mb-4 flex flex-col"
+      whileHover={{ scale: 1.05 }}
+    >
+      <h3 className="text-lg font-semibold text-center">{info.title}</h3>
+      {info.details.map((detail, i) => (
+        <p key={i} className="text-sm mt-2 text-center">
+          <span className="font-semibold">{detail.label}:</span> {detail.value}
+        </p>
+      ))}
+    </motion.div>
+  ))}
+</motion.div>
+
+
 
       {/* Google Map Section */}
       <motion.div
