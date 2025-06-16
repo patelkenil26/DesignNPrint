@@ -67,10 +67,10 @@ const Footer = () => {
             Behind Hotel Satluj, N.H No 8, Opposite Bhagat Petrol, Naroda,
             Ahmedabad 382446, India
           </p>
-          <p className="text-sm mt-2">
-            +91 70 48 50 1999, +91 98 24 99 1999
+          <p className="text-sm mt-2" itemType="phone">
+            +91 7048501999, +91 9824991999
           </p>
-          <p className="text-sm mt-2">work.modernprinters@gmail.com</p>
+          <p className="text-sm mt-2" typeof="email">work.modernprinters@gmail.com</p>
         </div>
 
         {/* Social Links */}
@@ -132,7 +132,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Starland IT Solution
+            KENIL IT Solution
           </a>
           .
         </p>

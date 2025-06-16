@@ -8,6 +8,10 @@ export const services = [
     name: "Box Designing & Printing",
   },
   {
+    id: "brochure-designing-printing",
+    name: "Brochure Designing & Printing",
+  },
+  {
     id: "calendar",
     name: "Calendar",
   },

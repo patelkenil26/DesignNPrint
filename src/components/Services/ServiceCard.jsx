@@ -4,20 +4,26 @@ import { motion } from "framer-motion";
 const ServiceCard = ({ image, title, index, onClick }) => {
   return (
     <motion.div
-      className="border rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-      whileHover={{ scale: 1.05 }}
+      className="border rounded-lg shadow-sm bg-white hover:shadow-lg transition-shadow duration-300 cursor-pointer w-full"
+      whileHover={{ scale: 1.03 }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.2, delay: index * 0.1 }}
       viewport={{ once: true }}
       onClick={onClick}
     >
-      <div className="w-full h-[250px] overflow-hidden bg-white flex justify-center items-start">
-        <img src={image} alt={title} className="object-contain max-h-full" />
+      {/* Image container without spacing */}
+      <div className="w-full h-[160px] sm:h-[220px] overflow-hidden bg-white flex justify-center items-center">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full"
+        />
       </div>
 
-      <div className="p-4 text-center">
-        <h3 className="text-base sm:text-lg font-semibold text-gray-800 hover:text-blue-500 transition-colors duration-200">
+      {/* Title section with minimal spacing */}
+      <div className="px-2 py-3 text-center">
+        <h3 className="text-sm sm:text-base font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
           {title}
         </h3>
       </div>

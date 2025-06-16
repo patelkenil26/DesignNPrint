@@ -24,7 +24,7 @@ const ContactForm = () => {
 
     const encodedMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ASubject: ${subject}%0AMessage: ${message}`;
 
-    const whatsappNumber = "918238257847"; // <-- yaha apna number daal with country code
+    const whatsappNumber = "919725281074"; // <-- yaha apna number daal with country code
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     window.open(whatsappURL, "_blank");
