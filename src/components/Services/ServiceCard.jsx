@@ -23,7 +23,7 @@ const ServiceCard = ({ image, title, index, onClick }) => {
 
       {/* Title section with minimal spacing */}
       <div className="px-2 py-3 text-center">
-        <h3 className="text-sm sm:text-base font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
+        <h3 className="text-sm sm:text-base font-semibold text-gray-800 hover:text-yellow-500 transition-colors duration-200">
           {title}
         </h3>
       </div>

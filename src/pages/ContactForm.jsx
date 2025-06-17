@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
+import { useLocation } from "react-router-dom";
 
-const ContactForm = () => {
+const ContactForm = forwardRef((props, ref) => {
+  const location = useLocation();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -8,6 +11,17 @@ const ContactForm = () => {
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const subjectFromURL = queryParams.get("subject");
+    if (subjectFromURL) {
+      setFormData((prev) => ({
+        ...prev,
+        subject: subjectFromURL,
+      }));
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,15 +35,11 @@ const ContactForm = () => {
     e.preventDefault();
 
     const { name, email, phone, subject, message } = formData;
-
     const encodedMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ASubject: ${subject}%0AMessage: ${message}`;
-
-    const whatsappNumber = "919725281074"; // <-- yaha apna number daal with country code
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    const whatsappURL = `https://wa.me/919725281074?text=${encodedMessage}`;
 
     window.open(whatsappURL, "_blank");
 
-    // Optional: Reset form after sending
     setFormData({
       name: "",
       email: "",
@@ -40,32 +50,54 @@ const ContactForm = () => {
   };
 
   return (
-    <form className="max-w-2xl mx-auto space-y-4" onSubmit={handleSubmit}>
-      {["name", "email", "phone", "subject", "message"].map((field, i) => (
-        <div key={field}>
-          {field !== "message" ? (
-            <input
-              type={field === "email" ? "email" : "text"}
-              name={field}
-              value={formData[field]}
-              onChange={handleChange}
-              placeholder={`${field.charAt(0).toUpperCase() + field.slice(1)}*`}
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          ) : (
-            <textarea
-              name={field}
-              value={formData[field]}
-              onChange={handleChange}
-              placeholder="Your Message*"
-              rows="5"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            ></textarea>
-          )}
-        </div>
-      ))}
+    <form ref={ref} className="max-w-2xl mx-auto space-y-4" onSubmit={handleSubmit}>
+      {/* all inputs same as before */}
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Name*"
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email*"
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <input
+        type="text"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        placeholder="Phone*"
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <input
+        type="text"
+        name="subject"
+        value={formData.subject}
+        onChange={handleChange}
+        placeholder="Card Name*"
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      />
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Your Message*"
+        rows="5"
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required
+      ></textarea>
+
       <button
         type="submit"
         className="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition"
@@ -74,6 +106,6 @@ const ContactForm = () => {
       </button>
     </form>
   );
-};
+});
 
 export default ContactForm;

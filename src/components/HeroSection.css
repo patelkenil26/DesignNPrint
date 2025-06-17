@@ -1,13 +1,19 @@
 .mySwiper {
-    height: 450px; /* डिफ़ॉल्ट हाइट */
+    height: 450px; 
   }
+
+  .mySwiper {
+  cursor: grab;
+}
+
+
   
-  @media (max-width: 768px) { /* छोटे स्क्रीन के लिए */
+  @media (max-width: 768px) { 
     .mySwiper {
-      height: auto; /* ऑटो हाइट या कोई छोटी फिक्स्ड हाइट */
+      height: auto; 
     }
   
     .mySwiper .swiper-slide div {
-      height: 250px; /* छोटे स्क्रीन पर इमेज कंटेनर की हाइट */
+      height: 250px; 
     }
   }

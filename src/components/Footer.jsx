@@ -37,22 +37,22 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4">Navigation</h3>
           <ul className="space-y-2">
             <li>
-              <a href="#" className="text-yellow-500 hover:underline">
+              <a href="/" className="text-yellow-500 hover:underline">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="text-yellow-500 hover:underline">
+              <a href="/about" className="text-yellow-500 hover:underline">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#" className="text-yellow-500 hover:underline">
+              <a href="/services/booklet-designing-printing" className="text-yellow-500 hover:underline">
                 Services
               </a>
             </li>
             <li>
-              <a href="#" className="text-yellow-500 hover:underline">
+              <a href="/contact" className="text-yellow-500 hover:underline">
                 Contact
               </a>
             </li>
@@ -70,7 +70,9 @@ const Footer = () => {
           <p className="text-sm mt-2" itemType="phone">
             +91 7048501999, +91 9824991999
           </p>
-          <p className="text-sm mt-2" typeof="email">work.modernprinters@gmail.com</p>
+          <p className="text-sm mt-2" typeof="email">
+            work.modernprinters@gmail.com
+          </p>
         </div>
 
         {/* Social Links */}
@@ -78,20 +80,21 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
           <div className="flex justify-center lg:justify-start space-x-6">
             <a
-              href="#"
+              href="https://www.facebook.com/share/19FYcyioTy/?mibextid=qi2Omg"
               className="text-yellow-500 hover:text-yellow-400 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaFacebookF size={20} />
             </a>
+
             <a
-              href="#"
+              href="https://www.instagram.com/designnprints.in?igsh=MWRqaWNmNmFoYjZ0bw=="
               className="text-yellow-500 hover:text-yellow-400 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaTwitter size={20} />
+              <FaInstagram size={20} />
             </a>
             <a
               href="#"
@@ -107,15 +110,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaInstagram size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-yellow-500 hover:text-yellow-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaPinterest size={20} />
+              <FaTwitter size={20} />
             </a>
           </div>
         </div>
@@ -124,8 +119,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="border-t border-gray-700 mt-8 pt-4 text-center px-4">
         <p className="text-sm">
-          Copyright © 2025 Modern Multi Print. All Rights Reserved |
-          Designed By{" "}
+          Copyright © 2025 Modern Multi Print. All Rights Reserved | Designed By{" "}
           <a
             href="#"
             className="text-yellow-500 hover:underline"

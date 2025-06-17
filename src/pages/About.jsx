@@ -191,7 +191,7 @@ const MissionCard = ({ icon, title, description }) => {
 };
 
 const About = () => {
-  const breadcrumbPaths = [{ name: "Home", link: "#" }, { name: "About Us" }];
+  const breadcrumbPaths = [{ name: "Home", link: "/" }, { name: "About Us" }];
 
   return (
     <div className="font-poppins">
@@ -310,10 +310,10 @@ const About = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-lg text-gray-600">
           {services.map((service) => (
             <div key={service.id} className="flex items-start gap-2">
-              <span className="text-blue-500">+</span>
+              <span className="text-gray-500">+</span>
               <a
                 href={service.link}
-                className="text-blue-500 hover:underline"
+                className="text-blue-500 hover:text-blue-700 hover:underline"
               >
                 {service.name}
               </a>
