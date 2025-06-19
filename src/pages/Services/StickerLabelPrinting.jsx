@@ -5,7 +5,7 @@ const StickerLabelPrinting = () => {
   return (
     <ServiceTemplate
       title="Sticker & Label Designing & Printing"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-1.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-1.png"]}
       description="Custom sticker and label printing solutions tailored to your needs."
       types={[
         "Product Labels",

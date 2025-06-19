@@ -7,8 +7,7 @@ const CalendarPrinting = () => {
   return (
     <ServiceTemplate
       title="Calendar Printing"
-    //   bannerImg={bannerImg}
-    bannerImg={"https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-3.png"}
+    bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-3.png"]}
       description="Calendar printing makes it possible to create brand impressions in homes and workspaces for at least a year. Modern Printers may be the right solution for you. Few advertisements in any format can make the same claim. For this reason, custom wall calendars, Card Calendars, Poster Calendars are extremely popular as promotional giveaways, especially during the holidays. For small businesses, the multiple pages offer a variety of promotional opportunities."
       types={[
         "Wall Calendar Printing",

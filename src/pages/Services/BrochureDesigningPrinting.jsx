@@ -5,7 +5,7 @@ const BrochureDesigningPrinting = () => {
   return (
     <ServiceTemplate
       title="Brochure Designing & Printing"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-5.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-5.png"]}
       description="Creative and professional brochure designs that showcase your business, services, or products in a visually engaging and informative way."
       types={[
         "Bi-Fold Brochures",

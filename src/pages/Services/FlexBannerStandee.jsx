@@ -5,7 +5,7 @@ const FlexBannerStandee = () => {
   return (
     <ServiceTemplate
       title="Flex Banner & Roller Standee Printing"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/vision-img-gallery-14.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/vision-img-gallery-14.png"]}
       description="Large format flex banners and roll-up standee print solutions."
       types={[
         "Outdoor Flex Banners",

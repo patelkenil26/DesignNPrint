@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-cards";
+
+
 
 const ServiceTemplate = ({
   title,
-  bannerImg,
   description,
   types,
   advantages,
-  contentImg,
+  bannerImg ,
 }) => {
   return (
     <motion.div
@@ -35,17 +40,36 @@ const ServiceTemplate = ({
           </Link>
         </motion.div>
 
-        {/* Image */}
+        {/* 🌀 Swiper Cards Effect */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <img
-            src={bannerImg}
-            alt={title}
-            className="w-full rounded-lg shadow-lg"
-          />
+          <Swiper
+            effect="cards"
+            grabCursor={true}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[EffectCards, Autoplay]}
+            className="mySwiper w-[300px] sm:w-[400px] h-[280px] sm:h-[350px]"
+          >
+            {bannerImg.map((img, idx) => (
+              <SwiperSlide
+                key={idx}
+                className="rounded-xl overflow-hidden shadow-lg bg-white"
+              >
+                <img
+                  src={img}
+                  alt={`Slide ${idx + 1}`}
+                  className="w-full h-full "
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </motion.div>
       </div>
 

@@ -27,6 +27,7 @@ import CeramicMockup from "./pages/Services/CeramicMockup";
 import CosmeticBoxSticker from "./pages/Services/CosmeticBoxSticker";
 import PesticideBoxLabel from "./pages/Services/PesticideBoxLabel";
 import FlexBannerStandee from "./pages/Services/FlexBannerStandee";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const serviceRoutes = [
   { path: "/services/calendar", element: <CalendarPrinting /> },
@@ -69,6 +70,7 @@ function App() {
         ))}
       </Routes>
       <Footer />
+      <ScrollToTopButton/>
     </Router>
   );
 }

@@ -5,7 +5,7 @@ const BoxDesignPrinting = () => {
   return (
     <ServiceTemplate
       title="Box Designing & Printing"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/vision-img-gallery-1.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/vision-img-gallery-1.png"]}
       description="Premium and durable box designing and printing services that ensure your product stands out on shelves and leaves a lasting impression on customers."
       types={[
         "Custom Product Boxes",

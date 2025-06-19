@@ -5,7 +5,7 @@ const CeramicMockup = () => {
   return (
     <ServiceTemplate
       title="Ceramic Mockup Design"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-8.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-8.png"]}
       description="Get realistic and stylish ceramic mockups that enhance your product presentation for marketing, online listings, and portfolio purposes."
       types={[
         "Mug Mockups",

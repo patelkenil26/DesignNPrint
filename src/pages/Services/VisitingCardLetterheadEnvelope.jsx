@@ -5,7 +5,7 @@ const VisitingCardLetterheadEnvelope = () => {
   return (
     <ServiceTemplate
       title="Visiting Card, Letterhead, Envelope"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-12-1.png"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-12-1.png"]}
       description="Professional design and print services for visiting cards, letterheads, and envelopes."
       types={[
         "Standard & Premium Visiting Cards",

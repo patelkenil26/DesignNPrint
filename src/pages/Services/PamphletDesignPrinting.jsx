@@ -5,7 +5,7 @@ const PamphletDesignPrinting = () => {
   return (
     <ServiceTemplate
       title="Pamphlet Design & Printing"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/09/niketart_product_6_pamphlet.jpg"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/niketart_product_6_pamphlet.jpg"]}
       description="Eye-catching pamphlet designs with top quality print solutions for all businesses."
       types={[
         "Single-page Pamphlets",

@@ -5,7 +5,7 @@ const ProductCatalogue = () => {
   return (
     <ServiceTemplate
       title="Product Catalogue"
-      bannerImg="https://dizname.in/wp-content/uploads/2021/03/niketart_product_14_catalogue.jpg"
+      bannerImg={["https://dizname.in/wp-content/uploads/2021/03/niketart_product_14_catalogue.jpg"]}
       description="Custom product catalogue design and print services to showcase your offerings."
       types={[
         "Printed Product Catalogues",
