@@ -28,6 +28,7 @@ import CosmeticBoxSticker from "./pages/Services/CosmeticBoxSticker";
 import PesticideBoxLabel from "./pages/Services/PesticideBoxLabel";
 import FlexBannerStandee from "./pages/Services/FlexBannerStandee";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import PageLoader from "./components/PageLoader";
 
 const serviceRoutes = [
   { path: "/services/calendar", element: <CalendarPrinting /> },
@@ -55,6 +56,7 @@ const serviceRoutes = [
 function App() {
   return (
     <Router>
+        <PageLoader /> 
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

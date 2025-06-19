@@ -6,3 +6,12 @@ html {
 }body, html {
   overflow-x: hidden;
 }
+
+#nprogress .bar {
+  background: #facc15 !important; /* Tailwind's yellow-400 */
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #facc15, 0 0 5px #facc15;
+}
