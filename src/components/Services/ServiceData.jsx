@@ -22,7 +22,7 @@ export const services = [
       "https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-5.png",
     title: "Brochure Designing & Printing",
     link:"/services/brochure-designing-printing"
-    // link not available
+    
   },
   {
     image:

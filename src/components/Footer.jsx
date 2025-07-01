@@ -5,6 +5,7 @@ import {
   FaGoogle,
   FaInstagram,
   FaPinterest,
+  FaWhatsapp,
 } from "react-icons/fa";
 import logo from "../images/Logo/DesignNPrint.png";
 
@@ -47,7 +48,10 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/services/booklet-designing-printing" className="text-yellow-500 hover:underline">
+              <a
+                href="/services/booklet-designing-printing"
+                className="text-yellow-500 hover:underline"
+              >
                 Services
               </a>
             </li>
@@ -62,10 +66,10 @@ const Footer = () => {
         {/* Contact Section */}
         <div>
           <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-          <p className="text-sm">Modern Multi Print</p>
+          <p className="text-sm">Design N Prints</p>
           <p className="text-sm">
-            Behind Hotel Satluj, N.H No 8, Opposite Bhagat Petrol, Naroda,
-            Ahmedabad 382446, India
+            Modern Corner, opp. National Handloom Street, nr. J.R.Amin Petrol
+            Pump, Naroda, Ahmedabad, Gujarat 382330
           </p>
           <p className="text-sm mt-2" itemType="phone">
             +91 7048501999, +91 9824991999
@@ -97,20 +101,12 @@ const Footer = () => {
               <FaInstagram size={20} />
             </a>
             <a
-              href="#"
+              href="https://wa.me/919725281074"
               className="text-yellow-500 hover:text-yellow-400 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaGoogle size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-yellow-500 hover:text-yellow-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter size={20} />
+              <FaWhatsapp size={20} />
             </a>
           </div>
         </div>

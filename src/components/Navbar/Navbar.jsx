@@ -1,12 +1,12 @@
 // components/navbar/Navbar.jsx
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import Logo from "./Navbar/Logo";
-import DesktopMenu from "./Navbar/DesktopMenu"; 
-import MobileMenu from "./Navbar/MobileMenu";
-import SearchBox from "./Navbar/SearchBox";
-import WhatsAppButton from "./Navbar/WhatsAppButton";
-import { services } from "../data/servicesData";
+import Logo from "./Logo";
+import DesktopMenu from "./DesktopMenu";
+import MobileMenu from "./MobileMenu";
+import SearchBox from "./SearchBox";
+import WhatsAppButton from "./WhatsAppButton";
+import { services } from "../../data/servicesData";
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");

@@ -1,5 +1,8 @@
+// src/components/contact/ContactForm.jsx
 import React, { useState, useEffect, forwardRef } from "react";
 import { useLocation } from "react-router-dom";
+import FormInput from "./FormInput";
+import FormTextarea from "./FormTextarea";
 
 const ContactForm = forwardRef((props, ref) => {
   const location = useLocation();
@@ -51,53 +54,46 @@ const ContactForm = forwardRef((props, ref) => {
 
   return (
     <form ref={ref} className="max-w-2xl mx-auto space-y-4" onSubmit={handleSubmit}>
-      {/* all inputs same as before */}
-      <input
+      <FormInput
         type="text"
         name="name"
         value={formData.name}
         onChange={handleChange}
         placeholder="Name*"
-        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
-      <input
+      <FormInput
         type="email"
         name="email"
         value={formData.email}
         onChange={handleChange}
         placeholder="Email*"
-        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
-      <input
+      <FormInput
         type="text"
         name="phone"
         value={formData.phone}
         onChange={handleChange}
         placeholder="Phone*"
-        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
-      <input
+      <FormInput
         type="text"
         name="subject"
         value={formData.subject}
         onChange={handleChange}
         placeholder="Card Name*"
-        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
-      <textarea
+      <FormTextarea
         name="message"
         value={formData.message}
         onChange={handleChange}
         placeholder="Your Message*"
         rows="5"
-        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
-      ></textarea>
-
+      />
       <button
         type="submit"
         className="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition"
