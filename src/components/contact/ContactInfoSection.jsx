@@ -26,7 +26,7 @@ const contactSections = [
     title: "Working Hours",
     icon: <FaClock className="inline mr-2 text-yellow-600" />,
     details: [
-      { label: "Monday - Saturday", value: "9:00 AM to 6:00 PM" },
+      { label: "Monday - Saturday", value: "10:00 AM to 7:00 PM" },
       { label: "Sunday", value: "We are Closed" },
     ],
   },

@@ -1,11 +1,11 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
-
+import laminatesMica  from  "../../images/Card/laminate_mica.png"
 const MicaFolderPrinting = () => {
   return (
     <ServiceTemplate
       title="Laminates Mica Folder Designing & Printing"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-mica-designing.png"]}
+      bannerImg={[laminatesMica]}
       description="High-quality mica folder designing & printing for laminates and more."
       types={[
         "Sample Display Folders",

@@ -1,11 +1,11 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
-
+import productCatalogue from "../../images/Card/product_catalogue.jpg"
 const ProductCatalogue = () => {
   return (
     <ServiceTemplate
       title="Product Catalogue"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/03/niketart_product_14_catalogue.jpg"]}
+      bannerImg={[productCatalogue]}
       description="Custom product catalogue design and print services to showcase your offerings."
       types={[
         "Printed Product Catalogues",

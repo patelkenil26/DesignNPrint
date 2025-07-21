@@ -22,43 +22,50 @@ const slidesData = [
 
 const HeroSection = () => {
   return (
-    <div className="relative w-full bg-black">
+    <div className="relative w-full bg-white">
       <Swiper
         effect="creative"
-        grabCursor={true}
+        // grabCursor={true}
         centeredSlides={true}
         loop={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
-        navigation={true}
-        pagination={{ clickable: true }}
+        // navigation={true}
+        // pagination={{ clickable: true }}
         modules={[Autoplay, Navigation, Pagination, EffectCreative]}
         creativeEffect={{
           prev: {
             shadow: false,
             translate: ["-100%", 0, -200],
-            rotate: [0, 0, -15],
+            rotate: [0, 0, 0],
             opacity: 0.3,
             scale: 0.8,
           },
           next: {
             shadow: false,
             translate: ["100%", 0, -200],
-            rotate: [0, 0, 15],
+            rotate: [0, 0, 0],
             opacity: 0.3,
             scale: 0.8,
           },
         }}
-        className="mySwiper w-full h-[270px] sm:h-[650px]"
+        className="mySwiper w-full "
       >
         {slidesData.map((url, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide
+            key={index}
+            className="flex justify-center items-center mt-1"
+          >
             <img
               src={url}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full "
+              className="max-h-full max-w-full object-contain rounded-[30px]  p-4 "
+              style={{
+                height: "100%",
+                width: "98%",
+              }}
             />
           </SwiperSlide>
         ))}

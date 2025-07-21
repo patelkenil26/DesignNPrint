@@ -1,12 +1,13 @@
 // src/pages/services/DigitalVisitingCard.jsx
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
+import digitalVCard from "../../images/Card/digital-visiting-card.png"
 
 const DigitalVisitingCard = () => {
   return (
     <ServiceTemplate
       title="Digital Visiting Card"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-11-1.png"]}
+      bannerImg={[digitalVCard]}
       description="We provide customized Digital Visiting Cards that are eco-friendly, sharable, and help leave a lasting impression. Share your contact and business details with a single tap or scan."
       types={[
         "NFC Enabled Digital Cards",

@@ -1,11 +1,11 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
-
+import pharmaBox from "../../images/Card/pharma_box.jpg"
 const PharmaBox = () => {
   return (
     <ServiceTemplate
       title="Pharmaceutical Medicine Boxes"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/niketart_product_6_pharma-box.jpg"]}
+      bannerImg={[pharmaBox]}
       description="Custom pharmaceutical packaging boxes that meet medical standards."
       types={[
         "Tablet Boxes",

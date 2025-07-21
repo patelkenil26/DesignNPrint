@@ -1,11 +1,12 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
+import companyFileFolder from "../../images/Card/company_file_folder.jpg"
 
 const CompanyFileFolder = () => {
   return (
     <ServiceTemplate
       title="Company File & Folder"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/03/niketart_product_11_file_folder.jpg"]}
+      bannerImg={[companyFileFolder]}
       description="Make a professional impression with custom file and folder designs, perfect for office presentations, branding, and client meetings."
       types={[
         "Corporate File Folders",
@@ -13,6 +14,7 @@ const CompanyFileFolder = () => {
         "Custom Business Folders",
         "Flap Folders with Slots",
         "Clip and Spiral File Folders",
+        "Doctor File",
       ]}
       advantages={[
         "Elegant corporate designs",

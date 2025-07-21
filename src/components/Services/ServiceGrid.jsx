@@ -3,11 +3,11 @@ import ServiceCard from "./ServiceCard";
 
 const ServiceGrid = ({ services, openModal }) => {
   return (
-    <section className="bg-white py-12 sm:py-16 min-h-screen">
+    <section className="bg-white py-12 sm:py-16 min-h-screen ">
 
-      <div className="max-w-7xl mx-auto px-4 overflow-x-hidden">
+      <div className="max-w-10xl mx-auto px-4 overflow-x-hidden overflow-y-hidden">
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">Our Services</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
 
           {services.map((card, index) => (
             <ServiceCard

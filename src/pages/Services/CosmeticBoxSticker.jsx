@@ -1,11 +1,12 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
+import cosmeticItem from "../../images/Card/cosmetic_item.png"
 
 const CosmeticBoxSticker = () => {
   return (
     <ServiceTemplate
       title="Cosmetic Item Box & Sticker Printing"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-10.png"]}
+      bannerImg={[cosmeticItem]}
       description="Add elegance and uniqueness to your cosmetic packaging with stylish box and sticker printing tailored to beauty and skincare brands."
       types={[
         "Custom Cosmetic Boxes",

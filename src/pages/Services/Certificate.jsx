@@ -1,11 +1,12 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
+import certificate from "../../images/Card/certificate.png"
 
 const Certificate = () => {
   return (
     <ServiceTemplate
       title="Certificate"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-6.png"]}
+      bannerImg={[certificate]}
       description="Elegant and formal certificate designs perfect for educational institutions, corporate achievements, and awards."
       types={[
         "Appreciation Certificates",

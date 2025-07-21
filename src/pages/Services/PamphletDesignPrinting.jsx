@@ -1,11 +1,11 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
-
+import pamphlet from "../../images/Card/pamphlet.jpg"
 const PamphletDesignPrinting = () => {
   return (
     <ServiceTemplate
       title="Pamphlet Design & Printing"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/niketart_product_6_pamphlet.jpg"]}
+      bannerImg={[pamphlet]}
       description="Eye-catching pamphlet designs with top quality print solutions for all businesses."
       types={[
         "Single-page Pamphlets",

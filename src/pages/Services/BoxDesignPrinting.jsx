@@ -1,11 +1,12 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
+import boxDesigning from "../../images/Card/box_designing.png"
 
 const BoxDesignPrinting = () => {
   return (
     <ServiceTemplate
       title="Box Designing & Printing"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/vision-img-gallery-1.png"]}
+      bannerImg={[boxDesigning]}
       description="Premium and durable box designing and printing services that ensure your product stands out on shelves and leaves a lasting impression on customers."
       types={[
         "Custom Product Boxes",

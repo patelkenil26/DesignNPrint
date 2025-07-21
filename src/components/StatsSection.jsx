@@ -10,7 +10,7 @@ const stats = [
   {
     icon: <FaAward size={40} />,
     label: "Years of Experience",
-    value: "15+",
+    value: "17+",
   },
   {
     icon: <FaBoxOpen size={40} />,
@@ -32,7 +32,7 @@ const StatsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-700 flex justify-center items-center flex-col rounded-2xl p-6 shadow-lg text-center hover:shadow-2xl transition-all"
+              className="bg-white dark:bg-gray-800 flex justify-center items-center flex-col rounded-2xl p-6 shadow-lg text-center hover:shadow-2xl transition-all"
             >
               <div className="flex justify-center items-center mb-2 text-yellow-500">
                 {stat.icon}

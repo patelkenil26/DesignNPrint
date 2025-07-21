@@ -1,18 +1,21 @@
 import React from "react";
 import ServiceTemplate from "../../components/ServiceTemplate";
-
+import stickerLabel from "../../images/Card/sticker_label.png"
 const StickerLabelPrinting = () => {
   return (
     <ServiceTemplate
       title="Sticker & Label Designing & Printing"
-      bannerImg={["https://dizname.in/wp-content/uploads/2021/09/design-n-print-product-1.png"]}
+      bannerImg={[stickerLabel]}
       description="Custom sticker and label printing solutions tailored to your needs."
       types={[
         "Product Labels",
+        "Product Stickers",
         "Branding Stickers",
         "Barcode & QR Code Stickers",
         "Waterproof Vinyl Stickers",
-        "Transparent & Matte Finish Labels",
+        "Transparent & Matte Finish Stickers",
+        "Pesticide Stickers",
+
       ]}
       advantages={[
         "Ideal for packaging and branding",

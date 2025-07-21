@@ -9,6 +9,7 @@ module.exports = {
         montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
+        yell0owColor:"#FFC000",
         primary: "#0052CC",
         secondary: "#F5A623",
         background: "#F4F6F8",

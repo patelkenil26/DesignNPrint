@@ -12,7 +12,7 @@ const ServicesSection = () => {
   const nextImage = () => setModalIndex((prev) => (prev === services.length - 1 ? 0 : prev + 1));
 
   return (
-    <div className="font-poppins px-2 sm:px-4 md:px-6 lg:px-8">
+    <div className="font-poppins px-5 sm:px-4 md:px-6 lg:px-8 ">
     <CoreValues />
     <ServiceGrid services={services} openModal={openModal} />
     <ServiceModal

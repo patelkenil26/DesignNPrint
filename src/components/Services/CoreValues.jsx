@@ -1,12 +1,18 @@
 import React from "react";
-import { FaCheckCircle, FaBullhorn, FaLightbulb, FaHandshake } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaBullhorn,
+  FaLightbulb,
+  FaHandshake,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const coreValues = [
   {
     icon: <FaCheckCircle className="text-blue-500 text-4xl mx-auto" />,
     title: "Quality Control",
-    description: "Top-notch quality with timely delivery and trusted customer service.",
+    description:
+      "Top-notch quality with timely delivery and trusted customer service.",
   },
   {
     icon: <FaBullhorn className="text-green-500 text-4xl mx-auto" />,
@@ -26,8 +32,11 @@ const coreValues = [
 ];
 
 const CoreValues = () => (
-  <section className="bg-gray-900 text-white py-12 mt-12">
-    <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 ">
+  <section
+    className="bg-gray-900 text-white py-12 md:mt-1 lg:mt-12  rounded-lg mx-auto"
+    style={{ width: "100%" }}
+  >
+    <div className="  px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
       {coreValues.map((item, index) => (
         <motion.div
           key={item.title}

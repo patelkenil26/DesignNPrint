@@ -13,15 +13,15 @@ const Footer = () => {
   return (
     <div className="bg-gray-900 text-white py-10 font-poppins">
       {/* Main Content */}
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:ml-32 ">
         {/* About Section */}
-        <div>
+        <div className="flex flex-wrap ">
           <img
             src={logo}
             alt="Company Logo"
-            className="mb-4 w-32 mx-auto lg:mx-0"
+            className="mb-4 w-32  lg:mx-0 "
           />
-          <p className="text-sm mb-2">
+          <p className="text-sm mb-2 ">
             Design N Print is a professional Printing Company in Ahmedabad,
             India, specialized in fine-quality printing and supporting services
             for commerce and industry of Gujarat since 1982.
@@ -34,9 +34,9 @@ const Footer = () => {
         </div>
 
         {/* Navigation Section */}
-        <div>
+        <div className="lg:ml-20">
           <h3 className="text-xl font-bold mb-4">Navigation</h3>
-          <ul className="space-y-2">
+          <ul className="space-y-6">
             <li>
               <a href="/" className="text-yellow-500 hover:underline">
                 Home
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
 
         {/* Contact Section */}
-        <div>
+        <div className="lg:-ml-16 lg:mr-24 flex flex-col gap-3">
           <h3 className="text-xl font-bold mb-4">Contact Us</h3>
           <p className="text-sm">Design N Prints</p>
           <p className="text-sm">
@@ -72,17 +72,17 @@ const Footer = () => {
             Pump, Naroda, Ahmedabad, Gujarat 382330
           </p>
           <p className="text-sm mt-2" itemType="phone">
-            +91 7048501999, +91 9824991999
+            +91 9725281074, +91 9913290354
           </p>
           <p className="text-sm mt-2" typeof="email">
-            work.modernprinters@gmail.com
+            designnprintsamd@gmail.com
           </p>
         </div>
 
         {/* Social Links */}
-        <div>
+        <div className="lg:-ml-20">
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-          <div className="flex justify-center lg:justify-start space-x-6">
+          <div className="flex  lg:justify-start space-x-6">
             <a
               href="https://www.facebook.com/share/19FYcyioTy/?mibextid=qi2Omg"
               className="text-yellow-500 hover:text-yellow-400 hover:underline"
@@ -115,7 +115,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="border-t border-gray-700 mt-8 pt-4 text-center px-4">
         <p className="text-sm">
-          Copyright © 2025 Modern Multi Print. All Rights Reserved | Designed By{" "}
+          Copyright © 2025 Design N Print All Rights Reserved | Designed By{" "}
           <a
             href="#"
             className="text-yellow-500 hover:underline"
