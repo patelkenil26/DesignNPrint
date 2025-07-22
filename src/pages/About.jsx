@@ -77,7 +77,7 @@ const About = () => {
 
       <JourneySection
         title="Journey"
-        description="Started in 2012, we've made remarkable growth in the printing industry."
+        description="Started in 2008, we've made remarkable growth in the printing industry."
       />
 
       <div className="bg-gray-900 text-white py-8 px-4 font-poppins">

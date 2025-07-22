@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/Services/ServicesSection";
 import StatsSection from "../components/StatsSection";
+import GoogleReviewSection from "../components/Review/GoogleReviewSection ";
 
 const Home = () => {
   return (
@@ -9,6 +10,8 @@ const Home = () => {
       <HeroSection />
       <ServicesSection/>
       <StatsSection/>
+      <GoogleReviewSection />
+      {/* <GoogleReviewButton/> */}
     </div>
   );
 };
