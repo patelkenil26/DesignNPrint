@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaArrowRight, 
   FaWhatsapp, 
@@ -11,10 +11,57 @@ import {
   FaBolt, 
   FaBoxOpen, 
   FaMapMarkerAlt, 
-  FaCheckCircle
+  FaCheckCircle,
+  FaLayerGroup,
+  FaGem
 } from "react-icons/fa";
 
+interface SpecimenProduct {
+  id: string;
+  name: string;
+  category: string;
+  image: string;
+  gsm: string;
+  boardType: string;
+  finishBadge: string;
+  description: string;
+}
+
+const specimenProducts: SpecimenProduct[] = [
+  {
+    id: "luxury-box",
+    name: "Rigid Packaging Box",
+    category: "Custom Mono-Carton & Rigid",
+    image: "/images/Card/box_designing.png",
+    gsm: "600+ GSM Kappa Board",
+    boardType: "ITC Kappa Core + Velvet Wrap",
+    finishBadge: "Raised Gold Foil + Spot UV",
+    description: "Multi-ply rigid box with magnetic closure, zero-crack die-creasing, and hot-stamped gold typography.",
+  },
+  {
+    id: "pharma-box",
+    name: "Pharma Medicine Carton",
+    category: "Medical Packaging Standard",
+    image: "/images/Card/pharma_box.jpg",
+    gsm: "350 GSM Cyber XL",
+    boardType: "Virgin Clay Coated Board",
+    finishBadge: "Tamper-Evident + Dieline CAD",
+    description: "Automated crash-lock bottom, high-speed blister card compatibility, and micro-sharp batch barcode registration.",
+  },
+  {
+    id: "velvet-card",
+    name: "Executive 450 GSM Card",
+    category: "Corporate Identity",
+    image: "/images/Card/design-n-print-product-12-1.png",
+    gsm: "450 GSM Triple-Ply",
+    boardType: "Cotton Ivory Sandwich Edge",
+    finishBadge: "Thermal Velvet + Gilded Foil",
+    description: "Scratch-resistant soft-touch lamination, deep blind debossing, and razor-sharp PMS spot-color letterpress.",
+  },
+];
+
 export default function HeroSection() {
+  const [selectedProduct, setSelectedProduct] = useState<SpecimenProduct>(specimenProducts[0]);
   const [activeFinish, setActiveFinish] = useState<"gold" | "spot-uv" | "velvet">("gold");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -37,7 +84,7 @@ export default function HeroSection() {
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-accent/15 via-secondary/10 to-transparent rounded-full blur-[130px] opacity-70"></div>
         <div className="absolute bottom-0 right-10 w-[450px] h-[450px] bg-accent/10 rounded-full blur-[120px]"></div>
         
-        {/* Print Crop & Registration Marks */}
+        {/* Technical Crop Marks */}
         <div className="absolute top-4 left-6 text-text-muted/30 font-mono text-[11px] hidden sm:block select-none">
           + REG: CMYK 100% | BLEED: 3.0mm | PROFILE: FOGRA39
         </div>
@@ -49,7 +96,7 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Headline, Proof-Guarantee & 3D CTAs */}
+          {/* Left Column: Compelling Copy & Dual Action Buttons */}
           <motion.div 
             className="lg:col-span-7 flex flex-col items-start"
             initial={{ opacity: 0, y: 30 }}
@@ -73,7 +120,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-text-subtle mb-8 max-w-2xl leading-relaxed">
-              From luxury gold-foiled business cards to pharmaceutical mono cartons and food-safe pouches. 
+              From luxury gold-foiled rigid boxes to pharmaceutical mono cartons and food-safe pouches. 
               Get Heidelberg-grade offset &amp; digital printing with <strong className="text-text-main font-semibold">100% free digital 3D proof sign-off</strong> before plate exposure.
             </p>
 
@@ -136,37 +183,57 @@ export default function HeroSection() {
 
           </motion.div>
 
-          {/* Right Column: Multi-Layered 3D Perspective Card with Metallic Specular Sheen */}
+          {/* Right Column: Real 3D Packaging & Finishes Studio Showcase */}
           <motion.div 
             className="lg:col-span-5 flex flex-col items-center justify-center relative"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
+            {/* Top Interactive Product Tabs */}
+            <div className="w-full flex items-center justify-between gap-1.5 p-1.5 bg-surface-muted/90 backdrop-blur-md rounded-2xl border border-border-subtle mb-4 shadow-sm">
+              {specimenProducts.map((p) => {
+                const isSelected = selectedProduct.id === p.id;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setSelectedProduct(p)}
+                    className={`flex-1 py-2 px-2.5 rounded-xl text-[11px] font-bold transition-all text-center truncate ${
+                      isSelected
+                        ? "bg-accent text-primary-dark shadow-md scale-[1.02]"
+                        : "text-text-muted hover:text-text-main hover:bg-surface"
+                    }`}
+                  >
+                    {p.name}
+                  </button>
+                );
+              })}
+            </div>
+
             {/* 3D Perspective Card Stage */}
             <div 
-              className="relative w-full max-w-md aspect-[4/3] rounded-3xl cursor-pointer select-none"
+              className="relative w-full max-w-lg aspect-[4/3] rounded-3xl cursor-pointer select-none"
               style={{ perspective: 1200 }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Layer 1: Background Floating Packaging Mockup Card */}
+              {/* Background Ambient Glow Card */}
               <div 
-                className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-dark via-primary-surface to-secondary/30 border border-white/10 shadow-2xl opacity-50 blur-[1px] transition-transform duration-300"
+                className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-accent/20 via-primary-dark to-secondary/20 border border-white/10 shadow-2xl opacity-40 blur-[2px] transition-transform duration-300"
                 style={{
-                  transform: `rotateY(${mousePos.x * -15 - 5}deg) rotateX(${-mousePos.y * -15 + 4}deg) translateZ(-40px) translateY(10px) translateX(-10px)`,
+                  transform: `rotateY(${mousePos.x * -12}deg) rotateX(${-mousePos.y * -12}deg) translateZ(-30px) translateY(8px)`,
                 }}
               />
 
-              {/* Layer 2: Main Tactile 3D Specimen Card with Metallic Foil Border */}
+              {/* Main 3D Card Shell */}
               <div 
                 className="relative w-full h-full rounded-3xl p-[1.5px] bg-gradient-to-tr from-accent via-amber-300/40 to-yellow-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-150 ease-out"
                 style={{
-                  transform: `rotateY(${mousePos.x * 22}deg) rotateX(${-mousePos.y * 22}deg)`,
+                  transform: `rotateY(${mousePos.x * 20}deg) rotateX(${-mousePos.y * 20}deg)`,
                   transformStyle: "preserve-3d",
                 }}
               >
-                <div className="relative w-full h-full rounded-[23px] bg-gradient-to-br from-primary-surface via-surface to-primary-dark p-6 sm:p-7 flex flex-col justify-between overflow-hidden">
+                <div className="relative w-full h-full rounded-[23px] bg-gradient-to-br from-primary-dark via-primary-surface to-primary-dark p-5 sm:p-6 flex flex-col justify-between overflow-hidden">
                   
                   {/* Dynamic Foil Reflection Sweep overlay */}
                   <div 
@@ -175,66 +242,73 @@ export default function HeroSection() {
                       background: activeFinish === "gold" 
                         ? `radial-gradient(circle at ${(mousePos.x + 0.5) * 100}% ${(mousePos.y + 0.5) * 100}%, rgba(245, 158, 11, 0.45), transparent 70%)`
                         : activeFinish === "spot-uv"
-                        ? `radial-gradient(circle at ${(mousePos.x + 0.5) * 100}% ${(mousePos.y + 0.5) * 100}%, rgba(255, 255, 255, 0.6), transparent 60%)`
-                        : `radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15), transparent 80%)`,
+                        ? `radial-gradient(circle at ${(mousePos.x + 0.5) * 100}% ${(mousePos.y + 0.5) * 100}%, rgba(255, 255, 255, 0.55), transparent 60%)`
+                        : `radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12), transparent 80%)`,
                     }}
                   />
 
-                  {/* Card Top: Branding & Registration marks with z-depth */}
+                  {/* Card Header: Category & GSM Pill with z-depth */}
                   <div 
                     className="flex justify-between items-start relative z-10"
-                    style={{ transform: "translateZ(30px)" }}
+                    style={{ transform: "translateZ(25px)" }}
                   >
                     <div>
                       <span className="text-[10px] tracking-widest uppercase font-mono text-accent font-bold">
-                        Interactive Specimen
+                        {selectedProduct.category}
                       </span>
-                      <h3 className="text-xl font-black text-text-light tracking-wide mt-0.5">
-                        DESIGN N PRINT
+                      <h3 className="text-lg sm:text-xl font-black text-text-light tracking-wide mt-0.5">
+                        {selectedProduct.name}
                       </h3>
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-primary-dark/90 border border-border-dark text-[10px] font-mono text-text-light-muted shadow-sm">
-                      <span>450 GSM</span>
-                      <span>•</span>
-                      <span className="text-accent uppercase font-bold">{activeFinish}</span>
+
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-text-light shadow-sm">
+                      <span className="text-accent font-bold">{selectedProduct.gsm}</span>
                     </div>
                   </div>
 
-                  {/* Card Center: Metallic Foil Emblem with elevated 3D Z-depth */}
+                  {/* Card Center: REAL High-Resolution Product Artwork with 3D Pop-Out */}
                   <div 
-                    className="my-auto relative z-10 flex flex-col items-center text-center"
-                    style={{ transform: "translateZ(50px)" }}
+                    className="my-auto relative z-10 flex items-center justify-center py-2"
+                    style={{ transform: "translateZ(45px)" }}
                   >
-                    <div 
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-xl mb-3 transition-all duration-300 ${
-                        activeFinish === "gold"
-                          ? "bg-gradient-to-tr from-amber-600 via-amber-400 to-yellow-200 text-primary-dark shadow-amber-500/40"
-                          : activeFinish === "spot-uv"
-                          ? "bg-primary-dark border-2 border-accent text-accent shadow-accent/30"
-                          : "bg-surface text-text-main shadow-inner border border-white/20"
-                      }`}
-                    >
-                      <span className="font-extrabold font-serif">D&amp;P</span>
-                    </div>
-                    <p className="text-xs text-text-light-muted tracking-widest uppercase font-semibold">
-                      Offset Press • Hot Foil Stamping • Die-Cutting
-                    </p>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={selectedProduct.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.25 }}
+                        className="relative w-full h-36 sm:h-44 flex items-center justify-center"
+                      >
+                        <Image
+                          src={selectedProduct.image}
+                          alt={selectedProduct.name}
+                          fill
+                          className="object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]"
+                          priority
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
 
-                  {/* Card Bottom: Live Tactile Finish Selector */}
+                  {/* Card Footer: Real Material Spec + Interactive Finish Switcher */}
                   <div 
                     className="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between text-xs"
-                    style={{ transform: "translateZ(25px)" }}
+                    style={{ transform: "translateZ(20px)" }}
                   >
-                    <span className="text-text-light-muted text-[11px] font-medium">Switch Finish:</span>
+                    <div className="text-[11px] text-text-light-muted">
+                      <span className="text-text-light font-semibold block">{selectedProduct.boardType}</span>
+                      <span className="text-[10px] text-accent">{selectedProduct.finishBadge}</span>
+                    </div>
+
                     <div className="flex items-center gap-1.5">
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); setActiveFinish("gold"); }}
-                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all ${
+                        className={`px-2.5 py-1 rounded-md text-[10px] font-bold transition-all ${
                           activeFinish === "gold"
-                            ? "bg-accent text-text-light shadow-md"
-                            : "bg-primary-dark/80 text-text-light-muted hover:text-text-light"
+                            ? "bg-accent text-primary-dark shadow-md"
+                            : "bg-black/50 text-text-light-muted hover:text-text-light"
                         }`}
                       >
                         Gold Foil
@@ -242,10 +316,10 @@ export default function HeroSection() {
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); setActiveFinish("spot-uv"); }}
-                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all ${
+                        className={`px-2.5 py-1 rounded-md text-[10px] font-bold transition-all ${
                           activeFinish === "spot-uv"
-                            ? "bg-accent text-text-light shadow-md"
-                            : "bg-primary-dark/80 text-text-light-muted hover:text-text-light"
+                            ? "bg-accent text-primary-dark shadow-md"
+                            : "bg-black/50 text-text-light-muted hover:text-text-light"
                         }`}
                       >
                         Spot UV
@@ -253,13 +327,13 @@ export default function HeroSection() {
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); setActiveFinish("velvet"); }}
-                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all ${
+                        className={`px-2.5 py-1 rounded-md text-[10px] font-bold transition-all ${
                           activeFinish === "velvet"
-                            ? "bg-accent text-text-light shadow-md"
-                            : "bg-primary-dark/80 text-text-light-muted hover:text-text-light"
+                            ? "bg-accent text-primary-dark shadow-md"
+                            : "bg-black/50 text-text-light-muted hover:text-text-light"
                         }`}
                       >
-                        Velvet Matte
+                        Velvet
                       </button>
                     </div>
                   </div>
@@ -267,7 +341,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating 3D Micro-Badges with drop shadows */}
+              {/* Floating Verified Quality Badges */}
               <div 
                 className="absolute -top-3 -right-2 bg-surface/95 backdrop-blur-md text-text-main border border-border-subtle rounded-xl px-3 py-1.5 shadow-xl flex items-center gap-2 text-xs font-bold animate-bounce duration-1000 z-20"
               >
@@ -278,7 +352,7 @@ export default function HeroSection() {
               <div 
                 className="absolute -bottom-3 -left-2 bg-surface/95 backdrop-blur-md text-text-main border border-border-subtle rounded-xl px-3 py-1.5 shadow-xl flex items-center gap-2 text-xs font-semibold z-20"
               >
-                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 <span>Hover for 3D Specular Light</span>
               </div>
 

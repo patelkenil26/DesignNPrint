@@ -29,55 +29,8 @@ const Footer = () => {
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[140px]"></div>
       </div>
 
-      {/* 1. Pre-Footer 3D Consultation & Dieline Banner */}
-      <div className="relative border-b border-white/10 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-primary-surface/90 via-surface/60 to-primary-surface/90 backdrop-blur-xl border border-white/15 shadow-[0_10px_40px_rgba(0,0,0,0.4)] overflow-hidden">
-            
-            <div className="absolute -top-12 -right-12 w-48 h-48 bg-accent/15 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider">
-                  <FaBolt className="text-xs" />
-                  <span>Free Pre-Press Digital Verification</span>
-                </div>
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-text-light tracking-tight">
-                  Ready to Make Your Brand Physical?
-                </h3>
-                <p className="text-xs sm:text-sm text-text-light-muted max-w-2xl leading-relaxed">
-                  Send us your CAD dielines or rough artwork. Our Naroda prepress team will verify your CMYK separations, safety bleed, and board thickness with a free digital 3D proof in 15 minutes.
-                </p>
-              </div>
-
-              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
-                <Link
-                  href="/quote"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-accent via-amber-400 to-yellow-500 hover:brightness-110 text-primary-dark font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-all active:scale-98"
-                >
-                  <FaBolt />
-                  <span>Instant Cost Estimator</span>
-                  <FaArrowRight className="text-xs" />
-                </Link>
-
-                <a
-                  href="https://wa.me/919725281074?text=Hi%20Design%20N%20Print,%20I%20have%20an%20urgent%20print%20order."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-whatsapp/20 hover:bg-whatsapp/30 border border-whatsapp/40 text-whatsapp font-bold text-xs uppercase tracking-wider transition-all"
-                >
-                  <FaWhatsapp className="text-base" />
-                  <span>Chat with Press Specialist</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Main Structured 4-Column Footer */}
-      <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      {/* Main Structured 4-Column Footer */}
+      <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           
           {/* Column 1: Studio Legacy & Press Verification (4 cols) */}
