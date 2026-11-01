@@ -23,8 +23,15 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Design N Print - Premium Printing Services in Gujarat",
-  description: "Design N Prints is specialized in fine-quality printing and supporting services for the commerce and industry of Gujarat since 2008.",
+  title: "Design N Print - Commercial Printing & Packaging in Gujarat",
+  description: "Specialized in high-precision commercial offset printing, pharmaceutical cartons, luxury foil finishes, and corporate branding in Naroda, Ahmedabad since 2008.",
+  icons: {
+    icon: [
+      { url: "/images/Logo/DesignNPrint.png", sizes: "any" },
+    ],
+    shortcut: "/images/Logo/DesignNPrint.png",
+    apple: "/images/Logo/DesignNPrint.png",
+  },
 };
 
 export default function RootLayout({

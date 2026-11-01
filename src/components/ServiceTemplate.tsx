@@ -18,7 +18,8 @@ import {
   FaExpand, 
   FaTimes, 
   FaArrowLeft, 
-  FaArrowRight 
+  FaArrowRight,
+  FaStar 
 } from "react-icons/fa";
 
 interface ServiceTemplateProps {
@@ -178,7 +179,7 @@ Please let me know the available GSM options, finishes, and turnaround time.`
                 {types.map((type, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm text-text-subtle">
                     <span className="w-5 h-5 rounded-full bg-accent/15 text-accent flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                      ✓
+                      <FaCheck className="text-[10px]" />
                     </span>
                     <span>{type}</span>
                   </li>
@@ -196,7 +197,7 @@ Please let me know the available GSM options, finishes, and turnaround time.`
                 {advantages.map((adv, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm text-text-subtle">
                     <span className="w-5 h-5 rounded-full bg-secondary-bg text-secondary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                      ★
+                      <FaStar className="text-[10px]" />
                     </span>
                     <span>{adv}</span>
                   </li>

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaArrowsAltH, FaCheck, FaTimes } from "react-icons/fa";
+import { FaArrowsAltH, FaCheck, FaTimes, FaStar, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function BeforeAfterSection() {
   const [sliderPos, setSliderPos] = useState(50);
@@ -68,8 +68,9 @@ export default function BeforeAfterSection() {
                     </h3>
                     <p className="text-xs text-text-light-muted">Global Architecture Studio</p>
                   </div>
-                  <span className="px-2.5 py-1 rounded-md bg-accent text-text-light text-[11px] font-bold shadow-md">
-                    ✨ Gold Foil + Spot UV
+                  <span className="px-2.5 py-1 rounded-md bg-accent text-text-light text-[11px] font-bold shadow-md flex items-center gap-1">
+                    <FaStar className="text-[10px]" />
+                    <span>Gold Foil + Spot UV</span>
                   </span>
                 </div>
 
@@ -148,9 +149,9 @@ export default function BeforeAfterSection() {
           </div>
 
           <div className="text-center mt-4 text-xs text-text-muted flex items-center justify-center gap-2">
-            <span>👈</span>
+            <FaArrowLeft className="text-[10px] text-accent" />
             <span className="font-medium">Drag the slider horizontally to compare finishes</span>
-            <span>👉</span>
+            <FaArrowRight className="text-[10px] text-accent" />
           </div>
         </div>
       </div>

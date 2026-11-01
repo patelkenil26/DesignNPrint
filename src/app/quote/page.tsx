@@ -3,7 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import QuickEstimator from "@/components/sections/Home/QuickEstimator";
-import { FaWhatsapp, FaFilePdf, FaCheck, FaShieldAlt, FaBolt, FaPhoneAlt } from "react-icons/fa";
+import { 
+  FaWhatsapp, 
+  FaFilePdf, 
+  FaCheck, 
+  FaShieldAlt, 
+  FaBolt, 
+  FaPhoneAlt,
+  FaRulerCombined,
+  FaPalette,
+  FaSearchPlus,
+  FaFont
+} from "react-icons/fa";
 
 export default function QuotePage() {
   return (
@@ -50,36 +61,52 @@ export default function QuotePage() {
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm">
-              <span className="text-2xl mb-3 block">📐</span>
-              <h3 className="font-bold text-sm text-text-main mb-1.5">3mm Bleed Margin</h3>
-              <p className="text-xs text-text-muted leading-relaxed">
-                Extend background graphics 3mm beyond the final cut line to avoid white edges during trimming.
-              </p>
+            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center text-base mb-4">
+                  <FaRulerCombined />
+                </div>
+                <h3 className="font-bold text-sm text-text-main mb-1.5">3mm Bleed Margin</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Extend background graphics 3mm beyond the final cut line to avoid white edges during trimming.
+                </p>
+              </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm">
-              <span className="text-2xl mb-3 block">🎨</span>
-              <h3 className="font-bold text-sm text-text-main mb-1.5">CMYK Color Mode</h3>
-              <p className="text-xs text-text-muted leading-relaxed">
-                Convert all RGB images to CMYK to prevent unexpected dull color shifts on offset paper plates.
-              </p>
+            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center text-base mb-4">
+                  <FaPalette />
+                </div>
+                <h3 className="font-bold text-sm text-text-main mb-1.5">CMYK Color Mode</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Convert all RGB images to CMYK to prevent unexpected dull color shifts on offset paper plates.
+                </p>
+              </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm">
-              <span className="text-2xl mb-3 block">🔍</span>
-              <h3 className="font-bold text-sm text-text-main mb-1.5">300 DPI Resolution</h3>
-              <p className="text-xs text-text-muted leading-relaxed">
-                Ensure raster graphics and photos are 300 DPI at actual printed size to eliminate pixelation.
-              </p>
+            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center text-base mb-4">
+                  <FaSearchPlus />
+                </div>
+                <h3 className="font-bold text-sm text-text-main mb-1.5">300 DPI Resolution</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Ensure raster graphics and photos are 300 DPI at actual printed size to eliminate pixelation.
+                </p>
+              </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm">
-              <span className="text-2xl mb-3 block">🔤</span>
-              <h3 className="font-bold text-sm text-text-main mb-1.5">Convert Fonts to Curves</h3>
-              <p className="text-xs text-text-muted leading-relaxed">
-                Convert typography to outlines/curves in CDR or AI so missing fonts do not alter the layout.
-              </p>
+            <div className="p-6 rounded-2xl bg-surface border border-border-subtle shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center text-base mb-4">
+                  <FaFont />
+                </div>
+                <h3 className="font-bold text-sm text-text-main mb-1.5">Convert Fonts to Curves</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  Convert typography to outlines/curves in CDR or AI so missing fonts do not alter the layout.
+                </p>
+              </div>
             </div>
           </div>
 

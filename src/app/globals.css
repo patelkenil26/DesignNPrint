@@ -37,7 +37,7 @@
   --color-whatsapp-hover: var(--color-brand-whatsapp-hover);
 }
 
-:root, [data-theme="option-b"] {
+:root, [data-theme="option-a"] {
   /* =====================================================================
      OPTION A: MIDNIGHT STUDIO & FOIL GOLD (Default Theme)
      Deep midnight slate, royal gold highlights, and slate card surfaces.
@@ -115,7 +115,7 @@
 
 [data-theme="option-c"] {
   /* =====================================================================
-     OPTION C: ARCHITECTURAL MINIMALIST (ONYX & PLATINUM)
+     OPTION C (LIGHT): ARCHITECTURAL ONYX & BRASS (Clean Gallery White)
      Deep architectural zinc/onyx, warm brass/amber glow, cool platinum.
      ===================================================================== */
   --color-brand-primary: #18181b;        /* Deep architectural zinc-900 */
@@ -151,6 +151,45 @@
   --foreground: #18181b;
 }
 
+[data-theme="option-c-dark"] {
+  /* =====================================================================
+     OPTION C (DARK): ARCHITECTURAL ONYX & BRASS (Deep Matte Zinc & Brass)
+     Exact same architectural brand aesthetic, seamlessly inverted for dark mode.
+     Matte zinc-950 base, warm glowing brass highlights, cool platinum text.
+     ===================================================================== */
+  --color-brand-primary: #09090b;        /* Pure onyx black */
+  --color-brand-primary-dark: #000000;   /* Pitch black */
+  --color-brand-surface-dark: #18181b;   /* Matte zinc-900 navbar */
+  --color-brand-surface-card: #18181b;   /* Architectural card surface */
+
+  --color-brand-accent: #f59e0b;         /* Luminous Architectural Brass / Gold */
+  --color-brand-accent-hover: #d97706;   /* Warm Amber */
+  --color-brand-accent-light: #78350f;   /* Deep brass glow */
+
+  --color-brand-secondary: #a1a1aa;      /* Cool Platinum Steel */
+  --color-brand-secondary-hover: #d4d4d8;
+  --color-brand-secondary-bg: #27272a;   /* Zinc-800 subtle badge background */
+
+  --color-brand-bg: #121214;             /* Deep matte architectural zinc */
+  --color-brand-surface-light: #18181b;  /* Zinc-900 surface */
+  --color-brand-surface-muted: #27272a;  /* Zinc-800 divider */
+
+  --color-brand-text: #f4f4f5;           /* Crisp platinum zinc text */
+  --color-brand-text-subtle: #d4d4d8;    /* Zinc-300 readability */
+  --color-brand-text-muted: #a1a1aa;     /* Platinum muted text */
+  --color-brand-text-light: #ffffff;     /* Pure white */
+  --color-brand-text-light-muted: #a1a1aa;
+
+  --color-brand-border-subtle: #27272a;  /* Matte zinc border */
+  --color-brand-border-dark: #3f3f46;    /* Zinc-700 prominent border */
+
+  --color-brand-whatsapp: #22c55e;
+  --color-brand-whatsapp-hover: #16a34a;
+
+  --background: #121214;
+  --foreground: #f4f4f5;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -161,6 +200,7 @@ body, html {
 body {
   background-color: var(--color-brand-bg);
   color: var(--color-brand-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #nprogress .bar {

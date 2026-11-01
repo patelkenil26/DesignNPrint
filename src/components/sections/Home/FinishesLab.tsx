@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLayerGroup, FaSun, FaFingerprint, FaShieldAlt } from "react-icons/fa";
+import { FaLayerGroup, FaSun, FaFingerprint, FaShieldAlt, FaCheck } from "react-icons/fa";
 
 interface FinishItem {
   id: string;
@@ -179,9 +179,10 @@ export default function FinishesLab() {
                       {selectedFinish.bestFor.map((item, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1.5 rounded-lg bg-surface-light border border-border-subtle text-xs font-medium text-text-main"
+                          className="px-3 py-1.5 rounded-lg bg-surface-light border border-border-subtle text-xs font-medium text-text-main inline-flex items-center gap-1.5"
                         >
-                          ✓ {item}
+                          <FaCheck className="text-[10px] text-whatsapp" />
+                          <span>{item}</span>
                         </span>
                       ))}
                     </div>
