@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaBolt, FaChevronDown, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import { services } from "@/data/servicesData";
+import ThemeToggle from "./ThemeToggle";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -48,16 +49,17 @@ export default function MobileMenu({
           transition={{ duration: 0.25 }}
           className="lg:hidden bg-[#090d16]/98 backdrop-blur-2xl border-t border-white/10 px-5 py-5 shadow-2xl overflow-hidden font-poppins text-white"
         >
-          {/* Quick Quote Button on Mobile */}
-          <div className="mb-4">
+          {/* Quick Quote & Theme Toggle on Mobile */}
+          <div className="flex items-center gap-2 mb-4">
             <Link
               href="/quote"
               onClick={toggle}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-md bg-accent text-primary-dark font-bold text-xs uppercase tracking-wider shadow-sm active:scale-98 transition-all"
+              className="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-md bg-accent text-primary-dark font-bold text-xs uppercase tracking-wider shadow-sm active:scale-98 transition-all"
             >
               <FaBolt className="text-xs" />
               <span>Instant Cost Calculator</span>
             </Link>
+            <ThemeToggle />
           </div>
 
           <ul className="flex flex-col gap-1 text-sm font-medium">

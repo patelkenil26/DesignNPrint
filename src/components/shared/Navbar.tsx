@@ -6,6 +6,7 @@ import Logo from "./Navbar/Logo";
 import DesktopMenu from "./Navbar/DesktopMenu";
 import MobileMenu from "./Navbar/MobileMenu";
 import SearchBox from "./Navbar/SearchBox";
+import ThemeToggle from "./Navbar/ThemeToggle";
 import WhatsAppButton from "./Navbar/WhatsAppButton";
 import { services } from "@/data/servicesData";
 
@@ -64,11 +65,11 @@ export default function Navbar() {
             <Logo />
           </div>
 
-          {/* Desktop Navigation Links (Clean, No Box Pill Clutter) */}
+          {/* Desktop Navigation Links */}
           <DesktopMenu />
 
-          {/* Right Utilities: Search & Mobile Menu Button */}
-          <div className="flex items-center gap-3">
+          {/* Right Utilities: Search, Dark/Light Mode Toggle & Mobile Menu Button */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <SearchBox
               searchTerm={searchTerm}
               handleSearch={handleSearch}
@@ -76,7 +77,10 @@ export default function Navbar() {
               clearSearch={() => setSearchTerm("")}
             />
 
-            {/* Mobile Menu Hamburger (Clean Flat Icon) */}
+            {/* In-Header Dark / Light Mode Toggle */}
+            <ThemeToggle />
+
+            {/* Mobile Menu Hamburger */}
             <button
               className="lg:hidden p-2 rounded-md hover:bg-white/10 text-white hover:text-accent focus:outline-none transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
