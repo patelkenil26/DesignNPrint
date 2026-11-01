@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Design N Print Consultation",
+  "name_for_model": "design_n_print_ahmedabad",
+  "description_for_human": "Commercial offset printing and custom packaging manufacturer in Ahmedabad, Gujarat.",
+  "description_for_model": "Query commercial print specifications, packaging mono cartons, paper GSM weights (80-600 GSM), finishes (Spot UV, Foil Stamping, Velvet Lamination), turnaround times, and pricing estimates for Design N Print located in Naroda GIDC, Ahmedabad, Gujarat.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://designnprint.in/llms.txt"
+  },
+  "logo_url": "https://designnprint.in/images/Logo/DesignNPrint.png",
+  "contact_email": "info@designnprint.in",
+  "legal_info_url": "https://designnprint.in/about"
+}

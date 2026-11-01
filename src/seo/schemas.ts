@@ -77,6 +77,39 @@ export function getRootGraphSchema() {
             closes: "19:00",
           },
         ],
+        hasMap: "https://maps.google.com/?q=23.0827,72.6599",
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: siteConfig.telephone,
+            contactType: "customer service",
+            areaServed: "IN",
+            availableLanguage: ["English", "Gujarati", "Hindi"],
+          },
+          {
+            "@type": "ContactPoint",
+            telephone: siteConfig.telephone,
+            contactType: "sales",
+            areaServed: "IN",
+            availableLanguage: ["English", "Gujarati", "Hindi"],
+          },
+        ],
+        knowsAbout: [
+          "Commercial Offset Printing",
+          "Pharmaceutical Medicine Box Packaging",
+          "Mono Carton Manufacturing",
+          "Custom Rigid Box Making",
+          "MetPET Mirror Board Printing",
+          "CTP Computer-to-Plate Prepress",
+          "Thermal Velvet Lamination",
+          "Raised Spot UV Coating",
+          "Hydraulic Gold Foil Stamping",
+          "CAD Packaging Dieline Engineering",
+          "Self Adhesive Label Printing",
+          "Product Catalogues & Corporate Brochures",
+          "Morbi Ceramic Tile Display Folders",
+          "Laminate Mica Sample Books",
+        ],
         areaServed: siteConfig.areaServed.map((area) => ({
           "@type": "AdministrativeArea",
           name: area,
@@ -103,7 +136,7 @@ export function getRootGraphSchema() {
         sameAs: Object.values(siteConfig.socialProfiles),
       },
 
-      // 2. WebSite Entity with Potential Action Search
+      // 2. WebSite Entity with Potential Action Search & Recency Signal
       {
         "@type": "WebSite",
         "@id": websiteId,
@@ -118,6 +151,7 @@ export function getRootGraphSchema() {
           "query-input": "required name=search_term_string",
         },
         inLanguage: "en-IN",
+        dateModified: "2026-05-01",
       },
     ],
   };
@@ -158,12 +192,25 @@ export function getServiceSchema(data: ServiceSchemaData) {
     provider: {
       "@id": orgId,
     },
+    brand: {
+      "@id": orgId,
+    },
     areaServed: siteConfig.areaServed.slice(0, 5).map((area) => ({
       "@type": "AdministrativeArea",
       name: area,
     })),
     serviceType: "Offset & Digital Commercial Printing",
     category: "Commercial Printing & Packaging",
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "INR",
+      price: "1.50",
+      lowPrice: "0.50",
+      highPrice: "500.00",
+      offerCount: "1000",
+      availability: "https://schema.org/InStock",
+    },
+    termsOfService: `${siteConfig.siteUrl}/contact`,
     hasOfferCatalog: data.types && data.types.length > 0
       ? {
           "@type": "OfferCatalog",

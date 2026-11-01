@@ -9,14 +9,35 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/_next/"],
       },
-      // Explicitly allow AI Search Engines for Generative Engine Optimization (GEO)
+      // Search Engine Core Bots
       {
         userAgent: [
+          "Googlebot",
+          "Googlebot-Image",
+          "Bingbot",
+          "Slurp",
+          "DuckDuckBot",
+          "Baiduspider",
+          "YandexBot",
+        ],
+        allow: "/",
+      },
+      // Dedicated AI Search & Citation Bots (AEO / GEO)
+      // OAI-SearchBot, Claude-SearchBot, PerplexityBot directly govern citability in ChatGPT, Claude, and Perplexity
+      {
+        userAgent: [
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "Claude-SearchBot",
+          "Claude-User",
+          "PerplexityBot",
+          "Perplexity-User",
+          "Google-Extended",
+          "Applebot",
+          "Applebot-Extended",
+          "Meta-ExternalAgent",
           "GPTBot",
           "ClaudeBot",
-          "PerplexityBot",
-          "Google-Extended",
-          "Applebot-Extended",
           "Amazonbot",
         ],
         allow: "/",

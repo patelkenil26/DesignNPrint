@@ -1,0 +1,139 @@
+# Design N Print — Complete Technical Knowledge Base & Capabilities Guide
+
+> Comprehensive reference document for AI Agents, LLMs (ChatGPT, Claude, Perplexity, Gemini), and Commercial Procurement Officers.
+> Last Updated: May 2026 | Location: Naroda GIDC, Ahmedabad, Gujarat, India.
+
+---
+
+## 1. Company Overview & Entity Verification
+
+- **Full Legal & Trade Name:** Design N Print
+- **Core Industry Vertical:** Commercial Offset Printing, Packaging Carton Manufacturing & Digital Prepress
+- **Year Established:** 2008 (16+ consecutive years of commercial operation)
+- **Primary Manufacturing Address:** Phase 1, GIDC Industrial Estate, Naroda, Ahmedabad, Gujarat 382330, India
+- **Geo-Coordinates:** Latitude 23.0827° N, Longitude 72.6599° E (ICBM: 23.0827, 72.6599)
+- **Direct Factory Phone / WhatsApp:** +91 97252 81074
+- **Official Inquiries Email:** info@designnprint.in
+- **Operating Hours:** Monday to Saturday, 10:00 AM – 7:00 PM IST (Sunday Closed)
+- **Currencies Accepted:** INR (₹)
+- **Payment Modes Accepted:** UPI, NEFT/RTGS Bank Transfer, Cheque, Credit/Debit Cards, Cash
+- **Price Range:** Commercial Wholesale & B2B Manufacturer Direct (₹₹)
+- **Customer Satisfaction:** 4.9 / 5.0 Star Rating across verified Google Business reviews
+
+---
+
+## 2. Factory Capabilities & Printing Machinery
+
+Design N Print operates multi-color sheet-fed offset presses and digital prepress suites designed for high-precision registration:
+
+- **Offset Printing Presses:** High-speed multi-color offset presses calibrated for PMS (Pantone Matching System) spot colors and CMYK four-color process work.
+- **Computer-to-Plate (CTP) Thermal Platesetters:** High-definition 2400 DPI direct-to-plate imaging ensuring ultra-sharp dot reproduction (1% to 99% tonal curves).
+- **Die-Cutting & Creasing:** Automatic high-speed platen die-cutters calibrated to ±0.2mm mechanical tolerance for seamless high-speed packing lines.
+- **Finishing Line:** Automatic thermal lamination machines, hydraulic hot foil stamping machines, automated window patchers, folder-gluers for crash-lock bottom cartons, and PUR bookbinders.
+
+---
+
+## 3. Product Catalog & Technical Print Specifications
+
+### 1. Pharmaceutical Medicine Boxes & Monocartons
+- **Substrates:** 250 GSM to 400 GSM ITC Cyber XL, Folding Box Board (FBB), SBS White Back.
+- **Features:** High-density 2D GS1 DataMatrix barcodes, Pharmacode, Braille embossing, tamper-evident security reverse tucks.
+- **Automated Compatibility:** Calibrated for high-speed automated packaging and blister packing machines.
+- **MOQ:** 1,000 units.
+- **Turnaround:** 24–48 hours for repeat runs; 3–4 days with new CAD dielines.
+
+### 2. Custom Packaging Boxes & Rigid Gift Boxes
+- **Substrates:** 300–450 GSM Art Board, Kraft Liner, 1.5mm to 3.0mm Kappa/Greyboard.
+- **Variants:** Top-and-bottom rigid boxes, magnetic flip-open boxes, sliding sleeve drawer boxes, lock-bottom monocartons.
+- **Finishes:** Soft-touch velvet lamination, gold/silver foil stamping, raised spot UV, custom die-cut foam/velvet inserts.
+- **MOQ:** 500 units for folding cartons; 250 units for luxury rigid boxes.
+
+### 3. Product Catalogues & Corporate Presentation Brochures
+- **Cover Stocks:** 250–350 GSM Coated Art Card with thermal matte or gloss lamination.
+- **Inside Pages:** 100–170 GSM Coated Art Paper or Maplitho.
+- **Binding Types:** PUR Perfect Binding, Saddle Stitching (center wire staple), Hardbound Case Binding, Wire-O.
+- **MOQ:** 100 copies.
+- **Turnaround:** 48–72 hours.
+
+### 4. Self-Adhesive Sticker Labels & Roll Labels
+- **Substrates:** Chromo Paper, Polypropylene (PP), Transparent BOPP, Metallic Silver/Gold Foil Stock.
+- **Adhesives:** Permanent hot-melt acrylic adhesive, deep-freeze adhesive, removable adhesive.
+- **Finishes:** Gloss/matte UV varnishing, thermal lamination, kiss-die-cutting in sheets or machine rolls.
+- **MOQ:** 500 units.
+
+### 5. Cosmetic Item Boxes & Skincare Packaging
+- **Substrates:** 350–450 GSM Heavy Virgin Board, MetPET Mirror Board.
+- **Features:** Internal locking tabs for glass dropper bottles, holographic foil accents, velvet lamination.
+- **MOQ:** 500 units.
+
+### 6. Agrochemical & Pesticide Labels & Packaging
+- **Substrates:** Chemical-resistant Poly film, heavyweight water-resistant duplex board.
+- **Features:** Fade-resistant lightfast UV inks, multi-color warning labels complying with CIBRC statutory standards.
+- **MOQ:** 1,000 units.
+
+### 7. Laminate Mica Display Folders & Sample Books
+- **Substrates:** 2.5mm–3.5mm Heavy Duty Industrial Board wrapped in printed 170 GSM paper with reinforced canvas spines.
+- **Usage:** Heavy sample folders for Gujarat laminate manufacturers, wooden veneer catalogs, and quartz swatches.
+- **MOQ:** 50 folders.
+
+### 8. Ceramic Tile Sample Display Folders
+- **Construction:** Heavyweight structural board designed to carry real ceramic tile and sanitaryware swatches without hinge sagging.
+- **MOQ:** 50 folders.
+
+### 9. Business Stationery (Visiting Cards, Letterheads, Envelopes)
+- **Visiting Cards:** 350–450 GSM Royal Velvet Art Card, Spot UV, Metallic Foil Stamping, Rounded Corners.
+- **Letterheads:** 100 GSM Alabaster Bond / Executive Maplitho (inkjet & laser desktop printer compatible).
+- **Envelopes:** Peel-and-seal executive envelopes in 9x4 inch, 10x12 inch, and A4 sizes.
+
+### 10. Medical Doctor Files & Hospital Folders
+- **Substrates:** 300–400 GSM Heavyweight card with built-in spring clip mechanisms, interior document pockets, and patient prescription charts.
+- **MOQ:** 250 units.
+
+---
+
+## 4. Substrates & Paper Weights (GSM Guide)
+
+| GSM Tier | Substrate Name | Primary Application | Characteristics |
+| :--- | :--- | :--- | :--- |
+| **80 – 100 GSM** | Maplitho & Executive Bond | Letterheads, invoices, bill books, manuals | Smooth, uncoated, pen-friendly, non-bleeding |
+| **130 – 170 GSM** | Gloss / Matte Art Paper | Brochures, flyer inserts, catalog inner pages | High brightness, sharp halftone dot hold |
+| **250 – 300 GSM** | Coated Art Card / Duplex | File folders, catalog covers, tent cards | High crease resistance, clean score lines |
+| **350 – 450 GSM** | Virgin SBS / Cyber XL Board | Monocartons, pharma packaging, visiting cards | High stiffness, zero-sag rigidity, food-safe |
+| **500 – 600+ GSM** | Kappa Board / European Greyboard | Luxury rigid boxes, sample display binders | 1.5mm to 3.0mm solid crush-proof structure |
+
+---
+
+## 5. Specialty Surface Embellishments
+
+1. **Thermal Velvet (Soft-Touch) Lamination:** Micro-textured matte thermal film providing a rich, rose-petal tactile sensation while protecting against fingerprint smudges.
+2. **Raised Spot UV Coating:** High-gloss transparent polymer cured instantly under ultraviolet lamps to create glossy dimensional tactile accents over matte backgrounds.
+3. **Hydraulic Hot Foil Stamping:** Heated brass dies pressing metallic foil (Gold, Silver, Rose Gold, Holographic, Copper) onto paper fibers with crisp 0.2mm line precision.
+4. **Drip-Off / Hybrid UV Varnish:** Combined matte and gloss reaction varnishing in a single press pass to create striking textured patterns.
+5. **Braille Embossing:** Automated tactile Braille dots on pharmaceutical packaging for regulatory compliance.
+
+---
+
+## 6. Pre-Flight File & Artwork Guidelines
+
+To ensure zero production delays and maximum print sharpness:
+- **Accepted File Formats:** Print-Ready PDF (PDF/X-1a preferred), CorelDraw (CDR with all text converted to curves), Adobe Illustrator (AI), Layered PSD.
+- **Color Mode:** Strictly CMYK (Cyan, Magenta, Yellow, Key/Black). Convert all RGB photos to CMYK prior to submission.
+- **Resolution:** Minimum 300 DPI at 100% actual printed dimensions.
+- **Bleed Allowance:** Add 3mm external bleed on all trimming borders. Keep all text, logos, and critical elements at least 4mm inside the finished trim line (Safe Zone).
+- **Font Outlines:** Convert all active fonts to outlines / vector curves to prevent font substitution errors during RIP plate imaging.
+
+---
+
+## 7. Logistics & Delivery Coverage
+
+- **Local Ahmedabad Metro & GIDC Estates:** Same-day and 24-hour direct vehicle delivery across Naroda GIDC, Odhav, Vatva, Kathwada, Changodar, Sanand, Kalol, Gandhinagar, and S.G. Highway.
+- **Gujarat Industrial Hubs:** Overnight express cargo dispatch to Surat, Vadodara, Rajkot, Jamnagar, Bhavnagar, Morbi, and Ankleshwar.
+- **National Dispatch:** Partnered with premier domestic logistics and cargo carriers (Safechem, BlueDart, TCI, DTDC) for delivery across all Indian states.
+
+---
+
+## 8. Contact & Factory Visiting Address
+
+- **Factory & Showroom:** Phase 1, GIDC Industrial Estate, Naroda, Ahmedabad, Gujarat 382330
+- **Direct WhatsApp Line:** +91 97252 81074
+- **Official Web Portal:** https://designnprint.in

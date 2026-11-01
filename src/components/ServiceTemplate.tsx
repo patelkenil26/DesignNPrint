@@ -206,6 +206,55 @@ Please let me know the available GSM options, finishes, and turnaround time.`
             </div>
 
           </div>
+
+          {/* Technical Manufacturing & Quality Specification Matrix (AEO / GEO High-Citation Table) */}
+          <div className="mt-8 rounded-2xl bg-surface border border-border-subtle p-6 overflow-x-auto shadow-sm">
+            <span className="text-xs font-mono uppercase text-accent font-bold">Engineering Matrix</span>
+            <h3 className="text-lg font-bold text-text-main mt-0.5 mb-4">
+              Technical Manufacturing &amp; Quality Specifications for {title}
+            </h3>
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="border-b border-border-subtle text-text-muted">
+                  <th className="py-2.5 px-3 font-semibold">Parameter</th>
+                  <th className="py-2.5 px-3 font-semibold">Commercial Standard</th>
+                  <th className="py-2.5 px-3 font-semibold">Quality Verification</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border-subtle text-text-subtle">
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Paper &amp; Board Stocks</td>
+                  <td className="py-2.5 px-3">80 GSM Maplitho up to 450 GSM ITC Cyber XL / FBB Virgin Board</td>
+                  <td className="py-2.5 px-3">Digital micrometer caliper verification</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Printing Precision</td>
+                  <td className="py-2.5 px-3">High-Definition Multi-Color Offset &amp; Spot PMS Inks</td>
+                  <td className="py-2.5 px-3">2400 DPI CTP Thermal Platesetter</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Color Accuracy</td>
+                  <td className="py-2.5 px-3">Calibrated CMYK Process + Pantone Spot Inks</td>
+                  <td className="py-2.5 px-3">Spectrophotometer ink density calibration</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Die-Cut &amp; Crease Tolerance</td>
+                  <td className="py-2.5 px-3">±0.2mm precision laser-cut steel rule dies</td>
+                  <td className="py-2.5 px-3">Automated cartoning line compatibility check</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Tactile Finishes Available</td>
+                  <td className="py-2.5 px-3">Thermal Velvet, Raised Spot UV, Gold/Silver Foil Stamping</td>
+                  <td className="py-2.5 px-3">Standard tape adhesion &amp; scuff resistance test</td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 px-3 font-semibold text-text-main">Production Turnaround</td>
+                  <td className="py-2.5 px-3">24–48 Hours standard; Same-day rush priority available</td>
+                  <td className="py-2.5 px-3">Direct dispatch across Ahmedabad &amp; Gujarat GIDC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
