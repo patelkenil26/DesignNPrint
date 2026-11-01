@@ -1,0 +1,316 @@
+#!/usr/bin/env python3
+"""scripts/ci-validate.py — CI sanity checks for the seo-superpower plugin.
+
+Run by .github/workflows/ci.yml (and handy locally: `python scripts/ci-validate.py`).
+Stdlib only — no third-party deps, so it stays fast and dependency-free.
+
+Checks:
+  1. Skill frontmatter — every skills/<x>/SKILL.md has a YAML frontmatter block
+     with both `name` and `description`.
+  2. Command frontmatter — every commands/*.md has a frontmatter block with
+     `description` (commands are named by filename, per the Claude Code spec).
+  3. Plugin JSON — .claude-plugin/plugin.json parses and has name + version + description.
+  4. Marketplace JSON — .claude-plugin/marketplace.json parses and has name + plugins[],
+     each plugin entry having name + source.
+  5. Reference smoke test — every path/skill referenced from a manifest or command
+     actually exists on disk (no dangling references):
+       - marketplace.json plugin `source` paths resolve to a real directory
+         containing a plugin manifest (.claude-plugin/plugin.json), with "."
+         meaning the repo root.
+       - .mcp.json server entrypoints (after stripping ${CLAUDE_PLUGIN_ROOT}) exist.
+       - skills/<x>/SKILL.md paths referenced from commands/*.md exist.
+       - `/seo` routing targets (`→ `skill-slug``) map to a real skills/<slug>/ dir.
+       - hooks/*.json command scripts (the local files a hook shells out to, after
+         stripping ${CLAUDE_PROJECT_DIR}/${CLAUDE_PLUGIN_ROOT}) exist on disk.
+
+Exit code 0 = all green, 1 = at least one failure.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+errors: list[str] = []
+checks = 0
+
+
+def check(ok: bool, msg: str) -> None:
+    global checks
+    checks += 1
+    if ok:
+        print(f"  ok   {msg}")
+    else:
+        print(f"  FAIL {msg}")
+        errors.append(msg)
+
+
+def parse_frontmatter(text: str) -> dict[str, str] | None:
+    """Parse a leading `---`-delimited YAML frontmatter block.
+
+    Only the simple `key: value` shape these files use is supported (no nesting,
+    no lists). Returns None if there is no frontmatter block.
+    """
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return None
+    fields: dict[str, str] = {}
+    for line in lines[1:]:
+        if line.strip() == "---":
+            return fields
+        if ":" in line and not line.startswith((" ", "\t")):
+            key, _, value = line.partition(":")
+            fields[key.strip()] = value.strip()
+    # No closing delimiter found.
+    return None
+
+
+def has(fields: dict[str, str], key: str) -> bool:
+    return bool(fields.get(key, "").strip())
+
+
+# ---------------------------------------------------------------------------
+# 1. Skill frontmatter
+# ---------------------------------------------------------------------------
+print("Skill frontmatter (name + description):")
+skill_files = sorted((ROOT / "skills").glob("*/SKILL.md"))
+check(len(skill_files) > 0, f"found {len(skill_files)} SKILL.md file(s)")
+for sf in skill_files:
+    rel = sf.relative_to(ROOT).as_posix()
+    fm = parse_frontmatter(sf.read_text(encoding="utf-8"))
+    if fm is None:
+        check(False, f"{rel}: missing frontmatter block")
+        continue
+    check(has(fm, "name"), f"{rel}: has name")
+    check(has(fm, "description"), f"{rel}: has description")
+
+# ---------------------------------------------------------------------------
+# 2. Command frontmatter
+# ---------------------------------------------------------------------------
+print("Command frontmatter (description):")
+cmd_files = sorted((ROOT / "commands").glob("*.md"))
+for cf in cmd_files:
+    rel = cf.relative_to(ROOT).as_posix()
+    fm = parse_frontmatter(cf.read_text(encoding="utf-8"))
+    if fm is None:
+        check(False, f"{rel}: missing frontmatter block")
+        continue
+    check(has(fm, "description"), f"{rel}: has description")
+
+# ---------------------------------------------------------------------------
+# 3. plugin.json
+# ---------------------------------------------------------------------------
+print("plugin.json:")
+plugin_path = ROOT / ".claude-plugin" / "plugin.json"
+if not plugin_path.exists():
+    check(False, "plugin.json exists")
+else:
+    try:
+        plugin = json.loads(plugin_path.read_text(encoding="utf-8"))
+        check(True, "plugin.json parses as JSON")
+        for key in ("name", "version", "description"):
+            check(has(plugin, key) if isinstance(plugin.get(key), str) else bool(plugin.get(key)),
+                  f"plugin.json has {key}")
+    except json.JSONDecodeError as e:
+        check(False, f"plugin.json parses as JSON ({e})")
+
+# ---------------------------------------------------------------------------
+# 4. marketplace.json
+# ---------------------------------------------------------------------------
+print("marketplace.json:")
+market_path = ROOT / ".claude-plugin" / "marketplace.json"
+if not market_path.exists():
+    check(False, "marketplace.json exists")
+else:
+    try:
+        market = json.loads(market_path.read_text(encoding="utf-8"))
+        check(True, "marketplace.json parses as JSON")
+        check(bool(market.get("name")), "marketplace.json has name")
+        plugins = market.get("plugins")
+        check(isinstance(plugins, list) and len(plugins) > 0,
+              "marketplace.json has non-empty plugins[]")
+        for i, entry in enumerate(plugins or []):
+            check(bool(entry.get("name")), f"marketplace.json plugins[{i}] has name")
+            check(bool(entry.get("source")), f"marketplace.json plugins[{i}] has source")
+    except json.JSONDecodeError as e:
+        check(False, f"marketplace.json parses as JSON ({e})")
+
+# ---------------------------------------------------------------------------
+# 5. Reference smoke test — nothing referenced should dangle.
+# ---------------------------------------------------------------------------
+print("Reference smoke test (no dangling references):")
+
+# 5a. marketplace.json plugin `source` -> real plugin dir.
+# A plugin source is a path relative to the marketplace root; "." is the repo
+# root. The target must contain a plugin manifest at .claude-plugin/plugin.json.
+if market_path.exists():
+    try:
+        market = json.loads(market_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        market = {}
+    for i, entry in enumerate(market.get("plugins", []) or []):
+        source = entry.get("source")
+        # Only local-path sources are checkable here; skip git/url object sources.
+        if isinstance(source, str):
+            target = (ROOT / source).resolve()
+            manifest = target / ".claude-plugin" / "plugin.json"
+            check(
+                target.is_dir() and manifest.exists(),
+                f"marketplace.json plugins[{i}] source '{source}' "
+                f"resolves to a plugin dir (has .claude-plugin/plugin.json)",
+            )
+
+# 5b. .mcp.json server entrypoints exist on disk.
+# Args reference ${CLAUDE_PLUGIN_ROOT}/... for the in-repo servers; strip the
+# placeholder and resolve against the repo root. Skip args that point at
+# external packages (uvx/npx) — those are not files in this repo.
+mcp_path = ROOT / ".mcp.json"
+if mcp_path.exists():
+    try:
+        mcp = json.loads(mcp_path.read_text(encoding="utf-8"))
+        check(True, ".mcp.json parses as JSON")
+    except json.JSONDecodeError as e:
+        mcp = {}
+        check(False, f".mcp.json parses as JSON ({e})")
+    for name, server in (mcp.get("mcpServers", {}) or {}).items():
+        for arg in server.get("args", []) or []:
+            if not isinstance(arg, str) or "${CLAUDE_PLUGIN_ROOT}" not in arg:
+                continue
+            rel = arg.replace("${CLAUDE_PLUGIN_ROOT}", "").lstrip("/\\")
+            check(
+                (ROOT / rel).exists(),
+                f".mcp.json server '{name}' entrypoint '{rel}' exists",
+            )
+
+# 5c. skills/<x>/SKILL.md paths referenced from commands/*.md exist, and
+# 5d. `/seo` routing targets (`→ `skill-slug``) map to a real skill dir.
+SKILL_PATH_RE = re.compile(r"skills/[a-z0-9][a-z0-9-]*/SKILL\.md")
+ROUTE_TARGET_RE = re.compile(r"→\s*`([a-z0-9][a-z0-9-]*)`")
+existing_skill_dirs = {p.name for p in (ROOT / "skills").glob("*/") if p.is_dir()}
+for cf in cmd_files:
+    rel = cf.relative_to(ROOT).as_posix()
+    text = cf.read_text(encoding="utf-8")
+    for ref in sorted(set(SKILL_PATH_RE.findall(text))):
+        check((ROOT / ref).exists(), f"{rel}: referenced '{ref}' exists")
+    for slug in sorted(set(ROUTE_TARGET_RE.findall(text))):
+        check(
+            slug in existing_skill_dirs,
+            f"{rel}: route target '{slug}' -> skills/{slug}/ exists",
+        )
+
+# 5e. hooks/*.json command scripts exist on disk.
+# A hook can shell out to a local script via {"type": "command", "command": "..."}.
+# Those scripts ship in this repo but were not previously reference-checked, so a
+# typo'd or missing script (e.g. a hook pointing at scripts/foo.js that no one
+# created) shipped silently. Walk every hook config, find each command's local
+# script token, and confirm the file exists. Commands that invoke nothing local
+# (pure shell builtins, external binaries on PATH) are skipped.
+PLACEHOLDER_RE = re.compile(r"\$\{[A-Z_]+\}")
+# A local script token: ends in a known script extension this repo uses.
+LOCAL_SCRIPT_RE = re.compile(r"\S+\.(?:js|mjs|cjs|py|sh)\b")
+
+
+def collect_hook_commands(node) -> list[str]:
+    """Recursively pull every {"type": "command", "command": "..."} string."""
+    found: list[str] = []
+    if isinstance(node, dict):
+        if node.get("type") == "command" and isinstance(node.get("command"), str):
+            found.append(node["command"])
+        for value in node.values():
+            found.extend(collect_hook_commands(value))
+    elif isinstance(node, list):
+        for item in node:
+            found.extend(collect_hook_commands(item))
+    return found
+
+
+def hook_script_target(command: str) -> str | None:
+    """Extract the local script path a hook command runs, or None if it runs
+    no in-repo script (external binary / shell builtin only)."""
+    m = LOCAL_SCRIPT_RE.search(command)
+    if not m:
+        return None
+    token = m.group(0)
+    # Strip ${CLAUDE_PROJECT_DIR}/, ${CLAUDE_PLUGIN_ROOT}/, etc. and leading sep.
+    token = PLACEHOLDER_RE.sub("", token).lstrip("/\\")
+    return token or None
+
+
+print("Hook command scripts (no dangling references):")
+hook_files = sorted((ROOT / "hooks").glob("*.json"))
+for hf in hook_files:
+    rel = hf.relative_to(ROOT).as_posix()
+    try:
+        hook_cfg = json.loads(hf.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        check(False, f"{rel}: parses as JSON ({e})")
+        continue
+    commands = collect_hook_commands(hook_cfg.get("hooks", {}))
+    for cmd in commands:
+        target = hook_script_target(cmd)
+        if target is None:
+            continue  # nothing local to resolve
+        check((ROOT / target).exists(), f"{rel}: hook script '{target}' exists")
+
+# 5f. Paths referenced from SKILL.md *bodies* exist.
+#
+# Every reference check above reads a manifest, a command, or a hook config —
+# never the instructions a user actually executes. That is why
+# `skills/seo-bootstrap/SKILL.md` Step 3 could say "use the framework templates
+# in `templates/{nextjs,astro,sveltekit}/`" for months while none of those
+# directories existed. Green CI was measuring the wrong surface.
+#
+# Two shapes are resolved:
+#   - brace sets:  `templates/{nextjs,astro,sveltekit}/`  -> one check per member
+#   - plain paths: `templates/astro/robots.txt`, `scripts/detect-framework.js`
+#
+# Only in-repo top-level directories are considered, so prose about a *user's*
+# project (`app/sitemap.ts`, `src/pages/`, `public/robots.txt`) is not flagged.
+IN_REPO_ROOTS = ("templates/", "scripts/", "skills/", "hooks/", "commands/", "mcp-servers/", "fixtures/")
+BRACE_REF_RE = re.compile(r"`([A-Za-z0-9_./-]*?)\{([A-Za-z0-9_,-]+)\}([A-Za-z0-9_./-]*)`")
+PLAIN_REF_RE = re.compile(r"`((?:" + "|".join(re.escape(r) for r in IN_REPO_ROOTS) + r")[A-Za-z0-9_./-]*)`")
+
+
+def expand_refs(text: str) -> set[str]:
+    """Collect in-repo paths referenced from a markdown body, brace sets expanded."""
+    refs: set[str] = set()
+    for prefix, members, suffix in BRACE_REF_RE.findall(text):
+        if not prefix.startswith(IN_REPO_ROOTS):
+            continue
+        for member in members.split(","):
+            member = member.strip()
+            if member:
+                refs.add(f"{prefix}{member}{suffix}".rstrip("/"))
+    for ref in PLAIN_REF_RE.findall(text):
+        # A brace-set match also matches PLAIN_REF_RE's prefix; skip bare dirs
+        # that are just the bucket itself (e.g. `templates/`).
+        cleaned = ref.rstrip("/")
+        if cleaned and cleaned.count("/") >= 1:
+            refs.add(cleaned)
+    return refs
+
+
+print("SKILL.md body references (no dangling references):")
+for sf in skill_files:
+    rel = sf.relative_to(ROOT).as_posix()
+    body = sf.read_text(encoding="utf-8")
+    for ref in sorted(expand_refs(body)):
+        target = ROOT / ref
+        ok = target.exists()
+        # A referenced directory that exists but is empty is still a dead end
+        # for the model following the instruction.
+        if ok and target.is_dir():
+            ok = any(target.iterdir())
+        check(ok, f"{rel}: referenced '{ref}' exists and is non-empty")
+
+# ---------------------------------------------------------------------------
+# Summary
+# ---------------------------------------------------------------------------
+print()
+if errors:
+    print(f"FAILED: {len(errors)} of {checks} checks failed.")
+    sys.exit(1)
+print(f"PASSED: all {checks} checks green.")
