@@ -3,11 +3,152 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-poppins: var(--font-poppins);
+
+  /* Centralized Color Tokens */
+  --color-primary: var(--color-brand-primary);
+  --color-primary-dark: var(--color-brand-primary-dark);
+  --color-primary-surface: var(--color-brand-surface-dark);
+
+  --color-accent: var(--color-brand-accent);
+  --color-accent-hover: var(--color-brand-accent-hover);
+  --color-accent-light: var(--color-brand-accent-light);
+
+  --color-secondary: var(--color-brand-secondary);
+  --color-secondary-hover: var(--color-brand-secondary-hover);
+  --color-secondary-bg: var(--color-brand-secondary-bg);
+
+  --color-surface: var(--color-brand-bg);
+  --color-surface-light: var(--color-brand-surface-light);
+  --color-surface-muted: var(--color-brand-surface-muted);
+  --color-surface-dark: var(--color-brand-surface-dark);
+  --color-surface-card: var(--color-brand-surface-card);
+
+  --color-text-main: var(--color-brand-text);
+  --color-text-muted: var(--color-brand-text-muted);
+  --color-text-subtle: var(--color-brand-text-subtle);
+  --color-text-light: var(--color-brand-text-light);
+  --color-text-light-muted: var(--color-brand-text-light-muted);
+
+  --color-border-subtle: var(--color-brand-border-subtle);
+  --color-border-dark: var(--color-brand-border-dark);
+
+  --color-whatsapp: var(--color-brand-whatsapp);
+  --color-whatsapp-hover: var(--color-brand-whatsapp-hover);
 }
 
-:root {
+:root, [data-theme="option-b"] {
+  /* =====================================================================
+     OPTION A: MIDNIGHT STUDIO & FOIL GOLD (Default Theme)
+     Deep midnight slate, royal gold highlights, and slate card surfaces.
+     ===================================================================== */
+  --color-brand-primary: #0f172a;        /* Deep midnight slate / Dark base */
+  --color-brand-primary-dark: #090d16;   /* Deep footer / edge darkness */
+  --color-brand-surface-dark: #1e293b;   /* Slate-800 for Navbar & dark card surface */
+  --color-brand-surface-card: #0f172a;   /* Slate-900 for dark cards */
+
+  --color-brand-accent: #f59e0b;         /* Amber-500 / Signature Brand Gold */
+  --color-brand-accent-hover: #d97706;   /* Amber-600 */
+  --color-brand-accent-light: #fef3c7;   /* Amber-100 */
+
+  --color-brand-secondary: #3b82f6;      /* Blue-500 (Features/Badges/Trust) */
+  --color-brand-secondary-hover: #1d4ed8;/* Blue-700 */
+  --color-brand-secondary-bg: #eff6ff;   /* Blue-50 */
+
+  --color-brand-bg: #ffffff;             /* Pure white background */
+  --color-brand-surface-light: #f8fafc;  /* Slate-50 */
+  --color-brand-surface-muted: #f1f5f9;  /* Slate-100 */
+
+  --color-brand-text: #0f172a;           /* Main dark heading & body text */
+  --color-brand-text-subtle: #475569;    /* Slate-600 */
+  --color-brand-text-muted: #64748b;     /* Slate-500 secondary text */
+  --color-brand-text-light: #ffffff;     /* Light text on dark bg */
+  --color-brand-text-light-muted: #94a3b8;/* Slate-400 on dark bg */
+
+  --color-brand-border-subtle: #e2e8f0;  /* Slate-200 for clean subtle borders */
+  --color-brand-border-dark: #334155;    /* Slate-700 for dark section borders */
+
+  --color-brand-whatsapp: #22c55e;       /* Green-500 */
+  --color-brand-whatsapp-hover: #16a34a; /* Green-600 */
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+}
+
+[data-theme="option-b"] {
+  /* =====================================================================
+     OPTION B: MODERN CMYK CREATIVE AGENCY
+     Vivid CMYK Cyan highlights, Process Magenta accents, deep ink charcoal.
+     ===================================================================== */
+  --color-brand-primary: #0f172a;        /* Deep ink charcoal */
+  --color-brand-primary-dark: #070a0f;   /* Deepest ink black */
+  --color-brand-surface-dark: #161e2e;   /* Modern deep ink navbar */
+  --color-brand-surface-card: #0f172a;
+
+  --color-brand-accent: #0284c7;         /* CMYK Cyan / Vivid Electric Blue */
+  --color-brand-accent-hover: #0369a1;   /* Deep Cyan */
+  --color-brand-accent-light: #e0f2fe;   /* Soft Cyan tint */
+
+  --color-brand-secondary: #ec4899;      /* Process Magenta (Printing identity) */
+  --color-brand-secondary-hover: #db2777;/* Deep Magenta */
+  --color-brand-secondary-bg: #fdf2f8;   /* Soft Pink/Magenta wash */
+
+  --color-brand-bg: #f8fafc;             /* Crisp studio paper background */
+  --color-brand-surface-light: #f1f5f9;  /* Smooth cool slate */
+  --color-brand-surface-muted: #e2e8f0;  /* Light slate divider */
+
+  --color-brand-text: #0f172a;           /* Deep ink typography */
+  --color-brand-text-subtle: #334155;    /* Ink slate */
+  --color-brand-text-muted: #64748b;     /* Medium slate */
+  --color-brand-text-light: #ffffff;     /* White text on dark elements */
+  --color-brand-text-light-muted: #94a3b8;
+
+  --color-brand-border-subtle: #cbd5e1;  /* Modern defined hairline borders */
+  --color-brand-border-dark: #1e293b;    /* Dark ink borders */
+
+  --color-brand-whatsapp: #22c55e;
+  --color-brand-whatsapp-hover: #16a34a;
+
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+[data-theme="option-c"] {
+  /* =====================================================================
+     OPTION C: ARCHITECTURAL MINIMALIST (ONYX & PLATINUM)
+     Deep architectural zinc/onyx, warm brass/amber glow, cool platinum.
+     ===================================================================== */
+  --color-brand-primary: #18181b;        /* Deep architectural zinc-900 */
+  --color-brand-primary-dark: #09090b;   /* Onyx black */
+  --color-brand-surface-dark: #27272a;   /* Matte zinc navbar */
+  --color-brand-surface-card: #18181b;
+
+  --color-brand-accent: #d97706;         /* Warm Architectural Brass / Raw Amber */
+  --color-brand-accent-hover: #b45309;   /* Deep Amber */
+  --color-brand-accent-light: #fef3c7;   /* Light Champagne */
+
+  --color-brand-secondary: #71717a;      /* Cool Platinum Steel */
+  --color-brand-secondary-hover: #52525b;
+  --color-brand-secondary-bg: #f4f4f5;   /* Neutral architectural zinc-50 */
+
+  --color-brand-bg: #ffffff;             /* Pure Gallery White */
+  --color-brand-surface-light: #fafafa;  /* Neutral surface */
+  --color-brand-surface-muted: #f4f4f5;  /* Subtle zinc surface */
+
+  --color-brand-text: #18181b;           /* Deep graphite black text */
+  --color-brand-text-subtle: #3f3f46;    /* Medium graphite */
+  --color-brand-text-muted: #71717a;     /* Platinum muted text */
+  --color-brand-text-light: #ffffff;
+  --color-brand-text-light-muted: #a1a1aa;
+
+  --color-brand-border-subtle: #e4e4e7;  /* Ultra-clean precision hairline borders */
+  --color-brand-border-dark: #3f3f46;    /* Zinc border */
+
+  --color-brand-whatsapp: #22c55e;
+  --color-brand-whatsapp-hover: #16a34a;
+
+  --background: #ffffff;
+  --foreground: #18181b;
 }
 
 html {
@@ -17,13 +158,18 @@ body, html {
   overflow-x: hidden;
 }
 
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+}
+
 #nprogress .bar {
-  background: #facc15 !important;
+  background: var(--color-brand-accent) !important;
   height: 3px;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px #facc15, 0 0 5px #facc15;
+  box-shadow: 0 0 10px var(--color-brand-accent), 0 0 5px var(--color-brand-accent);
 }
 
 .z-50 {

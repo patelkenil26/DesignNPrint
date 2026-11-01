@@ -6,7 +6,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 const contactSections = [
   {
     title: "Office Address",
-    icon: <FaMapMarkerAlt className="inline mr-2 text-yellow-600" />,
+    icon: <FaMapMarkerAlt className="inline mr-2 text-accent" />,
     details: [
       { label: "Street", value: "Modern Corner Opp. National Handloom," },
       { label: "Area", value: "Nr. J R Amin Petrol Pump & Jolly Auto, Above Hira Auto Naroda," },
@@ -15,16 +15,16 @@ const contactSections = [
   },
   {
     title: "24/7 Quick Contact",
-    icon: <FaPhoneAlt className="inline mr-2 text-yellow-600" />,
+    icon: <FaPhoneAlt className="inline mr-2 text-accent" />,
     details: [
-      { icon: <FaPhoneAlt className="text-lg text-gray-700" />, value: "+91 9725281074" },
-      { icon: <FaPhoneAlt className="text-lg text-gray-700" />, value: "+91 9913290354" },
-      { icon: <FaEnvelope className="text-lg text-gray-700" />, value: "designnprintsamd@gmail.com" },
+      { icon: <FaPhoneAlt className="text-lg text-text-muted" />, value: "+91 9725281074" },
+      { icon: <FaPhoneAlt className="text-lg text-text-muted" />, value: "+91 9913290354" },
+      { icon: <FaEnvelope className="text-lg text-text-muted" />, value: "designnprintsamd@gmail.com" },
     ],
   },
   {
     title: "Working Hours",
-    icon: <FaClock className="inline mr-2 text-yellow-600" />,
+    icon: <FaClock className="inline mr-2 text-accent" />,
     details: [
       { label: "Monday - Saturday", value: "10:00 AM to 7:00 PM" },
       { label: "Sunday", value: "We are Closed" },
@@ -43,17 +43,17 @@ const ContactInfoSection = () => {
       {contactSections.map((info, index) => (
         <motion.div
           key={index}
-          className="bg-gray-100 p-6 rounded-xl shadow-md max-w-sm w-full mb-4 flex flex-col"
+          className="bg-surface border border-border-subtle p-6 rounded-xl shadow-sm max-w-sm w-full mb-4 flex flex-col"
           whileHover={{ scale: 1.05 }}
         >
-          <h3 className="text-lg font-semibold text-center text-gray-800 mb-4 flex justify-center items-center gap-2">
+          <h3 className="text-lg font-semibold text-center text-text-main mb-4 flex justify-center items-center gap-2">
             {info.icon} {info.title}
           </h3>
           <div className="flex flex-col gap-3">
             {info.details.map((detail, i) => (
               <div key={i} className={`flex ${detail.icon ? "items-center" : "items-start"} gap-3`}>
                 {detail.icon && <span>{detail.icon}</span>}
-                <div className="text-sm text-gray-700 leading-tight">
+                <div className="text-sm text-text-subtle leading-tight">
                   {detail.label ? (
                     <>
                       <span className="font-semibold">{detail.label}:</span> <span>{detail.value}</span>

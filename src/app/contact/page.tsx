@@ -31,10 +31,10 @@ const ContactContent = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="bg-gray-50 py-8 px-4"
+        className="bg-surface-light border-t border-border-subtle py-8 px-4"
         ref={formRef}
       >
-        <h2 className="text-center text-2xl font-semibold mb-6">
+        <h2 className="text-center text-2xl font-semibold mb-6 text-text-main">
           Leave Your Message
         </h2>
         <ContactForm />

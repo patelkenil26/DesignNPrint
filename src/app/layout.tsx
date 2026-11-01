@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
+import ThemeSwitcher from "@/components/shared/ThemeSwitcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,13 +34,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased min-h-screen flex flex-col bg-surface text-text-main`}>
         <Navbar />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
         <ScrollToTopButton />
+        <ThemeSwitcher />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = ({ title, imageUrl }) => (
   <motion.div
-    className="bg-cover bg-center h-[300px] flex items-center justify-center text-white font-poppins"
+    className="bg-cover bg-center h-[300px] flex items-center justify-center text-text-light font-poppins"
     style={{ backgroundImage: `url(${imageUrl})` }}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}

@@ -11,14 +11,14 @@ const ServiceDropdown = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute top-full mt-2 w-52 z-50 shadow-xl rounded-xl bg-white overflow-hidden"
+      className="absolute top-full mt-2 w-52 z-50 shadow-xl rounded-xl bg-surface border border-border-subtle overflow-hidden"
     >
-      <ul className="max-h-72 overflow-y-auto text-blue-900 scrollbar-thin scrollbar-thumb-gray-400">
+      <ul className="max-h-72 overflow-y-auto text-text-main scrollbar-thin">
         {services.map((service) => (
           <li key={service.id}>
             <Link
               href={`/services/${service.id}`}
-              className="block px-4 py-2 hover:bg-yellow-500 hover:text-white transition-all"
+              className="block px-4 py-2 hover:bg-accent hover:text-text-light transition-all"
             >
               {service.name}
             </Link>

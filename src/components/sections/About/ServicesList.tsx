@@ -13,14 +13,14 @@ const ServicesList = () => (
     whileInView={{ opacity: 1 }}
     transition={{ duration: 0.8 }}
   >
-    <h3 className="text-2xl font-semibold text-center mb-6">Services</h3>
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-lg text-gray-600">
+    <h3 className="text-2xl font-semibold text-center mb-6 text-text-main">Services</h3>
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-lg text-text-muted">
       {services.map((service) => (
         <div key={service.id} className="flex items-start gap-2">
-          <span className="text-gray-500">+</span>
+          <span className="text-accent font-bold">+</span>
           <Link
             href={`/services/${service.id}`}
-            className="text-blue-500 hover:text-blue-700 hover:underline cursor-pointer"
+            className="text-secondary hover:text-secondary-hover hover:underline cursor-pointer transition-colors"
           >
             {service.name}
           </Link>

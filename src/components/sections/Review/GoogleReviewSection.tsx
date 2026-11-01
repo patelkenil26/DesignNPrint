@@ -10,7 +10,7 @@ const GoogleReviewButton = ({ placeId }) => {
       href={googleReviewLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center px-4 py-2 text-xs font-medium rounded-md shadow-sm text-white bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 transition-colors duration-300"
+      className="inline-flex items-center px-4 py-2 text-xs font-medium rounded-md shadow-sm text-text-light bg-accent hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-colors duration-300"
       aria-label="Write a review on Google"
     >
       <svg className="-ml-0.5 mr-1.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ const GoogleReviewCard = ({ review, placeId }) => { // placeId prop bhi add kiya
       stars.push(
         <FaStar
           key={i}
-          className={i < rating ? "text-yellow-300" : "text-gray-300"}
+          className={i < rating ? "text-accent" : "text-border-subtle"}
         />
       );
     }
@@ -37,18 +37,18 @@ const GoogleReviewCard = ({ review, placeId }) => { // placeId prop bhi add kiya
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between h-full relative"> {/* Added relative for button positioning */}
+    <div className="bg-surface border border-border-subtle p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full relative">
       <div>
         <div className="flex items-center mb-3">
           <div className="flex text-lg">{renderStars(review.rating)}</div>
-          <span className="ml-2 text-gray-600 text-sm font-medium">{review.rating.toFixed(1)}/5</span>
+          <span className="ml-2 text-text-muted text-sm font-medium">{review.rating.toFixed(1)}/5</span>
         </div>
-        <p className="text-gray-700 text-base mb-4 leading-relaxed line-clamp-4">
+        <p className="text-text-subtle text-base mb-4 leading-relaxed line-clamp-4">
           {review.text}
         </p>
       </div>
-      <div className="text-sm text-gray-500 mt-auto">
-        <p className="font-semibold text-gray-800">{review.reviewerName}</p>
+      <div className="text-sm text-text-muted mt-auto">
+        <p className="font-semibold text-text-main">{review.reviewerName}</p>
         <p>{review.time}</p>
       </div>
 
@@ -96,9 +96,9 @@ const GoogleReviewSection = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-surface-light border-t border-border-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-10">
+        <h2 className="text-3xl font-extrabold text-text-main text-center mb-10">
           Our Customer Reviews
         </h2>
 

@@ -12,7 +12,7 @@ const MobileMenu = ({ isOpen, toggle, serviceOpen, toggleServices }: any) => {
           initial={{ height: 0 }}
           animate={{ height: "auto" }}
           exit={{ height: 0 }}
-          className="lg:hidden bg-gray-700 px-4 py-4 shadow-inner overflow-hidden"
+          className="lg:hidden bg-primary-surface border-t border-border-dark px-4 py-4 shadow-inner overflow-hidden"
         >
           <ul className="flex flex-col gap-5 text-base font-medium">
             {[
@@ -24,7 +24,7 @@ const MobileMenu = ({ isOpen, toggle, serviceOpen, toggleServices }: any) => {
                 <Link
                   href={item.href}
                   onClick={toggle}
-                  className="block hover:text-yellow-500"
+                  className="block hover:text-accent transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -34,7 +34,7 @@ const MobileMenu = ({ isOpen, toggle, serviceOpen, toggleServices }: any) => {
             {/* Services Toggle */}
             <li>
               <span
-                className="block font-semibold text-white cursor-pointer"
+                className="block font-semibold text-text-light cursor-pointer"
                 onClick={toggleServices}
               >
                 Services {serviceOpen ? "▲" : "▼"}
@@ -56,7 +56,7 @@ const MobileMenu = ({ isOpen, toggle, serviceOpen, toggleServices }: any) => {
                             toggle();
                             toggleServices();
                           }}
-                          className="block text-sm text-gray-300 hover:text-yellow-500"
+                          className="block text-sm text-text-light-muted hover:text-accent transition-colors"
                         >
                           {service.name}
                         </Link>

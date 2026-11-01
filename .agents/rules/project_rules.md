@@ -43,3 +43,8 @@ trigger: always_on
 - **Smooth Transitions:** Page navigation and anchor links should scroll smoothly without abrupt jumps.
 - **Image Fallbacks:** Provide a placeholder state or fallback for images in case they fail to load.
 - **Readable Typography & Contrast:** Ensure that text has high contrast against its background and is easily readable on all screen sizes.
+
+## 9. Non-Destructive Scoped Modifications (Golden Rule)
+- **Do Not Break Existing Code:** Never break, remove, or regress existing functional code or visual components.
+- **Strictly Scoped Changes:** Make only the specific changes requested by the user. Do not arbitrarily refactor or modify unrelated code.
+- **Maintain Clean Code & Readability:** Keep code readable, consistent with existing codebase conventions, and strictly adhere to clean code principles.

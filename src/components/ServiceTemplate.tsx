@@ -136,7 +136,7 @@ const ServiceTemplate = ({
         </div>
 
         {/* 🔸 Divider */}
-        <div className="border-b border-black/40 mb-4 lg:max-w-6xl mx-auto"></div>
+        <div className="border-b border-border-subtle mb-4 lg:max-w-6xl mx-auto opacity-60"></div>
 
         {/* 🔻 Service Details */}
         <motion.div
@@ -149,7 +149,7 @@ const ServiceTemplate = ({
             What We Offer
           </h3>
           <div className="grid sm:grid-cols-2 gap-10 mt-6">
-            <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm shadow-md">
+            <div className="p-4 rounded-lg bg-surface/10 border border-border-subtle/30 backdrop-blur-sm shadow-md">
               <h4
                 className="text-lg font-semibold mb-2"
                 style={{ color: textColor }}
@@ -162,7 +162,7 @@ const ServiceTemplate = ({
                 ))}
               </ul>
             </div>
-            <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm shadow-md">
+            <div className="p-4 rounded-lg bg-surface/10 border border-border-subtle/30 backdrop-blur-sm shadow-md">
               <h4
                 className="text-lg font-semibold mb-2"
                 style={{ color: textColor }}
@@ -181,14 +181,14 @@ const ServiceTemplate = ({
 
       {/* ✅ Image Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[1000] bg-black/70 backdrop-blur-sm flex items-center justify-center">
+        <div className="fixed inset-0 z-[1000] bg-primary-dark/80 backdrop-blur-sm flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center px-4">
             {/* 🖼️ Image container */}
             <div className="relative " >
               {/* ❌ Close Button inside image top-right */}
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-2 right-2 bg-black/60 text-white hover:bg-red-600 rounded-full w-10 h-10 flex items-center justify-center text-xl z-50 shadow-md transition-all duration-200"
+                className="absolute top-2 right-2 bg-primary-dark/70 text-text-light hover:bg-accent rounded-full w-10 h-10 flex items-center justify-center text-xl z-50 shadow-md transition-all duration-200"
               >
                 &times;
               </button>
@@ -197,7 +197,7 @@ const ServiceTemplate = ({
               <img
                 src={bannerImg[currentIndex]}
                 alt={`Modal Slide ${currentIndex + 1}`}
-                className="max-h-[80vh] w-auto object-contain rounded-md border-4 border-white drop-shadow-xl"
+                className="max-h-[80vh] w-auto object-contain rounded-md border-4 border-surface drop-shadow-xl"
               />
 
               {/* ⬅️ Prev Button */}
@@ -207,7 +207,7 @@ const ServiceTemplate = ({
                     prev === 0 ? bannerImg.length - 1 : prev - 1
                   )
                 }
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white hover:bg-black rounded-full w-10 h-10 flex items-center justify-center text-2xl z-40"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-primary-dark/70 text-text-light hover:bg-accent rounded-full w-10 h-10 flex items-center justify-center text-2xl z-40 transition-all duration-200"
               >
                 ‹
               </button>
@@ -219,7 +219,7 @@ const ServiceTemplate = ({
                     prev === bannerImg.length - 1 ? 0 : prev + 1
                   )
                 }
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white hover:bg-black rounded-full w-10 h-10 flex items-center justify-center text-2xl z-40"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary-dark/70 text-text-light hover:bg-accent rounded-full w-10 h-10 flex items-center justify-center text-2xl z-40 transition-all duration-200"
               >
                 ›
               </button>

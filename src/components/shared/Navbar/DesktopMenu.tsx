@@ -14,22 +14,22 @@ const DesktopMenu = () => {
         { label: "Contact", href: "/contact" },
       ].map((item) => (
         <li key={item.href}>
-          <Link href={item.href} className="group relative inline-block text-white">
+          <Link href={item.href} className="group relative inline-block text-text-light">
             <span>{item.label}</span>
             {/* Yellow glowing underline */}
-            <span className="absolute left-0 -bottom-1 h-[2px] bg-yellow-400 opacity-0 group-hover:opacity-100 w-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500 rounded-full shadow-[0_0_12px_3px_rgba(255,230,0,0.8)]"></span>
+            <span className="absolute left-0 -bottom-1 h-[2px] bg-accent opacity-0 group-hover:opacity-100 w-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500 rounded-full shadow-[0_0_12px_3px_var(--color-brand-accent)]"></span>
           </Link>
         </li>
       ))}
 
       <li
-        className="relative group inline-block text-white"
+        className="relative group inline-block text-text-light"
         onMouseEnter={() => setIsDropdownOpen(true)}
         onMouseLeave={() => setIsDropdownOpen(false)}
       >
         <span className="cursor-pointer">Services</span>
         {/* Yellow glowing underline for dropdown */}
-        <span className="absolute left-0 -bottom-1 h-[2px] bg-yellow-400 opacity-0 group-hover:opacity-100 w-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500 rounded-full shadow-[0_0_12px_3px_rgba(255,230,0,0.8)]"></span>
+        <span className="absolute left-0 -bottom-1 h-[2px] bg-accent opacity-0 group-hover:opacity-100 w-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500 rounded-full shadow-[0_0_12px_3px_var(--color-brand-accent)]"></span>
 
         <AnimatePresence>
           {isDropdownOpen && <ServiceDropdown />}

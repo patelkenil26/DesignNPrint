@@ -38,7 +38,7 @@ const About = () => {
 
         <div>
           <motion.h2
-            className="text-2xl font-bold text-gray-800 mb-8"
+            className="text-2xl font-bold text-text-main mb-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -46,7 +46,7 @@ const About = () => {
             Leading Printing Company
           </motion.h2>
           <motion.p
-            className="text-gray-600 mb-6"
+            className="text-text-muted mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -55,7 +55,7 @@ const About = () => {
             supporting services for commerce and industry of Gujarat since 2008.
           </motion.p>
           <motion.p
-            className="text-gray-600 mb-6"
+            className="text-text-muted mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -63,10 +63,10 @@ const About = () => {
             We are a leading offset press in Ahmedabad. We’ve successfully
             executed complex jobs for our clients with timely delivery.
           </motion.p>
-          <motion.div whileHover={{ scale: 1.1 }} className="inline-block">
+          <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
             <Link
               href="/contact"
-              className="bg-gray-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 inline-block"
+              className="bg-primary text-text-light px-5 py-2.5 rounded-lg shadow hover:bg-accent hover:text-text-light transition-all inline-block font-medium"
             >
               Get in Touch
             </Link>
@@ -84,7 +84,7 @@ const About = () => {
         description="Started in 2008, we've made remarkable growth in the printing industry."
       />
 
-      <div className="bg-gray-900 text-white py-8 px-4 font-poppins">
+      <div className="bg-primary-dark text-text-light py-8 px-4 font-poppins border-y border-border-dark">
         <div className="grid md:grid-cols-4 gap-6">
           <MissionCard
             icon="🎯"

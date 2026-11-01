@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0f172a] text-white py-12 px-4 sm:px-6 lg:px-8 font-poppins">
+    <footer className="bg-primary-dark text-text-light py-12 px-4 sm:px-6 lg:px-8 font-poppins">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
         {/* Company Section */}
         <div className="col-span-full sm:col-span-1 md:col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -17,12 +17,12 @@ const Footer = () => {
               className="object-contain"
             />
           </div>
-          <p className="text-sm text-gray-400 mb-3 leading-relaxed">
+          <p className="text-sm text-text-light-muted mb-3 leading-relaxed">
             Design N Prints is specialized in fine-quality printing and
             supporting services for the commerce and industry of Gujarat since
             2008.
           </p>
-          <p className="text-sm text-gray-400 leading-relaxed">
+          <p className="text-sm text-text-light-muted leading-relaxed">
             Our reliable workflow ensures that the quality remains high at all
             times.
           </p>
@@ -30,14 +30,14 @@ const Footer = () => {
 
         {/* Navigation */}
         <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
+          <h3 className="text-base font-semibold text-text-light tracking-wider uppercase mb-5">
             Navigation
           </h3>
-          <ul className="space-y-3 text-sm text-gray-400">
+          <ul className="space-y-3 text-sm text-text-light-muted">
             <li>
               <Link
                 href="/"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 Home
               </Link>
@@ -45,7 +45,7 @@ const Footer = () => {
             <li>
               <Link
                 href="/about"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 About Us
               </Link>
@@ -53,7 +53,7 @@ const Footer = () => {
             <li>
               <Link
                 href="/services/booklet-designing-printing"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 Services
               </Link>
@@ -61,7 +61,7 @@ const Footer = () => {
             <li>
               <Link
                 href="/contact"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 Contact
               </Link>
@@ -71,11 +71,11 @@ const Footer = () => {
 
         {/* Contact Us */}
         <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
+          <h3 className="text-base font-semibold text-text-light tracking-wider uppercase mb-5">
             Contact Us
           </h3>
-          <div className="space-y-3 text-sm text-gray-400">
-            <p className="font-semibold text-gray-400">DESIGN N PRINT</p>
+          <div className="space-y-3 text-sm text-text-light-muted">
+            <p className="font-semibold text-text-light">DESIGN N PRINT</p>
             <p>
               Modern Corner, opp. National Handloom Street, nr. J.R.Amin Petrol
               Pump, Naroda, Ahmedabad, Gujarat 382330
@@ -83,7 +83,7 @@ const Footer = () => {
             <p>
               <a
                 href="tel:+919725281074"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 +91 9725281074
               </a>
@@ -91,7 +91,7 @@ const Footer = () => {
             <p>
               <a
                 href="tel:+919913290354"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 +91 9913290354
               </a>
@@ -99,7 +99,7 @@ const Footer = () => {
             <p>
               <a
                 href="mailto:designnprintsamd@gmail.com"
-                className="hover:text-yellow-500 transition-colors duration-300"
+                className="hover:text-accent transition-colors duration-300"
               >
                 designnprintsamd@gmail.com
               </a>
@@ -109,13 +109,13 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
+          <h3 className="text-base font-semibold text-text-light tracking-wider uppercase mb-5">
             Follow Us
           </h3>
           <div className="flex justify-center sm:justify-start space-x-6">
             <a
               href="https://www.facebook.com/share/19FYcyioTy/?mibextid=qi2Omg"
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
+              className="text-accent hover:text-accent-hover transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -124,7 +124,7 @@ const Footer = () => {
             </a>
             <a
               href="https://www.instagram.com/designnprints.in?igsh=MWRqaWNmNmFoYjZ0bw=="
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
+              className="text-accent hover:text-accent-hover transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -133,7 +133,7 @@ const Footer = () => {
             </a>
             <a
               href="https://wa.me/919725281074"
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
+              className="text-accent hover:text-accent-hover transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -145,12 +145,12 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
+      <div className="border-t border-border-dark mt-12 pt-6 text-center text-sm text-text-light-muted">
         <p>
           Copyright © {new Date().getFullYear()} Design N Print. All Rights Reserved | Designed by{" "}
           <Link
             href="/"
-            className="text-yellow-500 hover:underline transition-colors duration-300"
+            className="text-accent hover:underline transition-colors duration-300"
           >
             KENIL IT Solution
           </Link>
