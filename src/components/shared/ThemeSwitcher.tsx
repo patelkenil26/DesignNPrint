@@ -33,7 +33,7 @@ const themes: ThemeOption[] = [
 
 export default function ThemeSwitcher() {
   const [activeTheme, setActiveTheme] = useState("option-a");
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

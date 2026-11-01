@@ -17,14 +17,18 @@ const MobileMenu = ({ isOpen, toggle, serviceOpen, toggleServices }: any) => {
           <ul className="flex flex-col gap-5 text-base font-medium">
             {[
               { label: "Home", href: "/" },
-              { label: "About Us", href: "/about" },
-              { label: "Contact", href: "/contact" },
+              { label: "Services Hub", href: "/services" },
+              { label: "Pharma & Packaging", href: "/packaging" },
+              { label: "Materials & Finishes", href: "/materials" },
+              { label: "Instant Quote Calculator", href: "/quote" },
+              { label: "About Our Heritage", href: "/about" },
+              { label: "Contact & Workshop", href: "/contact" },
             ].map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={toggle}
-                  className="block hover:text-accent transition-colors"
+                  className="block hover:text-accent transition-colors py-1 text-sm font-medium"
                 >
                   {item.label}
                 </Link>

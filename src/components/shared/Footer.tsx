@@ -44,18 +44,42 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/about"
+                href="/services"
                 className="hover:text-accent transition-colors duration-300"
               >
-                About Us
+                All Services & Products
               </Link>
             </li>
             <li>
               <Link
-                href="/services/booklet-designing-printing"
+                href="/packaging"
                 className="hover:text-accent transition-colors duration-300"
               >
-                Services
+                Pharma & Custom Packaging
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/materials"
+                className="hover:text-accent transition-colors duration-300"
+              >
+                Materials & Finishes Lab
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/quote"
+                className="hover:text-accent transition-colors duration-300 text-accent font-medium"
+              >
+                Instant Quote Calculator
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="hover:text-accent transition-colors duration-300"
+              >
+                Our 17-Year Story
               </Link>
             </li>
             <li>
@@ -63,7 +87,7 @@ const Footer = () => {
                 href="/contact"
                 className="hover:text-accent transition-colors duration-300"
               >
-                Contact
+                Contact & Visit Us
               </Link>
             </li>
           </ul>
