@@ -27,10 +27,11 @@ export const metadata: Metadata = {
   description: "Specialized in high-precision commercial offset printing, pharmaceutical cartons, luxury foil finishes, and corporate branding in Naroda, Ahmedabad since 2008.",
   icons: {
     icon: [
-      { url: "/images/Logo/DesignNPrint.png", sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
     ],
-    shortcut: "/images/Logo/DesignNPrint.png",
-    apple: "/images/Logo/DesignNPrint.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 

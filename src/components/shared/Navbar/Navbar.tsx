@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import { Menu, X, Phone, Clock, Sparkles } from "lucide-react";
+import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
 import Logo from "./Logo";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
@@ -10,20 +9,20 @@ import SearchBox from "./SearchBox";
 import WhatsAppButton from "./WhatsAppButton";
 import { services } from "@/data/servicesData";
 
-const Navbar = () => {
+export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState<any[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
     if (value) {
       const filtered = services.filter((service) =>
         service.name.toLowerCase().includes(value)
       );
-      setFilteredResults(filtered as any);
+      setFilteredResults(filtered);
     } else {
       setFilteredResults([]);
     }
@@ -31,38 +30,44 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full font-poppins">
-      {/* Top Industrial Live Status Ribbon */}
-      <div className="bg-primary-dark/95 text-text-light border-b border-white/5 py-1.5 px-4 text-[11px] sm:text-xs">
-        <div className="container mx-auto flex items-center justify-between">
+      {/* 1. TOP LIVE STATUS & CONTACT RIBBON */}
+      <div className="bg-[#070a10] text-text-light border-b border-white/[0.08] py-1 px-4 text-[11px] sm:text-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-whatsapp animate-pulse"></span>
-            <span className="text-text-light-muted hidden sm:inline">Naroda Press Unit Active:</span>
-            <span className="font-semibold text-accent">24–48h Express Offset Dispatch</span>
+            <span className="w-2 h-2 rounded-full bg-whatsapp animate-pulse shrink-0" />
+            <span className="text-white/60 hidden sm:inline">Naroda Press Unit Active:</span>
+            <span className="font-semibold text-accent">24–48h Express Dispatch</span>
             <span className="text-white/20 hidden md:inline">|</span>
-            <span className="text-text-light-muted hidden md:inline">100% Free 3D Digital Proofing</span>
+            <span className="text-white/60 hidden md:inline">100% Free Digital Proofing</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 text-white/70">
             <a
               href="tel:+919725281074"
-              className="flex items-center gap-1.5 text-text-light-muted hover:text-accent transition-colors font-medium"
+              className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium"
             >
-              <Phone className="w-3 h-3 text-accent" />
+              <FaPhoneAlt className="text-accent text-[10px]" />
               <span>+91 97252 81074</span>
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
-            <span className="text-text-light-muted hidden sm:inline">Mon–Sat: 10AM–7PM</span>
+            <span className="text-white/60 hidden sm:inline">Mon–Sat: 10AM–7PM</span>
           </div>
         </div>
       </div>
 
-      {/* Main Glassmorphic Navbar */}
-      <nav className="bg-primary-surface/90 backdrop-blur-xl text-text-light border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]">
-        <div className="container mx-auto px-4 py-3.5 flex justify-between items-center gap-4">
-          <Logo />
+      {/* 2. MAIN REDESIGNED ARCHITECTURAL NAVBAR */}
+      <nav className="bg-[#0b0f17]/95 backdrop-blur-md text-text-light border-b border-white/10 shadow-sm transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center gap-4">
+          
+          {/* Logo with clean margin */}
+          <div className="shrink-0">
+            <Logo />
+          </div>
 
+          {/* Desktop Navigation Links (Clean, No Box Pill Clutter) */}
           <DesktopMenu />
 
+          {/* Right Utilities: Search & Mobile Menu Button */}
           <div className="flex items-center gap-3">
             <SearchBox
               searchTerm={searchTerm}
@@ -71,16 +76,18 @@ const Navbar = () => {
               clearSearch={() => setSearchTerm("")}
             />
 
+            {/* Mobile Menu Hamburger (Clean Flat Icon) */}
             <button
-              className="lg:hidden p-2 rounded-xl bg-surface/80 border border-white/10 text-text-light hover:text-accent focus:outline-none transition-colors"
+              className="lg:hidden p-2 rounded-md hover:bg-white/10 text-white hover:text-accent focus:outline-none transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle navigation menu"
+              aria-label="Toggle Navigation Menu"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Slide-down Drawer */}
         <MobileMenu
           isOpen={isMobileMenuOpen}
           toggle={() => setIsMobileMenuOpen(false)}
@@ -88,10 +95,9 @@ const Navbar = () => {
           toggleServices={() => setIsServicesOpen(!isServicesOpen)}
         />
 
+        {/* Global Floating WhatsApp Contact Action */}
         <WhatsAppButton />
       </nav>
     </header>
   );
-};
-
-export default Navbar;
+}

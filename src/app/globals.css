@@ -37,87 +37,87 @@
   --color-whatsapp-hover: var(--color-brand-whatsapp-hover);
 }
 
-:root, [data-theme="option-a"] {
-  /* =====================================================================
-     OPTION A: MIDNIGHT STUDIO & FOIL GOLD (Default Theme)
-     Deep midnight slate, royal gold highlights, and slate card surfaces.
-     ===================================================================== */
-  --color-brand-primary: #0f172a;        /* Deep midnight slate / Dark base */
-  --color-brand-primary-dark: #090d16;   /* Deep footer / edge darkness */
-  --color-brand-surface-dark: #1e293b;   /* Slate-800 for Navbar & dark card surface */
-  --color-brand-surface-card: #0f172a;   /* Slate-900 for dark cards */
-
-  --color-brand-accent: #f59e0b;         /* Amber-500 / Signature Brand Gold */
-  --color-brand-accent-hover: #d97706;   /* Amber-600 */
-  --color-brand-accent-light: #fef3c7;   /* Amber-100 */
-
-  --color-brand-secondary: #3b82f6;      /* Blue-500 (Features/Badges/Trust) */
-  --color-brand-secondary-hover: #1d4ed8;/* Blue-700 */
-  --color-brand-secondary-bg: #eff6ff;   /* Blue-50 */
-
-  --color-brand-bg: #ffffff;             /* Pure white background */
-  --color-brand-surface-light: #f8fafc;  /* Slate-50 */
-  --color-brand-surface-muted: #f1f5f9;  /* Slate-100 */
-
-  --color-brand-text: #0f172a;           /* Main dark heading & body text */
-  --color-brand-text-subtle: #475569;    /* Slate-600 */
-  --color-brand-text-muted: #64748b;     /* Slate-500 secondary text */
-  --color-brand-text-light: #ffffff;     /* Light text on dark bg */
-  --color-brand-text-light-muted: #94a3b8;/* Slate-400 on dark bg */
-
-  --color-brand-border-subtle: #e2e8f0;  /* Slate-200 for clean subtle borders */
-  --color-brand-border-dark: #334155;    /* Slate-700 for dark section borders */
-
-  --color-brand-whatsapp: #22c55e;       /* Green-500 */
-  --color-brand-whatsapp-hover: #16a34a; /* Green-600 */
-
-  --background: #ffffff;
-  --foreground: #0f172a;
+/* =====================================================================
+   DESIGN PATTERN / STYLE PARADIGMS
+   Controls physical card depth, bevels, radiuses, and tactile feedback
+   ===================================================================== */
+:root, [data-style="minimalistic"] {
+  --style-radius-card: 0.375rem;
+  --style-radius-btn: 0.25rem;
+  --style-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --style-card-border: 1px solid var(--color-brand-border-subtle);
+  --style-card-backdrop: none;
+  --style-btn-shadow: none;
 }
 
-[data-theme="option-b"] {
-  /* =====================================================================
-     OPTION B: MODERN CMYK CREATIVE AGENCY
-     Vivid CMYK Cyan highlights, Process Magenta accents, deep ink charcoal.
-     ===================================================================== */
-  --color-brand-primary: #0f172a;        /* Deep ink charcoal */
-  --color-brand-primary-dark: #070a0f;   /* Deepest ink black */
-  --color-brand-surface-dark: #161e2e;   /* Modern deep ink navbar */
-  --color-brand-surface-card: #0f172a;
-
-  --color-brand-accent: #0284c7;         /* CMYK Cyan / Vivid Electric Blue */
-  --color-brand-accent-hover: #0369a1;   /* Deep Cyan */
-  --color-brand-accent-light: #e0f2fe;   /* Soft Cyan tint */
-
-  --color-brand-secondary: #ec4899;      /* Process Magenta (Printing identity) */
-  --color-brand-secondary-hover: #db2777;/* Deep Magenta */
-  --color-brand-secondary-bg: #fdf2f8;   /* Soft Pink/Magenta wash */
-
-  --color-brand-bg: #f8fafc;             /* Crisp studio paper background */
-  --color-brand-surface-light: #f1f5f9;  /* Smooth cool slate */
-  --color-brand-surface-muted: #e2e8f0;  /* Light slate divider */
-
-  --color-brand-text: #0f172a;           /* Deep ink typography */
-  --color-brand-text-subtle: #334155;    /* Ink slate */
-  --color-brand-text-muted: #64748b;     /* Medium slate */
-  --color-brand-text-light: #ffffff;     /* White text on dark elements */
-  --color-brand-text-light-muted: #94a3b8;
-
-  --color-brand-border-subtle: #cbd5e1;  /* Modern defined hairline borders */
-  --color-brand-border-dark: #1e293b;    /* Dark ink borders */
-
-  --color-brand-whatsapp: #22c55e;
-  --color-brand-whatsapp-hover: #16a34a;
-
-  --background: #f8fafc;
-  --foreground: #0f172a;
+[data-style="specimen-catalogue"] {
+  --style-radius-card: 0.25rem;
+  --style-radius-btn: 0.25rem;
+  --style-card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --style-card-border: 1px solid var(--color-brand-border-subtle);
+  --style-card-backdrop: none;
+  --style-btn-shadow: none;
 }
 
-[data-theme="option-c"] {
-  /* =====================================================================
-     OPTION C (LIGHT): ARCHITECTURAL ONYX & BRASS (Clean Gallery White)
-     Deep architectural zinc/onyx, warm brass/amber glow, cool platinum.
-     ===================================================================== */
+[data-style="glassmorphic"] {
+  --style-radius-card: 1.25rem;
+  --style-radius-btn: 0.875rem;
+  --style-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --style-card-border: 1px solid rgba(255, 255, 255, 0.15);
+  --style-card-backdrop: blur(16px);
+  --style-btn-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+}
+
+[data-style="skeuomorphic"] {
+  --style-radius-card: 1rem;
+  --style-radius-btn: 0.75rem;
+  --style-card-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.18), 0 4px 10px -2px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.85), inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  --style-card-border: 1px solid rgba(0, 0, 0, 0.16);
+  --style-card-backdrop: none;
+  --style-btn-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), inset 0 -2.5px 0 rgba(0, 0, 0, 0.25), 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+[data-style="luxury-neo"] {
+  --style-radius-card: 1.75rem;
+  --style-radius-btn: 1.125rem;
+  --style-card-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  --style-card-border: 1px solid rgba(255, 255, 255, 0.2);
+  --style-card-backdrop: blur(24px);
+  --style-btn-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.45);
+}
+
+[data-style="neo-brutalist"] {
+  --style-radius-card: 0.5rem;
+  --style-radius-btn: 0.375rem;
+  --style-card-shadow: 5px 5px 0px 0px rgba(15, 23, 42, 0.95);
+  --style-card-border: 2.5px solid rgba(15, 23, 42, 0.95);
+  --style-card-backdrop: none;
+  --style-btn-shadow: 3.5px 3.5px 0px 0px rgba(15, 23, 42, 0.95);
+}
+
+[data-style="cyber-holographic"] {
+  --style-radius-card: 1.25rem;
+  --style-radius-btn: 0.875rem;
+  --style-card-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.3), 0 0 25px -4px rgba(245, 158, 11, 0.25);
+  --style-card-border: 1px solid rgba(245, 158, 11, 0.4);
+  --style-card-backdrop: blur(20px);
+  --style-btn-shadow: 0 0 22px rgba(245, 158, 11, 0.45);
+}
+
+[data-style="claymorphic"] {
+  --style-radius-card: 1.75rem;
+  --style-radius-btn: 1.25rem;
+  --style-card-shadow: 0 16px 32px rgba(0, 0, 0, 0.1), inset 3px 3px 6px rgba(255, 255, 255, 0.75), inset -3px -3px 6px rgba(0, 0, 0, 0.1);
+  --style-card-border: 1px solid rgba(255, 255, 255, 0.5);
+  --style-card-backdrop: none;
+  --style-btn-shadow: 0 8px 18px rgba(245, 158, 11, 0.35), inset 2px 2px 4px rgba(255, 255, 255, 0.6), inset -2px -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================================
+   COLOR THEMES (Option C: Architectural Onyx & Brass - Light & Dark)
+   ===================================================================== */
+:root, [data-theme="option-c"] {
+  /* OPTION C (LIGHT): ARCHITECTURAL ONYX & BRASS (Clean Gallery White) */
   --color-brand-primary: #18181b;        /* Deep architectural zinc-900 */
   --color-brand-primary-dark: #09090b;   /* Onyx black */
   --color-brand-surface-dark: #27272a;   /* Matte zinc navbar */
@@ -152,11 +152,7 @@
 }
 
 [data-theme="option-c-dark"] {
-  /* =====================================================================
-     OPTION C (DARK): ARCHITECTURAL ONYX & BRASS (Deep Matte Zinc & Brass)
-     Exact same architectural brand aesthetic, seamlessly inverted for dark mode.
-     Matte zinc-950 base, warm glowing brass highlights, cool platinum text.
-     ===================================================================== */
+  /* OPTION C (DARK): ARCHITECTURAL ONYX & BRASS (Deep Matte Zinc & Brass) */
   --color-brand-primary: #09090b;        /* Pure onyx black */
   --color-brand-primary-dark: #000000;   /* Pitch black */
   --color-brand-surface-dark: #18181b;   /* Matte zinc-900 navbar */
@@ -188,6 +184,134 @@
 
   --background: #121214;
   --foreground: #f4f4f5;
+}
+
+/* =====================================================================
+   DYNAMIC ELEMENT STYLING ADAPTED FROM PATTERNS
+   ===================================================================== */
+[class*="rounded-2xl"],
+[class*="rounded-3xl"] {
+  border-radius: var(--style-radius-card) !important;
+  box-shadow: var(--style-card-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* SKEUOMORPHIC: Tactile print craft, embossed bevels, pressed stamps */
+[data-style="skeuomorphic"] [class*="rounded-2xl"],
+[data-style="skeuomorphic"] [class*="rounded-3xl"] {
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.75), inset 0 -2px 3px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-style="skeuomorphic"] button,
+[data-style="skeuomorphic"] a[class*="rounded-"] {
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.45), inset 0 -2.5px 0 rgba(0, 0, 0, 0.25), 0 6px 14px rgba(0, 0, 0, 0.18) !important;
+  border-radius: var(--style-radius-btn) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-style="skeuomorphic"] button:active,
+[data-style="skeuomorphic"] a[class*="rounded-"]:active {
+  transform: translateY(2px) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* MINIMALISTIC: Swiss precision, ultra-clean hairline borders, flat architecture */
+[data-style="minimalistic"] [class*="rounded-2xl"],
+[data-style="minimalistic"] [class*="rounded-3xl"],
+[data-style="minimalistic"] button,
+[data-style="minimalistic"] a[class*="rounded-"] {
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: none !important;
+}
+
+/* LUXURY-NEO: Soft 3D neomorphic extrusion, gold halo, velvet curves */
+[data-style="luxury-neo"] [class*="rounded-2xl"],
+[data-style="luxury-neo"] [class*="rounded-3xl"] {
+  border-radius: 1.5rem !important;
+  box-shadow: 0 22px 45px -10px rgba(0, 0, 0, 0.22), 0 0 20px -3px rgba(245, 158, 11, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(245, 158, 11, 0.2) !important;
+}
+
+[data-style="luxury-neo"] button,
+[data-style="luxury-neo"] a[class*="rounded-"] {
+  border-radius: var(--style-radius-btn) !important;
+  box-shadow: 0 10px 25px -4px rgba(245, 158, 11, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.45) !important;
+}
+
+/* GLASSMORPHIC: Frosted crystal glass, ambient reflections */
+[data-style="glassmorphic"] [class*="rounded-2xl"],
+[data-style="glassmorphic"] [class*="rounded-3xl"] {
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* NEO-BRUTALIST: High-contrast industrial print workshop, bold hard shadows */
+[data-style="neo-brutalist"] [class*="rounded-2xl"],
+[data-style="neo-brutalist"] [class*="rounded-3xl"] {
+  border-radius: 8px !important;
+  border: 2.5px solid var(--color-brand-primary) !important;
+  box-shadow: 4px 4px 0px 0px var(--color-brand-primary) !important;
+}
+
+[data-style="neo-brutalist"] button,
+[data-style="neo-brutalist"] a[class*="rounded-"] {
+  border-radius: 6px !important;
+  border: 2px solid var(--color-brand-primary) !important;
+  box-shadow: 3px 3px 0px 0px var(--color-brand-primary) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+[data-style="neo-brutalist"] button:active,
+[data-style="neo-brutalist"] a[class*="rounded-"]:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px var(--color-brand-primary) !important;
+}
+
+/* SPECIMEN-CATALOGUE: Classical museum-grade archival monograph & paper dignity */
+[data-style="specimen-catalogue"] [class*="rounded-2xl"],
+[data-style="specimen-catalogue"] [class*="rounded-3xl"] {
+  border-radius: 4px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid var(--color-brand-border-subtle) !important;
+}
+
+[data-style="specimen-catalogue"] button,
+[data-style="specimen-catalogue"] a[class*="rounded-"] {
+  border-radius: 4px !important;
+  letter-spacing: 0.03em;
+  box-shadow: none !important;
+}
+
+/* CYBER-HOLOGRAPHIC: Foil & iridescent metallic sheen with chrome edge reflections */
+[data-style="cyber-holographic"] [class*="rounded-2xl"],
+[data-style="cyber-holographic"] [class*="rounded-3xl"] {
+  border-radius: 1.25rem !important;
+  border: 1px solid var(--color-brand-accent) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.35), 0 0 25px -4px var(--color-brand-accent) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+[data-style="cyber-holographic"] button,
+[data-style="cyber-holographic"] a[class*="rounded-"] {
+  border-radius: 0.875rem !important;
+  box-shadow: 0 0 20px var(--color-brand-accent) !important;
+}
+
+/* CLAYMORPHIC: Soft 3D tactile clay, double specular lighting, pillowy volume */
+[data-style="claymorphic"] [class*="rounded-2xl"],
+[data-style="claymorphic"] [class*="rounded-3xl"] {
+  border-radius: 1.75rem !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1), inset 3px 3px 6px rgba(255, 255, 255, 0.75), inset -3px -3px 6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-style="claymorphic"] button,
+[data-style="claymorphic"] a[class*="rounded-"] {
+  border-radius: 1.25rem !important;
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.35), inset 2px 2px 4px rgba(255, 255, 255, 0.6), inset -2px -2px 4px rgba(0, 0, 0, 0.15) !important;
 }
 
 html {

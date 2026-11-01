@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaBolt, FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaBolt } from "react-icons/fa";
 import ServiceDropdown from "./ServiceDropdown";
 
 const navItems = [
@@ -28,7 +28,7 @@ export default function DesktopMenu() {
   };
 
   return (
-    <nav className="hidden lg:flex items-center gap-2 xl:gap-3 text-sm font-medium tracking-wide">
+    <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-medium tracking-wide">
       {navItems.map((item) => {
         const active = isLinkActive(item.href);
 
@@ -42,20 +42,25 @@ export default function DesktopMenu() {
             >
               <Link
                 href={item.href}
-                className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-all duration-300 ${
+                className={`relative flex items-center gap-1.5 px-3 py-2 transition-colors duration-200 ${
                   active
-                    ? "text-accent bg-accent/15 border border-accent/30 shadow-[0_0_15px_rgba(250,204,21,0.2)] font-semibold"
-                    : "text-text-light/85 hover:text-accent hover:bg-white/5 border border-transparent"
+                    ? "text-accent font-semibold"
+                    : "text-white/80 hover:text-white"
                 }`}
               >
                 <span>{item.label}</span>
-                <FaChevronDown className={`text-[10px] transition-transform duration-300 ${isDropdownOpen ? "rotate-180 text-accent" : "opacity-60"}`} />
+                <FaChevronDown
+                  className={`text-[9px] transition-transform duration-300 ${
+                    isDropdownOpen ? "rotate-180 text-accent" : "opacity-60"
+                  }`}
+                />
 
+                {/* Refined Underline Indicator (No Box) */}
                 {active && (
                   <motion.span
-                    layoutId="desktop-active-pill"
-                    className="absolute inset-0 rounded-xl bg-accent/10 border border-accent/30 pointer-events-none"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    layoutId="nav-active-underline"
+                    className="absolute bottom-0 left-3 right-3 h-[2px] bg-accent rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </Link>
@@ -71,36 +76,33 @@ export default function DesktopMenu() {
           <Link
             key={item.href}
             href={item.href}
-            className={`relative px-3.5 py-2 rounded-xl transition-all duration-300 ${
+            className={`relative px-3 py-2 transition-colors duration-200 ${
               active
-                ? "text-accent bg-accent/15 border border-accent/30 shadow-[0_0_15px_rgba(250,204,21,0.2)] font-semibold"
-                : "text-text-light/85 hover:text-accent hover:bg-white/5 border border-transparent"
+                ? "text-accent font-semibold"
+                : "text-white/80 hover:text-white"
             }`}
           >
             <span>{item.label}</span>
 
+            {/* Refined Underline Indicator (No Box) */}
             {active && (
               <motion.span
-                layoutId="desktop-active-pill"
-                className="absolute inset-0 rounded-xl bg-accent/10 border border-accent/30 pointer-events-none"
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                layoutId="nav-active-underline"
+                className="absolute bottom-0 left-3 right-3 h-[2px] bg-accent rounded-full"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
           </Link>
         );
       })}
 
-      {/* 3D Gradient CTA for Instant Quote */}
+      {/* Refined Architectural CTA (No Boxy Gradient) */}
       <div className="ml-2">
         <Link
           href="/quote"
-          className={`relative inline-flex items-center gap-2 px-4 py-2 rounded-xl font-extrabold text-xs tracking-wider uppercase transition-all duration-300 shadow-md ${
-            pathname.startsWith("/quote")
-              ? "bg-gradient-to-r from-accent via-amber-400 to-yellow-500 text-primary-dark shadow-[0_0_20px_rgba(250,204,21,0.5)] scale-105"
-              : "bg-gradient-to-r from-accent via-amber-400 to-yellow-500 hover:brightness-110 text-primary-dark shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 active:translate-y-0"
-          }`}
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-accent hover:bg-accent-hover text-primary-dark font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm active:scale-95"
         >
-          <FaBolt className="text-xs" />
+          <FaBolt className="text-[10px]" />
           <span>Instant Quote</span>
         </Link>
       </div>
