@@ -2,7 +2,15 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaQuestionCircle, FaWhatsapp, FaBolt, FaFileAlt, FaShieldAlt, FaBoxOpen } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaQuestionCircle,
+  FaWhatsapp,
+  FaBolt,
+  FaFileAlt,
+  FaShieldAlt,
+  FaBoxOpen,
+} from "react-icons/fa";
 
 interface FaqItem {
   id: string;
@@ -66,14 +74,12 @@ export default function FaqSection() {
     setOpenId(openId === id ? null : id);
   };
 
-  const filteredFaqs = activeCategory === "all"
-    ? faqs
-    : faqs.filter((f) => f.category === activeCategory);
+  const filteredFaqs =
+    activeCategory === "all" ? faqs : faqs.filter((f) => f.category === activeCategory);
 
   return (
-    <section className="py-20 bg-surface border-b border-border-subtle font-poppins relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-surface border-b border-border-subtle font-poppins relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent bg-accent-light/50 px-3.5 py-1 rounded-full border border-accent/20">
@@ -83,20 +89,20 @@ export default function FaqSection() {
           <h2 className="text-2xl sm:text-4xl font-extrabold text-text-main mt-3 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-xs sm:text-sm text-text-muted mt-2">
+          <p className="text-xs sm:text-sm text-text-subtle mt-2">
             Clear, transparent answers on our prepress workflow, turnaround timelines, and material tolerances.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-8 sm:mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold transition-all ${
                 activeCategory === cat.id
-                  ? "bg-accent text-primary-dark shadow-sm scale-105"
+                  ? "bg-accent text-primary-dark shadow-xs"
                   : "bg-surface-light hover:bg-surface-muted text-text-muted border border-border-subtle"
               }`}
             >
@@ -106,35 +112,39 @@ export default function FaqSection() {
         </div>
 
         {/* Animated Accordion List */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {filteredFaqs.map((faq) => {
             const isOpen = openId === faq.id;
             return (
               <motion.div
                 key={faq.id}
                 layout
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                className={`rounded-xl sm:rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? "bg-surface border-accent/40 shadow-lg ring-1 ring-accent/20"
+                    ? "bg-surface border-accent/40 shadow-md ring-1 ring-accent/20"
                     : "bg-surface-light border-border-subtle hover:border-accent/30 shadow-xs"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(faq.id)}
-                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 transition-colors group"
+                  className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-3 sm:gap-4 transition-colors group"
                 >
-                  <div className="flex items-center gap-3.5">
-                    <span className={`w-8 h-8 rounded-xl flex items-center justify-center font-mono text-xs font-extrabold transition-colors ${
-                      isOpen
-                        ? "bg-accent text-primary-dark shadow-sm"
-                        : "bg-surface text-text-muted border border-border-subtle group-hover:text-accent"
-                    }`}>
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono text-xs font-extrabold shrink-0 transition-colors ${
+                        isOpen
+                          ? "bg-accent text-primary-dark shadow-xs"
+                          : "bg-surface text-text-muted border border-border-subtle group-hover:text-accent"
+                      }`}
+                    >
                       {faq.id}
                     </span>
-                    <span className={`font-bold text-sm sm:text-base transition-colors ${
-                      isOpen ? "text-accent" : "text-text-main group-hover:text-accent"
-                    }`}>
+                    <span
+                      className={`font-bold text-xs sm:text-base transition-colors ${
+                        isOpen ? "text-accent" : "text-text-main group-hover:text-accent"
+                      }`}
+                    >
                       {faq.q}
                     </span>
                   </div>
@@ -142,7 +152,7 @@ export default function FaqSection() {
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                       isOpen ? "bg-accent/15 text-accent" : "text-text-muted"
                     }`}
                   >
@@ -157,10 +167,10 @@ export default function FaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 pb-6 sm:px-6 pt-1 text-xs sm:text-sm text-text-subtle leading-relaxed border-t border-border-subtle/50 pl-16">
+                      <div className="px-4 pb-5 sm:px-6 pt-1 text-xs sm:text-sm text-text-subtle leading-relaxed border-t border-border-subtle/50 pl-4 sm:pl-14">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -172,10 +182,12 @@ export default function FaqSection() {
         </div>
 
         {/* WhatsApp Helpline Footer in FAQ */}
-        <div className="mt-12 p-6 rounded-2xl bg-surface-muted border border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-2xl bg-surface-muted border border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <h4 className="font-bold text-text-main text-sm sm:text-base">Have a specialized custom packaging requirement?</h4>
-            <p className="text-xs text-text-muted mt-0.5">
+            <h4 className="font-bold text-text-main text-xs sm:text-base">
+              Have a specialized custom packaging requirement?
+            </h4>
+            <p className="text-[11px] sm:text-xs text-text-muted mt-0.5">
               Talk directly with our press supervisor in Naroda, Ahmedabad.
             </p>
           </div>
@@ -189,7 +201,6 @@ export default function FaqSection() {
             <span>Ask on WhatsApp</span>
           </a>
         </div>
-
       </div>
     </section>
   );
