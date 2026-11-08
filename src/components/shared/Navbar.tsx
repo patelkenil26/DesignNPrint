@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white font-poppins shadow-md">
+    <nav className="sticky top-0 z-50 bg-ink text-white font-poppins shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo />
         <button
