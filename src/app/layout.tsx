@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
@@ -21,6 +21,11 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
+
 export const metadata: Metadata = {
   title: "Design N Print - Premium Printing Services in Gujarat",
   description: "Design N Prints is specialized in fine-quality printing and supporting services for the commerce and industry of Gujarat since 2008.",
@@ -33,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${sora.variable} font-poppins antialiased min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-grow">
           {children}
