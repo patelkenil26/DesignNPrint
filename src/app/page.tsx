@@ -1,17 +1,19 @@
-import HeroScrollytelling from "@/components/sections/HeroScrollytelling";
-import ServicesSection from "@/components/sections/Services/ServicesSection";
-import StatsSection from "@/components/sections/StatsSection";
-import GoogleReviewSection from "@/components/sections/Review/GoogleReviewSection";
+import HeroScrollytelling from '@/components/sections/HeroScrollytelling';
+import StatsSection from '@/components/sections/StatsSection';
+import GoogleReviewSection from '@/components/sections/Review/GoogleReviewSection';
+import SceneRootLoader from '@/components/three/SceneRootLoader';
 
 export default function Home() {
   return (
     <div className="relative">
-      {/* 3D Scrollytelling Experience (Hero Visiting Card -> Dieline Fold -> Assembled 3D Box) */}
+      {/* ── Fixed 3D WebGL Canvas (homepage only) ── */}
+      <SceneRootLoader />
+
+      {/* ── Scroll-driven HTML storytelling over the canvas ── */}
       <HeroScrollytelling />
 
-      {/* Services, Stats & Reviews Sections with frosted glass / solid contrast */}
-      <div className="relative z-20 bg-white/95 text-slate-900 rounded-t-[2.5rem] shadow-2xl backdrop-blur-md">
-        <ServicesSection />
+      {/* ── Below-fold: stats & reviews on a solid white card ── */}
+      <div className="relative z-20 bg-white text-slate-900 shadow-2xl rounded-t-[2rem] mt-0">
         <StatsSection />
         <GoogleReviewSection />
       </div>

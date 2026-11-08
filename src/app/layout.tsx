@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
-import SmoothScrollProvider from "@/components/shared/SmoothScrollProvider";
+// SmoothScrollProvider only wraps homepage (via page.tsx), not global layout
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,15 +34,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased min-h-screen flex flex-col relative`}>
-        <SmoothScrollProvider>
-          <Navbar />
-          <main className="flex-grow relative z-10">
-            {children}
-          </main>
-          <Footer />
-          <ScrollToTopButton />
-        </SmoothScrollProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased min-h-screen flex flex-col`}>
+        <Navbar />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+        <ScrollToTopButton />
       </body>
     </html>
   );

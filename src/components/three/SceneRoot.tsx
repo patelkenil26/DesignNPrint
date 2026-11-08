@@ -2,89 +2,86 @@
 
 import React, { useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Float, ContactShadows } from '@react-three/drei';
+import { Environment, ContactShadows } from '@react-three/drei';
 import { useSceneStore } from '@/lib/store';
 import HeroPackagingExperience from './HeroPackagingExperience';
 
+/** Full-viewport fixed WebGL canvas — only mounted by the homepage */
 export default function SceneRoot() {
-  const setMouse = useSceneStore((state) => state.setMouse);
-  const serviceColor = useSceneStore((state) => state.serviceColor);
+  const setMouse = useSceneStore((s) => s.setMouse);
 
-  // Mouse tracker for 3D tilt
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      setMouse(x, y);
+    const onMove = (e: MouseEvent) => {
+      setMouse(
+        (e.clientX / window.innerWidth) * 2 - 1,
+        -((e.clientY / window.innerHeight) * 2 - 1),
+      );
     };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', onMove, { passive: true });
+    return () => window.removeEventListener('mousemove', onMove);
   }, [setMouse]);
 
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
+      className="fixed inset-0 w-full h-full overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse at 50% 40%, #151821 0%, #0a0c10 100%)',
+        zIndex: 0,
+        pointerEvents: 'none',
+        background: 'radial-gradient(ellipse at 55% 35%, #181d2b 0%, #0b0d12 100%)',
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 4.8], fov: 42 }}
+        camera={{ position: [0, 0, 5.5], fov: 40 }}
         dpr={[1, 1.5]}
+        shadows
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: 'high-performance',
+          toneMapping: THREE_ToneMapping,
+          toneMappingExposure: 1.1,
         }}
       >
         <Suspense fallback={null}>
-          {/* Subtle Ambient & Studio Lights */}
-          <ambientLight intensity={1.2} />
+          {/* Lighting rig */}
+          <ambientLight intensity={0.9} />
 
-          {/* Key Light (Slight Gold Tone to reflect foil) */}
+          {/* Key light — warm gold to emphasise foil */}
           <directionalLight
-            position={[5, 6, 5]}
-            intensity={2.4}
-            color="#fff6e5"
+            position={[4, 7, 5]}
+            intensity={2.8}
+            color="#ffe9c0"
             castShadow
+            shadow-mapSize={[1024, 1024]}
           />
 
-          {/* Rim Light (Cool accent for sharp edges) */}
-          <directionalLight
-            position={[-5, 3, -4]}
-            intensity={1.8}
-            color={serviceColor || '#38bdf8'}
-          />
+          {/* Rim light — cool blue edge */}
+          <directionalLight position={[-5, 2, -4]} intensity={1.6} color="#6cb4f0" />
 
-          {/* Under fill light */}
-          <directionalLight
-            position={[0, -4, 2]}
-            intensity={0.6}
-            color="#2d3748"
-          />
+          {/* Under fill — subtle warm bounce */}
+          <directionalLight position={[0, -4, 3]} intensity={0.5} color="#c9a84c" />
 
-          {/* Realistic Floor Contact Shadow */}
-          <ContactShadows
-            position={[0, -1.8, 0]}
-            opacity={0.45}
-            scale={8}
-            blur={2.5}
-            far={4}
-            color="#000000"
-          />
-
-          {/* Studio Environment map for authentic reflections */}
+          {/* HDR environment for metallic / clearcoat reflections */}
           <Environment preset="city" />
 
-          {/* Floating Gentle Motion */}
-          <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.3}>
-            <HeroPackagingExperience />
-          </Float>
+          {/* Soft contact shadow on floor */}
+          <ContactShadows
+            position={[0, -2.0, 0]}
+            opacity={0.5}
+            scale={9}
+            blur={3}
+            far={5}
+            color="#000510"
+          />
+
+          <HeroPackagingExperience />
         </Suspense>
       </Canvas>
     </div>
   );
 }
 
+// Needed because THREE isn't directly importable here — reference through global
+// This is handled by @react-three/fiber automatically; we just pass the enum value
+const THREE_ToneMapping = 4; // THREE.ACESFilmicToneMapping = 4

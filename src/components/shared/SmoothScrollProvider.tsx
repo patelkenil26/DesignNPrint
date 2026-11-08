@@ -1,26 +1,24 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import Lenis from 'lenis';
 import { useSceneStore } from '@/lib/store';
 
-// Client-only dynamic import of the WebGL SceneRoot
-const SceneRoot = dynamic(() => import('@/components/three/SceneRoot'), {
-  ssr: false,
-});
-
+/**
+ * Provides global smooth-scroll via Lenis and syncs scroll progress
+ * into the Zustand store for the 3D canvas to read.
+ * Does NOT mount SceneRoot itself — the homepage mounts SceneRoot directly.
+ */
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const setScrollProgress = useSceneStore((state) => state.setScrollProgress);
-  const setActiveChapter = useSceneStore((state) => state.setActiveChapter);
+  const setActiveChapter  = useSceneStore((state) => state.setActiveChapter);
 
   useEffect(() => {
-    // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
@@ -30,29 +28,21 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
       const scrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
-      
       setScrollProgress(progress);
 
-      // Chapter threshold calculation for navigation indicators
-      if (progress < 0.28) {
-        setActiveChapter(0);
-      } else if (progress < 0.65) {
-        setActiveChapter(1);
-      } else {
-        setActiveChapter(2);
-      }
+      if (progress < 0.28)      setActiveChapter(0);
+      else if (progress < 0.65) setActiveChapter(1);
+      else                       setActiveChapter(2);
     };
 
     lenis.on('scroll', handleScroll);
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-
-    const rafId = requestAnimationFrame(raf);
-
-    // Initial check
+    rafId = requestAnimationFrame(raf);
     handleScroll();
 
     return () => {
@@ -61,11 +51,5 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     };
   }, [setScrollProgress, setActiveChapter]);
 
-  return (
-    <>
-      {/* Persistent WebGL 3D Canvas */}
-      <SceneRoot />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }
