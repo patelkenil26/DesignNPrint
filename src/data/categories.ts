@@ -13,6 +13,8 @@ export interface ProductCategory {
   id: string;
   slug: string;
   name: string;
+  /** one short word used for giant typography */
+  shortName: string;
   tagline: string;
   blurb: string;
   accent: BrandAccent;
@@ -26,6 +28,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'stickers-labels',
     slug: 'stickers-and-labels',
+    shortName: 'STICKERS',
     name: 'Stickers & Labels',
     tagline: 'Peel. Stick. Stand out.',
     blurb: 'Bottle labels, die-cut stickers and product labels — printed sharp and cut to any shape.',
@@ -43,6 +46,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'cards-stationery',
     slug: 'cards-and-stationery',
+    shortName: 'CARDS',
     name: 'Cards & Stationery',
     tagline: 'First impressions, in your hand.',
     blurb: 'Visiting cards, letterheads, envelopes and certificates in premium stock and finishes.',
@@ -60,6 +64,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'brochures-flyers',
     slug: 'brochures-and-flyers',
+    shortName: 'BROCHURES',
     name: 'Brochures, Flyers & Catalogues',
     tagline: 'Fold it open. Tell the story.',
     blurb: 'Brochures, pamphlets, booklets, catalogues and calendars that carry your message.',
@@ -77,6 +82,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'boxes-packaging',
     slug: 'boxes-and-packaging',
+    shortName: 'BOXES',
     name: 'Boxes & Packaging',
     tagline: 'Horizontal. Vertical. Yours.',
     blurb: 'Rigid, folding and tuck-end boxes in every shape — from pharma cartons to gift packaging.',
@@ -95,6 +101,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'files-folders',
     slug: 'files-and-folders',
+    shortName: 'FOLDERS',
     name: 'Files & Folders',
     tagline: 'Your brand in every meeting.',
     blurb: 'Company files, doctor files, mica and ceramic display folders built to last.',
@@ -111,6 +118,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: 'pouches-display',
     slug: 'pouches-and-display',
+    shortName: 'POUCHES',
     name: 'Pouches & Display',
     tagline: 'Carry it. Display it.',
     blurb: 'Cotton and custom pouches, flex banners and roller standees for retail and events.',
