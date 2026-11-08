@@ -8,7 +8,7 @@ const FormTextarea = ({ name, value, onChange, placeholder, rows = 5, required =
     onChange={onChange}
     placeholder={placeholder}
     rows={rows}
-    className="w-full p-3 border border-border-subtle bg-surface text-text-main rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     required={required}
   />
 );

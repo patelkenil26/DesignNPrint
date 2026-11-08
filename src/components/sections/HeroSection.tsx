@@ -24,7 +24,7 @@ const slidesData = [
 
 const HeroSection = () => {
   return (
-    <div className="relative w-full bg-surface">
+    <div className="relative w-full bg-white">
       <Swiper
         effect="creative"
         // grabCursor={true}

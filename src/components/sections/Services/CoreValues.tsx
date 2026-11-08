@@ -9,23 +9,23 @@ import { motion } from "framer-motion";
 
 const coreValues = [
   {
-    icon: <FaCheckCircle className="text-secondary text-4xl mx-auto" />,
+    icon: <FaCheckCircle className="text-blue-500 text-4xl mx-auto" />,
     title: "Quality Control",
     description:
       "Top-notch quality with timely delivery and trusted customer service.",
   },
   {
-    icon: <FaBullhorn className="text-whatsapp text-4xl mx-auto" />,
+    icon: <FaBullhorn className="text-green-500 text-4xl mx-auto" />,
     title: "Mission",
     description: "To deliver impactful and professional printing solutions.",
   },
   {
-    icon: <FaLightbulb className="text-accent text-4xl mx-auto" />,
+    icon: <FaLightbulb className="text-yellow-500 text-4xl mx-auto" />,
     title: "Innovation",
     description: "Adapting to latest trends and customer needs every day.",
   },
   {
-    icon: <FaHandshake className="text-accent-hover text-4xl mx-auto" />,
+    icon: <FaHandshake className="text-red-500 text-4xl mx-auto" />,
     title: "Integrity",
     description: "Committed to transparency and ethical business values.",
   },
@@ -33,7 +33,7 @@ const coreValues = [
 
 const CoreValues = () => (
   <section
-    className="bg-primary-dark text-text-light py-12 md:mt-1 lg:mt-12 rounded-lg mx-auto border border-border-dark"
+    className="bg-gray-900 text-white py-12 md:mt-1 lg:mt-12  rounded-lg mx-auto"
     style={{ width: "100%" }}
   >
     <div className="  px-4 grid grid-cols-1 md:grid-cols-4 gap-8">

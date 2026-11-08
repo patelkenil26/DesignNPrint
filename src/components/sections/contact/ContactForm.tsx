@@ -96,7 +96,7 @@ const ContactFormComponent = forwardRef((props, ref: any) => {
       />
       <button
         type="submit"
-        className="w-full bg-primary hover:bg-accent text-text-light font-semibold py-3 rounded-lg transition-all shadow-md"
+        className="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition"
       >
         Send on WhatsApp
       </button>

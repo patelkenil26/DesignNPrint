@@ -32,15 +32,15 @@ const StatsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-surface border border-border-subtle flex justify-center items-center flex-col rounded-2xl p-6 shadow-md text-center hover:shadow-xl transition-all"
+              className="bg-white dark:bg-gray-800 flex justify-center items-center flex-col rounded-2xl p-6 shadow-lg text-center hover:shadow-2xl transition-all"
             >
-              <div className="flex justify-center items-center mb-2 text-accent">
+              <div className="flex justify-center items-center mb-2 text-yellow-500">
                 {stat.icon}
               </div>
-              <div className="text-3xl sm:text-5xl font-extrabold text-text-main">
+              <div className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white">
                 {stat.value}
               </div>
-              <p className="text-sm sm:text-xl text-text-muted mt-2">
+              <p className="text-sm sm:text-xl text-gray-700 dark:text-gray-300 mt-2">
                 {stat.label}
               </p>
             </div>

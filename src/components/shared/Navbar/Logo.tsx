@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <Link href="/" className="hover:text-accent transition-all hover:scale-105">
+    <Link href="/" className="hover:text-yellow-500 transition-all hover:scale-105">
       <div className="relative w-36 sm:w-44 h-12">
         <Image src="/images/Logo/DesignNPrint.png" alt="Logo" fill className="object-contain" />
       </div>
