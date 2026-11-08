@@ -1,3 +1,5 @@
+import { getServiceHref } from '@/data/serviceCatalog';
+
 /** All editable copy + content for the home page lives here (no hardcoded data in JSX). */
 
 export type BrandAccent = 'red' | 'yellow' | 'green' | 'blue';
@@ -68,7 +70,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Stationery',
     blurb: 'Your first impression, in premium stock with crisp finishing.',
     image: '/images/Card/design-n-print-product-12-1.png',
-    href: '/services/visiting-card-letterhead-envelope',
+    href: getServiceHref('visiting-card-letterhead-envelope'),
     accent: 'red',
   },
   {
@@ -77,7 +79,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Packaging',
     blurb: 'Rigid, folding and luxury boxes made to show your brand off.',
     image: '/images/Card/box_designing.png',
-    href: '/services/box-designing-printing',
+    href: getServiceHref('box-designing-printing'),
     accent: 'blue',
   },
   {
@@ -86,7 +88,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Packaging',
     blurb: 'Clean, compliant cartons with barcode-sharp printing.',
     image: '/images/Card/pharma_box.jpg',
-    href: '/services/pharmaceutical-medicine-boxes',
+    href: getServiceHref('pharmaceutical-medicine-boxes'),
     accent: 'blue',
   },
   {
@@ -95,7 +97,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Packaging',
     blurb: 'Beauty packaging with foil, spot UV and soft-touch finishes.',
     image: '/images/Card/cosmetic_item.png',
-    href: '/services/cosmetic-item-box-sticker-printing',
+    href: getServiceHref('cosmetic-item-box-sticker-printing'),
     accent: 'red',
   },
   {
@@ -104,7 +106,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Marketing',
     blurb: 'Brochures that tell your story and close the sale.',
     image: '/images/Card/BrochureDesigning.png',
-    href: '/services/brochure-designing-printing',
+    href: getServiceHref('brochure-designing-printing'),
     accent: 'yellow',
   },
   {
@@ -113,7 +115,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Marketing',
     blurb: 'Multi-page catalogues, bound beautifully.',
     image: '/images/Card/product_catalogue.jpg',
-    href: '/services/product-catalogue',
+    href: getServiceHref('product-catalogue'),
     accent: 'yellow',
   },
   {
@@ -122,7 +124,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Folders',
     blurb: 'Presentation folders that carry your brand into every meeting.',
     image: '/images/Card/company_file_folder.jpg',
-    href: '/services/company-file-folder',
+    href: getServiceHref('company-file-folder'),
     accent: 'green',
   },
   {
@@ -131,7 +133,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Folders',
     blurb: 'Heavy-duty sample folders built for tile and mica collections.',
     image: '/images/Card/ceramic_mockup.png',
-    href: '/services/ceramic-mockup-design',
+    href: getServiceHref('ceramic-mockup-design'),
     accent: 'green',
   },
   {
@@ -140,7 +142,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Pouches',
     blurb: 'Branded pouches and bags for retail and gifting.',
     image: '/images/Card/customize_pouch.png',
-    href: '/services/customize-pouch-designing-printing',
+    href: getServiceHref('customize-pouch-designing-printing'),
     accent: 'blue',
   },
   {
@@ -149,7 +151,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Outdoor',
     blurb: 'Big, bold, weather-ready display printing.',
     image: '/images/Card/flex_banner.png',
-    href: '/services/flex-banner-roller-standee-printing',
+    href: getServiceHref('flex-banner-roller-standee-printing'),
     accent: 'red',
   },
   {
@@ -158,7 +160,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Corporate Gifting',
     blurb: 'Desk and wall calendars your clients keep all year.',
     image: '/images/Card/calender.png',
-    href: '/services/calendar',
+    href: getServiceHref('calendar'),
     accent: 'yellow',
   },
   {
@@ -167,7 +169,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Labels',
     blurb: 'Die-cut stickers and product labels in any shape.',
     image: '/images/Card/sticker_label.png',
-    href: '/services/sticker-label-designing-printing',
+    href: getServiceHref('sticker-label-designing-printing'),
     accent: 'green',
   },
 ];
@@ -268,7 +270,7 @@ export const industries: IndustryItem[] = [
     line: 'Mono cartons, labels and doctor files that meet strict labelling standards.',
     image: '/images/Card/pharma_box.jpg',
     imageAlt: 'Printed pharmaceutical medicine boxes with capsules',
-    href: '/services/pharmaceutical-medicine-boxes',
+    href: getServiceHref('pharmaceutical-medicine-boxes'),
     accent: 'blue',
   },
   {
@@ -277,7 +279,7 @@ export const industries: IndustryItem[] = [
     line: 'Sturdy sample folders and catalogues for Morbi and Gujarat tile makers.',
     image: '/images/Card/ceramic_mockup.png',
     imageAlt: 'Ceramic tile display folder mockup',
-    href: '/services/ceramic-mockup-design',
+    href: getServiceHref('ceramic-mockup-design'),
     accent: 'green',
   },
   {
@@ -286,7 +288,7 @@ export const industries: IndustryItem[] = [
     line: 'Boxes, pouches and stickers that look premium on the shelf.',
     image: '/images/Card/cosmetic_item.png',
     imageAlt: 'Printed cosmetic boxes and stickers',
-    href: '/services/cosmetic-item-box-sticker-printing',
+    href: getServiceHref('cosmetic-item-box-sticker-printing'),
     accent: 'red',
   },
   {
@@ -295,7 +297,7 @@ export const industries: IndustryItem[] = [
     line: 'Brochures, catalogues, files and gifting calendars for every pitch.',
     image: '/images/Card/product_catalogue.jpg',
     imageAlt: 'Corporate product catalogue spread',
-    href: '/services/product-catalogue',
+    href: getServiceHref('product-catalogue'),
     accent: 'yellow',
   },
 ];

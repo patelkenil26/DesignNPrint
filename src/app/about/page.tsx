@@ -1,117 +1,83 @@
-"use client";
+import type { Metadata } from 'next';
+import { ArrowRight } from 'lucide-react';
+import CategoryCard from '@/components/sections/Services/CategoryCard';
+import AboutStory from '@/components/sections/About/AboutStory';
+import AboutTimeline from '@/components/sections/About/AboutTimeline';
+import AboutValues from '@/components/sections/About/AboutValues';
+import CountUp from '@/components/shared/CountUp';
+import LinkButton from '@/components/shared/LinkButton';
+import PageHero from '@/components/shared/PageHero';
+import QuoteBand from '@/components/shared/QuoteBand';
+import Reveal from '@/components/shared/Reveal';
+import { productCategories } from '@/data/categories';
+import { proofStatCounts } from '@/data/homeData';
+import { getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 
-import React from "react";
-import HeroSection from "@/components/sections/About/HeroSection";
-import Breadcrumb from "@/components/sections/About/Breadcrumb";
-import VisionSection from "@/components/sections/About/VisionSection";
-import JourneySection from "@/components/sections/About/JourneySection";
-import MissionCard from "@/components/sections/About/MissionCard";
-import ServicesList from "@/components/sections/About/ServicesList";
-import { motion } from "framer-motion";
-import Link from "next/link";
-
-const About = () => {
-  const breadcrumbPaths = [{ name: "Home", link: "/" }, { name: "About Us" }];
-
-  return (
-    <div className="font-poppins">
-      <HeroSection
-        title="About Us"
-        imageUrl="https://img.freepik.com/premium-vector/vector-flat-people-business-teamwork-illustration-flat-illustration_787500-10481.jpg?w=1060"
-      />
-
-      <Breadcrumb paths={breadcrumbPaths} />
-
-      <motion.div
-        className="grid md:grid-cols-2 gap-6 px-4 my-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.div whileHover={{ scale: 1.05 }}>
-          <img
-            src="https://img.freepik.com/free-vector/organic-printing-industry_23-2148904373.jpg"
-            alt="About Us"
-            className="rounded-lg shadow-lg w-full"
-          />
-        </motion.div>
-
-        <div>
-          <motion.h2
-            className="text-2xl font-bold text-gray-800 mb-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Leading Printing Company
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Design N Prints is specialized in fine-quality printing and
-            supporting services for commerce and industry of Gujarat since 2008.
-          </motion.p>
-          <motion.p
-            className="text-gray-600 mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            We are a leading offset press in Ahmedabad. We’ve successfully
-            executed complex jobs for our clients with timely delivery.
-          </motion.p>
-          <motion.div whileHover={{ scale: 1.1 }} className="inline-block">
-            <Link
-              href="/contact"
-              className="bg-gray-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 inline-block"
-            >
-              Get in Touch
-            </Link>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      <VisionSection
-        title="Vision"
-        description="We ensure quality stays high with a reliable workflow system from start to finish."
-      />
-
-      <JourneySection
-        title="Journey"
-        description="Started in 2008, we've made remarkable growth in the printing industry."
-      />
-
-      <div className="bg-gray-900 text-white py-8 px-4 font-poppins">
-        <div className="grid md:grid-cols-4 gap-6">
-          <MissionCard
-            icon="🎯"
-            title="Mission"
-            description="Providing quality printing products and services to support businesses."
-          />
-          <MissionCard
-            icon="⚙️"
-            title="Quality Control"
-            description="Maintaining the highest standards with timely delivery."
-          />
-          <MissionCard
-            icon="🛠️"
-            title="Integrity"
-            description="We deliver with honesty, ethics and accountability."
-          />
-          <MissionCard
-            icon="🚀"
-            title="Innovation"
-            description="We adapt and grow with new solutions that help our clients succeed."
-          />
-        </div>
-      </div>
-
-      <ServicesList />
-    </div>
-  );
+export const metadata: Metadata = {
+  title: 'About Us | Design N Print — Offset Printing Press, Ahmedabad',
+  description:
+    'Design N Print is a leading offset press in Ahmedabad, specialised in fine-quality printing and supporting services for commerce and industry of Gujarat since 2008.',
 };
 
-export default About;
+const stats = [
+  { id: 'years', value: getYearsInBusiness(), label: 'Years of experience' },
+  { id: 'team', value: proofStatCounts.team, label: 'Team members' },
+  { id: 'products', value: proofStatCounts.products, label: 'Products delivered' },
+  { id: 'clients', value: proofStatCounts.clients, label: 'Happy clients' },
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow={`Since ${siteConfig.foundedYear}`}
+        title="Quick designing. Quality printing."
+        description="Design N Print is a leading offset press in Ahmedabad — fine-quality printing and supporting services for the commerce and industry of Gujarat."
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+      >
+        <LinkButton href="/contact" variant="solid">
+          Get in touch <ArrowRight className="h-4 w-4" />
+        </LinkButton>
+      </PageHero>
+
+      <AboutStory />
+
+      <section className="bg-ink py-14 text-white" aria-label="Design N Print in numbers">
+        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-5 sm:px-10 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <Reveal key={stat.id} delay={index * 0.08}>
+              <dd className="font-display text-4xl font-bold sm:text-5xl">
+                <CountUp target={stat.value} suffix="+" />
+              </dd>
+              <dt className="mt-1 text-sm text-white/60">{stat.label}</dt>
+              <span className="cmyk-strip mt-4 block h-1 w-12 rounded-full" />
+            </Reveal>
+          ))}
+        </dl>
+      </section>
+
+      <AboutValues />
+      <AboutTimeline />
+
+      <section className="bg-paper-deep/60 py-16 sm:py-24" aria-labelledby="about-categories-heading">
+        <div className="mx-auto max-w-7xl px-5 sm:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What we do</p>
+            <h2 id="about-categories-heading" className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
+              Six categories, one reliable press.
+            </h2>
+          </Reveal>
+          <ul className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {productCategories.map((category) => (
+              <li key={category.id}>
+                <CategoryCard category={category} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <QuoteBand />
+    </>
+  );
+}

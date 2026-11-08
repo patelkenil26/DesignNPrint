@@ -1,157 +1,115 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getCategoryHref, productCategories } from "@/data/categories";
+import { buildWhatsAppLink, siteConfig } from "@/data/siteConfig";
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "All services", href: "/services/all" },
+  { label: "Contact", href: "/contact" },
+];
+
+const footerLinkClasses = "transition-colors duration-300 hover:text-brand-yellow";
 
 const Footer = () => {
   return (
-    <footer className="bg-ink text-white py-12 px-4 sm:px-6 lg:px-8 font-poppins">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-        {/* Company Section */}
-        <div className="col-span-full sm:col-span-1 md:col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left">
-          <div className="relative w-36 h-12 mb-6">
-            <Image 
-              src="/images/Logo/DesignNPrint.png" 
-              alt="Design N Print Logo" 
-              fill
-              className="object-contain"
-            />
+    <footer className="bg-ink text-white font-poppins">
+      <span className="cmyk-strip block h-1.5 w-full" />
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 sm:px-10 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
+        {/* Brand */}
+        <div>
+          <div className="relative mb-5 h-12 w-40">
+            <Image src="/images/Logo/DesignNPrint.png" alt="Design N Print logo" fill className="object-contain object-left" />
           </div>
-          <p className="text-sm text-gray-400 mb-3 leading-relaxed">
-            Design N Prints is specialized in fine-quality printing and
-            supporting services for the commerce and industry of Gujarat since
-            2008.
+          <p className="max-w-xs text-sm leading-relaxed text-white/60">
+            Fine-quality printing and packaging for commerce and industry in Gujarat — since {siteConfig.foundedYear}.
+            A reliable workflow keeps the quality high, every time.
           </p>
-          <p className="text-sm text-gray-400 leading-relaxed">
-            Our reliable workflow ensures that the quality remains high at all
-            times.
-          </p>
+          <div className="mt-6 flex gap-3">
+            {[
+              { href: siteConfig.facebookUrl, label: "Facebook", icon: <FaFacebookF size={16} /> },
+              { href: siteConfig.instagramUrl, label: "Instagram", icon: <FaInstagram size={16} /> },
+              { href: buildWhatsAppLink("Hi Design N Print"), label: "WhatsApp", icon: <FaWhatsapp size={16} /> },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-yellow hover:text-brand-yellow"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Navigation */}
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
-            Navigation
-          </h3>
-          <ul className="space-y-3 text-sm text-gray-400">
-            <li>
-              <Link
-                href="/"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/booklet-designing-printing"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                Contact
-              </Link>
-            </li>
+        {/* Explore */}
+        <div>
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">Explore</h3>
+          <ul className="space-y-3 text-sm text-white/60">
+            {quickLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className={footerLinkClasses}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Contact Us */}
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
-            Contact Us
-          </h3>
-          <div className="space-y-3 text-sm text-gray-400">
-            <p className="font-semibold text-gray-400">DESIGN N PRINT</p>
-            <p>
-              Modern Corner, opp. National Handloom Street, nr. J.R.Amin Petrol
-              Pump, Naroda, Ahmedabad, Gujarat 382330
-            </p>
-            <p>
-              <a
-                href="tel:+919725281074"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                +91 9725281074
-              </a>
-            </p>
-            <p>
-              <a
-                href="tel:+919913290354"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                +91 9913290354
-              </a>
-            </p>
-            <p>
-              <a
-                href="mailto:designnprintsamd@gmail.com"
-                className="hover:text-yellow-500 transition-colors duration-300"
-              >
-                designnprintsamd@gmail.com
-              </a>
-            </p>
-          </div>
+        {/* Categories */}
+        <div>
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">What we print</h3>
+          <ul className="space-y-3 text-sm text-white/60">
+            {productCategories.map((category) => (
+              <li key={category.id}>
+                <Link href={getCategoryHref(category.slug)} className={footerLinkClasses}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Social Links */}
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-white tracking-wider uppercase mb-5">
-            Follow Us
-          </h3>
-          <div className="flex justify-center sm:justify-start space-x-6">
-            <a
-              href="https://www.facebook.com/share/19FYcyioTy/?mibextid=qi2Omg"
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <FaFacebookF size={24} />
-            </a>
-            <a
-              href="https://www.instagram.com/designnprints.in?igsh=MWRqaWNmNmFoYjZ0bw=="
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={24} />
-            </a>
-            <a
-              href="https://wa.me/919725281074"
-              className="text-yellow-500 hover:text-yellow-400 transition-colors duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
-              <FaWhatsapp size={24} />
-            </a>
-          </div>
+        {/* Contact */}
+        <div>
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">Contact us</h3>
+          <ul className="space-y-4 text-sm text-white/60">
+            <li className="flex gap-3">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-yellow" />
+              <span>{siteConfig.addressLines.join(" ")}</span>
+            </li>
+            <li className="flex gap-3">
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-yellow" />
+              <span className="flex flex-col">
+                <a href={`tel:+${siteConfig.whatsappNumber}`} className={footerLinkClasses}>
+                  {siteConfig.phoneDisplay}
+                </a>
+                <a href={`tel:+${siteConfig.secondaryPhoneNumber}`} className={footerLinkClasses}>
+                  {siteConfig.secondaryPhoneDisplay}
+                </a>
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-yellow" />
+              <a href={`mailto:${siteConfig.email}`} className={`${footerLinkClasses} break-all`}>
+                {siteConfig.email}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
+      <div className="border-t border-white/10 px-5 py-6 text-center text-sm text-white/50">
         <p>
           Copyright © {new Date().getFullYear()} Design N Print. All Rights Reserved | Designed by{" "}
-          <Link
-            href="/"
-            className="text-yellow-500 hover:underline transition-colors duration-300"
-          >
+          <Link href="/" className="text-brand-yellow hover:underline">
             KENIL IT Solution
           </Link>
           .
