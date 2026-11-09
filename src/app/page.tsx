@@ -11,6 +11,7 @@ import ProofSection from '@/components/sections/home/ProofSection';
 import StartPaths from '@/components/sections/home/StartPaths';
 import HomeFaq from '@/components/sections/home/HomeFaq';
 import QuoteCta from '@/components/sections/home/QuoteCta';
+import { getAllProductCards } from '@/lib/productCards';
 
 /**
  * Home page — every section answers one question, in the order a buyer asks them:
@@ -34,7 +35,7 @@ export default function Home() {
       <TrustStrip />
       <ProductShowcase />
       <CategoryStories />
-      <ProductIndex />
+      <ProductIndex products={getAllProductCards()} />
       <FinishesLab />
       <PressProcess />
       <IndustriesSection />

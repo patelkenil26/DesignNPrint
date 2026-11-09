@@ -185,3 +185,60 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* ───────── Print-craft helpers (services pages) ───────── */
+
+/* Halftone dot texture, tinted by --art-accent (set inline by the component) */
+.bg-halftone {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--art-accent, var(--color-brand-blue)) 55%, transparent) 1.6px,
+    transparent 2.2px
+  );
+  background-size: 14px 14px;
+}
+
+/* Crop marks in the four corners — fade in when the parent .group is hovered / focused */
+.crop-marks::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease, inset 0.35s ease;
+  background:
+    linear-gradient(var(--color-ink), var(--color-ink)) top left / 14px 1.5px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) top left / 1.5px 14px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) top right / 14px 1.5px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) top right / 1.5px 14px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) bottom left / 14px 1.5px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) bottom left / 1.5px 14px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) bottom right / 14px 1.5px no-repeat,
+    linear-gradient(var(--color-ink), var(--color-ink)) bottom right / 1.5px 14px no-repeat;
+}
+.group:hover .crop-marks::before,
+.group:focus-visible .crop-marks::before,
+.crop-marks-always::before {
+  opacity: 0.6;
+  inset: 8px;
+}
+
+/* Outlined display type used by the marquee and big numerals */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crop-marks::before {
+    transition: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

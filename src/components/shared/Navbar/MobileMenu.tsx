@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, MessageCircle } from 'lucide-react';
-import { getCategoryHref, productCategories } from '@/data/categories';
-import { getServiceHref, getServicesByCategory } from '@/data/serviceCatalog';
+import { productCatalog } from '@/data/productCatalog';
 import { buildWhatsAppLink } from '@/data/siteConfig';
 
 interface MobileMenuProps {
@@ -19,10 +18,9 @@ const topLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-/** Slide-down mobile menu with an accordion of service categories. */
+/** Slide-down mobile menu with an accordion of every product. */
 export default function MobileMenu({ isOpen, onNavigate }: MobileMenuProps) {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   return (
     <AnimatePresence>
@@ -62,53 +60,24 @@ export default function MobileMenu({ isOpen, onNavigate }: MobileMenuProps) {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden pl-3"
                   >
-                    {productCategories.map((category) => {
-                      const isCategoryOpen = openCategory === category.slug;
-                      return (
-                        <li key={category.id}>
-                          <div className="flex items-center">
-                            <Link
-                              href={getCategoryHref(category.slug)}
-                              onClick={onNavigate}
-                              className="flex-1 rounded-xl px-3 py-2.5 text-sm font-semibold text-white"
-                            >
-                              <span
-                                className="mr-2 inline-block h-2 w-2 rounded-full"
-                                style={{ backgroundColor: `var(--color-brand-${category.accent})` }}
-                              />
-                              {category.name}
-                            </Link>
-                            <button
-                              type="button"
-                              aria-label={`Show ${category.name} services`}
-                              aria-expanded={isCategoryOpen}
-                              onClick={() => setOpenCategory(isCategoryOpen ? null : category.slug)}
-                              className="rounded-xl p-2.5 text-white/60 hover:text-white"
-                            >
-                              <ChevronDown className={`h-4 w-4 transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
-                            </button>
-                          </div>
-                          {isCategoryOpen && (
-                            <ul className="mb-2 ml-5 space-y-1 border-l border-white/10 pl-4">
-                              {getServicesByCategory(category.slug).map((service) => (
-                                <li key={service.slug}>
-                                  <Link
-                                    href={getServiceHref(service.slug)}
-                                    onClick={onNavigate}
-                                    className="block py-1.5 text-sm text-white/65 hover:text-white"
-                                  >
-                                    {service.title}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      );
-                    })}
+                    {productCatalog.map((product) => (
+                      <li key={product.slug}>
+                        <Link
+                          href={`/services/${product.slug}`}
+                          onClick={onNavigate}
+                          className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-white/85 hover:text-white"
+                        >
+                          <span
+                            className="inline-block h-2 w-2 rounded-full"
+                            style={{ backgroundColor: `var(--color-brand-${product.accent})` }}
+                          />
+                          {product.name}
+                        </Link>
+                      </li>
+                    ))}
                     <li>
-                      <Link href="/services/all" onClick={onNavigate} className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-brand-yellow">
-                        View all services →
+                      <Link href="/services" onClick={onNavigate} className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-brand-yellow">
+                        Browse the full range →
                       </Link>
                     </li>
                   </motion.ul>

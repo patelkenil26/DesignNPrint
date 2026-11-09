@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
-import CategoryCard from '@/components/sections/Services/CategoryCard';
+import Link from 'next/link';
 import AboutStory from '@/components/sections/About/AboutStory';
 import AboutTimeline from '@/components/sections/About/AboutTimeline';
 import AboutValues from '@/components/sections/About/AboutValues';
@@ -9,7 +9,7 @@ import LinkButton from '@/components/shared/LinkButton';
 import PageHero from '@/components/shared/PageHero';
 import QuoteBand from '@/components/shared/QuoteBand';
 import Reveal from '@/components/shared/Reveal';
-import { productCategories } from '@/data/categories';
+import { productCatalog } from '@/data/productCatalog';
 import { proofStatCounts } from '@/data/homeData';
 import { getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 
@@ -64,13 +64,19 @@ export default function AboutPage() {
           <Reveal className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What we do</p>
             <h2 id="about-categories-heading" className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
-              Six categories, one reliable press.
+              {productCatalog.length} products, one reliable press.
             </h2>
           </Reveal>
-          <ul className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.map((category) => (
-              <li key={category.id}>
-                <CategoryCard category={category} />
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {productCatalog.map((product) => (
+              <li key={product.slug}>
+                <Link
+                  href={`/services/${product.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink shadow-sm ring-1 ring-ink/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+                >
+                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: `var(--color-brand-${product.accent})` }} />
+                  {product.name}
+                </Link>
               </li>
             ))}
           </ul>

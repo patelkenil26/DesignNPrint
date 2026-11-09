@@ -3,13 +3,13 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getCategoryHref, productCategories } from "@/data/categories";
+import { productCatalog } from "@/data/productCatalog";
 import { buildWhatsAppLink, siteConfig } from "@/data/siteConfig";
 
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "All services", href: "/services/all" },
+  { label: "All products", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -67,13 +67,18 @@ const Footer = () => {
         <div>
           <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">What we print</h3>
           <ul className="space-y-3 text-sm text-white/60">
-            {productCategories.map((category) => (
-              <li key={category.id}>
-                <Link href={getCategoryHref(category.slug)} className={footerLinkClasses}>
-                  {category.name}
+            {productCatalog.slice(0, 8).map((product) => (
+              <li key={product.slug}>
+                <Link href={`/services/${product.slug}`} className={footerLinkClasses}>
+                  {product.name}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/services" className={footerLinkClasses}>
+                All {productCatalog.length} products →
+              </Link>
+            </li>
           </ul>
         </div>
 
