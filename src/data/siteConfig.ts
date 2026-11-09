@@ -1,6 +1,18 @@
 /** Central business constants — change here, the whole site updates. */
 export const siteConfig = {
   name: 'Design N Print',
+  /** production domain — used for canonical URLs, sitemap, Open Graph and structured data */
+  siteUrl: 'https://designnprint.in',
+  /** coordinates of the press (Google Maps pin) */
+  geo: { latitude: 23.0685788, longitude: 72.64642 },
+  seoKeywords: [
+    'printing press in Ahmedabad',
+    'offset printing Ahmedabad',
+    'packaging printing Naroda GIDC',
+    'visiting card printing Ahmedabad',
+    'box printing Ahmedabad',
+    'brochure printing Gujarat',
+  ],
   foundedYear: 2008,
   whatsappNumber: '919725281074',
   phoneDisplay: '+91 97252 81074',

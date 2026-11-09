@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import { Suspense } from 'react';
 import ContactChannels from '@/components/sections/contact/ContactChannels';
 import ContactHero from '@/components/sections/contact/ContactHero';
@@ -7,11 +8,12 @@ import JobTicketForm from '@/components/sections/contact/JobTicketForm';
 import QuoteChecklist from '@/components/sections/contact/QuoteChecklist';
 import Reveal from '@/components/shared/Reveal';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Contact Design N Print | Naroda, Ahmedabad',
   description:
     'Get a quote or visit our press in Naroda, Ahmedabad. Call, WhatsApp or fill a job ticket — we reply the same day.',
-};
+  path: '/contact',
+});
 
 /**
  * Contact — "the studio desk":

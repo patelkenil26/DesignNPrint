@@ -8,6 +8,7 @@ import ProductSpecs from '@/components/sections/Services/ProductSpecs';
 import ProductSwatchCard from '@/components/sections/Services/ProductSwatchCard';
 import TypeCard from '@/components/sections/Services/TypeCard';
 import TypeJumpBar from '@/components/sections/Services/TypeJumpBar';
+import JsonLd from '@/components/shared/JsonLd';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import LinkButton from '@/components/shared/LinkButton';
 import QuoteBand from '@/components/shared/QuoteBand';
@@ -22,6 +23,7 @@ import {
 } from '@/data/productCatalog';
 import { buildWhatsAppLink } from '@/data/siteConfig';
 import { toProductCard } from '@/lib/productCards';
+import { absoluteUrl, buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata } from '@/lib/seo';
 import { getProductCover, getTypeImage } from '@/lib/productImages';
 
 interface ProductPageProps {
@@ -40,11 +42,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return { title: 'Product not found | Design N Print' };
 
   const typeNames = product.types.map((type) => type.name).join(', ');
-  return {
+  return buildPageMetadata({
     title: `${product.name} Printing in Ahmedabad | Design N Print`,
     description: `${product.intro} Types: ${typeNames}.`,
-    alternates: { canonical: `/services/${product.slug}` },
-  };
+    path: `/services/${product.slug}`,
+  });
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -74,7 +76,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
     '@type': 'Service',
     name: `${product.name} printing`,
     description: product.intro,
-    provider: { '@type': 'LocalBusiness', name: 'Design N Print', areaServed: 'Gujarat, India' },
+    serviceType: `${product.name} printing`,
+    areaServed: { '@type': 'State', name: 'Gujarat' },
+    provider: { '@id': absoluteUrl('/#business') },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${product.name} types`,
@@ -87,7 +91,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <JsonLd
+        data={[
+          productSchema,
+          buildFaqSchema(faqs),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: product.name, path: `/services/${product.slug}` },
+          ]),
+        ]}
+      />
       <ProductHero product={product} number={number} coverImage={coverImage} />
       {/* wrapper keeps the sticky jump bar inside the types section only */}
       <div>
