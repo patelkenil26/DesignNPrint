@@ -1,62 +1,51 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import ContactInfoCards from '@/components/sections/contact/ContactInfoCards';
-import ContactMapCard from '@/components/sections/contact/ContactMapCard';
-import EnquiryForm from '@/components/sections/contact/EnquiryForm';
-import PageHero from '@/components/shared/PageHero';
+import ContactChannels from '@/components/sections/contact/ContactChannels';
+import ContactHero from '@/components/sections/contact/ContactHero';
+import FindUs from '@/components/sections/contact/FindUs';
+import JobTicketForm from '@/components/sections/contact/JobTicketForm';
+import QuoteChecklist from '@/components/sections/contact/QuoteChecklist';
 import Reveal from '@/components/shared/Reveal';
 
 export const metadata: Metadata = {
   title: 'Contact Design N Print | Naroda, Ahmedabad',
   description:
-    'Get a quote or visit our press in Naroda, Ahmedabad. Call, WhatsApp or send an enquiry — we reply the same day.',
+    'Get a quote or visit our press in Naroda, Ahmedabad. Call, WhatsApp or fill a job ticket — we reply the same day.',
 };
 
+/**
+ * Contact — "the studio desk":
+ * hero with live open/closed desk → four channels → job-ticket form with a live printed ticket →
+ * what to have ready → how to find us.
+ */
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="We reply the same day"
-        title="Let’s print something great."
-        description="Call us, message us on WhatsApp or drop in at our press in Naroda. Tell us what you need and we’ll take it from there."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
-      />
+      <ContactHero />
+      <ContactChannels />
 
-      <section className="bg-paper py-14 sm:py-20">
+      <section id="job-ticket" className="scroll-mt-24 bg-paper-deep/60 py-16 sm:py-24" aria-labelledby="ticket-heading">
         <div className="mx-auto max-w-7xl px-5 sm:px-10">
-          <ContactInfoCards />
-        </div>
-      </section>
-
-      <section className="bg-paper-deep/60 py-14 sm:py-20" aria-labelledby="enquiry-heading">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Send an enquiry</p>
-            <h2 id="enquiry-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
-              Tell us what you need.
+          <Reveal className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Start a job ticket</p>
+            <h2 id="ticket-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+              Fill it in. Watch it print.
             </h2>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-ink/70">
-              Share the product, quantity and deadline. Your enquiry opens in WhatsApp, ready to send — the fastest way to
-              get a quote.
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
+              Four quick steps. Your answers appear on the ticket as you go — then it opens in WhatsApp, ready to send.
             </p>
-            <span className="cmyk-strip mt-8 block h-1.5 w-24 rounded-full" />
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="rounded-3xl bg-paper p-6 shadow-xl ring-1 ring-ink/5 sm:p-8">
-              <Suspense fallback={<p className="text-sm text-muted">Loading form…</p>}>
-                <EnquiryForm />
-              </Suspense>
-            </div>
-          </Reveal>
+          <div className="mt-12">
+            <Suspense fallback={<p className="text-sm text-muted">Loading the ticket…</p>}>
+              <JobTicketForm />
+            </Suspense>
+          </div>
         </div>
       </section>
 
-      <section className="bg-paper py-14 sm:py-20" aria-label="Map">
-        <div className="mx-auto max-w-7xl px-5 sm:px-10">
-          <ContactMapCard />
-        </div>
-      </section>
+      <QuoteChecklist />
+      <FindUs />
     </>
   );
 }

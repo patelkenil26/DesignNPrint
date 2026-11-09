@@ -18,6 +18,13 @@ export const siteConfig = {
     { label: 'Sunday', value: 'Closed' },
   ],
   expressDispatch: '24–48 hrs',
+  /** machine-readable version of `workingHours` (used for the live open / closed badge) */
+  businessHours: {
+    timeZone: 'Asia/Kolkata',
+    openWeekdays: [1, 2, 3, 4, 5, 6],
+    openHour: 10,
+    closeHour: 19,
+  },
   googlePlaceId: 'ChIJD_1aL2sKCGwRynL88rkay5s',
   mapsEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14609.063528913262!2d72.6462253!3d23.0683253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6c080a6b2f5afd0f%3A0x9bcb1ab9f2fc72ca!2sDesign%20N%20Prints!5e0!3m2!1sen!2sin!4v1718798257421!5m2!1sen!2sin',

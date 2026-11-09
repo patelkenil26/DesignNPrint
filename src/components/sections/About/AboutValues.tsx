@@ -1,15 +1,34 @@
 import Reveal from '@/components/shared/Reveal';
-import { coreValues } from '@/data/aboutData';
+import { coreValues, type InkColor } from '@/data/aboutData';
 
+const inkColor: Record<InkColor, string> = {
+  blue: 'var(--color-brand-blue)',
+  red: 'var(--color-brand-red)',
+  yellow: 'var(--color-brand-yellow)',
+  ink: 'var(--color-ink)',
+};
+
+/** Black ink needs light text once the plate floods the card. */
+const textOnFlood: Record<InkColor, string> = {
+  blue: 'group-hover:text-ink group-focus-visible:text-ink',
+  red: 'group-hover:text-white group-focus-visible:text-white',
+  yellow: 'group-hover:text-ink group-focus-visible:text-ink',
+  ink: 'group-hover:text-white group-focus-visible:text-white',
+};
+
+/** Four values, four process inks — hover and the card is "printed" in its ink from the bottom up. */
 export default function AboutValues() {
   return (
     <section className="bg-paper py-16 sm:py-24" aria-labelledby="values-heading">
       <div className="mx-auto max-w-7xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What drives us</p>
-          <h2 id="values-heading" className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
+          <h2 id="values-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
             Quality is a habit, not a promise.
           </h2>
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
+            Four colours make every print. Four principles make every job.
+          </p>
         </Reveal>
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -18,13 +37,37 @@ export default function AboutValues() {
             return (
               <li key={value.id}>
                 <Reveal delay={index * 0.08} className="h-full">
-                  <div className="group h-full rounded-3xl bg-white p-7 shadow-sm ring-1 ring-ink/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-brand-yellow transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <article
+                    tabIndex={0}
+                    className={`group relative flex h-full min-h-[18rem] flex-col overflow-hidden rounded-3xl bg-white p-7 shadow-sm ring-1 ring-ink/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 origin-bottom scale-y-0 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-y-100 group-focus-visible:scale-y-100"
+                      style={{ backgroundColor: inkColor[value.ink] }}
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-3 top-0 select-none font-display text-[9rem] font-black leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-black/10"
+                    >
+                      {value.plate}
+                    </span>
+
+                    <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-brand-yellow transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-white group-hover:text-ink">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="mt-5 font-display text-lg font-bold text-ink">{value.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink/70">{value.description}</p>
-                  </div>
+                    <span
+                      aria-hidden="true"
+                      className="relative mt-4 block h-1 w-10 rounded-full transition-all duration-500 group-hover:w-16"
+                      style={{ backgroundColor: inkColor[value.ink] }}
+                    />
+                    <h3 className={`relative mt-auto pt-10 font-display text-xl font-bold text-ink transition-colors duration-500 ${textOnFlood[value.ink]}`}>
+                      {value.title}
+                    </h3>
+                    <p className={`relative mt-2 text-sm leading-relaxed text-ink/70 transition-colors duration-500 ${textOnFlood[value.ink]}`}>
+                      {value.description}
+                    </p>
+                  </article>
                 </Reveal>
               </li>
             );

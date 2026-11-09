@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, MessageCircle } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
-import { getProductIndexLink, productIndex, type IndexedProduct } from '@/data/productIndex';
+import type { ProductCardData } from '@/lib/productCards';
 
-const accentTint = (product: IndexedProduct, percent: number) =>
+const accentTint = (product: ProductCardData, percent: number) =>
   `color-mix(in srgb, var(--color-brand-${product.accent}) ${percent}%, var(--color-paper))`;
 
 const formatNumber = (index: number) => String(index + 1).padStart(2, '0');
@@ -17,10 +17,13 @@ const formatNumber = (index: number) => String(index + 1).padStart(2, '0');
  * Desktop — hover/focus a row and the preview panel on the right swaps to that product.
  * Mobile — each row carries its own thumbnail and links straight through.
  */
-export default function ProductIndex() {
+interface ProductIndexProps {
+  products: ProductCardData[];
+}
+
+export default function ProductIndex({ products: productIndex }: ProductIndexProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProduct = productIndex[activeIndex] ?? productIndex[0];
-  const activeLink = getProductIndexLink(activeProduct);
 
   return (
     <section id="all-products" className="bg-paper py-20 sm:py-28" aria-labelledby="product-index-heading">
@@ -39,7 +42,7 @@ export default function ProductIndex() {
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <ol className="border-t border-ink/15">
             {productIndex.map((product, index) => {
-              const { href, isExternal } = getProductIndexLink(product);
+              const href = `/services/${product.slug}`;
               const isActive = index === activeIndex;
               const rowClasses =
                 'group relative flex items-center gap-4 overflow-hidden border-b border-ink/15 py-4 pr-2 transition-colors sm:gap-6 sm:py-5 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-blue';
@@ -74,7 +77,7 @@ export default function ProductIndex() {
                     >
                       {product.name}
                     </span>
-                    <span className="mt-0.5 block text-sm leading-snug text-ink/60 lg:hidden">{product.line}</span>
+                    <span className="mt-0.5 block text-sm leading-snug text-ink/60 lg:hidden">{product.tagline}</span>
                   </span>
 
                   <span
@@ -82,23 +85,17 @@ export default function ProductIndex() {
                       isActive ? 'bg-ink text-white' : ''
                     }`}
                   >
-                    {isExternal ? <MessageCircle className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
-                    <span className="sr-only">{isExternal ? `Get a quote for ${product.name}` : `View ${product.name}`}</span>
+                    <ArrowUpRight className="h-4 w-4" />
+                    <span className="sr-only">View {product.name}</span>
                   </span>
                 </>
               );
 
               return (
-                <li key={product.id} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)}>
-                  {isExternal ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className={rowClasses}>
-                      {rowContent}
-                    </a>
-                  ) : (
-                    <Link href={href} className={rowClasses}>
-                      {rowContent}
-                    </Link>
-                  )}
+                <li key={product.slug} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)}>
+                  <Link href={href} className={rowClasses}>
+                    {rowContent}
+                  </Link>
                 </li>
               );
             })}
@@ -115,7 +112,7 @@ export default function ProductIndex() {
                   const isActive = index === activeIndex;
                   return (
                     <div
-                      key={product.id}
+                      key={product.slug}
                       aria-hidden={!isActive}
                       className={`absolute inset-0 transition-all duration-500 ease-out ${
                         isActive ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
@@ -124,7 +121,7 @@ export default function ProductIndex() {
                       {product.image ? (
                         <Image
                           src={product.image}
-                          alt={product.imageAlt ?? product.name}
+                          alt={product.coverAlt}
                           fill
                           sizes="(min-width: 1024px) 40vw, 0px"
                           className="object-cover"
@@ -146,11 +143,11 @@ export default function ProductIndex() {
               </div>
 
               <div className="mt-5 flex items-start justify-between gap-6">
-                <div key={activeProduct.id} className="animate-fade-up">
+                <div key={activeProduct.slug} className="animate-fade-up">
                   <h3 className="font-display text-xl font-bold text-ink">{activeProduct.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink/70">{activeProduct.line}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink/70">{activeProduct.tagline}</p>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted">
-                    {activeLink.isExternal ? 'Quote on WhatsApp' : 'View product page'}
+                    View product page
                   </p>
                 </div>
                 <span className="shrink-0 font-display text-sm font-semibold text-muted">
