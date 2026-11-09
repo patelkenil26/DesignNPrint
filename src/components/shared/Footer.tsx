@@ -107,12 +107,18 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/10 px-5 py-6 text-center text-sm text-white/50">
-        <p>
-          Copyright © {new Date().getFullYear()} Design N Print. All Rights Reserved | Designed by{" "}
-          <Link href="/" className="text-brand-yellow hover:underline">
-            KENIL IT Solution
+        <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+          <Link href="/privacy-policy" className={footerLinkClasses}>
+            Privacy Policy
           </Link>
-          .
+          <span aria-hidden="true">·</span>
+          <Link href="/terms" className={footerLinkClasses}>
+            Terms &amp; Conditions
+          </Link>
+        </p>
+        <p className="mt-3">
+          Copyright © {new Date().getFullYear()} Design N Print. All Rights Reserved | Designed by{" "}
+          <span className="text-brand-yellow">KENIL IT Solution</span>.
         </p>
       </div>
     </footer>
