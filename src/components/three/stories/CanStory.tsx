@@ -5,14 +5,12 @@ import { Billboard } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { smoothStep } from '@/lib/useScrollTrack';
+import { BODY_BOTTOM, BODY_TOP, BOTTOM_PROFILE, CAN_RADIUS, TOP_PROFILE, toLathePoints } from './canProfile';
 import { easeOutBack, easeOutCubic } from './storyGeometry';
 import { STICKER_KINDS, StoryProps } from './storyTextures';
 
 const FLOOR_Y = -1.25;
 const CAN_SCALE = 1.25;
-const CAN_RADIUS = 0.62;
-const BODY_BOTTOM = 0.14;
-const BODY_TOP = 1.72;
 
 const LABEL_RADIUS = CAN_RADIUS + 0.004;
 const LABEL_HEIGHT = 1.1;
@@ -27,30 +25,6 @@ const PEEL_CURL = 0.6;
 const FINAL_SPIN = LABEL_START_ANGLE + LABEL_ARC / 2 + Math.PI * 2;
 const SETTLE_TURN = FINAL_SPIN - LABEL_ARC;
 
-const BOTTOM_PROFILE: Array<[number, number]> = [
-  [0, 0.13],
-  [0.26, 0.11],
-  [0.38, 0.05],
-  [0.44, 0],
-  [0.5, 0],
-  [0.55, 0.04],
-  [0.6, 0.1],
-  [CAN_RADIUS, BODY_BOTTOM],
-];
-
-const TOP_PROFILE: Array<[number, number]> = [
-  [CAN_RADIUS, BODY_TOP],
-  [0.6, 1.8],
-  [0.55, 1.9],
-  [0.505, 1.97],
-  [0.495, 2.02],
-  [0.47, 2.04],
-  [0.46, 2.0],
-  [0.4, 1.985],
-  [0, 1.985],
-];
-
-const toLathePoints = (profile: Array<[number, number]>) => profile.map(([x, y]) => new THREE.Vector2(x, y));
 
 function updateLabelShape(geometry: THREE.PlaneGeometry, baseY: Float32Array, wrap: number): void {
   const positions = geometry.attributes.position as THREE.BufferAttribute;

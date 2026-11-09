@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
+    "@react-three/postprocessing": "^3.2.2",
     "@types/three": "^0.187.0",
     "color-thief-browser": "^2.0.2",
     "framer-motion": "^14.0.0",

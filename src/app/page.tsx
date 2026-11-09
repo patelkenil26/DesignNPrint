@@ -1,5 +1,5 @@
 import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
-import HeroJourney from '@/components/sections/home/HeroJourney';
+import CursorDesignHero from '@/components/sections/home/CursorDesignHero';
 import ProductShowcase from '@/components/sections/home/ProductShowcase';
 import CategoryStories from '@/components/sections/home/CategoryStories';
 import FinishesLab from '@/components/sections/home/FinishesLab';
@@ -10,7 +10,8 @@ import QuoteCta from '@/components/sections/home/QuoteCta';
 
 /**
  * Home page — "3D print studio" story:
- * 1. Hero journey   — visiting card unfolds into a die-cut sheet and folds into a box
+ * 1. Cursor-design hero — a team of cursors draws and colours our print products
+ *    (the old card→box HeroJourney stays in the repo; it will move into the Boxes category)
  * 2. Product ring   — 3D carousel of everything the press prints
  * 3. Category stories — one 3D scene per main category (bottle label, cards, brochure, boxes, files, pouches)
  * 4. Finishes lab   — interactive 3D card (velvet / spot UV / foil / emboss)
@@ -22,7 +23,7 @@ import QuoteCta from '@/components/sections/home/QuoteCta';
 export default function Home() {
   return (
     <SmoothScrollProvider>
-      <HeroJourney />
+      <CursorDesignHero />
       <ProductShowcase />
       <CategoryStories />
       <FinishesLab />

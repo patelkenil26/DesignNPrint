@@ -14,7 +14,7 @@ function isWebGLAvailable(): boolean {
 }
 
 /** Soft-box studio lighting built from procedural light panels (no network HDRI needed). */
-export function StudioLighting({ keyIntensity = 1.5 }: { keyIntensity?: number }) {
+export function StudioLighting({ keyIntensity = 1.5, stripLights = false }: { keyIntensity?: number; stripLights?: boolean }) {
   return (
     <>
       <ambientLight intensity={0.45} />
@@ -25,6 +25,13 @@ export function StudioLighting({ keyIntensity = 1.5 }: { keyIntensity?: number }
         <Lightformer form="rect" intensity={2.2} position={[-6, 2, 3]} scale={[4, 6, 1]} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={2.2} position={[6, 1.5, -2]} scale={[4, 6, 1]} target={[0, 0, 0]} />
         <Lightformer form="ring" intensity={1.4} position={[0, 2, -6]} scale={6} target={[0, 0, 0]} />
+        {stripLights && (
+          <>
+            {/* tall soft-box strips: long, clean highlights on glossy and metal surfaces */}
+            <Lightformer form="rect" intensity={5} position={[-3.5, 0, 5]} scale={[0.7, 9, 1]} target={[0, 0, 0]} />
+            <Lightformer form="rect" intensity={4} position={[4, 1, 4]} scale={[0.5, 8, 1]} target={[0, 0, 0]} />
+          </>
+        )}
       </Environment>
     </>
   );
@@ -39,6 +46,8 @@ interface StageCanvasProps {
   fov?: number;
   /** Needed by the press scene (clipping planes) */
   localClipping?: boolean;
+  /** Enable real cast shadows (the scene needs a shadow-casting light) */
+  shadows?: boolean | "variance";
 }
 
 /**
@@ -54,6 +63,7 @@ export default function StageCanvas({
   cameraPosition = [0, 0.4, 6.5],
   fov = 34,
   localClipping = false,
+  shadows = false,
 }: StageCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -76,6 +86,7 @@ export default function StageCanvas({
         fallback
       ) : (
         <Canvas
+          shadows={shadows}
           frameloop={isVisible ? 'always' : 'never'}
           dpr={[1, 1.75]}
           camera={{ position: cameraPosition, fov, near: 0.1, far: 80 }}
