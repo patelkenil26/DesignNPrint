@@ -15,7 +15,7 @@ export default function ProductShowcase() {
   const activeProduct = showcaseProducts[activeIndex] ?? showcaseProducts[0];
 
   return (
-    <section ref={trackRef} className="relative h-[900vh]" aria-labelledby="showcase-heading">
+    <section ref={trackRef} className="relative h-[600vh]" aria-labelledby="showcase-heading">
       <div
         ref={stickyRef}
         className="sticky top-[var(--nav-height)] h-[calc(100svh-var(--nav-height))] w-full overflow-hidden transition-colors duration-700"
@@ -27,9 +27,9 @@ export default function ProductShowcase() {
 
         <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-5 py-8 sm:px-10 lg:justify-center lg:py-0">
           <div className="max-w-md">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What we print</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Most requested</p>
             <h2 id="showcase-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
-              Everything your brand needs on paper.
+              Start with what businesses order most.
             </h2>
           </div>
 

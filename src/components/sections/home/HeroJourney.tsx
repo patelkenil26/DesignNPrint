@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
 import LinkButton from '@/components/shared/LinkButton';
 import { journeyChapters } from '@/data/homeData';
+import { productIndex } from '@/data/productIndex';
 import { buildWhatsAppLink, getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 import { useChapterIndex, useScrollTrack } from '@/lib/useScrollTrack';
 
@@ -79,7 +80,7 @@ export default function HeroJourney() {
                       >
                         <MessageCircle className="h-4 w-4" /> Get a Quote on WhatsApp
                       </LinkButton>
-                      <LinkButton href="/services/box-designing-printing" variant="outline">
+                      <LinkButton href="/services" variant="outline">
                         Explore Services <ArrowRight className="h-4 w-4" />
                       </LinkButton>
                     </div>
@@ -93,8 +94,8 @@ export default function HeroJourney() {
                           <dd className="font-display text-2xl font-bold text-ink">{getYearsInBusiness()}+ yrs</dd>
                         </div>
                         <div>
-                          <dt className="text-xs text-muted">Product types</dt>
-                          <dd className="font-display text-2xl font-bold text-ink">20+</dd>
+                          <dt className="text-xs text-muted">Products</dt>
+                          <dd className="font-display text-2xl font-bold text-ink">{productIndex.length}</dd>
                         </div>
                         <div>
                           <dt className="text-xs text-muted">Express dispatch</dt>
@@ -103,7 +104,7 @@ export default function HeroJourney() {
                       </dl>
                       <div className="mt-6">
                         <Link
-                          href="/services/box-designing-printing"
+                          href="/services"
                           className="inline-flex items-center gap-2 text-sm font-semibold text-ink underline-offset-4 hover:underline"
                         >
                           See what we can print <ArrowRight className="h-4 w-4" />

@@ -21,7 +21,7 @@ const STATION_X = [-2.4, -0.8, 0.8, 2.4];
 const ROLLER_RADIUS = 0.3;
 const ROLLER_LENGTH = 2.5;
 const SHEET_START_X = -6.4;
-const SHEET_END_X = 4.6;
+const SHEET_END_X = 4.4;
 const ART_WIDTH = 1024;
 const ART_HEIGHT = Math.round((ART_WIDTH * SHEET.width) / SHEET.length);
 
@@ -127,23 +127,31 @@ function PressStage({ getProgress }: { getProgress: () => number }) {
     const aspect = state.size.width / state.size.height;
     const isNarrow = aspect < 1.05;
 
-    const travel = THREE.MathUtils.clamp((progress - 0.1) / 0.8, 0, 1);
-    const lift = smoothStep(0.82, 1, progress);
+    // the sheet crosses all four units by p = 0.7, then the camera flies in to show the finished print
+    const travel = THREE.MathUtils.clamp((progress - 0.08) / 0.62, 0, 1);
+    const reveal = smoothStep(0.7, 0.96, progress);
     if (sheetRef.current) {
       sheetRef.current.position.x = THREE.MathUtils.lerp(SHEET_START_X, SHEET_END_X, travel);
-      sheetRef.current.position.y = lift * 0.9;
-      sheetRef.current.rotation.x = -lift * 0.5;
-      sheetRef.current.rotation.y = lift * 0.35;
+      sheetRef.current.position.y = reveal * 0.9;
+      sheetRef.current.rotation.x = reveal * 1.2;
+      sheetRef.current.rotation.y = reveal * (-0.1 + state.pointer.x * 0.12);
+      sheetRef.current.scale.setScalar(1 + reveal * 0.25);
     }
 
     const rollerAngle = progress * 46;
     topRollers.current.forEach((roller) => roller && (roller.rotation.z = -rollerAngle));
     bottomRollers.current.forEach((roller) => roller && (roller.rotation.z = rollerAngle));
 
-    const followX = smoothStep(0.55, 1, progress) * 2.6;
-    const distance = isNarrow ? 19 : aspect < 1.4 ? 15 : 12.5;
-    state.camera.position.set(followX + state.pointer.x * 0.4, 4.6 + state.pointer.y * 0.2, distance);
-    state.camera.lookAt(followX, 0.1, 0);
+    const followX = smoothStep(0.5, 0.7, progress) * 2.6;
+    const baseDistance = isNarrow ? 19 : aspect < 1.4 ? 15 : 12.5;
+    const revealDistance = isNarrow ? 12 : aspect < 1.4 ? 9.5 : 7.4;
+    const cameraX = THREE.MathUtils.lerp(followX, SHEET_END_X, reveal);
+    state.camera.position.set(
+      cameraX + state.pointer.x * 0.4,
+      THREE.MathUtils.lerp(4.6, 1.0, reveal) + state.pointer.y * 0.2,
+      THREE.MathUtils.lerp(baseDistance, revealDistance, reveal),
+    );
+    state.camera.lookAt(cameraX, THREE.MathUtils.lerp(0.1, 1.15, reveal), 0);
   });
 
   if (!assets || !materials) return null;
