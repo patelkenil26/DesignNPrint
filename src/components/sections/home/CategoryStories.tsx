@@ -78,7 +78,7 @@ export default function CategoryStories() {
 
         <CategoryStoriesScene getProgress={getProgress} onActiveChange={handleActiveChange} />
 
-        <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-5 py-8 sm:px-10 lg:justify-center lg:py-0">
+        <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-5 pb-20 pt-8 sm:px-10 lg:justify-center lg:py-0">
           <div className="max-w-md">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Explore by category</p>
             <h2

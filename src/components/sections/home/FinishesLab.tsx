@@ -19,7 +19,7 @@ export default function FinishesLab() {
             Don&apos;t just read about finishes. Feel them.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
-            Pick a finish and drag your mouse over the card — watch how real print finishes catch the light.
+            Pick a finish, then move your cursor (or drag your finger) over the card — watch how real print finishes catch the light.
           </p>
 
           <div role="radiogroup" aria-label="Print finish" className="mt-8 grid gap-3 sm:grid-cols-2">
