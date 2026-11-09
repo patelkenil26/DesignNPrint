@@ -242,3 +242,40 @@ html.lenis body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* ───────── About page helpers ───────── */
+.text-outline-light {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
+}
+
+@keyframes bar-in {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-bar-in {
+  transform-origin: bottom;
+  animation: bar-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bar-in,
+  .animate-spin-slow {
+    animation: none;
+  }
+}

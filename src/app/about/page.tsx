@@ -1,17 +1,14 @@
 import type { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import AboutHero from '@/components/sections/About/AboutHero';
+import AboutManifesto from '@/components/sections/About/AboutManifesto';
+import AboutRange from '@/components/sections/About/AboutRange';
+import AboutStats from '@/components/sections/About/AboutStats';
 import AboutStory from '@/components/sections/About/AboutStory';
 import AboutTimeline from '@/components/sections/About/AboutTimeline';
 import AboutValues from '@/components/sections/About/AboutValues';
-import CountUp from '@/components/shared/CountUp';
-import LinkButton from '@/components/shared/LinkButton';
-import PageHero from '@/components/shared/PageHero';
+import AboutVisit from '@/components/sections/About/AboutVisit';
+import ProductMarquee from '@/components/sections/Services/ProductMarquee';
 import QuoteBand from '@/components/shared/QuoteBand';
-import Reveal from '@/components/shared/Reveal';
-import { productCatalog } from '@/data/productCatalog';
-import { proofStatCounts } from '@/data/homeData';
-import { getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About Us | Design N Print — Offset Printing Press, Ahmedabad',
@@ -19,70 +16,23 @@ export const metadata: Metadata = {
     'Design N Print is a leading offset press in Ahmedabad, specialised in fine-quality printing and supporting services for commerce and industry of Gujarat since 2008.',
 };
 
-const stats = [
-  { id: 'years', value: getYearsInBusiness(), label: 'Years of experience' },
-  { id: 'team', value: proofStatCounts.team, label: 'Team members' },
-  { id: 'products', value: proofStatCounts.products, label: 'Products delivered' },
-  { id: 'clients', value: proofStatCounts.clients, label: 'Happy clients' },
-];
-
+/**
+ * About — told like a press run:
+ * registered headline → manifesto that inks in → who we are → numbers → values in four inks →
+ * a journey line that prints as you scroll → the range → visit us → quote.
+ */
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow={`Since ${siteConfig.foundedYear}`}
-        title="Quick designing. Quality printing."
-        description="Design N Print is a leading offset press in Ahmedabad — fine-quality printing and supporting services for the commerce and industry of Gujarat."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
-      >
-        <LinkButton href="/contact" variant="solid">
-          Get in touch <ArrowRight className="h-4 w-4" />
-        </LinkButton>
-      </PageHero>
-
+      <AboutHero />
+      <AboutManifesto />
       <AboutStory />
-
-      <section className="bg-ink py-14 text-white" aria-label="Design N Print in numbers">
-        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-5 sm:px-10 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <Reveal key={stat.id} delay={index * 0.08}>
-              <dd className="font-display text-4xl font-bold sm:text-5xl">
-                <CountUp target={stat.value} suffix="+" />
-              </dd>
-              <dt className="mt-1 text-sm text-white/60">{stat.label}</dt>
-              <span className="cmyk-strip mt-4 block h-1 w-12 rounded-full" />
-            </Reveal>
-          ))}
-        </dl>
-      </section>
-
+      <AboutStats />
       <AboutValues />
       <AboutTimeline />
-
-      <section className="bg-paper-deep/60 py-16 sm:py-24" aria-labelledby="about-categories-heading">
-        <div className="mx-auto max-w-7xl px-5 sm:px-10">
-          <Reveal className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What we do</p>
-            <h2 id="about-categories-heading" className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
-              {productCatalog.length} products, one reliable press.
-            </h2>
-          </Reveal>
-          <ul className="mt-10 flex flex-wrap gap-3">
-            {productCatalog.map((product) => (
-              <li key={product.slug}>
-                <Link
-                  href={`/services/${product.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink shadow-sm ring-1 ring-ink/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
-                >
-                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: `var(--color-brand-${product.accent})` }} />
-                  {product.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
+      <ProductMarquee />
+      <AboutRange />
+      <AboutVisit />
       <QuoteBand />
     </>
   );
