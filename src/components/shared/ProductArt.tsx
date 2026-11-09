@@ -19,7 +19,7 @@ export default function ProductArt({ accent, mark, caption, className = '' }: Pr
     <div
       role="img"
       aria-label={caption}
-      className={`relative flex h-full w-full flex-col justify-end gap-1 overflow-hidden p-5 ${className}`}
+      className={`@container relative flex h-full w-full flex-col justify-end gap-1 overflow-hidden p-3 @[12rem]:p-5 ${className}`}
       style={{
         ['--art-accent' as string]: accentColor,
         backgroundColor: `color-mix(in srgb, ${accentColor} 24%, var(--color-paper))`,
@@ -30,8 +30,8 @@ export default function ProductArt({ accent, mark, caption, className = '' }: Pr
         className="absolute -right-6 -top-6 h-32 w-32 rounded-full opacity-60 blur-2xl"
         style={{ backgroundColor: accentColor }}
       />
-      <span className="relative font-display text-sm font-bold leading-tight text-ink/80">{caption}</span>
-      <span className="text-outline relative font-display text-6xl font-black leading-none sm:text-7xl">{mark}</span>
+      <span className="relative hidden font-display text-sm font-bold leading-tight text-ink/80 @[12rem]:block">{caption}</span>
+      <span className="text-outline relative font-display text-4xl font-black leading-none @[12rem]:text-6xl @[20rem]:text-7xl">{mark}</span>
     </div>
   );
 }

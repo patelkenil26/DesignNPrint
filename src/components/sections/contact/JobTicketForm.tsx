@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckCircle2, Loader2, MessageCircle, XCircle } from 'lucide-react';
 import JobTicketPreview, { type TicketRow } from '@/components/sections/contact/JobTicketPreview';
+import MobileTicketBar from '@/components/sections/contact/MobileTicketBar';
 import { deadlineChoices, productChoices, quantityChoices } from '@/data/contactData';
 import { findProduct } from '@/data/productCatalog';
 import { buildWhatsAppLink } from '@/data/siteConfig';
@@ -43,7 +44,7 @@ const emptyValues: TicketValues = {
 };
 
 const fieldClasses =
-  'w-full rounded-2xl bg-white px-4 py-3.5 text-sm text-ink ring-1 ring-ink/10 transition placeholder:text-ink/35 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
+  'w-full rounded-2xl bg-white px-4 py-3.5 text-base text-ink ring-1 sm:text-sm ring-ink/10 transition placeholder:text-ink/35 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
 
 const chipClasses = (isActive: boolean) =>
   `rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
@@ -139,7 +140,8 @@ export default function JobTicketForm() {
   );
 
   const progressSteps = [productText || values.notes.trim(), quantityText, deadlineText, values.name.trim(), values.phone.trim()];
-  const ticketProgress = progressSteps.filter(Boolean).length / progressSteps.length;
+  const filledStepCount = progressSteps.filter(Boolean).length;
+  const ticketProgress = filledStepCount / progressSteps.length;
 
   const updateValue = <Key extends keyof TicketValues>(key: Key, value: TicketValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -202,8 +204,22 @@ export default function JobTicketForm() {
 
   return (
     <>
-      <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-        <form id={FORM_ID} onSubmit={handleTicketSubmit} noValidate className="space-y-9 rounded-3xl bg-paper p-6 shadow-xl ring-1 ring-ink/5 sm:p-9">
+      <div className="grid items-start gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        {/* phones: the live ticket rides along as a slim bar under the navbar */}
+        <div className="sticky top-[var(--nav-height)] z-20 -mx-5 sm:-mx-10 lg:hidden">
+          <MobileTicketBar
+            ticketNumber={ticketNumber}
+            rows={ticketRows}
+            progress={ticketProgress}
+            filledSteps={filledStepCount}
+            totalSteps={progressSteps.length}
+            isSending={isSending}
+            isSent={isSent}
+            formId={FORM_ID}
+          />
+        </div>
+
+        <form id={FORM_ID} onSubmit={handleTicketSubmit} noValidate className="space-y-8 rounded-3xl bg-paper p-5 shadow-xl ring-1 ring-ink/5 sm:space-y-9 sm:p-9">
           <fieldset>
             <legend className="sr-only">What do you need?</legend>
             <StepHeading step={1} title="What do you need?" hint="pick one or more" />
@@ -275,7 +291,7 @@ export default function JobTicketForm() {
                 inputMode="numeric"
                 placeholder="or type a number"
                 aria-label="Custom quantity"
-                className={`${fieldClasses} !w-44 !rounded-full !py-2 !text-sm`}
+                className={`${fieldClasses} !w-44 !rounded-full !py-2`}
               />
             </div>
           </fieldset>
@@ -378,7 +394,7 @@ export default function JobTicketForm() {
           </button>
         </form>
 
-        <div className="lg:sticky lg:top-[calc(var(--nav-height)+1.5rem)]">
+        <div className="hidden lg:sticky lg:top-[calc(var(--nav-height)+1.5rem)] lg:block">
           <JobTicketPreview
             ticketNumber={ticketNumber}
             rows={ticketRows}

@@ -1,20 +1,33 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { storyHighlights } from '@/data/aboutData';
 
+/** `sm:` offsets place the cards in an overlapping stack on larger screens; on phones they simply stack down the page. */
 const cardPoses = [
-  { rotate: -4, rise: [60, -30], className: 'left-0 top-0 sm:left-2', ink: 'var(--color-brand-blue)' },
-  { rotate: 3, rise: [90, -50], className: 'right-0 top-[7.5rem] sm:right-2 sm:top-36', ink: 'var(--color-brand-red)' },
-  { rotate: -2, rise: [120, -70], className: 'left-4 top-[15rem] sm:left-10 sm:top-72', ink: 'var(--color-brand-yellow)' },
+  { rotate: -4, mobileRotate: -1.5, rise: [60, -30], className: 'sm:left-2 sm:top-0', ink: 'var(--color-brand-blue)' },
+  { rotate: 3, mobileRotate: 1.2, rise: [90, -50], className: 'sm:right-2 sm:top-36', ink: 'var(--color-brand-red)' },
+  { rotate: -2, mobileRotate: -0.8, rise: [120, -70], className: 'sm:left-10 sm:top-72', ink: 'var(--color-brand-yellow)' },
 ] as const;
 
-/** Three "proof sheets" that drift into a stack at different speeds as the section scrolls past. */
+/**
+ * Three "proof sheets". On tablet/desktop they drift into an overlapping stack at different speeds as the
+ * section scrolls past; on phones they sit one under the other so every word stays readable.
+ */
 export default function StoryStack() {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [isStackLayout, setIsStackLayout] = useState(false);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start end', 'end start'] });
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 640px)');
+    const syncLayout = () => setIsStackLayout(query.matches);
+    syncLayout();
+    query.addEventListener('change', syncLayout);
+    return () => query.removeEventListener('change', syncLayout);
+  }, []);
 
   const firstRise = useTransform(scrollYProgress, [0, 1], [...cardPoses[0].rise]);
   const secondRise = useTransform(scrollYProgress, [0, 1], [...cardPoses[1].rise]);
@@ -22,14 +35,18 @@ export default function StoryStack() {
   const risers = [firstRise, secondRise, thirdRise];
 
   return (
-    <div ref={containerRef} className="relative mx-auto h-[28rem] w-full max-w-md sm:h-[34rem]">
+    <div ref={containerRef} className="relative mx-auto flex w-full max-w-md flex-col gap-4 sm:block sm:h-[34rem]">
       {storyHighlights.map((highlight, index) => {
         const pose = cardPoses[index];
         return (
           <motion.article
             key={highlight.id}
-            className={`absolute w-[85%] rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-ink/10 sm:w-[80%] sm:p-7 ${pose.className}`}
-            style={{ y: prefersReducedMotion ? 0 : risers[index], rotate: pose.rotate, zIndex: index + 1 }}
+            className={`relative w-full rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-ink/10 sm:absolute sm:w-[80%] sm:p-7 ${pose.className}`}
+            style={{
+              y: prefersReducedMotion || !isStackLayout ? 0 : risers[index],
+              rotate: isStackLayout ? pose.rotate : pose.mobileRotate,
+              zIndex: index + 1,
+            }}
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-60px' }}

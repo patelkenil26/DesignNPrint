@@ -1,22 +1,8 @@
+import ValueCard from '@/components/sections/About/ValueCard';
 import Reveal from '@/components/shared/Reveal';
-import { coreValues, type InkColor } from '@/data/aboutData';
+import { coreValues } from '@/data/aboutData';
 
-const inkColor: Record<InkColor, string> = {
-  blue: 'var(--color-brand-blue)',
-  red: 'var(--color-brand-red)',
-  yellow: 'var(--color-brand-yellow)',
-  ink: 'var(--color-ink)',
-};
-
-/** Black ink needs light text once the plate floods the card. */
-const textOnFlood: Record<InkColor, string> = {
-  blue: 'group-hover:text-ink group-focus-visible:text-ink',
-  red: 'group-hover:text-white group-focus-visible:text-white',
-  yellow: 'group-hover:text-ink group-focus-visible:text-ink',
-  ink: 'group-hover:text-white group-focus-visible:text-white',
-};
-
-/** Four values, four process inks — hover and the card is "printed" in its ink from the bottom up. */
+/** Four values, four process inks — each card is "printed" in its ink (hover on desktop, centred-on-screen on phones). */
 export default function AboutValues() {
   return (
     <section className="bg-paper py-16 sm:py-24" aria-labelledby="values-heading">
@@ -31,43 +17,16 @@ export default function AboutValues() {
           </p>
         </Reveal>
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {coreValues.map((value, index) => {
             const Icon = value.icon;
             return (
               <li key={value.id}>
                 <Reveal delay={index * 0.08} className="h-full">
-                  <article
-                    tabIndex={0}
-                    className={`group relative flex h-full min-h-[18rem] flex-col overflow-hidden rounded-3xl bg-white p-7 shadow-sm ring-1 ring-ink/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue`}
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0 origin-bottom scale-y-0 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-y-100 group-focus-visible:scale-y-100"
-                      style={{ backgroundColor: inkColor[value.ink] }}
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="absolute right-3 top-0 select-none font-display text-[9rem] font-black leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-black/10"
-                    >
-                      {value.plate}
-                    </span>
-
-                    <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-brand-yellow transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-white group-hover:text-ink">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="relative mt-4 block h-1 w-10 rounded-full transition-all duration-500 group-hover:w-16"
-                      style={{ backgroundColor: inkColor[value.ink] }}
-                    />
-                    <h3 className={`relative mt-auto pt-10 font-display text-xl font-bold text-ink transition-colors duration-500 ${textOnFlood[value.ink]}`}>
-                      {value.title}
-                    </h3>
-                    <p className={`relative mt-2 text-sm leading-relaxed text-ink/70 transition-colors duration-500 ${textOnFlood[value.ink]}`}>
-                      {value.description}
-                    </p>
-                  </article>
+                  <ValueCard
+                    value={{ title: value.title, description: value.description, ink: value.ink, plate: value.plate }}
+                    icon={<Icon className="h-5 w-5" />}
+                  />
                 </Reveal>
               </li>
             );

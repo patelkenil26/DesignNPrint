@@ -30,7 +30,7 @@ const channels: Channel[] = [
     cardClasses: 'bg-whatsapp text-ink',
     iconClasses: 'bg-ink text-whatsapp',
     spotColor: 'rgba(255,255,255,0.45)',
-    span: 'lg:col-span-2',
+    span: 'col-span-2 lg:col-span-2',
   },
   {
     id: 'call',
@@ -69,7 +69,7 @@ const channels: Channel[] = [
     cardClasses: 'bg-white text-ink ring-1 ring-ink/10',
     iconClasses: 'bg-ink text-brand-yellow',
     spotColor: 'rgba(229,36,33,0.14)',
-    span: '',
+    span: 'col-span-2 lg:col-span-1',
   },
 ];
 
@@ -85,7 +85,7 @@ export default function ContactChannels() {
           </h2>
         </Reveal>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-5">
           {channels.map((channel, index) => {
             const Icon = channel.icon;
             const linkProps = channel.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
@@ -99,7 +99,7 @@ export default function ContactChannels() {
                     <a
                       href={channel.href}
                       {...linkProps}
-                      className="flex h-full min-h-[14rem] flex-col p-6 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-brand-blue sm:p-7"
+                      className="flex h-full min-h-[11rem] flex-col p-4 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-brand-blue sm:min-h-[14rem] sm:p-7"
                     >
                       <span className="flex items-start justify-between">
                         <span className={`flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110 ${channel.iconClasses}`}>
@@ -107,10 +107,10 @@ export default function ContactChannels() {
                         </span>
                         <ArrowUpRight className="h-5 w-5 opacity-50 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
                       </span>
-                      <span className="mt-auto pt-10">
-                        <span className="block font-display text-2xl font-bold">{channel.title}</span>
-                        <span className="mt-1 block break-all text-sm font-semibold opacity-90">{channel.detail}</span>
-                        <span className="mt-2 block text-sm leading-snug opacity-70">{channel.hint}</span>
+                      <span className="mt-auto pt-6 sm:pt-10">
+                        <span className="block font-display text-xl font-bold sm:text-2xl">{channel.title}</span>
+                        <span className="mt-1 block text-xs font-semibold [overflow-wrap:anywhere] opacity-90 sm:text-sm">{channel.detail}</span>
+                        <span className="mt-2 block text-xs leading-snug opacity-70 sm:text-sm">{channel.hint}</span>
                       </span>
                     </a>
                   </SpotlightCard>

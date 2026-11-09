@@ -105,14 +105,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </p>
           </Reveal>
 
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
             {typeCards.map((type, index) => (
               <li key={type.slug}>
                 <TypeCard type={type} productName={product.name} accent={product.accent} revealDelay={(index % 3) * 0.12} />
               </li>
             ))}
-            <li>
-              <div className="flex h-full min-h-[16rem] flex-col justify-between rounded-3xl bg-ink p-6 text-white sm:p-8">
+            <li className="col-span-2 lg:col-span-1">
+              <div className="flex h-full min-h-[12rem] flex-col justify-between rounded-3xl bg-ink p-6 text-white sm:min-h-[16rem] sm:p-8">
                 <span className="cmyk-strip block h-1.5 w-14 rounded-full" />
                 <div className="mt-8">
                   <h3 className="font-display text-2xl font-bold leading-tight">Not sure which type?</h3>

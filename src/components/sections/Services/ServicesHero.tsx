@@ -73,10 +73,10 @@ export default function ServicesHero({ fanProducts }: ServicesHeroProps) {
               </LinkButton>
             </div>
 
-            <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-ink/10 pt-5">
+            <dl className="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-ink/10 pt-5 sm:gap-4">
               {heroStats.map((stat) => (
                 <div key={stat.id}>
-                  <dd className="font-display text-2xl font-bold text-ink sm:text-3xl">{stat.value}</dd>
+                  <dd className="whitespace-nowrap font-display text-xl font-bold text-ink sm:text-3xl">{stat.value}</dd>
                   <dt className="text-xs leading-tight text-muted">{stat.label}</dt>
                 </div>
               ))}

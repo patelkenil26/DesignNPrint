@@ -47,7 +47,7 @@ const ScrollToTopButton = () => {
       aria-label="Back to top"
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
-      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-soft hover:shadow-2xl active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
+      className={`fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center sm:bottom-5 sm:right-5 sm:h-14 sm:w-14 justify-center rounded-full bg-ink text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-soft hover:shadow-2xl active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
         isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

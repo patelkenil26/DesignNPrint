@@ -58,12 +58,12 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
           </nav>
 
           <Reveal>
-            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-ink/60">
-              <span className="font-display text-ink">
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-[0.2em] text-ink/60 sm:tracking-[0.25em]">
+              <span className="whitespace-nowrap font-display text-ink">
                 {formatNumber(number)} / {formatNumber(productCatalog.length)}
               </span>
-              <span className="h-px w-8 bg-ink/30" />
-              {product.tagline}
+              <span className="hidden h-px w-8 bg-ink/30 sm:block" />
+              <span>{product.tagline}</span>
             </p>
             <h1
               id="product-heading"
