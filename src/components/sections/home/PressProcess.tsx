@@ -13,7 +13,7 @@ export default function PressProcess() {
   const activeIndex = useChapterIndex(getProgress, stepStarts);
 
   return (
-    <section ref={trackRef} className="relative h-[520vh]" aria-labelledby="press-heading">
+    <section ref={trackRef} className="relative h-[640vh]" aria-labelledby="press-heading">
       <div
         ref={stickyRef}
         className="bg-studio sticky top-[var(--nav-height)] h-[calc(100svh-var(--nav-height))] w-full overflow-hidden"
@@ -27,6 +27,12 @@ export default function PressProcess() {
               From blank sheet to brilliant print.
             </h2>
           </div>
+
+          {activeIndex >= 2 && (
+            <p className="animate-fade-up pointer-events-none absolute right-5 top-28 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white shadow-xl sm:right-10">
+              <span className="mr-2 text-brand-yellow">●</span> Fresh off the press — four colours, perfectly registered
+            </p>
+          )}
 
           <ol className="grid max-w-3xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {pressSteps.map((step, index) => {

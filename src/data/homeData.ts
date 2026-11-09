@@ -19,7 +19,7 @@ export const journeyChapters: JourneyChapter[] = [
     id: 'card',
     label: 'The Card',
     title: 'Print that you can feel.',
-    body: 'From visiting cards to luxury packaging — designed and printed under one roof in Ahmedabad.',
+    body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
     start: 0,
   },
   {
@@ -47,12 +47,12 @@ export const journeyChapters: JourneyChapter[] = [
     id: 'brand',
     label: 'Your Brand',
     title: 'Your brand. Our press.',
-    body: 'Cards, boxes, files, pouches, banners — whatever you need printed, we make it look this good.',
+    body: '17 products, one studio. Send us the idea or the finished artwork — we take it all the way to print.',
     start: 0.8,
   },
 ];
 
-/* ───────────── Product showcase (3D ring) ───────────── */
+/* ───────────── Most-requested ring (8 bestsellers — the full range lives in productIndex.ts) ───────────── */
 export interface ShowcaseProduct {
   id: string;
   name: string;
@@ -92,15 +92,6 @@ export const showcaseProducts: ShowcaseProduct[] = [
     accent: 'blue',
   },
   {
-    id: 'cosmetic',
-    name: 'Cosmetic Boxes & Stickers',
-    category: 'Packaging',
-    blurb: 'Beauty packaging with foil, spot UV and soft-touch finishes.',
-    image: '/images/Card/cosmetic_item.png',
-    href: getServiceHref('cosmetic-item-box-sticker-printing'),
-    accent: 'red',
-  },
-  {
     id: 'brochure',
     name: 'Brochure Designing & Printing',
     category: 'Marketing',
@@ -110,30 +101,12 @@ export const showcaseProducts: ShowcaseProduct[] = [
     accent: 'yellow',
   },
   {
-    id: 'catalogue',
-    name: 'Product Catalogue',
-    category: 'Marketing',
-    blurb: 'Multi-page catalogues, bound beautifully.',
-    image: '/images/Card/product_catalogue.jpg',
-    href: getServiceHref('product-catalogue'),
-    accent: 'yellow',
-  },
-  {
     id: 'folder',
     name: 'Company File Folders',
     category: 'Folders',
     blurb: 'Presentation folders that carry your brand into every meeting.',
     image: '/images/Card/company_file_folder.jpg',
     href: getServiceHref('company-file-folder'),
-    accent: 'green',
-  },
-  {
-    id: 'ceramic',
-    name: 'Ceramic & Tile Display Folders',
-    category: 'Folders',
-    blurb: 'Heavy-duty sample folders built for tile and mica collections.',
-    image: '/images/Card/ceramic_mockup.png',
-    href: getServiceHref('ceramic-mockup-design'),
     accent: 'green',
   },
   {
@@ -153,15 +126,6 @@ export const showcaseProducts: ShowcaseProduct[] = [
     image: '/images/Card/flex_banner.png',
     href: getServiceHref('flex-banner-roller-standee-printing'),
     accent: 'red',
-  },
-  {
-    id: 'calendar',
-    name: 'Calendars',
-    category: 'Corporate Gifting',
-    blurb: 'Desk and wall calendars your clients keep all year.',
-    image: '/images/Card/calender.png',
-    href: getServiceHref('calendar'),
-    accent: 'yellow',
   },
   {
     id: 'sticker',
@@ -253,12 +217,15 @@ export const pressSteps: PressStep[] = [
 ];
 
 /* ───────────── Industries ───────────── */
+export type IndustryIconName = 'pharma' | 'ceramic' | 'cosmetics' | 'agro' | 'corporate' | 'events';
+
 export interface IndustryItem {
   id: string;
   name: string;
   line: string;
-  image: string;
-  imageAlt: string;
+  /** what we typically print for them */
+  products: string[];
+  icon: IndustryIconName;
   href: string;
   accent: BrandAccent;
 }
@@ -268,8 +235,8 @@ export const industries: IndustryItem[] = [
     id: 'pharma',
     name: 'Pharma & Healthcare',
     line: 'Mono cartons, labels and doctor files that meet strict labelling standards.',
-    image: '/images/Card/pharma_box.jpg',
-    imageAlt: 'Printed pharmaceutical medicine boxes with capsules',
+    products: ['Mono cartons', 'Strip & bottle labels', 'Doctor files'],
+    icon: 'pharma',
     href: getServiceHref('pharmaceutical-medicine-boxes'),
     accent: 'blue',
   },
@@ -277,8 +244,8 @@ export const industries: IndustryItem[] = [
     id: 'ceramic',
     name: 'Ceramic & Tiles',
     line: 'Sturdy sample folders and catalogues for Morbi and Gujarat tile makers.',
-    image: '/images/Card/ceramic_mockup.png',
-    imageAlt: 'Ceramic tile display folder mockup',
+    products: ['Tile display folders', 'Product catalogues', 'Box packaging'],
+    icon: 'ceramic',
     href: getServiceHref('ceramic-mockup-design'),
     accent: 'green',
   },
@@ -286,19 +253,37 @@ export const industries: IndustryItem[] = [
     id: 'cosmetics',
     name: 'Cosmetics & Retail',
     line: 'Boxes, pouches and stickers that look premium on the shelf.',
-    image: '/images/Card/cosmetic_item.png',
-    imageAlt: 'Printed cosmetic boxes and stickers',
+    products: ['Foil & spot UV boxes', 'Pouches & BOPP bags', 'Stickers'],
+    icon: 'cosmetics',
     href: getServiceHref('cosmetic-item-box-sticker-printing'),
     accent: 'red',
+  },
+  {
+    id: 'agro',
+    name: 'Agro & Pesticide',
+    line: 'Durable, clearly labelled cartons and labels for agro products.',
+    products: ['Pesticide labels', 'Cartons', 'Corrugated boxes'],
+    icon: 'agro',
+    href: getServiceHref('pesticide-label-and-box'),
+    accent: 'green',
   },
   {
     id: 'corporate',
     name: 'Corporate & Real Estate',
     line: 'Brochures, catalogues, files and gifting calendars for every pitch.',
-    image: '/images/Card/product_catalogue.jpg',
-    imageAlt: 'Corporate product catalogue spread',
+    products: ['Brochures', 'Company files', 'Calendars'],
+    icon: 'corporate',
     href: getServiceHref('product-catalogue'),
     accent: 'yellow',
+  },
+  {
+    id: 'events',
+    name: 'Events & Promotions',
+    line: 'Big, bold display printing that is ready before the doors open.',
+    products: ['Flex banners', 'Roller standees', 'Acrylic boards'],
+    icon: 'events',
+    href: getServiceHref('flex-banner-roller-standee-printing'),
+    accent: 'red',
   },
 ];
 
@@ -359,11 +344,105 @@ export const customerReviews: CustomerReview[] = [
 /* ───────────── Quote CTA ───────────── */
 export const quoteProductChips: string[] = [
   'Visiting Cards',
-  'Rigid Boxes',
-  'Pharma Cartons',
-  'Brochures & Catalogues',
-  'File Folders',
-  'Pouches',
+  'Brochures & Flyers',
   'Stickers & Labels',
-  'Banners',
+  'Boxes & Packaging',
+  'Files & Folders',
+  'Bill Books',
+  'Pouches & Bags',
+  'Banners & Boards',
+];
+
+/* ───────────── Trust strip (right under the hero) ───────────── */
+export type TrustIconName = 'design' | 'proof' | 'express' | 'delivery' | 'location';
+
+export interface TrustPoint {
+  id: string;
+  icon: TrustIconName;
+  title: string;
+  detail: string;
+}
+
+export const trustPoints: TrustPoint[] = [
+  { id: 'design', icon: 'design', title: 'Design + print', detail: 'One studio, no hand-offs' },
+  { id: 'proof', icon: 'proof', title: 'Digital proof first', detail: 'You approve before we print' },
+  { id: 'express', icon: 'express', title: 'Express dispatch', detail: '24–48 hrs on selected jobs' },
+  { id: 'delivery', icon: 'delivery', title: 'Gujarat & India', detail: 'Packed and shipped to you' },
+  { id: 'location', icon: 'location', title: 'Naroda GIDC', detail: 'Visit our Ahmedabad press' },
+];
+
+/* ───────────── "Two ways to start" ───────────── */
+export interface StartPath {
+  id: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  steps: string[];
+  ctaLabel: string;
+  whatsappMessage: string;
+}
+
+export const startPaths: StartPath[] = [
+  {
+    id: 'have-design',
+    eyebrow: 'Path 01',
+    title: 'I have a design',
+    body: 'Send print-ready artwork or a rough file. We check size, bleed and colours, then send a proof.',
+    steps: ['Send your file', 'Get a digital proof', 'Approve & we print'],
+    ctaLabel: 'Send my artwork',
+    whatsappMessage: 'Hi Design N Print, I have my design ready and would like a print quote.',
+  },
+  {
+    id: 'need-design',
+    eyebrow: 'Path 02',
+    title: 'I need a design',
+    body: 'Tell us about your brand. Our designers create it from scratch — or refresh what you already have.',
+    steps: ['Share your brief', 'Review the design', 'Approve & we print'],
+    ctaLabel: 'Talk to a designer',
+    whatsappMessage: 'Hi Design N Print, I need help designing my print material. Can I talk to a designer?',
+  },
+];
+
+/* ───────────── FAQ ───────────── */
+/** NOTE: answers are written from the site copy — confirm turnaround / MOQ wording with the client. */
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export const homeFaqs: FaqItem[] = [
+  {
+    id: 'design-too',
+    question: 'Do you design as well as print?',
+    answer:
+      'Yes. Our team can design from scratch, improve an existing design, or print your finished artwork as it is — all under one roof in Ahmedabad.',
+  },
+  {
+    id: 'proof',
+    question: 'Will I see a proof before printing?',
+    answer: 'Always. We share a digital proof for your approval before a single sheet is run.',
+  },
+  {
+    id: 'quote',
+    question: 'How do I get a price?',
+    answer:
+      'Message us on WhatsApp with the product, size, quantity and finish you have in mind. Price depends on quantity, paper GSM, size and finishing, and we reply with a clear quote.',
+  },
+  {
+    id: 'turnaround',
+    question: 'How fast can I get my order?',
+    answer:
+      'Express dispatch in 24–48 hrs is available on selected products. Larger jobs such as rigid boxes and catalogues take longer — we confirm the timeline with your quote.',
+  },
+  {
+    id: 'moq',
+    question: 'Is there a minimum order quantity?',
+    answer: 'It depends on the product and finish. Tell us what you need and we will share the minimum with your quote.',
+  },
+  {
+    id: 'delivery',
+    question: 'Do you deliver outside Ahmedabad?',
+    answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
+  },
 ];

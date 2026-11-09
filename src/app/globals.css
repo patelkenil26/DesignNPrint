@@ -134,6 +134,34 @@ html.lenis body {
   animation: float-slow 13s ease-in-out infinite reverse;
 }
 
+@keyframes flood-in {
+  from {
+    clip-path: circle(0% at 72% 55%);
+  }
+  to {
+    clip-path: circle(150% at 72% 55%);
+  }
+}
+
+.animate-flood {
+  animation: flood-in 0.95s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes letter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(45%) rotateX(50deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.animate-letter-rise {
+  animation: letter-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @keyframes marquee-scroll {
   from {
     transform: translateX(0);
@@ -149,6 +177,8 @@ html.lenis body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
+  .animate-flood,
+  .animate-letter-rise,
   .animate-fade-up,
   .animate-float-slow,
   .animate-float-slower {
