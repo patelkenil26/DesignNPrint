@@ -9,9 +9,9 @@ export default function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Design N Print on WhatsApp"
-      className="group fixed bottom-5 left-5 z-40 flex h-14 items-center overflow-hidden rounded-full bg-whatsapp text-ink shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+      className="group fixed bottom-4 left-4 z-40 flex h-12 items-center sm:bottom-5 sm:left-5 sm:h-14 overflow-hidden rounded-full bg-whatsapp text-ink shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
     >
-      <span className="relative flex h-14 w-14 shrink-0 items-center justify-center">
+      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center sm:h-14 sm:w-14">
         <span className="absolute inset-2 animate-ping rounded-full bg-whatsapp opacity-40 motion-reduce:hidden" aria-hidden="true" />
         <FaWhatsapp size={26} className="relative" />
       </span>

@@ -71,8 +71,8 @@ export default function SearchBox({ variant = 'desktop', onNavigate }: SearchBox
           }}
           placeholder="Search products…"
           autoComplete="off"
-          className={`rounded-full border border-white/15 bg-white/5 py-2 pl-10 pr-9 text-sm text-white placeholder:text-white/40 transition-all focus:border-brand-yellow focus:outline-none ${
-            isMobile ? 'w-full py-3' : 'w-48 focus:w-60'
+          className={`rounded-full border border-white/15 bg-white/5 py-2 pl-10 pr-9 text-white placeholder:text-white/40 transition-all focus:border-brand-yellow focus:outline-none ${
+            isMobile ? 'w-full py-3 text-base' : 'w-48 text-sm focus:w-60'
           }`}
         />
         {searchTerm && (

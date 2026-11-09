@@ -32,7 +32,7 @@ export default function InkReveal({ children, delay = 0, className = '' }: InkRe
       viewport={{ once: true, margin: '-60px' }}
     >
       <motion.div
-        className="h-full w-full"
+        className="relative h-full w-full"
         variants={{ hidden: { scale: 1.14 }, shown: { scale: 1 } }}
         transition={{ duration: 1.1, delay: delay + 0.15, ease: [0.22, 1, 0.36, 1] }}
       >

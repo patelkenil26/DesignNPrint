@@ -20,11 +20,11 @@ const restPose = [
 ];
 
 const spreadPose = [
-  { x: '-112%', y: 42, rotate: -19 },
-  { x: '-56%', y: 14, rotate: -9.5 },
+  { x: '-100%', y: 42, rotate: -19 },
+  { x: '-50%', y: 14, rotate: -9.5 },
   { x: '0%', y: -10, rotate: 0 },
-  { x: '56%', y: 14, rotate: 9.5 },
-  { x: '112%', y: 42, rotate: 19 },
+  { x: '50%', y: 14, rotate: 9.5 },
+  { x: '100%', y: 42, rotate: 19 },
 ];
 
 const formatNumber = (value: number) => String(value).padStart(2, '0');
@@ -54,12 +54,12 @@ export default function ProductFan({ products }: ProductFanProps) {
 
   return (
     <div
-      className="relative mx-auto flex h-[22rem] w-full max-w-md items-center justify-center sm:h-[28rem] [perspective:1200px]"
+      className="relative mx-auto flex h-[15.5rem] w-full max-w-md items-center justify-center sm:h-[28rem] [perspective:1200px]"
       onPointerMove={handlePointerMove}
       onPointerEnter={() => setIsSpread(true)}
       onPointerLeave={handlePointerLeave}
     >
-      <motion.div className="relative h-[15rem] w-[11rem] sm:h-[19rem] sm:w-[14rem]" style={{ rotateX: tiltX, rotateY: tiltY }}>
+      <motion.div className="relative aspect-[11/15] w-[32vw] max-w-[11rem] sm:w-[14rem] sm:max-w-none" style={{ rotateX: tiltX, rotateY: tiltY }}>
         {products.slice(0, 5).map((product, index) => {
           const pose = poses[index];
           return (
@@ -87,7 +87,7 @@ export default function ProductFan({ products }: ProductFanProps) {
                       alt={product.coverAlt}
                       fill
                       priority={index === 2}
-                      sizes="(min-width: 640px) 14rem, 11rem"
+                      sizes="(min-width: 640px) 14rem, 32vw"
                       className="object-cover"
                     />
                   ) : (
