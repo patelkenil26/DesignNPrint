@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import JsonLd from '@/components/shared/JsonLd';
+import { buildBreadcrumbSchema, buildItemListSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 import ProductMarquee from '@/components/sections/Services/ProductMarquee';
 import ProductMosaic from '@/components/sections/Services/ProductMosaic';
 import ServicesHero from '@/components/sections/Services/ServicesHero';
@@ -8,13 +10,14 @@ import Reveal from '@/components/shared/Reveal';
 import { productCatalog, totalTypeCount } from '@/data/productCatalog';
 import { getAllProductCards } from '@/lib/productCards';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Printing & Packaging Services in Ahmedabad | Design N Print',
   description: `All ${productCatalog.length} products Design N Print makes — ${productCatalog
     .slice(0, 8)
     .map((product) => product.name.toLowerCase())
     .join(', ')} and more. Designed and printed under one roof in Ahmedabad since 2008.`,
-};
+  path: '/services',
+});
 
 const fanSlugs = ['visiting-card', 'brochure', 'box', 'sticker', 'pouch'];
 
@@ -26,6 +29,24 @@ export default function ServicesPage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+          ]),
+          buildWebPageSchema({
+            name: 'Printing & packaging services in Ahmedabad',
+            description: `All ${productCatalog.length} products Design N Print makes.`,
+            path: '/services',
+            pageType: 'CollectionPage',
+          }),
+          buildItemListSchema(
+            'Design N Print products',
+            productCatalog.map((product) => ({ name: product.name, path: `/services/${product.slug}` })),
+          ),
+        ]}
+      />
       <ServicesHero fanProducts={fanProducts} />
       <ProductMarquee />
 
