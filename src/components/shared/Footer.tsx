@@ -4,6 +4,7 @@ import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import FooterOpenStatus from "@/components/shared/Footer/FooterOpenStatus";
+import FooterWordmark from "@/components/shared/Footer/FooterWordmark";
 import { productCatalog } from "@/data/productCatalog";
 import { buildWhatsAppLink, siteConfig } from "@/data/siteConfig";
 
@@ -155,13 +156,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* oversized outlined wordmark */}
-      <p
-        aria-hidden="true"
-        className="text-outline-light pointer-events-none select-none whitespace-nowrap text-center font-display text-[11vw] font-black uppercase leading-[0.8] opacity-60 sm:text-[10vw]"
-      >
-        Design N Print
-      </p>
+      {/* oversized CMYK wordmark */}
+      <FooterWordmark />
 
       <div className="relative border-t border-white/10 px-5 pb-24 pt-6 text-center text-sm text-white/50 sm:pb-6">
         <p>
