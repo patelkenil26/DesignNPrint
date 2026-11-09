@@ -1,4 +1,5 @@
 import type { BrandAccent } from '@/data/homeData';
+import { legacyCategoryToProduct } from '@/data/legacyRedirects';
 
 /**
  * Single source of truth for the 6 main product categories.
@@ -138,6 +139,8 @@ export function findCategory(slug: string): ProductCategory | undefined {
   return productCategories.find((category) => category.slug === slug);
 }
 
+/** The 6 home stories deep-link to their closest product page (there are no category pages any more). */
 export function getCategoryHref(slug: string): string {
-  return `/services/${slug}`;
+  const productSlug = legacyCategoryToProduct[slug];
+  return productSlug ? `/services/${productSlug}` : '/services';
 }

@@ -1,64 +1,55 @@
 import type { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
-import CategoryCard from '@/components/sections/Services/CategoryCard';
-import LinkButton from '@/components/shared/LinkButton';
-import PageHero from '@/components/shared/PageHero';
+import ProductMarquee from '@/components/sections/Services/ProductMarquee';
+import ProductMosaic from '@/components/sections/Services/ProductMosaic';
+import ServicesHero from '@/components/sections/Services/ServicesHero';
+import StartPaths from '@/components/sections/home/StartPaths';
 import QuoteBand from '@/components/shared/QuoteBand';
 import Reveal from '@/components/shared/Reveal';
-import { productCategories } from '@/data/categories';
-import { serviceCatalog } from '@/data/serviceCatalog';
+import { productCatalog, totalTypeCount } from '@/data/productCatalog';
+import { getAllProductCards } from '@/lib/productCards';
 
 export const metadata: Metadata = {
   title: 'Printing & Packaging Services in Ahmedabad | Design N Print',
-  description:
-    'Explore everything Design N Print prints — stickers & labels, visiting cards, brochures & flyers, boxes & packaging, files & folders, pouches & display. Ahmedabad’s trusted offset press since 2008.',
+  description: `All ${productCatalog.length} products Design N Print makes — ${productCatalog
+    .slice(0, 8)
+    .map((product) => product.name.toLowerCase())
+    .join(', ')} and more. Designed and printed under one roof in Ahmedabad since 2008.`,
 };
 
+const fanSlugs = ['visiting-card', 'brochure', 'box', 'sticker', 'pouch'];
+
 export default function ServicesPage() {
+  const productCards = getAllProductCards();
+  const fanProducts = fanSlugs
+    .map((slug) => productCards.find((card) => card.slug === slug))
+    .filter((card): card is NonNullable<typeof card> => Boolean(card));
+
   return (
     <>
-      <PageHero
-        eyebrow="Design N Print · Ahmedabad"
-        title="Everything we print, neatly organised."
-        description={`Six main categories, ${serviceCatalog.length}+ services. Pick a category to explore its types — or see the full list in one place.`}
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
-      >
-        <LinkButton href="/services/all" variant="solid">
-          View all services <ArrowRight className="h-4 w-4" />
-        </LinkButton>
-      </PageHero>
+      <ServicesHero fanProducts={fanProducts} />
+      <ProductMarquee />
 
-      <section className="bg-paper py-16 sm:py-24" aria-labelledby="categories-heading">
+      <section id="range" className="scroll-mt-24 bg-paper py-16 sm:py-24" aria-labelledby="range-heading">
         <div className="mx-auto max-w-7xl px-5 sm:px-10">
           <Reveal className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Main categories</p>
-            <h2 id="categories-heading" className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
-              Start with what you need.
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Choose a product</p>
+            <h2 id="range-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+              Every product. Every type. One click away.
             </h2>
-          </Reveal>
-
-          <ul className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.map((category, index) => (
-              <li key={category.id}>
-                <Reveal delay={(index % 3) * 0.08} className="h-full">
-                  <CategoryCard category={category} />
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-
-          <Reveal className="mt-14 flex flex-col items-center gap-4 rounded-3xl bg-ink px-6 py-10 text-center text-white">
-            <h3 className="font-display text-2xl font-bold sm:text-3xl">Want to see it all at once?</h3>
-            <p className="max-w-md text-sm text-white/70">
-              Browse every service with category filters, live counts and search.
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
+              {totalTypeCount}+ types across {productCatalog.length} products. Open any card to see every type we make,
+              the finishes available and how to order.
             </p>
-            <LinkButton href="/services/all" variant="light">
-              View all services <ArrowRight className="h-4 w-4" />
-            </LinkButton>
           </Reveal>
+
+          <div className="mt-10">
+            <ProductMosaic products={productCards} />
+          </div>
         </div>
       </section>
 
+      <StartPaths />
+      <div className="bg-paper pb-16 sm:pb-24" />
       <QuoteBand />
     </>
   );

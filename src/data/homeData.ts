@@ -1,4 +1,4 @@
-import { getServiceHref } from '@/data/serviceCatalog';
+import { getProductHref } from '@/data/productCatalog';
 
 /** All editable copy + content for the home page lives here (no hardcoded data in JSX). */
 
@@ -70,7 +70,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Stationery',
     blurb: 'Your first impression, in premium stock with crisp finishing.',
     image: '/images/Card/design-n-print-product-12-1.png',
-    href: getServiceHref('visiting-card-letterhead-envelope'),
+    href: getProductHref('visiting-card'),
     accent: 'red',
   },
   {
@@ -79,7 +79,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Packaging',
     blurb: 'Rigid, folding and luxury boxes made to show your brand off.',
     image: '/images/Card/box_designing.png',
-    href: getServiceHref('box-designing-printing'),
+    href: getProductHref('box'),
     accent: 'blue',
   },
   {
@@ -88,7 +88,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Packaging',
     blurb: 'Clean, compliant cartons with barcode-sharp printing.',
     image: '/images/Card/pharma_box.jpg',
-    href: getServiceHref('pharmaceutical-medicine-boxes'),
+    href: getProductHref('box', 'Tablet Box'),
     accent: 'blue',
   },
   {
@@ -97,7 +97,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Marketing',
     blurb: 'Brochures that tell your story and close the sale.',
     image: '/images/Card/BrochureDesigning.png',
-    href: getServiceHref('brochure-designing-printing'),
+    href: getProductHref('brochure'),
     accent: 'yellow',
   },
   {
@@ -106,7 +106,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Folders',
     blurb: 'Presentation folders that carry your brand into every meeting.',
     image: '/images/Card/company_file_folder.jpg',
-    href: getServiceHref('company-file-folder'),
+    href: getProductHref('file'),
     accent: 'green',
   },
   {
@@ -115,7 +115,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Pouches',
     blurb: 'Branded pouches and bags for retail and gifting.',
     image: '/images/Card/customize_pouch.png',
-    href: getServiceHref('customize-pouch-designing-printing'),
+    href: getProductHref('pouch'),
     accent: 'blue',
   },
   {
@@ -124,7 +124,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Outdoor',
     blurb: 'Big, bold, weather-ready display printing.',
     image: '/images/Card/flex_banner.png',
-    href: getServiceHref('flex-banner-roller-standee-printing'),
+    href: getProductHref('flex-banner'),
     accent: 'red',
   },
   {
@@ -133,7 +133,7 @@ export const showcaseProducts: ShowcaseProduct[] = [
     category: 'Labels',
     blurb: 'Die-cut stickers and product labels in any shape.',
     image: '/images/Card/sticker_label.png',
-    href: getServiceHref('sticker-label-designing-printing'),
+    href: getProductHref('sticker'),
     accent: 'green',
   },
 ];
@@ -237,7 +237,7 @@ export const industries: IndustryItem[] = [
     line: 'Mono cartons, labels and doctor files that meet strict labelling standards.',
     products: ['Mono cartons', 'Strip & bottle labels', 'Doctor files'],
     icon: 'pharma',
-    href: getServiceHref('pharmaceutical-medicine-boxes'),
+    href: getProductHref('box', 'Tablet Box'),
     accent: 'blue',
   },
   {
@@ -246,7 +246,7 @@ export const industries: IndustryItem[] = [
     line: 'Sturdy sample folders and catalogues for Morbi and Gujarat tile makers.',
     products: ['Tile display folders', 'Product catalogues', 'Box packaging'],
     icon: 'ceramic',
-    href: getServiceHref('ceramic-mockup-design'),
+    href: getProductHref('file', 'Ceramic & Tile Display Folder'),
     accent: 'green',
   },
   {
@@ -255,7 +255,7 @@ export const industries: IndustryItem[] = [
     line: 'Boxes, pouches and stickers that look premium on the shelf.',
     products: ['Foil & spot UV boxes', 'Pouches & BOPP bags', 'Stickers'],
     icon: 'cosmetics',
-    href: getServiceHref('cosmetic-item-box-sticker-printing'),
+    href: getProductHref('box', 'Cosmetic Box'),
     accent: 'red',
   },
   {
@@ -264,7 +264,7 @@ export const industries: IndustryItem[] = [
     line: 'Durable, clearly labelled cartons and labels for agro products.',
     products: ['Pesticide labels', 'Cartons', 'Corrugated boxes'],
     icon: 'agro',
-    href: getServiceHref('pesticide-label-and-box'),
+    href: getProductHref('bottle-label', 'Pesticide & Agro Label'),
     accent: 'green',
   },
   {
@@ -273,7 +273,7 @@ export const industries: IndustryItem[] = [
     line: 'Brochures, catalogues, files and gifting calendars for every pitch.',
     products: ['Brochures', 'Company files', 'Calendars'],
     icon: 'corporate',
-    href: getServiceHref('product-catalogue'),
+    href: getProductHref('book', 'Product Catalogue'),
     accent: 'yellow',
   },
   {
@@ -282,7 +282,7 @@ export const industries: IndustryItem[] = [
     line: 'Big, bold display printing that is ready before the doors open.',
     products: ['Flex banners', 'Roller standees', 'Acrylic boards'],
     icon: 'events',
-    href: getServiceHref('flex-banner-roller-standee-printing'),
+    href: getProductHref('flex-banner'),
     accent: 'red',
   },
 ];
