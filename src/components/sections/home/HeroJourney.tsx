@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
 import LinkButton from '@/components/shared/LinkButton';
 import { journeyChapters } from '@/data/homeData';
+import { productIndex } from '@/data/productIndex';
 import { buildWhatsAppLink, getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 import { useChapterIndex, useScrollTrack } from '@/lib/useScrollTrack';
 
@@ -93,8 +94,8 @@ export default function HeroJourney() {
                           <dd className="font-display text-2xl font-bold text-ink">{getYearsInBusiness()}+ yrs</dd>
                         </div>
                         <div>
-                          <dt className="text-xs text-muted">Product types</dt>
-                          <dd className="font-display text-2xl font-bold text-ink">20+</dd>
+                          <dt className="text-xs text-muted">Products</dt>
+                          <dd className="font-display text-2xl font-bold text-ink">{productIndex.length}</dd>
                         </div>
                         <div>
                           <dt className="text-xs text-muted">Express dispatch</dt>
