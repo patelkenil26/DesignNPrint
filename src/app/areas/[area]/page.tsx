@@ -9,6 +9,7 @@ import LinkButton from '@/components/shared/LinkButton';
 import PageHero from '@/components/shared/PageHero';
 import QuoteBand from '@/components/shared/QuoteBand';
 import Reveal from '@/components/shared/Reveal';
+import { pressSteps } from '@/data/homeData';
 import { findServiceArea, getAreaHref, serviceAreas } from '@/data/serviceAreas';
 import { buildWhatsAppLink, siteConfig } from '@/data/siteConfig';
 import { buildAreaFaqs, getAreaIndustries, getAreaProducts } from '@/lib/areaContent';
@@ -109,6 +110,17 @@ export default async function AreaPage({ params }: AreaPageProps) {
             <p data-speakable className="mt-5 max-w-2xl text-base leading-relaxed text-ink/70 sm:text-lg">
               {area.localAngle}
             </p>
+            <ol className="mt-8 grid gap-3 sm:grid-cols-2">
+              {pressSteps.map((step) => (
+                <li key={step.id} className="flex gap-3 rounded-2xl bg-white p-4 ring-1 ring-ink/5 transition-transform duration-300 hover:-translate-y-1">
+                  <span className="font-display text-2xl font-black text-outline">{step.number}</span>
+                  <span>
+                    <span className="block font-display text-base font-bold text-ink">{step.title}</span>
+                    <span className="mt-0.5 block text-sm leading-snug text-ink/65">{step.body}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-2">
             <address className="rounded-3xl bg-ink p-6 not-italic text-white sm:p-8">
@@ -163,10 +175,26 @@ export default async function AreaPage({ params }: AreaPageProps) {
               Industries we print for in {area.name}
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {areaIndustries.map((industry) => (
-                <li key={industry.id} className="rounded-2xl border border-ink/10 bg-white p-5">
-                  <h3 className="font-display text-lg font-bold text-ink">{industry.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{industry.line}</p>
+              {areaIndustries.map((industry, index) => (
+                <li key={industry.id}>
+                  <Reveal delay={index * 0.08} className="h-full">
+                    <div className="group relative h-full overflow-hidden rounded-2xl border border-ink/10 bg-white p-5 pt-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl">
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-x-0 top-0 h-1.5 origin-left scale-x-[0.18] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                        style={{ backgroundColor: `var(--color-brand-${industry.accent})` }}
+                      />
+                      <h3 className="font-display text-lg font-bold text-ink">{industry.name}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink/70">{industry.line}</p>
+                      <ul className="mt-4 flex flex-wrap gap-1.5">
+                        {industry.products.map((item) => (
+                          <li key={item} className="rounded-full bg-paper px-2.5 py-1 text-xs font-medium text-ink/70">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Reveal>
                 </li>
               ))}
             </ul>

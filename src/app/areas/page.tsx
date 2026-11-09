@@ -15,6 +15,8 @@ export const metadata: Metadata = buildPageMetadata({
   path: '/areas',
 });
 
+const accentCycle = ['red', 'yellow', 'green', 'blue'] as const;
+
 const areaGroups: Array<{ kinds: ServiceAreaKind[]; title: string; blurb: string }> = [
   { kinds: ['home'], title: 'Our press', blurb: 'Walk in, check colour on paper and collect your job.' },
   {
@@ -54,23 +56,40 @@ export default function AreasPage() {
                 <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">{group.title}</h2>
                 <p className="mt-2 text-base text-ink/70">{group.blurb}</p>
                 <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {groupAreas.map((area) => (
-                    <li key={area.slug}>
-                      <Link
-                        href={getAreaHref(area.slug)}
-                        className="group flex h-full flex-col justify-between rounded-2xl border border-ink/10 bg-white p-5 transition-transform duration-300 hover:-translate-y-1 active:scale-[0.99]"
-                      >
-                        <span>
-                          <span className="font-display text-xl font-bold text-ink">{area.name}</span>
-                          <span className="mt-2 block text-sm leading-relaxed text-ink/70">{area.headline}</span>
-                        </span>
-                        <ArrowUpRight
-                          className="mt-4 h-5 w-5 text-ink/50 transition-colors group-hover:text-ink"
-                          aria-hidden="true"
-                        />
-                      </Link>
-                    </li>
-                  ))}
+                  {groupAreas.map((area, index) => {
+                    const accentColor = `var(--color-brand-${accentCycle[serviceAreas.indexOf(area) % accentCycle.length]})`;
+                    return (
+                      <li key={area.slug}>
+                        <Reveal delay={(index % 3) * 0.08} className="h-full">
+                          <Link
+                            href={getAreaHref(area.slug)}
+                            className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-white p-5 pt-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-x-0 top-0 h-1.5 origin-left scale-x-[0.18] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                              style={{ backgroundColor: accentColor }}
+                            />
+                            <span
+                              aria-hidden="true"
+                              className="text-outline pointer-events-none absolute -right-1 -top-3 select-none font-display text-7xl font-black leading-none opacity-60 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110"
+                            >
+                              {String(serviceAreas.indexOf(area) + 1).padStart(2, '0')}
+                            </span>
+                            <span className="relative">
+                              <span className="font-display text-xl font-bold text-ink">{area.name}</span>
+                              <span className="mt-2 block max-w-[16rem] text-sm leading-relaxed text-ink/70">{area.headline}</span>
+                            </span>
+                            <span
+                              className="mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-500 group-hover:rotate-45 group-hover:border-ink group-hover:bg-ink group-hover:text-white"
+                            >
+                              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                            </span>
+                          </Link>
+                        </Reveal>
+                      </li>
+                    );
+                  })}
                 </ul>
               </Reveal>
             );
