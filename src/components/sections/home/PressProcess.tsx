@@ -20,7 +20,7 @@ export default function PressProcess() {
       >
         <PressScene getProgress={getProgress} />
 
-        <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-5 py-8 sm:px-10 lg:py-14">
+        <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-5 pb-20 pt-8 sm:px-10 lg:py-14">
           <div className="max-w-lg">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Inside the press</p>
             <h2 id="press-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
@@ -29,7 +29,7 @@ export default function PressProcess() {
           </div>
 
           {activeIndex >= 2 && (
-            <p className="animate-fade-up pointer-events-none absolute right-5 top-28 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white shadow-xl sm:right-10">
+            <p className="animate-fade-up pointer-events-none absolute right-5 top-44 max-w-[calc(100%-2.5rem)] rounded-full sm:top-28 lg:top-28 bg-ink px-4 py-2 text-[11px] font-semibold uppercase leading-snug tracking-wider text-white shadow-xl sm:right-10 sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-widest">
               <span className="mr-2 text-brand-yellow">●</span> Fresh off the press — four colours, perfectly registered
             </p>
           )}

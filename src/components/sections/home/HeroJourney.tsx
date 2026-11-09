@@ -34,6 +34,9 @@ export default function HeroJourney() {
       >
         <JourneyScene getProgress={getProgress} />
 
+        {/* phones: soft fade so the copy stays readable where it meets the 3D object */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-64 bg-gradient-to-t from-paper via-paper/75 to-transparent lg:hidden" aria-hidden="true" />
+
         {/* ───────── Chapter copy ───────── */}
         <div className="pointer-events-none relative z-10 mx-auto h-full max-w-7xl px-5 sm:px-10">
           {journeyChapters.map((chapter, index) => {
@@ -43,7 +46,7 @@ export default function HeroJourney() {
             return (
               <div
                 key={chapter.id}
-                className={`absolute inset-x-5 bottom-8 flex flex-col sm:inset-x-10 lg:inset-y-0 lg:flex-row lg:pb-20 lg:pt-6 ${chapterLayout[index]} transition-all duration-700 ease-out ${
+                className={`absolute inset-x-5 bottom-20 flex flex-col sm:inset-x-10 sm:bottom-24 lg:inset-y-0 lg:flex-row lg:pb-20 lg:pt-6 ${chapterLayout[index]} transition-all duration-700 ease-out ${
                   isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
                 aria-hidden={!isActive}
