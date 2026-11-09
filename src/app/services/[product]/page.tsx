@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 import ProductHero from '@/components/sections/Services/ProductHero';
 import ProductPager from '@/components/sections/Services/ProductPager';
+import ProductQuickAnswer from '@/components/sections/Services/ProductQuickAnswer';
 import ProductProcess from '@/components/sections/Services/ProductProcess';
 import ProductSpecs from '@/components/sections/Services/ProductSpecs';
 import ProductSwatchCard from '@/components/sections/Services/ProductSwatchCard';
@@ -21,9 +22,10 @@ import {
   productCatalog,
   slugifyTypeName,
 } from '@/data/productCatalog';
+import { pressSteps } from '@/data/homeData';
 import { buildWhatsAppLink } from '@/data/siteConfig';
 import { toProductCard } from '@/lib/productCards';
-import { absoluteUrl, buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata } from '@/lib/seo';
+import { absoluteUrl, buildBreadcrumbSchema, buildHowToSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 import { getProductCover, getTypeImage } from '@/lib/productImages';
 
 interface ProductPageProps {
@@ -42,11 +44,17 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return { title: 'Product not found | Design N Print' };
 
   const typeNames = product.types.map((type) => type.name).join(', ');
-  return buildPageMetadata({
+  const pageMetadata = buildPageMetadata({
     title: `${product.name} Printing in Ahmedabad | Design N Print`,
     description: `${product.intro} Types: ${typeNames}.`,
     path: `/services/${product.slug}`,
+    image: `/services/${product.slug}/opengraph-image`,
   });
+  return {
+    ...pageMetadata,
+    // clean markdown twin for AI crawlers
+    alternates: { ...pageMetadata.alternates, types: { 'text/markdown': `/services/${product.slug}.md` } },
+  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -94,7 +102,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <JsonLd
         data={[
           productSchema,
-          buildFaqSchema(faqs),
+          buildWebPageSchema({
+            name: `${product.name} printing in Ahmedabad`,
+            description: product.intro,
+            path: `/services/${product.slug}`,
+          }),
+          buildHowToSchema(
+            `How to order ${product.name.toLowerCase()} from Design N Print`,
+            pressSteps.map((step) => ({ title: step.title, body: step.body })),
+          ),
           buildBreadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: 'Services', path: '/services' },
@@ -103,6 +119,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ]}
       />
       <ProductHero product={product} number={number} coverImage={coverImage} />
+      <ProductQuickAnswer product={product} />
       {/* wrapper keeps the sticky jump bar inside the types section only */}
       <div>
       {typeCards.length > 4 && <TypeJumpBar types={typeCards.map(({ slug, name }) => ({ slug, name }))} />}

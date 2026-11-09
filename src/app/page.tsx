@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import JsonLd from '@/components/shared/JsonLd';
 import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
 import HeroJourney from '@/components/sections/home/HeroJourney';
 import TrustStrip from '@/components/sections/home/TrustStrip';
@@ -13,11 +12,10 @@ import ProofSection from '@/components/sections/home/ProofSection';
 import StartPaths from '@/components/sections/home/StartPaths';
 import HomeFaq from '@/components/sections/home/HomeFaq';
 import QuoteCta from '@/components/sections/home/QuoteCta';
-import { homeFaqs } from '@/data/homeData';
 import { getAllProductCards } from '@/lib/productCards';
-import { buildFaqSchema } from '@/lib/seo';
 
 // Title, description and Open Graph come from the root layout; only the canonical is set here.
+// (FAQPage schema is emitted by the shared FaqAccordion.)
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 /**
@@ -38,7 +36,6 @@ export const metadata: Metadata = { alternates: { canonical: '/' } };
 export default function Home() {
   return (
     <SmoothScrollProvider>
-      <JsonLd data={buildFaqSchema(homeFaqs)} />
       <HeroJourney />
       <TrustStrip />
       <ProductShowcase />

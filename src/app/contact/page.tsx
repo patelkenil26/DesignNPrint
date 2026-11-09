@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { buildPageMetadata } from '@/lib/seo';
+import JsonLd from '@/components/shared/JsonLd';
+import { buildBreadcrumbSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 import { Suspense } from 'react';
 import ContactChannels from '@/components/sections/contact/ContactChannels';
 import ContactHero from '@/components/sections/contact/ContactHero';
@@ -23,6 +24,20 @@ export const metadata: Metadata = buildPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          buildWebPageSchema({
+            name: 'Contact Design N Print',
+            description: 'Offset printing and packaging press in Naroda GIDC, Ahmedabad, since 2008.',
+            path: '/contact',
+            pageType: 'ContactPage',
+          }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Contact', path: '/contact' },
+          ]),
+        ]}
+      />
       <ContactHero />
       <ContactChannels />
 

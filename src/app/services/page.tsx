@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import JsonLd from '@/components/shared/JsonLd';
-import { buildBreadcrumbSchema, buildPageMetadata } from '@/lib/seo';
+import { buildBreadcrumbSchema, buildItemListSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 import ProductMarquee from '@/components/sections/Services/ProductMarquee';
 import ProductMosaic from '@/components/sections/Services/ProductMosaic';
 import ServicesHero from '@/components/sections/Services/ServicesHero';
@@ -30,10 +30,22 @@ export default function ServicesPage() {
   return (
     <>
       <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-        ])}
+        data={[
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+          ]),
+          buildWebPageSchema({
+            name: 'Printing & packaging services in Ahmedabad',
+            description: `All ${productCatalog.length} products Design N Print makes.`,
+            path: '/services',
+            pageType: 'CollectionPage',
+          }),
+          buildItemListSchema(
+            'Design N Print products',
+            productCatalog.map((product) => ({ name: product.name, path: `/services/${product.slug}` })),
+          ),
+        ]}
       />
       <ServicesHero fanProducts={fanProducts} />
       <ProductMarquee />

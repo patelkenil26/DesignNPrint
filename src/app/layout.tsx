@@ -58,6 +58,11 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
   robots: { index: true, follow: true },
+  // Set in the host's environment after claiming the site in Google Search Console / Bing Webmaster Tools.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } : undefined,
+  },
 };
 
 export default function RootLayout({
@@ -66,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${sora.variable} font-poppins antialiased min-h-screen flex flex-col`}>
         <JsonLd data={[buildLocalBusinessSchema(), buildWebSiteSchema()]} />
         <a

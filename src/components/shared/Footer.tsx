@@ -11,6 +11,7 @@ import { buildWhatsAppLink, siteConfig } from "@/data/siteConfig";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "All products", href: "/services" },
+  { label: "Areas we serve", href: "/areas" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Start a job ticket", href: "/contact#job-ticket" },

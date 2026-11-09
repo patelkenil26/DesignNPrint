@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { buildPageMetadata } from '@/lib/seo';
+import JsonLd from '@/components/shared/JsonLd';
+import { buildBreadcrumbSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 import AboutHero from '@/components/sections/About/AboutHero';
 import AboutManifesto from '@/components/sections/About/AboutManifesto';
 import AboutRange from '@/components/sections/About/AboutRange';
@@ -26,6 +27,20 @@ export const metadata: Metadata = buildPageMetadata({
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          buildWebPageSchema({
+            name: 'About Design N Print',
+            description: 'Offset printing and packaging press in Naroda GIDC, Ahmedabad, since 2008.',
+            path: '/about',
+            pageType: 'AboutPage',
+          }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'About', path: '/about' },
+          ]),
+        ]}
+      />
       <AboutHero />
       <AboutManifesto />
       <AboutStory />

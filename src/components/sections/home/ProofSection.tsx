@@ -13,7 +13,7 @@ const stats = [
 
 export default function ProofSection() {
   const marqueeReviews = [...customerReviews, ...customerReviews];
-  const googleReviewUrl = `https://search.google.com/local/writereview?placeid=${siteConfig.googlePlaceId}`;
+  const googleReviewUrl = siteConfig.googleReviewUrl;
 
   return (
     <section className="bg-paper-deep/60 py-20 sm:py-28" aria-labelledby="proof-heading">
