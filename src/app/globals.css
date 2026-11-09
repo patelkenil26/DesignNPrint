@@ -342,3 +342,68 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* ───────── Footer wordmark variants ───────── */
+
+/* B/C — flowing CMYK fill without the cursor mask */
+.wordmark-flow {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-brand-blue),
+    var(--color-brand-red),
+    var(--color-brand-yellow),
+    var(--color-brand-green),
+    var(--color-brand-blue)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ink-flow 10s linear infinite;
+}
+
+/* D — halftone screens clipped to the letters */
+.wordmark-halftone {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 8px 8px;
+  animation: halftone-drift 10s linear infinite;
+}
+
+@keyframes halftone-drift {
+  to {
+    background-position: 80px 40px;
+  }
+}
+
+/* E — a colour "pass" wiping across the letters, driven by --p (0 → 1) */
+.wordmark-wipe {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--p, 0) * 118% - 18%), transparent calc(var(--p, 0) * 118%));
+  mask-image: linear-gradient(90deg, #000 calc(var(--p, 0) * 118% - 18%), transparent calc(var(--p, 0) * 118%));
+}
+
+/* F — a colour wave that runs along the letters every few seconds */
+@keyframes letter-wave {
+  0%,
+  14%,
+  100% {
+    opacity: 0;
+  }
+  5%,
+  9% {
+    opacity: 1;
+  }
+}
+
+.letter-wave {
+  animation: letter-wave 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-flow,
+  .wordmark-halftone,
+  .letter-wave {
+    animation: none;
+  }
+}

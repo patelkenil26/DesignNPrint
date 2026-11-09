@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
@@ -29,7 +29,7 @@ const footerHeadingClasses = "mb-5 text-sm font-semibold uppercase tracking-wide
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-ink font-poppins text-white" aria-label="Site footer">
+    <footer id="site-footer" className="relative overflow-hidden bg-ink font-poppins text-white" aria-label="Site footer">
       <span className="cmyk-strip block h-1.5 w-full" aria-hidden="true" />
 
       {/* closing call-to-action */}
@@ -157,7 +157,9 @@ const Footer = () => {
       </div>
 
       {/* oversized CMYK wordmark */}
-      <FooterWordmark />
+      <Suspense fallback={<div className="h-[24vw] sm:h-[12vw]" aria-hidden="true" />}>
+        <FooterWordmark />
+      </Suspense>
 
       <div className="relative border-t border-white/10 px-5 pb-24 pt-6 text-center text-sm text-white/50 sm:pb-6">
         <p>
