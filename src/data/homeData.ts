@@ -4,55 +4,34 @@ import { getProductHref } from '@/data/productCatalog';
 
 export type BrandAccent = 'red' | 'yellow' | 'green' | 'blue';
 
-/* ───────────── Hero scroll story (card → box) ───────────── */
-export interface JourneyChapter {
-  id: string;
-  label: string;
-  title: string;
-  body: string;
-  /** progress (0–1) at which this chapter starts */
-  start: number;
+/* ───────────── Hero (print-drop collage) ───────────── */
+export const heroCopy = {
+  title: 'Print that you can feel.',
+  body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
+};
+
+/** The product proofs that "print in" on the hero. `id` points at an entry in `showcaseProducts`. */
+export interface HeroProofLayout {
+  productId: string;
+  /** CSS position + width of the proof inside the hero stage (percentages) */
+  className: string;
+  /** resting tilt in degrees */
+  rotate: number;
+  /** parallax strength in px — bigger = feels closer to the viewer */
+  depth: number;
+  /** seconds before this proof prints in */
+  delay: number;
 }
 
-export const journeyChapters: JourneyChapter[] = [
-  {
-    id: 'card',
-    label: 'The Card',
-    title: 'Print that you can feel.',
-    body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
-    start: 0,
-  },
-  {
-    id: 'sheet',
-    label: 'The Sheet',
-    title: 'Every box starts as a flat sheet.',
-    body: 'One die-cut sheet, printed in four colours. Keep scrolling and watch it come alive.',
-    start: 0.14,
-  },
-  {
-    id: 'fold',
-    label: 'The Fold',
-    title: 'Creased. Folded. Locked in.',
-    body: 'Crease lines, die-cutting and folding — checked by hand at every step of the process.',
-    start: 0.42,
-  },
-  {
-    id: 'close',
-    label: 'The Close',
-    title: 'Closed, tucked and ready.',
-    body: 'Rigid strength, crisp edges and a finish that makes your product feel premium.',
-    start: 0.62,
-  },
-  {
-    id: 'brand',
-    label: 'Your Brand',
-    title: 'Your brand. Our press.',
-    body: '17 products, one studio. Send us the idea or the finished artwork — we take it all the way to print.',
-    start: 0.8,
-  },
+export const heroProofs: HeroProofLayout[] = [
+  { productId: 'stationery', className: 'left-[2%] top-[4%] w-[44%]', rotate: -4, depth: 16, delay: 0.25 },
+  { productId: 'rigid-box', className: 'right-[0%] top-[0%] w-[40%]', rotate: 3, depth: 30, delay: 0.4 },
+  { productId: 'pharma', className: 'left-[28%] top-[38%] w-[38%]', rotate: 2, depth: 48, delay: 0.55 },
+  { productId: 'brochure', className: 'right-[2%] top-[50%] w-[34%]', rotate: -3, depth: 24, delay: 0.7 },
+  { productId: 'pouch', className: 'left-[0%] top-[58%] w-[28%] hidden sm:block', rotate: 5, depth: 38, delay: 0.85 },
 ];
 
-/* ───────────── Most-requested ring (8 bestsellers — the full range lives in productIndex.ts) ───────────── */
+/* ───────────── Most-requested deck (8 bestsellers — the full range lives in productIndex.ts) ───────────── */
 export interface ShowcaseProduct {
   id: string;
   name: string;
