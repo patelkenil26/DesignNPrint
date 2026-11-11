@@ -10,11 +10,17 @@ export const heroCopy = {
   body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
 };
 
-/** The product proofs that "print in" on the hero. `id` points at an entry in `showcaseProducts`. */
+/** The proofs that "print in" on the hero. Extras and brand art only — every product has its own place further down. */
 export interface HeroProofLayout {
-  productId: string;
+  id: string;
+  image: string;
+  alt: string;
+  /** small tag under the proof */
+  label: string;
   /** CSS position + width of the proof inside the hero stage (percentages) */
   className: string;
+  /** Tailwind aspect-ratio class of the frame */
+  aspectClass: string;
   /** resting tilt in degrees */
   rotate: number;
   /** parallax strength in px — bigger = feels closer to the viewer */
@@ -24,96 +30,60 @@ export interface HeroProofLayout {
 }
 
 export const heroProofs: HeroProofLayout[] = [
-  { productId: 'stationery', className: 'left-[2%] top-[4%] w-[44%]', rotate: -4, depth: 16, delay: 0.25 },
-  { productId: 'rigid-box', className: 'right-[0%] top-[0%] w-[40%]', rotate: 3, depth: 30, delay: 0.4 },
-  { productId: 'pharma', className: 'left-[28%] top-[38%] w-[38%]', rotate: 2, depth: 48, delay: 0.55 },
-  { productId: 'brochure', className: 'right-[2%] top-[50%] w-[34%]', rotate: -3, depth: 24, delay: 0.7 },
-  { productId: 'pouch', className: 'left-[0%] top-[58%] w-[28%] hidden sm:block', rotate: 5, depth: 38, delay: 0.85 },
-];
-
-/* ───────────── Most-requested deck (8 bestsellers — the full range lives in productIndex.ts) ───────────── */
-export interface ShowcaseProduct {
-  id: string;
-  name: string;
-  category: string;
-  blurb: string;
-  image: string;
-  href: string;
-  accent: BrandAccent;
-}
-
-export const showcaseProducts: ShowcaseProduct[] = [
   {
-    id: 'stationery',
-    name: 'Visiting Cards, Letterheads & Envelopes',
-    category: 'Stationery',
-    blurb: 'Your first impression, in premium stock with crisp finishing.',
-    image: '/images/Card/design-n-print-product-12-1.png',
-    href: getProductHref('visiting-card'),
-    accent: 'red',
+    id: 'invitation',
+    image: '/images/home/invitation.jpg',
+    alt: 'Printed wedding invitation cards in saffron and white',
+    label: 'Invitations',
+    className: 'left-[0%] top-[2%] w-[42%]',
+    aspectClass: 'aspect-square',
+    rotate: -5,
+    depth: 16,
+    delay: 0.25,
   },
   {
-    id: 'rigid-box',
-    name: 'Box Designing & Printing',
-    category: 'Packaging',
-    blurb: 'Rigid, folding and luxury boxes made to show your brand off.',
-    image: '/images/Card/box_designing.png',
-    href: getProductHref('box'),
-    accent: 'blue',
+    id: 'calendar',
+    image: '/images/home/calendar.jpg',
+    alt: 'Printed desk calendar with illustrated artwork',
+    label: 'Calendars',
+    className: 'right-[0%] top-[0%] w-[50%]',
+    aspectClass: 'aspect-[3/2]',
+    rotate: 3,
+    depth: 30,
+    delay: 0.4,
   },
   {
-    id: 'pharma',
-    name: 'Pharmaceutical & Medicine Boxes',
-    category: 'Packaging',
-    blurb: 'Clean, compliant cartons with barcode-sharp printing.',
-    image: '/images/Card/pharma_box.jpg',
-    href: getProductHref('box', 'Tablet Box'),
-    accent: 'blue',
+    id: 'book',
+    image: '/images/home/book.jpg',
+    alt: 'Hard-bound printed book open beside its cover',
+    label: 'Books',
+    className: 'left-[24%] top-[36%] w-[48%]',
+    aspectClass: 'aspect-[3/2]',
+    rotate: 2,
+    depth: 48,
+    delay: 0.55,
   },
   {
-    id: 'brochure',
-    name: 'Brochure Designing & Printing',
-    category: 'Marketing',
-    blurb: 'Brochures that tell your story and close the sale.',
-    image: '/images/Card/BrochureDesigning.png',
-    href: getProductHref('brochure'),
-    accent: 'yellow',
+    id: 'certificate',
+    image: '/images/home/certificate.jpg',
+    alt: 'Framed certificate of recognition with gold seal',
+    label: 'Certificates',
+    className: 'right-[2%] top-[56%] w-[40%] hidden sm:block',
+    aspectClass: 'aspect-[3/2]',
+    rotate: -3,
+    depth: 24,
+    delay: 0.7,
   },
   {
-    id: 'folder',
-    name: 'Company File Folders',
-    category: 'Folders',
-    blurb: 'Presentation folders that carry your brand into every meeting.',
-    image: '/images/Card/company_file_folder.jpg',
-    href: getProductHref('file'),
-    accent: 'green',
-  },
-  {
-    id: 'pouch',
-    name: 'Custom Pouches',
-    category: 'Pouches',
-    blurb: 'Branded pouches and bags for retail and gifting.',
-    image: '/images/Card/customize_pouch.png',
-    href: getProductHref('pouch'),
-    accent: 'blue',
-  },
-  {
-    id: 'banner',
-    name: 'Flex Banners & Roller Standees',
-    category: 'Outdoor',
-    blurb: 'Big, bold, weather-ready display printing.',
-    image: '/images/Card/flex_banner.png',
-    href: getProductHref('flex-banner'),
-    accent: 'red',
-  },
-  {
-    id: 'sticker',
-    name: 'Sticker & Label Printing',
-    category: 'Labels',
-    blurb: 'Die-cut stickers and product labels in any shape.',
-    image: '/images/Card/sticker_label.png',
-    href: getProductHref('sticker'),
-    accent: 'green',
+    id: 'brand',
+    image: '/images/home/brand-cover.jpg',
+    alt: 'Design N Print yellow origami cover artwork',
+    label: 'Design N Print',
+    className: 'left-[0%] top-[62%] w-[30%]',
+    aspectClass: 'aspect-square',
+    rotate: 5,
+    depth: 38,
+    delay: 0.85,
   },
 ];
 
@@ -428,14 +398,14 @@ export const homeFaqs: FaqItem[] = [
 
 /** Artwork that gets "printed" in the press-process section. */
 export const pressSheetArtwork = {
-  image: '/images/Card/cosmetic_item.png',
+  image: '/images/products/rigid-box/cover.jpg',
   alt: 'Cosmetic cream box, tube and jar printed in four colours',
 };
 
 /** Photos on the four sides of the turning cube in the quote section. */
 export const quoteCubeFaces = [
-  { image: '/images/Card/sticker_label.png', label: 'Stickers & Labels' },
-  { image: '/images/Card/booklet.jpg', label: 'Booklets' },
-  { image: '/images/Card/company_file_folder.jpg', label: 'Files & Folders' },
-  { image: '/images/Card/flex_banner.png', label: 'Banners' },
+  { image: '/images/products/pamphlet-flyer/single-page-flyer.jpg', label: 'Flyers' },
+  { image: '/images/products/book/promotional-booklet.jpg', label: 'Booklets' },
+  { image: '/images/products/book/product-catalogue.jpg', label: 'Catalogues' },
+  { image: '/images/home/brand-contact.jpg', label: 'Visit us' },
 ] as const;

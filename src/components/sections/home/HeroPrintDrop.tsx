@@ -7,7 +7,7 @@ import { ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
 import LinkButton from '@/components/shared/LinkButton';
 import RegisteredImage from '@/components/shared/RegisteredImage';
 import WordRise from '@/components/shared/WordRise';
-import { heroCopy, heroProofs, showcaseProducts, type HeroProofLayout } from '@/data/homeData';
+import { heroCopy, heroProofs, type HeroProofLayout } from '@/data/homeData';
 import { productCatalog } from '@/data/productCatalog';
 import { buildWhatsAppLink, getYearsInBusiness, siteConfig } from '@/data/siteConfig';
 
@@ -21,7 +21,6 @@ interface HeroProofProps {
 /** One printed proof: drops in, snaps into register, then floats and leans toward the pointer. */
 function HeroProof({ layout, pointerX, pointerY, isMotionAllowed }: HeroProofProps) {
   const [isRegistered, setIsRegistered] = useState(!isMotionAllowed);
-  const product = showcaseProducts.find((item) => item.id === layout.productId);
   const offsetX = useTransform(pointerX, (value) => value * layout.depth);
   const offsetY = useTransform(pointerY, (value) => value * layout.depth);
 
@@ -31,8 +30,6 @@ function HeroProof({ layout, pointerX, pointerY, isMotionAllowed }: HeroProofPro
     return () => window.clearTimeout(registerTimer);
   }, [isMotionAllowed, layout.delay]);
 
-  if (!product) return null;
-
   return (
     <motion.div className={`absolute ${layout.className}`} style={{ x: offsetX, y: offsetY }}>
       <motion.div
@@ -41,17 +38,17 @@ function HeroProof({ layout, pointerX, pointerY, isMotionAllowed }: HeroProofPro
         transition={{ duration: 1, delay: layout.delay, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="animate-float-slow" style={{ animationDelay: `${layout.delay * 2}s` }}>
-          <div className="aspect-[4/5]">
+          <div className={layout.aspectClass}>
             <RegisteredImage
-              src={product.image}
-              alt={product.name}
-              sizes="(min-width: 1024px) 22vw, 45vw"
+              src={layout.image}
+              alt={layout.alt}
+              sizes="(min-width: 1024px) 26vw, 50vw"
               isRegistered={isRegistered}
               priority={layout.delay < 0.5}
             />
           </div>
           <p className="mt-2 inline-block rounded-full bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
-            {product.category}
+            {layout.label}
           </p>
         </div>
       </motion.div>
@@ -140,7 +137,7 @@ export default function HeroPrintDrop() {
         <div className="relative h-[27rem] w-full sm:h-[34rem] lg:h-[38rem]">
           {heroProofs.map((layout) => (
             <HeroProof
-              key={layout.productId}
+              key={layout.id}
               layout={layout}
               pointerX={pointerX}
               pointerY={pointerY}

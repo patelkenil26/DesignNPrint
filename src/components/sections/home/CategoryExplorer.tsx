@@ -31,7 +31,7 @@ export default function CategoryExplorer() {
             Six ways we bring your brand to life.
           </h2>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
-            Hover or tap a swatch to open it — every category opens into the products we print most.
+            Hover or tap a swatch to open it. Each family has its own page — and every product inside it is shown one by one just below.
           </p>
         </motion.div>
 
@@ -99,13 +99,10 @@ export default function CategoryExplorer() {
                   </p>
                   <h3 className="mt-2 font-display text-2xl font-bold leading-tight sm:text-4xl">{category.name}</h3>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">{category.blurb}</p>
-                  <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${category.name} types`}>
-                    {category.subCategories.map((subCategory) => (
-                      <li key={subCategory.name} className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
-                        {subCategory.name}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur">
+                    <span className="font-display text-base font-black text-brand-yellow">{category.productSlugs.length}</span>
+                    {category.productSlugs.length === 1 ? 'product' : 'products'} in this family
+                  </p>
                   <Link
                     href={getCategoryHref(category.slug)}
                     tabIndex={isActive ? 0 : -1}

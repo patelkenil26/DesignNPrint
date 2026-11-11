@@ -22,6 +22,8 @@ export interface ProductCategory {
   /** cover image used on cards */
   image: string;
   imageAlt: string;
+  /** the products that live in this category — each product belongs to exactly one */
+  productSlugs: string[];
   subCategories: SubCategory[];
 }
 
@@ -34,7 +36,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Peel. Stick. Stand out.',
     blurb: 'Bottle labels, die-cut stickers and product labels — printed sharp and cut to any shape.',
     accent: 'blue',
-    image: '/images/Card/sticker_label.png',
+    image: '/images/categories/stickers-labels.jpg',
+    productSlugs: ['sticker', 'bottle-label'],
     imageAlt: 'Printed stickers and product labels',
     subCategories: [
       { name: 'Bottle labels', blurb: 'Waterproof labels for bottles, cans and jars.' },
@@ -52,7 +55,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'First impressions, in your hand.',
     blurb: 'Visiting cards, letterheads, envelopes and certificates in premium stock and finishes.',
     accent: 'red',
-    image: '/images/Card/design-n-print-product-12-1.png',
+    image: '/images/categories/cards-stationery.jpg',
+    productSlugs: ['visiting-card', 'letterhead', 'envelope', 'bill-book'],
     imageAlt: 'Visiting cards, letterhead and envelope set',
     subCategories: [
       { name: 'Visiting cards', blurb: 'Matt, gloss, UV, foil and textured finishes.' },
@@ -70,7 +74,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Fold it open. Tell the story.',
     blurb: 'Brochures, pamphlets, booklets, catalogues and calendars that carry your message.',
     accent: 'yellow',
-    image: '/images/Card/BrochureDesigning.png',
+    image: '/images/categories/brochures-flyers.jpg',
+    productSlugs: ['brochure', 'pamphlet-flyer', 'book'],
     imageAlt: 'Printed brochures and flyers',
     subCategories: [
       { name: 'Brochures', blurb: 'Bi-fold, tri-fold and gate-fold designs.' },
@@ -88,7 +93,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Horizontal. Vertical. Yours.',
     blurb: 'Rigid, folding and tuck-end boxes in every shape — from pharma cartons to gift packaging.',
     accent: 'red',
-    image: '/images/Card/box_designing.png',
+    image: '/images/categories/boxes-packaging.jpg',
+    productSlugs: ['box', 'rigid-box', 'corrugated-box'],
     imageAlt: 'Printed premium product boxes',
     subCategories: [
       { name: 'Horizontal boxes', blurb: 'Wide, low boxes for gifting and retail.' },
@@ -107,7 +113,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Your brand in every meeting.',
     blurb: 'Company files, doctor files, mica and ceramic display folders built to last.',
     accent: 'green',
-    image: '/images/Card/company_file_folder.jpg',
+    image: '/images/categories/files-folders.jpg',
+    productSlugs: ['file'],
     imageAlt: 'Branded company file folders',
     subCategories: [
       { name: 'Company files', blurb: 'Presentation folders with pockets and card slots.' },
@@ -124,7 +131,8 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Carry it. Display it.',
     blurb: 'Cotton and custom pouches, flex banners and roller standees for retail and events.',
     accent: 'yellow',
-    image: '/images/Card/customize_pouch.png',
+    image: '/images/categories/pouches-display.jpg',
+    productSlugs: ['pouch', 'bopp-bag', 'flex-banner', 'acrylic-board'],
     imageAlt: 'Custom printed pouches',
     subCategories: [
       { name: 'Cotton pouches', blurb: 'Drawstring and zipper pouches, branded.' },

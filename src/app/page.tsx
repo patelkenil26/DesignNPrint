@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
+import TypeMarquee from '@/components/shared/TypeMarquee';
 import HeroPrintDrop from '@/components/sections/home/HeroPrintDrop';
 import TrustStrip from '@/components/sections/home/TrustStrip';
-import ProductDeck from '@/components/sections/home/ProductDeck';
 import CategoryExplorer from '@/components/sections/home/CategoryExplorer';
-import ProductIndex from '@/components/sections/home/ProductIndex';
+import ProductShowcase from '@/components/sections/home/ProductShowcase';
 import FinishesLab from '@/components/sections/home/FinishesLab';
 import PressProcess from '@/components/sections/home/PressProcess';
 import IndustriesSection from '@/components/sections/home/IndustriesSection';
@@ -22,9 +23,9 @@ export const metadata: Metadata = { alternates: { canonical: '/' } };
  * Home page — every section answers one question, in the order a buyer asks them, and each one moves differently:
  *  1. Hero print-drop    WOW      — product proofs print in as CMYK ink plates snap into register
  *  2. Trust strip        SAFE?    — five promises pop in, CMYK underlines draw themselves
- *  3. Most requested     WHAT     — scroll-dealt deck of the 8 products people order first
- *  4. Category explorer  WHAT+    — six swatch panels; the hovered one opens wide
- *  5. Product index      ALL      — every product on two belts moving in opposite directions
+ *  3. Category explorer  WHAT     — six family panels; the hovered one opens wide
+ *  4. Product showcase   WHAT+    — all products, each shown once, dealt like cards in category order
+ *  5. Type marquee       —        — oversized "Design · Print · Finish · Pack · Deliver" band
  *  6. Finishes lab       QUALITY  — a card whose finish reacts to your pointer (velvet / spot UV / foil / emboss)
  *  7. Press process      HOW      — scroll prints a sheet colour by colour, then finishes and dispatches it
  *  8. Industries         FOR ME?  — cards that pile up as you scroll
@@ -36,11 +37,12 @@ export const metadata: Metadata = { alternates: { canonical: '/' } };
 export default function Home() {
   return (
     <SmoothScrollProvider>
+      <ScrollProgressBar />
       <HeroPrintDrop />
       <TrustStrip />
-      <ProductDeck />
       <CategoryExplorer />
-      <ProductIndex products={getAllProductCards()} />
+      <ProductShowcase products={getAllProductCards()} />
+      <TypeMarquee />
       <FinishesLab />
       <PressProcess />
       <IndustriesSection />
