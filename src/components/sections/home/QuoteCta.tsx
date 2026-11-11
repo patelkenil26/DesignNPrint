@@ -1,13 +1,48 @@
 'use client';
 
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Mail, MessageCircle, Phone } from 'lucide-react';
 import LinkButton from '@/components/shared/LinkButton';
-import { quoteProductChips } from '@/data/homeData';
+import { quoteCubeFaces, quoteProductChips } from '@/data/homeData';
 import { buildWhatsAppLink, siteConfig } from '@/data/siteConfig';
 
-const CtaBoxScene = dynamic(() => import('@/components/three/CtaBoxScene'), { ssr: false });
+/** Faces of the CSS cube: four sides carry product photos, top and bottom stay plain. */
+const cubeFaceTransforms = [
+  'rotateY(0deg)',
+  'rotateY(90deg)',
+  'rotateY(180deg)',
+  'rotateY(270deg)',
+] as const;
+
+/** A lightweight CSS-only cube (no WebGL) that slowly turns, showing the products people ask a quote for. */
+function ProductCube() {
+  return (
+    <div
+      className="relative mx-auto flex h-[18rem] items-center justify-center [--cube:11rem] [perspective:1100px] sm:h-[26rem] sm:[--cube:16rem] lg:h-[30rem] lg:[--cube:18rem]"
+      role="img"
+      aria-label="A turning cube showing printed packaging, stationery, labels and brochures"
+    >
+      <span className="absolute -inset-6 rounded-full bg-brand-yellow/15 blur-3xl" aria-hidden="true" />
+      <div className="animate-cube-spin relative h-[var(--cube)] w-[var(--cube)] [transform-style:preserve-3d]">
+        {quoteCubeFaces.map((face, index) => (
+          <div
+            key={face.image}
+            className="absolute inset-0 overflow-hidden rounded-2xl border-4 border-white bg-white shadow-xl [backface-visibility:hidden]"
+            style={{ transform: `${cubeFaceTransforms[index]} translateZ(calc(var(--cube) / 2))` }}
+          >
+            <Image src={face.image} alt="" fill sizes="18rem" className="object-cover" />
+            <span className="absolute inset-x-0 bottom-0 bg-ink/70 px-3 py-1.5 text-center text-[11px] font-semibold uppercase tracking-widest text-white">
+              {face.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      {/* shadow on the "floor" */}
+      <span className="absolute bottom-2 h-5 w-[calc(var(--cube)*0.8)] rounded-full bg-black/40 blur-xl sm:bottom-6" aria-hidden="true" />
+    </div>
+  );
+}
 
 export default function QuoteCta() {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
@@ -75,9 +110,7 @@ export default function QuoteCta() {
           </div>
         </div>
 
-        <div className="relative h-[20rem] sm:h-[28rem] lg:h-[32rem]">
-          <CtaBoxScene />
-        </div>
+        <ProductCube />
       </div>
     </section>
   );

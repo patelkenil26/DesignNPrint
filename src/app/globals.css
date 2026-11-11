@@ -342,3 +342,70 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* ───────── Home redesign helpers ───────── */
+
+/* second marquee row that travels the other way */
+@keyframes marquee-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-scroll-reverse 60s linear infinite;
+}
+
+/* light sweeping across a finish card when nobody is pointing at it (touch screens) */
+@keyframes sheen-sweep {
+  0%,
+  100% {
+    --sheen-x: 15%;
+    --sheen-y: 25%;
+  }
+  50% {
+    --sheen-x: 85%;
+    --sheen-y: 70%;
+  }
+}
+
+@property --sheen-x {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --sheen-y {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+.animate-sheen-sweep {
+  animation: sheen-sweep 7s ease-in-out infinite;
+}
+
+/* slowly turning CSS cube used in the quote section */
+@keyframes cube-spin {
+  from {
+    transform: rotateX(-18deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-18deg) rotateY(360deg);
+  }
+}
+
+.animate-cube-spin {
+  animation: cube-spin 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-reverse,
+  .animate-sheen-sweep,
+  .animate-cube-spin {
+    animation: none;
+  }
+}

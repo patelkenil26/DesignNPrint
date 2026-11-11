@@ -3,7 +3,7 @@ import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
 import HeroPrintDrop from '@/components/sections/home/HeroPrintDrop';
 import TrustStrip from '@/components/sections/home/TrustStrip';
 import ProductDeck from '@/components/sections/home/ProductDeck';
-import CategoryStories from '@/components/sections/home/CategoryStories';
+import CategoryExplorer from '@/components/sections/home/CategoryExplorer';
 import ProductIndex from '@/components/sections/home/ProductIndex';
 import FinishesLab from '@/components/sections/home/FinishesLab';
 import PressProcess from '@/components/sections/home/PressProcess';
@@ -19,19 +19,19 @@ import { getAllProductCards } from '@/lib/productCards';
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 /**
- * Home page — every section answers one question, in the order a buyer asks them:
- *  1. Hero print-drop   WOW      — product proofs print in as CMYK ink plates snap into register
- *  2. Trust strip       SAFE?    — design + print, proof first, express dispatch, location
- *  3. Most requested    WHAT     — scroll-dealt deck of the 8 products people order first
- *  4. Category stories  WHAT+    — camera journey through the 6 headline categories
- *  5. Product index     ALL      — the full range of 17, one hover away
- *  6. Finishes lab      QUALITY  — interactive 3D card (velvet / spot UV / foil / emboss)
- *  7. Press process     HOW      — a sheet runs through a 4-colour offset press
- *  8. Industries        FOR ME?  — pharma, ceramic, cosmetics, agro, corporate, events
- *  9. Proof             TRUST    — stats + reviews
- * 10. Start paths       NEXT     — "I have a design" / "I need a design"
- * 11. FAQ               DOUBTS   — proof, price, turnaround, MOQ, delivery
- * 12. Quote CTA         ACT      — open 3D box + WhatsApp quote builder
+ * Home page — every section answers one question, in the order a buyer asks them, and each one moves differently:
+ *  1. Hero print-drop    WOW      — product proofs print in as CMYK ink plates snap into register
+ *  2. Trust strip        SAFE?    — five promises pop in, CMYK underlines draw themselves
+ *  3. Most requested     WHAT     — scroll-dealt deck of the 8 products people order first
+ *  4. Category explorer  WHAT+    — six swatch panels; the hovered one opens wide
+ *  5. Product index      ALL      — every product on two belts moving in opposite directions
+ *  6. Finishes lab       QUALITY  — a card whose finish reacts to your pointer (velvet / spot UV / foil / emboss)
+ *  7. Press process      HOW      — scroll prints a sheet colour by colour, then finishes and dispatches it
+ *  8. Industries         FOR ME?  — cards that pile up as you scroll
+ *  9. Proof              TRUST    — counting numbers + a review spotlight
+ * 10. Start paths        NEXT     — toggle between "I have a design" / "I need a design"
+ * 11. FAQ                DOUBTS   — proof, price, turnaround, MOQ, delivery
+ * 12. Quote CTA          ACT      — turning product cube + WhatsApp quote builder
  */
 export default function Home() {
   return (
@@ -39,7 +39,7 @@ export default function Home() {
       <HeroPrintDrop />
       <TrustStrip />
       <ProductDeck />
-      <CategoryStories />
+      <CategoryExplorer />
       <ProductIndex products={getAllProductCards()} />
       <FinishesLab />
       <PressProcess />

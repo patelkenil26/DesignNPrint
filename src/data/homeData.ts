@@ -425,3 +425,17 @@ export const homeFaqs: FaqItem[] = [
     answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
   },
 ];
+
+/** Artwork that gets "printed" in the press-process section. */
+export const pressSheetArtwork = {
+  image: '/images/Card/cosmetic_item.png',
+  alt: 'Cosmetic cream box, tube and jar printed in four colours',
+};
+
+/** Photos on the four sides of the turning cube in the quote section. */
+export const quoteCubeFaces = [
+  { image: '/images/Card/sticker_label.png', label: 'Stickers & Labels' },
+  { image: '/images/Card/booklet.jpg', label: 'Booklets' },
+  { image: '/images/Card/company_file_folder.jpg', label: 'Files & Folders' },
+  { image: '/images/Card/flex_banner.png', label: 'Banners' },
+] as const;

@@ -1,32 +1,66 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/shared/Reveal';
 import type { ProductCardData } from '@/lib/productCards';
 
-const accentTint = (product: ProductCardData, percent: number) =>
-  `color-mix(in srgb, var(--color-brand-${product.accent}) ${percent}%, var(--color-paper))`;
-
 const formatNumber = (index: number) => String(index + 1).padStart(2, '0');
 
-/**
- * The full range: all 17 products as one editorial index.
- * Desktop — hover/focus a row and the preview panel on the right swaps to that product.
- * Mobile — each row carries its own thumbnail and links straight through.
- */
 interface ProductIndexProps {
   products: ProductCardData[];
 }
 
+/** One product pill: number, thumbnail, name. Lifts and fills with its accent colour on hover. */
+function ProductPill({ product, index, isDecorativeCopy }: { product: ProductCardData; index: number; isDecorativeCopy: boolean }) {
+  return (
+    <li aria-hidden={isDecorativeCopy || undefined}>
+      <Link
+        href={`/services/${product.slug}`}
+        tabIndex={isDecorativeCopy ? -1 : undefined}
+        className="group inline-flex items-center gap-3 rounded-full border border-ink/15 bg-white py-2 pl-2 pr-5 min-h-[3.25rem] transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+        style={{ ['--pill-accent' as string]: `var(--color-brand-${product.accent})` }}
+      >
+        {product.image && (
+          <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-paper-deep">
+            <Image src={product.image} alt="" fill sizes="44px" className="object-cover" />
+          </span>
+        )}
+        <span className="font-display text-xs font-bold text-muted">{formatNumber(index)}</span>
+        <span className="whitespace-nowrap font-display text-lg font-bold text-ink">{product.name}</span>
+        <ArrowUpRight className="h-4 w-4 text-ink/40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--pill-accent)]" />
+      </Link>
+    </li>
+  );
+}
+
+/**
+ * The full range: all products on two belts that travel in opposite directions (pause on hover).
+ * Every pill is a real link, so each product page stays one click away from the home page.
+ */
 export default function ProductIndex({ products: productIndex }: ProductIndexProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeProduct = productIndex[activeIndex] ?? productIndex[0];
+  const half = Math.ceil(productIndex.length / 2);
+  const beltOne = productIndex.slice(0, half);
+  const beltTwo = productIndex.slice(half);
+
+  const renderBelt = (belt: ProductCardData[], startIndex: number, animationClass: string, label: string) => (
+    <div className="overflow-hidden py-2" aria-label={label}>
+      <ul className={`${animationClass} flex w-max gap-4 px-2 hover:[animation-play-state:paused]`}>
+        {[0, 1].map((copy) =>
+          belt.map((product, index) => (
+            <ProductPill
+              key={`${product.slug}-${copy}`}
+              product={product}
+              index={startIndex + index}
+              isDecorativeCopy={copy === 1}
+            />
+          )),
+        )}
+      </ul>
+    </div>
+  );
 
   return (
-    <section id="all-products" className="bg-paper py-20 sm:py-28" aria-labelledby="product-index-heading">
+    <section id="all-products" className="overflow-hidden bg-paper-deep/60 py-20 sm:py-24" aria-labelledby="product-index-heading">
       <div className="mx-auto max-w-7xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">The full range</p>
@@ -35,128 +69,13 @@ export default function ProductIndex({ products: productIndex }: ProductIndexPro
           </h2>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
             Whatever your business hands out, ships in or puts on a wall — we design it, print it and finish it.
-            Pick a product to see more.
           </p>
         </Reveal>
+      </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <ol className="border-t border-ink/15">
-            {productIndex.map((product, index) => {
-              const href = `/services/${product.slug}`;
-              const isActive = index === activeIndex;
-              const rowClasses =
-                'group relative flex items-center gap-4 overflow-hidden border-b border-ink/15 py-4 pr-2 transition-colors sm:gap-6 sm:py-5 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-blue';
-              const rowContent = (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className={`absolute inset-y-0 left-0 -z-0 w-full origin-left transition-transform duration-500 ease-out ${
-                      isActive ? 'scale-x-100' : 'scale-x-0'
-                    }`}
-                    style={{ backgroundColor: accentTint(product, 22) }}
-                  />
-                  <span className="relative w-7 shrink-0 font-display text-sm font-semibold text-muted sm:w-9">
-                    {formatNumber(index)}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl lg:hidden"
-                    style={{ backgroundColor: accentTint(product, 35) }}
-                  >
-                    {product.image && (
-                      <Image src={product.image} alt="" fill sizes="56px" className="object-cover" />
-                    )}
-                  </span>
-
-                  <span className="relative min-w-0 flex-1">
-                    <span
-                      className={`block font-display text-xl font-bold leading-tight text-ink transition-transform duration-300 sm:text-3xl ${
-                        isActive ? 'lg:translate-x-2' : ''
-                      }`}
-                    >
-                      {product.name}
-                    </span>
-                    <span className="mt-0.5 block text-sm leading-snug text-ink/60 lg:hidden">{product.tagline}</span>
-                  </span>
-
-                  <span
-                    className={`relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-white ${
-                      isActive ? 'bg-ink text-white' : ''
-                    }`}
-                  >
-                    <ArrowUpRight className="h-4 w-4" />
-                    <span className="sr-only">View {product.name}</span>
-                  </span>
-                </>
-              );
-
-              return (
-                <li key={product.slug} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)}>
-                  <Link href={href} className={rowClasses}>
-                    {rowContent}
-                  </Link>
-                </li>
-              );
-            })}
-          </ol>
-
-          {/* preview panel — desktop only */}
-          <div className="relative hidden lg:block">
-            <div className="sticky top-[calc(var(--nav-height)+2rem)]">
-              <div
-                className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl transition-colors duration-500"
-                style={{ backgroundColor: accentTint(activeProduct, 40) }}
-              >
-                {productIndex.map((product, index) => {
-                  const isActive = index === activeIndex;
-                  return (
-                    <div
-                      key={product.slug}
-                      aria-hidden={!isActive}
-                      className={`absolute inset-0 transition-all duration-500 ease-out ${
-                        isActive ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
-                      }`}
-                    >
-                      {product.image ? (
-                        <Image
-                          src={product.image}
-                          alt={product.coverAlt}
-                          fill
-                          sizes="(min-width: 1024px) 40vw, 0px"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full flex-col justify-between p-8">
-                          <span className="font-display text-8xl font-black leading-none text-ink/15">
-                            {formatNumber(index)}
-                          </span>
-                          <span className="font-display text-3xl font-bold leading-tight text-ink">
-                            {product.name}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-                <span className="cmyk-strip absolute inset-x-0 bottom-0 h-1.5" />
-              </div>
-
-              <div className="mt-5 flex items-start justify-between gap-6">
-                <div key={activeProduct.slug} className="animate-fade-up">
-                  <h3 className="font-display text-xl font-bold text-ink">{activeProduct.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink/70">{activeProduct.tagline}</p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted">
-                    View product page
-                  </p>
-                </div>
-                <span className="shrink-0 font-display text-sm font-semibold text-muted">
-                  {formatNumber(activeIndex)} / {productIndex.length}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="mt-10 space-y-3 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+        {renderBelt(beltOne, 0, 'animate-marquee', 'Products, part one')}
+        {renderBelt(beltTwo, half, 'animate-marquee-reverse', 'Products, part two')}
       </div>
     </section>
   );
