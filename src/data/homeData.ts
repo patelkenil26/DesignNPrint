@@ -87,43 +87,6 @@ export const heroProofs: HeroProofLayout[] = [
   },
 ];
 
-/* ───────────── Finishes lab ───────────── */
-export type FinishId = 'velvet' | 'spotUv' | 'foil' | 'emboss';
-
-export interface FinishOption {
-  id: FinishId;
-  name: string;
-  tagline: string;
-  description: string;
-}
-
-export const finishOptions: FinishOption[] = [
-  {
-    id: 'velvet',
-    name: 'Soft-touch Velvet',
-    tagline: 'Matte. Silky. Quiet luxury.',
-    description: 'A velvet lamination that feels like suede and kills glare — the go-to for premium cards and boxes.',
-  },
-  {
-    id: 'spotUv',
-    name: 'Spot UV',
-    tagline: 'Gloss exactly where you want it.',
-    description: 'A raised, glossy coat on selected areas. Tilt the card and watch the pattern catch the light.',
-  },
-  {
-    id: 'foil',
-    name: 'Foil Stamping',
-    tagline: 'Metallic shine that stops the hand.',
-    description: 'Hot-foil stamping for logos and highlights that reflect like real metal.',
-  },
-  {
-    id: 'emboss',
-    name: 'Emboss & Deboss',
-    tagline: 'Texture you can read with your fingers.',
-    description: 'Raised or pressed-in artwork that adds depth, even without ink.',
-  },
-];
-
 /* ───────────── Press process ───────────── */
 export interface PressStep {
   id: string;
@@ -396,12 +359,6 @@ export const homeFaqs: FaqItem[] = [
   },
 ];
 
-/** Artwork that gets "printed" in the press-process section. */
-export const pressSheetArtwork = {
-  image: '/images/products/rigid-box/cover.jpg',
-  alt: 'Cosmetic cream box, tube and jar printed in four colours',
-};
-
 /** Photos on the four sides of the turning cube in the quote section. */
 export const quoteCubeFaces = [
   { image: '/images/products/pamphlet-flyer/single-page-flyer.jpg', label: 'Flyers' },
@@ -409,3 +366,81 @@ export const quoteCubeFaces = [
   { image: '/images/products/book/product-catalogue.jpg', label: 'Catalogues' },
   { image: '/images/home/brand-contact.jpg', label: 'Visit us' },
 ] as const;
+
+/* ───────────── Print loupe ───────────── */
+export interface LoupePrint {
+  id: string;
+  label: string;
+  image: string;
+  alt: string;
+  /** what to look for under the glass */
+  note: string;
+}
+
+export const loupePrints: LoupePrint[] = [
+  {
+    id: 'cards',
+    label: 'Visiting cards',
+    image: '/images/products/visiting-card/cover.jpg',
+    alt: 'Printed business cards with a QR code and fine contact text',
+    note: 'Tiny contact text and QR codes stay crisp enough to scan.',
+  },
+  {
+    id: 'brochure',
+    label: 'Brochures',
+    image: '/images/products/brochure/cover.jpg',
+    alt: 'Printed corporate brochure with photography and small copy',
+    note: 'Photos and fine copy hold their detail edge to edge.',
+  },
+  {
+    id: 'labels',
+    label: 'Labels',
+    image: '/images/products/bottle-label/cover.jpg',
+    alt: 'Printed product labels on bottles and jars',
+    note: 'Dense label text and barcodes stay readable on the shelf.',
+  },
+];
+
+/* ───────────── Job ticket (how a job moves through the press) ───────────── */
+export interface JobTicketLine {
+  id: string;
+  title: string;
+  note: string;
+  /** optional photo "stuck" next to the line */
+  image?: string;
+  imageAlt?: string;
+}
+
+export const jobTicketLines: JobTicketLine[] = [
+  { id: 'brief', title: 'Brief received', note: 'Product, size, quantity and finish noted down.' },
+  {
+    id: 'design',
+    title: 'Artwork ready',
+    note: 'Designed here, or checked for bleed and colour.',
+    image: '/images/products/letterhead/cover.jpg',
+    imageAlt: 'Letterhead artwork prepared for print',
+  },
+  { id: 'proof', title: 'Digital proof approved', note: 'Nothing is printed until you say yes.' },
+  {
+    id: 'print',
+    title: 'Four-colour printing',
+    note: 'Cyan, magenta, yellow and black, perfectly registered.',
+    image: '/images/products/box/cover.jpg',
+    imageAlt: 'Printed cartons coming off the press',
+  },
+  {
+    id: 'finish',
+    title: 'Finished and cut',
+    note: 'Lamination, foil, spot UV, die-cut and folding.',
+    image: '/images/products/rigid-box/cover.jpg',
+    imageAlt: 'Cosmetic boxes with finishing applied',
+  },
+  { id: 'check', title: 'Quality check', note: 'Checked by hand before it leaves the floor.' },
+  {
+    id: 'dispatch',
+    title: 'Packed and dispatched',
+    note: 'Across Gujarat and India — express on selected jobs.',
+    image: '/images/products/pouch/cover.jpg',
+    imageAlt: 'Printed pouches packed and ready to ship',
+  },
+];
