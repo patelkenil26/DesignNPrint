@@ -79,7 +79,7 @@ export default function CategoryExplorer() {
                   </span>
                   <span
                     className={`font-display text-lg font-bold leading-tight sm:text-xl lg:absolute lg:left-1/2 lg:top-20 lg:-translate-x-1/2 lg:whitespace-nowrap lg:text-2xl lg:[writing-mode:vertical-rl] lg:rotate-180 ${
-                      isActive ? 'lg:opacity-0' : ''
+                      isActive ? 'opacity-0' : ''
                     } transition-opacity duration-300`}
                   >
                     {category.name}

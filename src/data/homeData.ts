@@ -254,15 +254,21 @@ export const customerReviews: CustomerReview[] = [
 ];
 
 /* ───────────── Quote CTA ───────────── */
-export const quoteProductChips: string[] = [
-  'Visiting Cards',
-  'Brochures & Flyers',
-  'Stickers & Labels',
-  'Boxes & Packaging',
-  'Files & Folders',
-  'Bill Books',
-  'Pouches & Bags',
-  'Banners & Boards',
+export interface QuoteProduct {
+  label: string;
+  /** thumbnail shown on the tile; products without a photo yet get an icon tile instead */
+  image?: string;
+}
+
+export const quoteProducts: QuoteProduct[] = [
+  { label: 'Visiting Cards', image: '/images/products/visiting-card/cover.jpg' },
+  { label: 'Brochures & Flyers', image: '/images/products/brochure/cover.jpg' },
+  { label: 'Stickers & Labels', image: '/images/products/sticker/cover.jpg' },
+  { label: 'Boxes & Packaging', image: '/images/products/box/cover.jpg' },
+  { label: 'Files & Folders', image: '/images/products/file/cover.jpg' },
+  { label: 'Bill Books' },
+  { label: 'Pouches & Bags', image: '/images/products/pouch/cover.jpg' },
+  { label: 'Banners & Boards', image: '/images/products/flex-banner/cover.jpg' },
 ];
 
 /* ───────────── Trust strip (right under the hero) ───────────── */
@@ -358,14 +364,6 @@ export const homeFaqs: FaqItem[] = [
     answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
   },
 ];
-
-/** Photos on the four sides of the turning cube in the quote section. */
-export const quoteCubeFaces = [
-  { image: '/images/products/pamphlet-flyer/single-page-flyer.jpg', label: 'Flyers' },
-  { image: '/images/products/book/promotional-booklet.jpg', label: 'Booklets' },
-  { image: '/images/products/book/product-catalogue.jpg', label: 'Catalogues' },
-  { image: '/images/home/brand-contact.jpg', label: 'Visit us' },
-] as const;
 
 /* ───────────── Print loupe ───────────── */
 export interface LoupePrint {

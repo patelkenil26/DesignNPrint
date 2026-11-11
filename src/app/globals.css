@@ -388,24 +388,9 @@ html.lenis body {
   animation: sheen-sweep 7s ease-in-out infinite;
 }
 
-/* slowly turning CSS cube used in the quote section */
-@keyframes cube-spin {
-  from {
-    transform: rotateX(-18deg) rotateY(0deg);
-  }
-  to {
-    transform: rotateX(-18deg) rotateY(360deg);
-  }
-}
-
-.animate-cube-spin {
-  animation: cube-spin 28s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-reverse,
-  .animate-sheen-sweep,
-  .animate-cube-spin {
+  .animate-sheen-sweep {
     animation: none;
   }
 }

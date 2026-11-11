@@ -27,7 +27,7 @@ function TicketRow({ line, rowIndex, totalRows, progress }: TicketRowProps) {
   const rowInk = useTransform(progress, (value) => (value >= passedAt - 0.02 ? 1 : 0.45));
 
   return (
-    <li className="relative flex items-center gap-3 border-b border-dashed border-ink/20 py-1.5 sm:gap-4 sm:py-3.5">
+    <li className="relative flex items-center gap-3 border-b border-dashed border-ink/20 py-1.5 [@media(max-height:700px)]:py-1 sm:gap-4 sm:py-3.5">
       <span className="w-5 shrink-0 font-mono text-[11px] font-bold text-ink/40">{formatNumber(rowIndex + 1)}</span>
       <motion.div className="min-w-0 flex-1" style={{ opacity: rowInk }}>
         <p className="font-mono text-[13px] font-bold uppercase leading-tight tracking-wide text-ink sm:text-sm">{line.title}</p>
@@ -92,7 +92,7 @@ export default function JobTicket() {
           {formatNumber(activeIndex + 1)}
         </span>
 
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-4 px-5 sm:px-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-4 px-5 sm:px-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16 max-sm:gap-2">
           <div className="order-2 lg:order-1">
             <p className="hidden text-xs font-semibold uppercase tracking-[0.25em] text-muted sm:block">How a job moves</p>
             <h2 id="ticket-heading" className="mt-2 hidden font-display text-2xl font-bold leading-tight text-ink sm:text-4xl sm:block lg:mt-3 lg:text-6xl">
@@ -141,15 +141,15 @@ export default function JobTicket() {
 
             <motion.div className="relative -mt-1 origin-top" style={isMotionAllowed ? { rotate: paperSettle } : undefined}>
               <motion.div
-                className="relative bg-white px-4 pb-6 pt-5 shadow-2xl sm:px-6"
+                className="relative bg-white px-4 pb-5 pt-4 [@media(max-height:700px)]:pb-3 [@media(max-height:700px)]:pt-3 shadow-2xl sm:px-6 sm:pb-6 sm:pt-5"
                 style={{ clipPath: isMotionAllowed ? revealClip : undefined }}
               >
-                <div className="flex items-start justify-between border-b-2 border-ink pb-3">
+                <div className="flex items-start justify-between border-b-2 border-ink pb-2 sm:pb-3">
                   <div>
                     <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-ink/50">Job ticket</p>
-                    <p className="font-display text-xl font-black text-ink sm:text-2xl">No. DNP-2026</p>
+                    <p className="font-display text-lg font-black text-ink sm:text-2xl">No. DNP-2026</p>
                   </div>
-                  <span className="cmyk-strip mt-1 h-6 w-14 rounded" aria-hidden="true" />
+                  <span className="cmyk-strip mt-1 h-5 w-12 rounded sm:h-6 sm:w-14" aria-hidden="true" />
                 </div>
 
                 <ol className="mt-1">
@@ -158,8 +158,8 @@ export default function JobTicket() {
                   ))}
                 </ol>
 
-                <div className="mt-4 flex items-end justify-between gap-3">
-                  <span className="flex h-9 items-stretch gap-[2px]" aria-hidden="true">
+                <div className="mt-3 flex items-end justify-between gap-3 sm:mt-4">
+                  <span className="flex h-7 items-stretch gap-[2px] sm:h-9" aria-hidden="true">
                     {[3, 1, 2, 1, 3, 2, 1, 1, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1].map((width, index) => (
                       <span key={index} className="bg-ink" style={{ width }} />
                     ))}
@@ -168,7 +168,7 @@ export default function JobTicket() {
                 </div>
 
                 <motion.span
-                  className="absolute bottom-6 right-4 sm:bottom-10 -rotate-12 rounded-lg border-4 bg-white/80 border-brand-red px-4 py-1.5 font-display text-2xl font-black uppercase tracking-widest text-brand-red sm:right-8 sm:text-4xl"
+                  className="absolute -bottom-1 right-2 scale-90 sm:bottom-10 sm:right-4 sm:scale-100 -rotate-12 rounded-lg border-4 bg-white/80 border-brand-red px-4 py-1.5 font-display text-2xl font-black uppercase tracking-widest text-brand-red sm:right-8 sm:text-4xl"
                   style={isMotionAllowed ? { scale: stampScale, opacity: stampOpacity } : undefined}
                   aria-hidden="true"
                 >
