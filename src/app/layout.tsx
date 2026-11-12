@@ -7,6 +7,7 @@ import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import WhatsAppFab from "@/components/shared/WhatsAppFab";
 import WebMcpTools from "@/components/shared/WebMcpTools";
 import JsonLd from "@/components/shared/JsonLd";
+import { getAllProductCards } from "@/lib/productCards";
 import { siteConfig } from "@/data/siteConfig";
 import { buildLocalBusinessSchema, buildWebSiteSchema, defaultOgImage } from "@/lib/seo";
 
@@ -94,7 +95,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Navbar />
+        <Navbar menuProducts={getAllProductCards()} />
         <main id="main-content" tabIndex={-1} className="flex-grow focus:outline-none">
           {children}
         </main>
