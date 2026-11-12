@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { MessageCircle } from 'lucide-react';
+import { ArrowUpRight, BookOpen, MessageCircle } from 'lucide-react';
 import ProductHero from '@/components/sections/Services/ProductHero';
 import ProductPager from '@/components/sections/Services/ProductPager';
 import ProductQuickAnswer from '@/components/sections/Services/ProductQuickAnswer';
@@ -26,10 +27,18 @@ import {
   productCatalog,
   slugifyTypeName,
 } from '@/data/productCatalog';
+import { getGuideHref, getGuidesForProduct } from '@/data/guides';
 import { pressSteps } from '@/data/homeData';
 import { buildWhatsAppLink } from '@/data/siteConfig';
 import { toProductCard } from '@/lib/productCards';
-import { absoluteUrl, buildBreadcrumbSchema, buildHowToSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
+import {
+  absoluteUrl,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+  buildPageMetadata,
+  buildProductKeywords,
+  buildWebPageSchema,
+} from '@/lib/seo';
 import { getProductCover, getTypeImage } from '@/lib/productImages';
 
 interface ProductPageProps {
@@ -49,9 +58,10 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   const typeNames = product.types.map((type) => type.name).join(', ');
   const pageMetadata = buildPageMetadata({
-    title: `${product.name} Printing in Ahmedabad | Design N Print`,
-    description: `${product.intro} Types: ${typeNames}.`,
+    title: `${product.name} Printing in Ahmedabad – ${product.types.length} Types | Design N Print`,
+    description: `${product.intro} Types: ${typeNames}. Free proof, delivery across Gujarat.`,
     path: `/services/${product.slug}`,
+    keywords: buildProductKeywords(product),
     image: `/services/${product.slug}/opengraph-image`,
   });
   return {
@@ -70,6 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const coverImage = getProductCover(product);
   const { previous, next } = getAdjacentProducts(product.slug);
   const faqs = buildProductFaqs(product);
+  const relatedGuides = getGuidesForProduct(product.slug);
 
   const typeCards = product.types.map((type, index) => ({
     slug: slugifyTypeName(type.name),
@@ -119,7 +130,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
     name: `${product.name} printing`,
     description: product.intro,
     serviceType: `${product.name} printing`,
-    areaServed: { '@type': 'State', name: 'Gujarat' },
+    category: 'Printing and packaging',
+    keywords: buildProductKeywords(product).join(', '),
+    image: coverImage ? absoluteUrl(coverImage) : absoluteUrl(`/services/${product.slug}/opengraph-image`),
+    url: absoluteUrl(`/services/${product.slug}`),
+    areaServed: [
+      { '@type': 'City', name: 'Ahmedabad' },
+      { '@type': 'State', name: 'Gujarat' },
+    ],
     provider: { '@id': absoluteUrl('/#business') },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -222,6 +240,32 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </Reveal>
         </div>
       </section>
+
+      {relatedGuides.length > 0 && (
+        <section className="bg-paper pb-12 sm:pb-16" aria-labelledby="related-guides-heading">
+          <div className="mx-auto max-w-7xl px-5 sm:px-10">
+            <h2 id="related-guides-heading" className="flex items-center gap-2 font-display text-2xl font-bold text-ink sm:text-3xl">
+              <BookOpen className="h-6 w-6" aria-hidden="true" /> Buying guide
+            </h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-5">
+              {relatedGuides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link
+                    href={getGuideHref(guide.slug)}
+                    className="group flex h-full items-start justify-between gap-3 rounded-2xl border border-ink/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+                  >
+                    <span>
+                      <span className="block font-display text-base font-bold leading-snug text-ink">{guide.title}</span>
+                      <span className="mt-1.5 block text-sm leading-relaxed text-ink/70">{guide.summary}</span>
+                    </span>
+                    <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:rotate-45" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section className="bg-paper pb-16 sm:pb-24" aria-labelledby="keep-exploring-heading">
         <div className="mx-auto max-w-7xl px-5 sm:px-10">

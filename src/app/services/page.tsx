@@ -12,12 +12,18 @@ import { productCatalog, totalTypeCount } from '@/data/productCatalog';
 import { getAllProductCards } from '@/lib/productCards';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Printing & Packaging Services in Ahmedabad | Design N Print',
+  title: 'Printing & Packaging Services in Ahmedabad – All Products | Design N Print',
   description: `All ${productCatalog.length} products Design N Print makes — ${productCatalog
     .slice(0, 8)
     .map((product) => product.name.toLowerCase())
     .join(', ')} and more. Designed and printed under one roof in Ahmedabad since 2008.`,
   path: '/services',
+  keywords: [
+    'printing services Ahmedabad',
+    'packaging printing Ahmedabad',
+    'printing and packaging products',
+    ...productCatalog.map((product) => `${product.name.toLowerCase()} printing Ahmedabad`),
+  ],
 });
 
 const fanSlugs = ['visiting-card', 'brochure', 'box', 'sticker', 'pouch'];

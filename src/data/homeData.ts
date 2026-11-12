@@ -456,3 +456,20 @@ export const jobTicketLines: JobTicketLine[] = [
     imageAlt: 'Printed pouches packed and ready to ship',
   },
 ];
+
+/* ───────────── SEO copy (home) ───────────── */
+/**
+ * Crawlable, human-readable summary of what the business is and where it works — the sentences search
+ * engines and AI assistants quote for "printing press in Ahmedabad". Facts only; keep in line with siteConfig.
+ */
+export const homeSeoCopy = {
+  eyebrow: 'Printing press in Ahmedabad',
+  heading: 'Your printing and packaging press in Naroda, Ahmedabad.',
+  paragraphs: [
+    'Design N Print is an offset printing and packaging press in Naroda, Ahmedabad, working since 2008. We design and print visiting cards, brochures, pamphlets, letterheads, stickers, bottle labels, boxes, pouches, books, bill books, corrugated and rigid boxes, flex banners and more — all under one roof.',
+    'Businesses in Naroda GIDC, Odhav, Vatva, Sanand, Gandhinagar and across Gujarat use us for packaging printing and everyday stationery, from pharma and cosmetics cartons to corporate stationery. You approve a digital proof before a single sheet is printed, and we dispatch across Gujarat and India.',
+  ],
+  productsHeading: 'What we print',
+  areasHeading: 'Where we deliver',
+  guidesHeading: 'Printing guides',
+};

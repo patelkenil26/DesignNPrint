@@ -14,7 +14,7 @@ import { findServiceArea, getAreaHref, serviceAreas } from '@/data/serviceAreas'
 import { buildWhatsAppLink, siteConfig } from '@/data/siteConfig';
 import { buildAreaFaqs, getAreaIndustries, getAreaProducts } from '@/lib/areaContent';
 import { toProductCard } from '@/lib/productCards';
-import { absoluteUrl, buildBreadcrumbSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
+import { absoluteUrl, buildAreaKeywords, buildBreadcrumbSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 
 interface AreaPageProps {
   params: Promise<{ area: string }>;
@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: AreaPageProps): Promise<Metad
     title: `${area.headline} | Design N Print`,
     description: area.intro,
     path: getAreaHref(area.slug),
+    keywords: buildAreaKeywords(area),
     image: `${getAreaHref(area.slug)}/opengraph-image`,
   });
   return {
