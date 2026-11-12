@@ -3,7 +3,7 @@
  * the footer, search and the home-page product index.
  *
  * Images are NOT listed here. Drop files in `public/images/products/<slug>/`:
- *   cover.jpg            → the product's cover (falls back to `legacyCover`, then a graphic panel)
+ *   cover.jpg            → the product's cover (falls back to a graphic panel)
  *   <type-slug>.jpg      → one photo per type (falls back to a graphic panel)
  * Run `node scripts/image-manifest.mjs` to see exactly which files are still missing.
  *
@@ -26,8 +26,6 @@ export interface Product {
   /** 1–2 sentences for the product page intro + meta description */
   intro: string;
   accent: ProductAccent;
-  /** existing stand-in cover until a real `cover.jpg` is added */
-  legacyCover?: string;
   coverAlt: string;
   types: ProductType[];
   finishes: string[];
@@ -43,7 +41,6 @@ export const productCatalog: Product[] = [
     intro:
       'Visiting cards in premium stock and finishes — from everyday art cards to non-tearable, metallic and digital NFC cards. Designed and printed under one roof in Ahmedabad.',
     accent: 'red',
-    legacyCover: '/images/Card/design-n-print-product-12-1.png',
     coverAlt: 'Premium printed visiting cards',
     types: [
       { name: 'Art Card', line: 'Smooth, bright and budget-friendly for everyday use.' },
@@ -64,7 +61,6 @@ export const productCatalog: Product[] = [
     intro:
       'Brochures that showcase your business, services or products — bi-fold, tri-fold, gate-fold and Z-fold, with layouts that stay true to your brand.',
     accent: 'yellow',
-    legacyCover: '/images/Card/BrochureDesigning.png',
     coverAlt: 'Printed company brochures',
     types: [
       { name: 'Bi-fold Brochure', line: 'Two panels — simple, clean and quick to read.' },
@@ -81,7 +77,6 @@ export const productCatalog: Product[] = [
     intro:
       'High-volume pamphlets and flyers in vibrant colour — single sheet, folded or custom-shaped — printed quickly for launches, offers and events.',
     accent: 'yellow',
-    legacyCover: '/images/Card/pamphlet.jpg',
     coverAlt: 'Printed pamphlets and flyers',
     types: [
       { name: 'Single-page Flyer', line: 'One sheet, one message — the fastest way to be seen.' },
@@ -99,7 +94,6 @@ export const productCatalog: Product[] = [
     intro:
       'Waterproof, scratch-resistant labels for bottles, jars, cans and agro products — printed sharp and cut to the exact shape of your pack.',
     accent: 'blue',
-    legacyCover: '/images/Card/pesticide.jpg',
     coverAlt: 'Printed bottle label and carton designs',
     types: [
       { name: 'Waterproof Bottle Label', line: 'Stays crisp on chilled, wet or oily bottles.' },
@@ -118,7 +112,6 @@ export const productCatalog: Product[] = [
     intro:
       'Corporate letterheads and certificates on fine paper — the stationery that makes every letter, quotation and award feel official.',
     accent: 'red',
-    legacyCover: '/images/Card/LetterPad.png',
     coverAlt: 'Printed corporate letterhead',
     types: [
       { name: 'Corporate Letterhead', line: 'Clean, professional letterheads for everyday business.' },
@@ -138,7 +131,6 @@ export const productCatalog: Product[] = [
     intro:
       'Branded envelopes in window and non-window styles, designed to match your letterhead and cards.',
     accent: 'red',
-    legacyCover: '/images/Card/Env.png',
     coverAlt: 'Branded printed envelopes',
     types: [
       { name: 'Window Envelope', line: 'A clear window so the address shows through.' },
@@ -155,7 +147,6 @@ export const productCatalog: Product[] = [
     intro:
       'Die-cut, round and product stickers with strong adhesive — in waterproof vinyl, transparent or matt finishes.',
     accent: 'blue',
-    legacyCover: '/images/Card/sticker_label.png',
     coverAlt: 'Printed die-cut stickers and labels',
     types: [
       { name: 'Product Sticker', line: 'Retail-ready stickers for packs and boxes.' },
@@ -176,7 +167,6 @@ export const productCatalog: Product[] = [
     intro:
       'Company files, doctor files, mica and ceramic display folders — sturdy, well-finished and built to carry your brand into every meeting.',
     accent: 'green',
-    legacyCover: '/images/Card/company_file_folder.jpg',
     coverAlt: 'Branded company file folders',
     types: [
       { name: 'Corporate File Folder', line: 'Presentation folders with pockets and card slots.' },
@@ -196,7 +186,6 @@ export const productCatalog: Product[] = [
     intro:
       'Folding and tuck-end cartons in every shape — from pharma and cosmetic packaging to display and mailer boxes — printed with sharp detail.',
     accent: 'blue',
-    legacyCover: '/images/Card/box_designing.png',
     coverAlt: 'Printed product boxes',
     types: [
       { name: 'Custom Product Box', line: 'Cartons cut and printed to your product.' },
@@ -220,7 +209,6 @@ export const productCatalog: Product[] = [
     intro:
       'Booklets, catalogues and calendars — stitched or bound, on premium paper, with consistent branding on every page.',
     accent: 'yellow',
-    legacyCover: '/images/Card/booklet.jpg',
     coverAlt: 'Printed booklets stacked on a table',
     types: [
       { name: 'Company Profile Booklet', line: 'Your story, services and credentials in one book.' },
@@ -263,7 +251,6 @@ export const productCatalog: Product[] = [
     intro:
       'Cotton and custom pouches in your size and finish — for retail, food, cosmetics, seeds and gifting.',
     accent: 'blue',
-    legacyCover: '/images/Card/customize_pouch.png',
     coverAlt: 'Custom printed pouches',
     types: [
       { name: 'Stand-up Pouch', line: 'Stands on the shelf, seals to stay fresh.' },
@@ -325,7 +312,6 @@ export const productCatalog: Product[] = [
     intro:
       'Premium rigid boxes with magnetic and lift-off lids — made for gifting, cosmetics, jewellery and luxury unboxing.',
     accent: 'red',
-    legacyCover: '/images/Card/cosmetic_item.png',
     coverAlt: 'Premium rigid gift and cosmetic boxes',
     types: [
       { name: 'Magnetic Closure Box', line: 'Snaps shut with a satisfying magnetic click.' },
@@ -363,7 +349,6 @@ export const productCatalog: Product[] = [
     intro:
       'Large-format flex banners, roller standees and backdrops — high-resolution printing that is ready before the doors open.',
     accent: 'green',
-    legacyCover: '/images/Card/flex_banner.png',
     coverAlt: 'Printed flex banners and roller standees',
     types: [
       { name: 'Outdoor Flex Banner', line: 'Weather-resistant banners for hoardings and shopfronts.' },
@@ -445,7 +430,7 @@ export function buildProductFaqs(product: Product): ProductFaq[] {
     {
       id: 'delivery',
       question: 'Do you deliver outside Ahmedabad?',
-      answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
+      answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press in Ahmedabad.',
     },
   ];
 }

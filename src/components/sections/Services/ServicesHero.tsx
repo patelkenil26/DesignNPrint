@@ -29,7 +29,7 @@ export default function ServicesHero({ fanProducts }: ServicesHeroProps) {
       </div>
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-10 pt-12 sm:px-10 sm:pb-16 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
+        <div className="order-2 lg:order-none">
           <nav aria-label="Breadcrumb" className="mb-5">
             <ol className="flex items-center gap-1 text-xs font-medium text-muted">
               <li className="flex items-center gap-1">
@@ -84,7 +84,9 @@ export default function ServicesHero({ fanProducts }: ServicesHeroProps) {
           </Reveal>
         </div>
 
-        <ProductFan products={fanProducts} />
+        <div className="order-1 lg:order-none">
+          <ProductFan products={fanProducts} />
+        </div>
       </div>
     </section>
   );

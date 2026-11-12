@@ -8,7 +8,7 @@ export const siteConfig = {
   seoKeywords: [
     'printing press in Ahmedabad',
     'offset printing Ahmedabad',
-    'packaging printing Naroda GIDC',
+    'packaging printing Ahmedabad',
     'visiting card printing Ahmedabad',
     'box printing Ahmedabad',
     'brochure printing Gujarat',
@@ -24,7 +24,7 @@ export const siteConfig = {
   secondaryPhoneNumber: '919913290354',
   secondaryPhoneDisplay: '+91 99132 90354',
   email: 'designnprintsamd@gmail.com',
-  location: 'Naroda GIDC, Ahmedabad',
+  location: 'Ahmedabad',
   addressLines: [
     'Modern Corner, Opp. National Handloom,',
     'Nr. J R Amin Petrol Pump & Jolly Auto, Above Hira Auto,',

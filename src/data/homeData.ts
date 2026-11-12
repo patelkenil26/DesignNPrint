@@ -4,174 +4,86 @@ import { getProductHref } from '@/data/productCatalog';
 
 export type BrandAccent = 'red' | 'yellow' | 'green' | 'blue';
 
-/* ───────────── Hero scroll story (card → box) ───────────── */
-export interface JourneyChapter {
+/* ───────────── Hero (print-drop collage) ───────────── */
+export const heroCopy = {
+  title: 'Print that you can feel.',
+  body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
+};
+
+/** The proofs that "print in" on the hero. Extras and brand art only — every product has its own place further down. */
+export interface HeroProofLayout {
   id: string;
+  image: string;
+  alt: string;
+  /** small tag under the proof */
   label: string;
-  title: string;
-  body: string;
-  /** progress (0–1) at which this chapter starts */
-  start: number;
+  /** CSS position + width of the proof inside the hero stage (percentages) */
+  className: string;
+  /** Tailwind aspect-ratio class of the frame */
+  aspectClass: string;
+  /** resting tilt in degrees */
+  rotate: number;
+  /** parallax strength in px — bigger = feels closer to the viewer */
+  depth: number;
+  /** seconds before this proof prints in */
+  delay: number;
 }
 
-export const journeyChapters: JourneyChapter[] = [
+export const heroProofs: HeroProofLayout[] = [
   {
-    id: 'card',
-    label: 'The Card',
-    title: 'Print that you can feel.',
-    body: 'Visiting cards to luxury packaging — designed and printed under one roof in Naroda, Ahmedabad.',
-    start: 0,
+    id: 'invitation',
+    image: '/images/home/invitation.jpg',
+    alt: 'Printed wedding invitation cards in saffron and white',
+    label: 'Invitations',
+    className: 'left-[0%] top-[0%] w-[42%] sm:top-[2%]',
+    aspectClass: 'aspect-square',
+    rotate: -5,
+    depth: 16,
+    delay: 0.25,
   },
   {
-    id: 'sheet',
-    label: 'The Sheet',
-    title: 'Every box starts as a flat sheet.',
-    body: 'One die-cut sheet, printed in four colours. Keep scrolling and watch it come alive.',
-    start: 0.14,
+    id: 'calendar',
+    image: '/images/home/calendar.jpg',
+    alt: 'Printed desk calendar with illustrated artwork',
+    label: 'Calendars',
+    className: 'right-[0%] top-[3%] w-[52%] sm:top-[0%] sm:w-[50%]',
+    aspectClass: 'aspect-[3/2]',
+    rotate: 3,
+    depth: 30,
+    delay: 0.4,
   },
   {
-    id: 'fold',
-    label: 'The Fold',
-    title: 'Creased. Folded. Locked in.',
-    body: 'Crease lines, die-cutting and folding — checked by hand at every step of the process.',
-    start: 0.42,
+    id: 'book',
+    image: '/images/home/book.jpg',
+    alt: 'Hard-bound printed book open beside its cover',
+    label: 'Books',
+    className: 'left-[30%] top-[34%] w-[46%] sm:left-[24%] sm:top-[36%] sm:w-[48%]',
+    aspectClass: 'aspect-[3/2]',
+    rotate: 2,
+    depth: 48,
+    delay: 0.55,
   },
   {
-    id: 'close',
-    label: 'The Close',
-    title: 'Closed, tucked and ready.',
-    body: 'Rigid strength, crisp edges and a finish that makes your product feel premium.',
-    start: 0.62,
+    id: 'certificate',
+    image: '/images/home/certificate.jpg',
+    alt: 'Framed certificate of recognition with gold seal',
+    label: 'Certificates',
+    className: 'right-[0%] top-[62%] w-[40%] sm:right-[2%] sm:top-[56%]',
+    aspectClass: 'aspect-[3/2]',
+    rotate: -3,
+    depth: 24,
+    delay: 0.7,
   },
   {
     id: 'brand',
-    label: 'Your Brand',
-    title: 'Your brand. Our press.',
-    body: '17 products, one studio. Send us the idea or the finished artwork — we take it all the way to print.',
-    start: 0.8,
-  },
-];
-
-/* ───────────── Most-requested ring (8 bestsellers — the full range lives in productIndex.ts) ───────────── */
-export interface ShowcaseProduct {
-  id: string;
-  name: string;
-  category: string;
-  blurb: string;
-  image: string;
-  href: string;
-  accent: BrandAccent;
-}
-
-export const showcaseProducts: ShowcaseProduct[] = [
-  {
-    id: 'stationery',
-    name: 'Visiting Cards, Letterheads & Envelopes',
-    category: 'Stationery',
-    blurb: 'Your first impression, in premium stock with crisp finishing.',
-    image: '/images/Card/design-n-print-product-12-1.png',
-    href: getProductHref('visiting-card'),
-    accent: 'red',
-  },
-  {
-    id: 'rigid-box',
-    name: 'Box Designing & Printing',
-    category: 'Packaging',
-    blurb: 'Rigid, folding and luxury boxes made to show your brand off.',
-    image: '/images/Card/box_designing.png',
-    href: getProductHref('box'),
-    accent: 'blue',
-  },
-  {
-    id: 'pharma',
-    name: 'Pharmaceutical & Medicine Boxes',
-    category: 'Packaging',
-    blurb: 'Clean, compliant cartons with barcode-sharp printing.',
-    image: '/images/Card/pharma_box.jpg',
-    href: getProductHref('box', 'Tablet Box'),
-    accent: 'blue',
-  },
-  {
-    id: 'brochure',
-    name: 'Brochure Designing & Printing',
-    category: 'Marketing',
-    blurb: 'Brochures that tell your story and close the sale.',
-    image: '/images/Card/BrochureDesigning.png',
-    href: getProductHref('brochure'),
-    accent: 'yellow',
-  },
-  {
-    id: 'folder',
-    name: 'Company File Folders',
-    category: 'Folders',
-    blurb: 'Presentation folders that carry your brand into every meeting.',
-    image: '/images/Card/company_file_folder.jpg',
-    href: getProductHref('file'),
-    accent: 'green',
-  },
-  {
-    id: 'pouch',
-    name: 'Custom Pouches',
-    category: 'Pouches',
-    blurb: 'Branded pouches and bags for retail and gifting.',
-    image: '/images/Card/customize_pouch.png',
-    href: getProductHref('pouch'),
-    accent: 'blue',
-  },
-  {
-    id: 'banner',
-    name: 'Flex Banners & Roller Standees',
-    category: 'Outdoor',
-    blurb: 'Big, bold, weather-ready display printing.',
-    image: '/images/Card/flex_banner.png',
-    href: getProductHref('flex-banner'),
-    accent: 'red',
-  },
-  {
-    id: 'sticker',
-    name: 'Sticker & Label Printing',
-    category: 'Labels',
-    blurb: 'Die-cut stickers and product labels in any shape.',
-    image: '/images/Card/sticker_label.png',
-    href: getProductHref('sticker'),
-    accent: 'green',
-  },
-];
-
-/* ───────────── Finishes lab ───────────── */
-export type FinishId = 'velvet' | 'spotUv' | 'foil' | 'emboss';
-
-export interface FinishOption {
-  id: FinishId;
-  name: string;
-  tagline: string;
-  description: string;
-}
-
-export const finishOptions: FinishOption[] = [
-  {
-    id: 'velvet',
-    name: 'Soft-touch Velvet',
-    tagline: 'Matte. Silky. Quiet luxury.',
-    description: 'A velvet lamination that feels like suede and kills glare — the go-to for premium cards and boxes.',
-  },
-  {
-    id: 'spotUv',
-    name: 'Spot UV',
-    tagline: 'Gloss exactly where you want it.',
-    description: 'A raised, glossy coat on selected areas. Tilt the card and watch the pattern catch the light.',
-  },
-  {
-    id: 'foil',
-    name: 'Foil Stamping',
-    tagline: 'Metallic shine that stops the hand.',
-    description: 'Hot-foil stamping for logos and highlights that reflect like real metal.',
-  },
-  {
-    id: 'emboss',
-    name: 'Emboss & Deboss',
-    tagline: 'Texture you can read with your fingers.',
-    description: 'Raised or pressed-in artwork that adds depth, even without ink.',
+    image: '/images/home/brand-cover.jpg',
+    alt: 'Design N Print yellow origami cover artwork',
+    label: 'Design N Print',
+    className: 'left-[0%] top-[66%] w-[30%] sm:top-[62%]',
+    aspectClass: 'aspect-square',
+    rotate: 5,
+    depth: 38,
+    delay: 0.85,
   },
 ];
 
@@ -342,15 +254,51 @@ export const customerReviews: CustomerReview[] = [
 ];
 
 /* ───────────── Quote CTA ───────────── */
-export const quoteProductChips: string[] = [
-  'Visiting Cards',
-  'Brochures & Flyers',
-  'Stickers & Labels',
-  'Boxes & Packaging',
-  'Files & Folders',
-  'Bill Books',
-  'Pouches & Bags',
-  'Banners & Boards',
+export interface QuoteProduct {
+  label: string;
+  /** thumbnail shown on the tile; products without a photo yet get an icon tile instead */
+  image?: string;
+}
+
+export interface QuoteCollagePiece {
+  image: string;
+  alt: string;
+  /** position and width inside the collage box */
+  className: string;
+  rotate: number;
+}
+
+/** Printed pieces that fan out beside the closing quote call-to-action. */
+export const quoteCollage: QuoteCollagePiece[] = [
+  {
+    image: '/images/home/invitation.jpg',
+    alt: 'Printed wedding invitation cards in saffron and white',
+    className: 'left-[2%] top-[4%] w-[52%]',
+    rotate: -6,
+  },
+  {
+    image: '/images/home/calendar.jpg',
+    alt: 'Printed desk calendar with illustrated artwork',
+    className: 'right-[0%] top-[22%] w-[52%] lg:top-[16%]',
+    rotate: 5,
+  },
+  {
+    image: '/images/home/book.jpg',
+    alt: 'Hard-bound printed book open beside its cover',
+    className: 'left-[18%] top-[50%] w-[54%] lg:top-[46%]',
+    rotate: -2,
+  },
+];
+
+export const quoteProducts: QuoteProduct[] = [
+  { label: 'Visiting Cards', image: '/images/products/visiting-card/cover.jpg' },
+  { label: 'Brochures & Flyers', image: '/images/products/brochure/cover.jpg' },
+  { label: 'Stickers & Labels', image: '/images/products/sticker/cover.jpg' },
+  { label: 'Boxes & Packaging', image: '/images/products/box/cover.jpg' },
+  { label: 'Files & Folders', image: '/images/products/file/cover.jpg' },
+  { label: 'Bill Books' },
+  { label: 'Pouches & Bags', image: '/images/products/pouch/cover.jpg' },
+  { label: 'Banners & Boards', image: '/images/products/flex-banner/cover.jpg' },
 ];
 
 /* ───────────── Trust strip (right under the hero) ───────────── */
@@ -368,7 +316,7 @@ export const trustPoints: TrustPoint[] = [
   { id: 'proof', icon: 'proof', title: 'Digital proof first', detail: 'You approve before we print' },
   { id: 'express', icon: 'express', title: 'Express dispatch', detail: '24–48 hrs on selected jobs' },
   { id: 'delivery', icon: 'delivery', title: 'Gujarat & India', detail: 'Packed and shipped to you' },
-  { id: 'location', icon: 'location', title: 'Naroda GIDC', detail: 'Visit our Ahmedabad press' },
+  { id: 'location', icon: 'location', title: 'Ahmedabad', detail: 'Visit our press in person' },
 ];
 
 /* ───────────── "Two ways to start" ───────────── */
@@ -443,6 +391,68 @@ export const homeFaqs: FaqItem[] = [
   {
     id: 'delivery',
     question: 'Do you deliver outside Ahmedabad?',
-    answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
+    answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press in Ahmedabad.',
+  },
+];
+
+/* ───────────── Press gallery ("Fresh off the press") ───────────── */
+export interface PressGalleryWork {
+  /** product whose cover photo and link the card uses */
+  slug: string;
+  /** short line shown on the card */
+  tag: string;
+}
+
+export const pressGalleryWorks: PressGalleryWork[] = [
+  { slug: 'visiting-card', tag: 'First impressions, in your hand' },
+  { slug: 'box', tag: 'Shelf-ready cartons' },
+  { slug: 'brochure', tag: 'Photos and copy, edge to edge' },
+  { slug: 'rigid-box', tag: 'Premium unboxing' },
+  { slug: 'bottle-label', tag: 'Crisp, scannable small print' },
+  { slug: 'pouch', tag: 'Ready to ship' },
+  { slug: 'sticker', tag: 'Any shape, any surface' },
+];
+
+/* ───────────── Job ticket (how a job moves through the press) ───────────── */
+export interface JobTicketLine {
+  id: string;
+  title: string;
+  note: string;
+  /** optional photo "stuck" next to the line */
+  image?: string;
+  imageAlt?: string;
+}
+
+export const jobTicketLines: JobTicketLine[] = [
+  { id: 'brief', title: 'Brief received', note: 'Product, size, quantity and finish noted down.' },
+  {
+    id: 'design',
+    title: 'Artwork ready',
+    note: 'Designed here, or checked for bleed and colour.',
+    image: '/images/products/letterhead/cover.jpg',
+    imageAlt: 'Letterhead artwork prepared for print',
+  },
+  { id: 'proof', title: 'Digital proof approved', note: 'Nothing is printed until you say yes.' },
+  {
+    id: 'print',
+    title: 'Four-colour printing',
+    note: 'Cyan, magenta, yellow and black, perfectly registered.',
+    image: '/images/products/box/cover.jpg',
+    imageAlt: 'Printed cartons coming off the press',
+  },
+  {
+    id: 'finish',
+    title: 'Finished and cut',
+    note: 'Lamination, foil, spot UV, die-cut and folding.',
+    image: '/images/products/rigid-box/cover.jpg',
+    imageAlt: 'Cosmetic boxes with finishing applied',
+  },
+  { id: 'check', title: 'Quality check', note: 'Checked by hand before it leaves the floor.' },
+  {
+    id: 'dispatch',
+    title: 'Packed and dispatched',
+    note: 'Across Gujarat and India — express on selected jobs.',
+    image: '/images/products/pouch/cover.jpg',
+    imageAlt: 'Printed pouches packed and ready to ship',
   },
 ];

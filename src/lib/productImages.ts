@@ -20,7 +20,7 @@ function findPublicImage(folder: string, baseName: string): string | null {
 }
 
 export function getProductCover(product: Product): string | null {
-  return findPublicImage(product.slug, 'cover') ?? product.legacyCover ?? null;
+  return findPublicImage(product.slug, 'cover');
 }
 
 export function getTypeImage(product: Product, type: ProductType): string | null {

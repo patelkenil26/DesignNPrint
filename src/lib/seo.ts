@@ -74,7 +74,7 @@ export function buildLocalBusinessSchema() {
     slogan: siteConfig.slogan,
     url: siteConfig.siteUrl,
     description:
-      'Offset printing and packaging press in Naroda GIDC, Ahmedabad — visiting cards, brochures, boxes, stickers, pouches and more, designed and printed under one roof since 2008.',
+      'Offset printing and packaging press in Ahmedabad — visiting cards, brochures, boxes, stickers, pouches and more, designed and printed under one roof since 2008.',
     foundingDate: String(siteConfig.foundedYear),
     telephone: `+${siteConfig.whatsappNumber}`,
     email: siteConfig.email,

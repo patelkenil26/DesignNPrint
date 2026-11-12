@@ -52,7 +52,7 @@ export interface FindUsStep {
 
 /** Landmarks taken straight from the printed address in siteConfig. */
 export const findUsSteps: FindUsStep[] = [
-  { id: 'area', title: 'Reach Naroda GIDC', detail: 'Naroda, Ahmedabad — Gujarat 382330.' },
+  { id: 'area', title: 'Find us in Ahmedabad', detail: 'Naroda, Ahmedabad — Gujarat 382330.' },
   { id: 'landmark', title: 'Find National Handloom', detail: 'Look for Modern Corner, opposite National Handloom.' },
   { id: 'press', title: 'Come up to our press', detail: 'Near J R Amin Petrol Pump & Jolly Auto — above Hira Auto.' },
 ];

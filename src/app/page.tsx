@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
-import HeroJourney from '@/components/sections/home/HeroJourney';
+import TypeMarquee from '@/components/shared/TypeMarquee';
+import HeroPrintDrop from '@/components/sections/home/HeroPrintDrop';
 import TrustStrip from '@/components/sections/home/TrustStrip';
+import CategoryExplorer from '@/components/sections/home/CategoryExplorer';
+import MobileCategoryScroller from '@/components/sections/home/MobileCategoryScroller';
+import ClientLogos from '@/components/sections/home/ClientLogos';
 import ProductShowcase from '@/components/sections/home/ProductShowcase';
-import CategoryStories from '@/components/sections/home/CategoryStories';
-import ProductIndex from '@/components/sections/home/ProductIndex';
-import FinishesLab from '@/components/sections/home/FinishesLab';
-import PressProcess from '@/components/sections/home/PressProcess';
+import MobileProductShowcase from '@/components/sections/home/MobileProductShowcase';
+import PressGallery from '@/components/sections/home/PressGallery';
+import JobTicket from '@/components/sections/home/JobTicket';
 import IndustriesSection from '@/components/sections/home/IndustriesSection';
 import ProofSection from '@/components/sections/home/ProofSection';
 import StartPaths from '@/components/sections/home/StartPaths';
 import HomeFaq from '@/components/sections/home/HomeFaq';
-import QuoteCta from '@/components/sections/home/QuoteCta';
+import QuoteLaunch from '@/components/sections/home/QuoteLaunch';
 import { getAllProductCards } from '@/lib/productCards';
 
 // Title, description and Open Graph come from the root layout; only the canonical is set here.
@@ -19,35 +23,48 @@ import { getAllProductCards } from '@/lib/productCards';
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 /**
- * Home page — every section answers one question, in the order a buyer asks them:
- *  1. Hero journey      WOW      — a visiting card unfolds into a die-cut sheet and folds into a box
- *  2. Trust strip       SAFE?    — design + print, proof first, express dispatch, location
- *  3. Most requested    WHAT     — 3D ring of the 8 products people order first
- *  4. Category stories  WHAT+    — camera journey through the 6 headline categories
- *  5. Product index     ALL      — the full range of 17, one hover away
- *  6. Finishes lab      QUALITY  — interactive 3D card (velvet / spot UV / foil / emboss)
- *  7. Press process     HOW      — a sheet runs through a 4-colour offset press
- *  8. Industries        FOR ME?  — pharma, ceramic, cosmetics, agro, corporate, events
- *  9. Proof             TRUST    — stats + reviews
- * 10. Start paths       NEXT     — "I have a design" / "I need a design"
- * 11. FAQ               DOUBTS   — proof, price, turnaround, MOQ, delivery
- * 12. Quote CTA         ACT      — open 3D box + WhatsApp quote builder
+ * Home page — every section answers one question, in the order a buyer asks them, and each one moves differently:
+ *  1. Hero print-drop    WOW      — product proofs print in as CMYK ink plates snap into register
+ *  2. Trust strip        SAFE?    — five promises pop in, CMYK underlines draw themselves
+ *  3. Category explorer  WHAT     — six family panels; the hovered one opens wide
+ *  4. Product showcase   WHAT+    — all products, each shown once, dealt like cards in category order
+ *  5. Type marquee       —        — oversized "Design · Print · Finish · Pack · Deliver" band
+ *  6. Press gallery      PROOF    — a swipeable rail of real work; cards ease into the centre as you swipe
+ *  7. Job ticket         HOW      — a job ticket prints out of a slot as you scroll, ticking off each step
+ *  8. Industries         FOR ME?  — cards that pile up as you scroll
+ *  9. Proof              TRUST    — counting numbers + a review spotlight
+ * 10. Start paths        NEXT     — toggle between "I have a design" / "I need a design"
+ * 11. FAQ                DOUBTS   — proof, price, turnaround, MOQ, delivery
+ * 12. Quote launch       ACT      — pick products, slide to send the quote on WhatsApp
  */
 export default function Home() {
+  const productCards = getAllProductCards();
   return (
     <SmoothScrollProvider>
-      <HeroJourney />
+      <ScrollProgressBar />
+      <HeroPrintDrop />
       <TrustStrip />
-      <ProductShowcase />
-      <CategoryStories />
-      <ProductIndex products={getAllProductCards()} />
-      <FinishesLab />
-      <PressProcess />
+      <div className="hidden lg:block">
+        <CategoryExplorer />
+      </div>
+      <div className="lg:hidden">
+        <MobileCategoryScroller />
+      </div>
+      <div className="hidden lg:block">
+        <ProductShowcase products={productCards} />
+      </div>
+      <div className="lg:hidden">
+        <MobileProductShowcase products={productCards} />
+      </div>
+      <TypeMarquee />
+      <PressGallery products={productCards} />
+      <JobTicket />
       <IndustriesSection />
       <ProofSection />
+      <ClientLogos />
       <StartPaths />
       <HomeFaq />
-      <QuoteCta />
+      <QuoteLaunch />
     </SmoothScrollProvider>
   );
 }

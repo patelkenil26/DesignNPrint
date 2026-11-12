@@ -52,7 +52,7 @@ Har step ke aage `[ ]` hai — kar do to `[x]` kar dena.
 - [ ] Phone, address bilkul site jaisa (NAP same: naam, address, phone).
 - [ ] Services / Products add karo (17 products ki list `src/data/productCatalog.ts` me hai).
 - [ ] Kam se kam 10–15 real photos: press, machines, finished work, team.
-- [ ] Description me "printing press in Naroda GIDC, Ahmedabad since 2008" likho (750 chars tak).
+- [ ] Description me "printing press in Ahmedabad since 2008" likho (750 chars tak).
 - [ ] Review link customers ko bhejo: `https://search.google.com/local/writereview?placeid=ChIJD_1aL2sKCGwRynL88rkay5s`
 - [ ] Har review ka reply do. Target: 20+ real reviews, jisme service ka naam ho ("visiting card", "pharma box").
 - [ ] Weekly 1 Google Post (new work / offer) daalo.
@@ -91,7 +91,7 @@ Har step ke aage `[ ]` hai — kar do to `[x]` kar dena.
 - [ ] Lighthouse / PageSpeed Insights chalao (mobile) — 3D scenes ka load check karo.
 - [ ] Broken links aur 404 check karo.
 - [ ] Naye reviews ka reply, naye photos upload.
-- [ ] Rank check: "printing press in Ahmedabad", "visiting card printing Ahmedabad", "box printing Naroda GIDC".
+- [ ] Rank check: "printing press in Ahmedabad", "visiting card printing Ahmedabad", "box printing Ahmedabad".
 
 ## 9. Common problems
 | Problem | Kya karna hai |

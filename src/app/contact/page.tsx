@@ -28,7 +28,7 @@ export default function ContactPage() {
         data={[
           buildWebPageSchema({
             name: 'Contact Design N Print',
-            description: 'Offset printing and packaging press in Naroda GIDC, Ahmedabad, since 2008.',
+            description: 'Offset printing and packaging press in Ahmedabad, since 2008.',
             path: '/contact',
             pageType: 'ContactPage',
           }),
