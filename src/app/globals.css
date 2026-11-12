@@ -172,7 +172,7 @@ html.lenis body {
 }
 
 .animate-marquee {
-  animation: marquee-scroll 55s linear infinite;
+  animation: marquee-scroll 22s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -356,7 +356,17 @@ html.lenis body {
 }
 
 .animate-marquee-reverse {
-  animation: marquee-scroll-reverse 60s linear infinite;
+  animation: marquee-scroll-reverse 24s linear infinite;
+}
+
+/* phones: the words are smaller, so the band needs a shorter loop to feel as quick */
+@media (max-width: 639px) {
+  .animate-marquee {
+    animation-duration: 13s;
+  }
+  .animate-marquee-reverse {
+    animation-duration: 14s;
+  }
 }
 
 /* light sweeping across a finish card when nobody is pointing at it (touch screens) */

@@ -47,7 +47,7 @@ function HeroProof({ layout, pointerX, pointerY, isMotionAllowed }: HeroProofPro
               priority={layout.delay < 0.5}
             />
           </div>
-          <p className="mt-2 inline-block rounded-full bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+          <p className="mt-2 inline-block whitespace-nowrap rounded-full bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
             {layout.label}
           </p>
         </div>
@@ -92,8 +92,8 @@ export default function HeroPrintDrop() {
         <path d="M100 6v188M6 100h188" />
       </svg>
 
-      <div className="relative mx-auto grid min-h-[calc(100svh-var(--nav-height))] max-w-7xl items-center gap-6 px-5 pb-16 pt-6 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:py-12">
-        <div className="relative z-10 max-w-xl">
+      <div className="relative mx-auto grid min-h-[calc(100svh-var(--nav-height))] max-w-7xl items-center gap-8 px-5 pb-16 pt-6 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:py-12">
+        <div className="relative z-10 order-2 max-w-xl lg:order-none">
           <p className="mb-4 hidden items-center gap-2 rounded-full border border-ink/10 bg-white/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink backdrop-blur sm:inline-flex">
             <span className="cmyk-strip h-2 w-8 rounded-full" />
             Since {siteConfig.foundedYear} · {siteConfig.location}
@@ -134,7 +134,7 @@ export default function HeroPrintDrop() {
           </Link>
         </div>
 
-        <div className="relative h-[27rem] w-full sm:h-[34rem] lg:h-[38rem]">
+        <div className="relative order-1 h-[25rem] w-full sm:h-[34rem] lg:order-none lg:h-[38rem]">
           {heroProofs.map((layout) => (
             <HeroProof
               key={layout.id}

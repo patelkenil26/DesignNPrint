@@ -215,7 +215,7 @@ export default function ProductShowcase({ products }: ProductShowcaseProps) {
         </nav>
 
         <div className="relative mx-auto grid w-full max-w-7xl flex-1 items-center gap-4 px-5 sm:px-10 lg:grid-cols-2 lg:gap-16">
-          <div className="max-w-md lg:col-start-2 lg:row-start-1">
+          <div className="order-2 max-w-md lg:order-none lg:col-start-2 lg:row-start-1">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">The full range</p>
             <h2 id="showcase-heading" className="mt-2 font-display text-2xl font-bold leading-tight text-ink sm:text-4xl lg:mt-3 lg:text-5xl">
               {totalCards} products. One studio.
@@ -274,7 +274,7 @@ export default function ProductShowcase({ products }: ProductShowcaseProps) {
             </div>
           </div>
 
-          <div className="[perspective:1200px] lg:col-start-1 lg:row-start-1">
+          <div className="order-1 [perspective:1200px] lg:order-none lg:col-start-1 lg:row-start-1">
             <div
               ref={deckRef}
               onPointerMove={handleDeckPointerMove}

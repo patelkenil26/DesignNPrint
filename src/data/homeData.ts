@@ -35,7 +35,7 @@ export const heroProofs: HeroProofLayout[] = [
     image: '/images/home/invitation.jpg',
     alt: 'Printed wedding invitation cards in saffron and white',
     label: 'Invitations',
-    className: 'left-[0%] top-[2%] w-[42%]',
+    className: 'left-[0%] top-[0%] w-[42%] sm:top-[2%]',
     aspectClass: 'aspect-square',
     rotate: -5,
     depth: 16,
@@ -46,7 +46,7 @@ export const heroProofs: HeroProofLayout[] = [
     image: '/images/home/calendar.jpg',
     alt: 'Printed desk calendar with illustrated artwork',
     label: 'Calendars',
-    className: 'right-[0%] top-[0%] w-[50%]',
+    className: 'right-[0%] top-[3%] w-[52%] sm:top-[0%] sm:w-[50%]',
     aspectClass: 'aspect-[3/2]',
     rotate: 3,
     depth: 30,
@@ -57,7 +57,7 @@ export const heroProofs: HeroProofLayout[] = [
     image: '/images/home/book.jpg',
     alt: 'Hard-bound printed book open beside its cover',
     label: 'Books',
-    className: 'left-[24%] top-[36%] w-[48%]',
+    className: 'left-[30%] top-[34%] w-[46%] sm:left-[24%] sm:top-[36%] sm:w-[48%]',
     aspectClass: 'aspect-[3/2]',
     rotate: 2,
     depth: 48,
@@ -68,7 +68,7 @@ export const heroProofs: HeroProofLayout[] = [
     image: '/images/home/certificate.jpg',
     alt: 'Framed certificate of recognition with gold seal',
     label: 'Certificates',
-    className: 'right-[2%] top-[56%] w-[40%] hidden sm:block',
+    className: 'right-[0%] top-[62%] w-[40%] sm:right-[2%] sm:top-[56%]',
     aspectClass: 'aspect-[3/2]',
     rotate: -3,
     depth: 24,
@@ -79,7 +79,7 @@ export const heroProofs: HeroProofLayout[] = [
     image: '/images/home/brand-cover.jpg',
     alt: 'Design N Print yellow origami cover artwork',
     label: 'Design N Print',
-    className: 'left-[0%] top-[62%] w-[30%]',
+    className: 'left-[0%] top-[66%] w-[30%] sm:top-[62%]',
     aspectClass: 'aspect-square',
     rotate: 5,
     depth: 38,
@@ -260,6 +260,36 @@ export interface QuoteProduct {
   image?: string;
 }
 
+export interface QuoteCollagePiece {
+  image: string;
+  alt: string;
+  /** position and width inside the collage box */
+  className: string;
+  rotate: number;
+}
+
+/** Printed pieces that fan out beside the closing quote call-to-action. */
+export const quoteCollage: QuoteCollagePiece[] = [
+  {
+    image: '/images/home/invitation.jpg',
+    alt: 'Printed wedding invitation cards in saffron and white',
+    className: 'left-[2%] top-[4%] w-[52%]',
+    rotate: -6,
+  },
+  {
+    image: '/images/home/calendar.jpg',
+    alt: 'Printed desk calendar with illustrated artwork',
+    className: 'right-[0%] top-[22%] w-[52%] lg:top-[16%]',
+    rotate: 5,
+  },
+  {
+    image: '/images/home/book.jpg',
+    alt: 'Hard-bound printed book open beside its cover',
+    className: 'left-[18%] top-[50%] w-[54%] lg:top-[46%]',
+    rotate: -2,
+  },
+];
+
 export const quoteProducts: QuoteProduct[] = [
   { label: 'Visiting Cards', image: '/images/products/visiting-card/cover.jpg' },
   { label: 'Brochures & Flyers', image: '/images/products/brochure/cover.jpg' },
@@ -365,38 +395,22 @@ export const homeFaqs: FaqItem[] = [
   },
 ];
 
-/* ───────────── Print loupe ───────────── */
-export interface LoupePrint {
-  id: string;
-  label: string;
-  image: string;
-  alt: string;
-  /** what to look for under the glass */
-  note: string;
+/* ───────────── Press gallery ("Fresh off the press") ───────────── */
+export interface PressGalleryWork {
+  /** product whose cover photo and link the card uses */
+  slug: string;
+  /** short line shown on the card */
+  tag: string;
 }
 
-export const loupePrints: LoupePrint[] = [
-  {
-    id: 'cards',
-    label: 'Visiting cards',
-    image: '/images/products/visiting-card/cover.jpg',
-    alt: 'Printed business cards with a QR code and fine contact text',
-    note: 'Tiny contact text and QR codes stay crisp enough to scan.',
-  },
-  {
-    id: 'brochure',
-    label: 'Brochures',
-    image: '/images/products/brochure/cover.jpg',
-    alt: 'Printed corporate brochure with photography and small copy',
-    note: 'Photos and fine copy hold their detail edge to edge.',
-  },
-  {
-    id: 'labels',
-    label: 'Labels',
-    image: '/images/products/bottle-label/cover.jpg',
-    alt: 'Printed product labels on bottles and jars',
-    note: 'Dense label text and barcodes stay readable on the shelf.',
-  },
+export const pressGalleryWorks: PressGalleryWork[] = [
+  { slug: 'visiting-card', tag: 'First impressions, in your hand' },
+  { slug: 'box', tag: 'Shelf-ready cartons' },
+  { slug: 'brochure', tag: 'Photos and copy, edge to edge' },
+  { slug: 'rigid-box', tag: 'Premium unboxing' },
+  { slug: 'bottle-label', tag: 'Crisp, scannable small print' },
+  { slug: 'pouch', tag: 'Ready to ship' },
+  { slug: 'sticker', tag: 'Any shape, any surface' },
 ];
 
 /* ───────────── Job ticket (how a job moves through the press) ───────────── */
