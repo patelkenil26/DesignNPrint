@@ -21,7 +21,7 @@ export default function FindUs() {
         <div>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Find us</p>
-            <h2 id="find-us-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+            <h2 id="find-us-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
               Three landmarks to our door.
             </h2>
             <address className="mt-5 max-w-sm text-sm not-italic leading-relaxed text-ink/70">

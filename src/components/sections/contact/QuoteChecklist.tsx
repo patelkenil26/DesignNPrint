@@ -13,7 +13,7 @@ export default function QuoteChecklist() {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-10 sm:py-24">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-yellow">Before you send</p>
-          <h2 id="checklist-heading" className="mt-3 font-display text-3xl font-bold leading-tight sm:text-5xl">
+          <h2 id="checklist-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight sm:text-5xl">
             Quotes come back faster when you include these.
           </h2>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">

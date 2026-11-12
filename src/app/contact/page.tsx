@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import ContactChannels from '@/components/sections/contact/ContactChannels';
 import ContactHero from '@/components/sections/contact/ContactHero';
 import FindUs from '@/components/sections/contact/FindUs';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import JobTicketForm from '@/components/sections/contact/JobTicketForm';
 import QuoteChecklist from '@/components/sections/contact/QuoteChecklist';
 import Reveal from '@/components/shared/Reveal';
@@ -38,6 +39,7 @@ export default function ContactPage() {
           ]),
         ]}
       />
+      <ScrollProgressBar />
       <ContactHero />
       <ContactChannels />
 
@@ -45,7 +47,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-10">
           <Reveal className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Start a job ticket</p>
-            <h2 id="ticket-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+            <h2 id="ticket-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
               Fill it in. Watch it print.
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">

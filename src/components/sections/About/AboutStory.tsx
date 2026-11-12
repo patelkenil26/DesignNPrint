@@ -9,7 +9,7 @@ export default function AboutStory() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-10 lg:grid-cols-2">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Who we are</p>
-          <h2 id="story-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+          <h2 id="story-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
             A leading printing company in Ahmedabad.
           </h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-ink/75">

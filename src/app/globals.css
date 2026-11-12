@@ -280,6 +280,27 @@ html.lenis body {
   }
 }
 
+/* soft attention ring that breathes around the main call-to-action */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-whatsapp) 55%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 14px color-mix(in srgb, var(--color-whatsapp) 0%, transparent);
+  }
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ring-pulse {
+    animation: none;
+  }
+}
+
 /* ───────── Footer skyline ───────── */
 
 /* the Sabarmati ripples sideways, one wave at a time */

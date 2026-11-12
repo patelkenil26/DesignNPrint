@@ -20,12 +20,12 @@ export default function AboutTimeline() {
       <div className="mx-auto max-w-5xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-yellow">Our journey</p>
-          <h2 id="journey-heading" className="mt-3 font-display text-3xl font-bold leading-tight sm:text-5xl">
+          <h2 id="journey-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight sm:text-5xl">
             Remarkable growth in the printing industry.
           </h2>
         </Reveal>
 
-        <ol ref={listRef} className="relative mt-16 space-y-16 pl-10 sm:pl-16">
+        <ol ref={listRef} className="relative mt-12 space-y-10 pl-10 sm:mt-16 sm:space-y-16 sm:pl-16">
           <span className="absolute left-[7px] top-0 h-full w-0.5 bg-white/15 sm:left-[11px]" aria-hidden="true" />
           <motion.span
             aria-hidden="true"
@@ -44,9 +44,25 @@ export default function AboutTimeline() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               />
               <Reveal delay={index * 0.05}>
-                <p className="text-outline-light font-display text-5xl font-black leading-none sm:text-7xl">{milestone.year}</p>
-                <h3 className="mt-3 font-display text-xl font-bold sm:text-3xl">{milestone.title}</h3>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">{milestone.description}</p>
+                <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+                  <p className="relative font-display text-5xl font-black leading-none sm:text-7xl">
+                    <span className="text-outline-light block">{milestone.year}</span>
+                    {/* fills with the four inks once the milestone is on screen */}
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-0 block bg-clip-text text-transparent"
+                      style={{ backgroundImage: timelineGradient.replace('180deg', '90deg') }}
+                      initial={prefersReducedMotion ? false : { opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true, margin: '-30% 0px -30% 0px' }}
+                      transition={{ duration: 0.9 }}
+                    >
+                      {milestone.year}
+                    </motion.span>
+                  </p>
+                  <h3 className="mt-3 font-display text-xl font-bold sm:text-3xl">{milestone.title}</h3>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">{milestone.description}</p>
+                </div>
               </Reveal>
             </li>
           ))}

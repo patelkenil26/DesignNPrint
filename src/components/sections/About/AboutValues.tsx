@@ -9,7 +9,7 @@ export default function AboutValues() {
       <div className="mx-auto max-w-7xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What drives us</p>
-          <h2 id="values-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+          <h2 id="values-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
             Quality is a habit, not a promise.
           </h2>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import ContactQuickActions from '@/components/sections/contact/ContactQuickActions';
 import DeskCard from '@/components/sections/contact/DeskCard';
 import Reveal from '@/components/shared/Reveal';
 import WordRise from '@/components/shared/WordRise';
@@ -14,7 +15,7 @@ export default function ContactHero() {
         <span className="animate-float-slow absolute bottom-0 left-1/3 h-48 w-48 rounded-full bg-brand-red/15 blur-2xl" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 sm:px-10 sm:py-20 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:gap-12 sm:px-10 sm:py-20 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <nav aria-label="Breadcrumb" className="mb-5">
             <ol className="flex items-center gap-1 text-xs font-medium text-muted">
@@ -36,19 +37,20 @@ export default function ContactHero() {
           </p>
           <h1
             id="contact-heading"
-            className="mt-4 font-display text-5xl font-bold leading-[1.02] tracking-tight text-ink sm:text-7xl"
+            className="mt-4 text-balance font-display text-[clamp(2.5rem,11.5vw,3.4rem)] font-bold leading-[1.02] tracking-tight text-ink sm:text-7xl"
           >
             <WordRise text="Let’s print something great." delay={0.1} />
           </h1>
 
           <Reveal delay={0.5}>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg">
-              Tell us the product, the quantity and the deadline. We will come back with a clear quote — or just drop in
-              at our press in Naroda and see the paper in your hand.
+              Tell us the product, the quantity and the deadline. We will come back with a clear quote
+              <span className="hidden sm:inline"> — or just drop in at our press in Naroda and see the paper in your hand</span>.
             </p>
+            <ContactQuickActions />
             <a
               href="#job-ticket"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink underline decoration-brand-yellow decoration-2 underline-offset-8 transition-colors hover:text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink underline decoration-brand-yellow decoration-2 underline-offset-8 transition-colors hover:text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
             >
               Start a job ticket ↓
             </a>
