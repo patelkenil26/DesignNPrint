@@ -5,6 +5,8 @@ import TypeMarquee from '@/components/shared/TypeMarquee';
 import HeroPrintDrop from '@/components/sections/home/HeroPrintDrop';
 import TrustStrip from '@/components/sections/home/TrustStrip';
 import CategoryExplorer from '@/components/sections/home/CategoryExplorer';
+import MobileCategoryScroller from '@/components/sections/home/MobileCategoryScroller';
+import ClientLogos from '@/components/sections/home/ClientLogos';
 import ProductShowcase from '@/components/sections/home/ProductShowcase';
 import MobileProductShowcase from '@/components/sections/home/MobileProductShowcase';
 import PressGallery from '@/components/sections/home/PressGallery';
@@ -42,11 +44,16 @@ export default function Home() {
       <ScrollProgressBar />
       <HeroPrintDrop />
       <TrustStrip />
-      <CategoryExplorer />
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
+        <CategoryExplorer />
+      </div>
+      <div className="lg:hidden">
+        <MobileCategoryScroller />
+      </div>
+      <div className="hidden lg:block">
         <ProductShowcase products={productCards} />
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <MobileProductShowcase products={productCards} />
       </div>
       <TypeMarquee />
@@ -54,6 +61,7 @@ export default function Home() {
       <JobTicket />
       <IndustriesSection />
       <ProofSection />
+      <ClientLogos />
       <StartPaths />
       <HomeFaq />
       <QuoteLaunch />

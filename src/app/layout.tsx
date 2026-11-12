@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Design N Print is an offset printing and packaging press in Naroda GIDC, Ahmedabad — visiting cards, brochures, boxes, stickers and more, designed and printed under one roof since 2008.",
+    "Design N Print is an offset printing and packaging press in Ahmedabad — visiting cards, brochures, boxes, stickers and more, designed and printed under one roof since 2008.",
   keywords: [...siteConfig.seoKeywords],
   applicationName: siteConfig.name,
   alternates: { canonical: "/" },
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     url: "/",
     title: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
     description:
-      "Offset printing and packaging press in Naroda GIDC, Ahmedabad. Designed and printed under one roof since 2008.",
+      "Offset printing and packaging press in Ahmedabad. Designed and printed under one roof since 2008.",
     images: [{ url: defaultOgImage, alt: "Design N Print — printing press in Ahmedabad" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
-    description: "Offset printing and packaging press in Naroda GIDC, Ahmedabad. Since 2008.",
+    description: "Offset printing and packaging press in Ahmedabad. Since 2008.",
     images: [defaultOgImage],
   },
   robots: { index: true, follow: true },

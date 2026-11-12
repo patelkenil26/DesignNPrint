@@ -33,7 +33,7 @@ export default function MobileProductShowcase({ products }: MobileProductShowcas
   }, [products]);
 
   return (
-    <section className="bg-paper px-5 py-14" aria-labelledby="mobile-showcase-heading">
+    <section className="bg-paper px-5 py-14 sm:px-10 sm:py-20" aria-labelledby="mobile-showcase-heading">
       <motion.div
         initial={isMotionAllowed ? { opacity: 0, y: 24 } : false}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function MobileProductShowcase({ products }: MobileProductShowcas
         <p className="mt-2 text-sm leading-relaxed text-ink/70">A few favourites to start — the rest is one tap away.</p>
       </motion.div>
 
-      <ul className="mt-7 grid grid-cols-2 gap-3.5">
+      <ul className="mt-7 grid grid-cols-2 gap-3.5 sm:grid-cols-4 sm:gap-4">
         {featuredProducts.map((product, index) => (
           <motion.li
             key={product.slug}
@@ -67,7 +67,7 @@ export default function MobileProductShowcase({ products }: MobileProductShowcas
                     src={product.image}
                     alt={product.coverAlt}
                     fill
-                    sizes="45vw"
+                    sizes="(min-width: 640px) 22vw, 45vw"
                     preload={index < 2}
                     className="object-cover transition-transform duration-500 group-active:scale-105"
                   />
@@ -94,7 +94,7 @@ export default function MobileProductShowcase({ products }: MobileProductShowcas
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <LinkButton href="/services" variant="solid" className="w-full">
+        <LinkButton href="/services" variant="solid" className="w-full sm:w-auto">
           View all {products.length} products <ArrowRight className="h-4 w-4" />
         </LinkButton>
       </motion.div>

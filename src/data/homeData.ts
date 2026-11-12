@@ -316,7 +316,7 @@ export const trustPoints: TrustPoint[] = [
   { id: 'proof', icon: 'proof', title: 'Digital proof first', detail: 'You approve before we print' },
   { id: 'express', icon: 'express', title: 'Express dispatch', detail: '24–48 hrs on selected jobs' },
   { id: 'delivery', icon: 'delivery', title: 'Gujarat & India', detail: 'Packed and shipped to you' },
-  { id: 'location', icon: 'location', title: 'Naroda GIDC', detail: 'Visit our Ahmedabad press' },
+  { id: 'location', icon: 'location', title: 'Ahmedabad', detail: 'Visit our press in person' },
 ];
 
 /* ───────────── "Two ways to start" ───────────── */
@@ -391,7 +391,7 @@ export const homeFaqs: FaqItem[] = [
   {
     id: 'delivery',
     question: 'Do you deliver outside Ahmedabad?',
-    answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
+    answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press in Ahmedabad.',
   },
 ];
 

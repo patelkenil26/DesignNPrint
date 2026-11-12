@@ -11,7 +11,7 @@ import { buildBreadcrumbSchema, buildPageMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Areas We Serve — Printing in Ahmedabad & Gujarat | Design N Print',
   description:
-    'Design N Print prints and delivers across Naroda GIDC, Ahmedabad, Odhav, Vatva, Sanand, Gandhinagar, Morbi, Surat, Vadodara and Rajkot.',
+    'Design N Print prints and delivers across Ahmedabad, Odhav, Vatva, Sanand, Gandhinagar, Morbi, Surat, Vadodara and Rajkot.',
   path: '/areas',
 });
 
@@ -43,7 +43,7 @@ export default function AreasPage() {
       <PageHero
         eyebrow="Areas we serve"
         title="Printing for Ahmedabad and all of Gujarat."
-        description="One press in Naroda GIDC, delivering offset printing and packaging to businesses across the city and the state."
+        description="One press in Ahmedabad, delivering offset printing and packaging to businesses across the city and the state."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Areas we serve' }]}
       />
 

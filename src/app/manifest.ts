@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${siteConfig.name} — Printing & Packaging, Ahmedabad`,
     short_name: siteConfig.name,
-    description: 'Offset printing and packaging press in Naroda GIDC, Ahmedabad.',
+    description: 'Offset printing and packaging press in Ahmedabad.',
     start_url: '/',
     display: 'browser',
     background_color: '#f4f2ee',

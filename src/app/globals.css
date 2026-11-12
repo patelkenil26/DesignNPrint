@@ -280,66 +280,80 @@ html.lenis body {
   }
 }
 
-/* ───────── Footer wordmark ───────── */
-.wordmark-fill {
-  background-image: linear-gradient(
-    90deg,
-    var(--color-brand-blue),
-    var(--color-brand-red),
-    var(--color-brand-yellow),
-    var(--color-brand-green),
-    var(--color-brand-blue)
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-mask-image: radial-gradient(
-    circle clamp(9rem, 26vw, 24rem) at var(--spot-x, 50%) var(--spot-y, 50%),
-    #000 0%,
-    rgba(0, 0, 0, 0.85) 42%,
-    transparent 75%
-  );
-  mask-image: radial-gradient(
-    circle clamp(9rem, 26vw, 24rem) at var(--spot-x, 50%) var(--spot-y, 50%),
-    #000 0%,
-    rgba(0, 0, 0, 0.85) 42%,
-    transparent 75%
-  );
-  animation: ink-flow 14s linear infinite;
-}
+/* ───────── Footer skyline ───────── */
 
-@keyframes ink-flow {
+/* the Sabarmati ripples sideways, one wave at a time */
+@keyframes river-ripple {
+  from {
+    transform: translateX(0);
+  }
   to {
-    background-position: 200% 0;
+    transform: translateX(-60px);
   }
 }
 
-/* a bright band that sweeps across the letters, like light on foil */
-.wordmark-shine {
-  background-image: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.85) 50%, transparent 58%);
-  background-size: 250% 100%;
-  background-position: 150% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: foil-shine 8s ease-in-out 2.5s infinite;
+/* landmarks trace themselves once the scene gets the .skyline-on class (set when it scrolls into view) */
+.skyline-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
 }
 
-@keyframes foil-shine {
+.skyline-on .skyline-draw {
+  animation: skyline-draw 1.6s ease-in-out var(--draw-delay, 0s) both;
+}
+
+@keyframes skyline-draw {
   0% {
-    background-position: 150% 0;
+    opacity: 0;
+    stroke-dashoffset: 1;
   }
-  35%,
+  6% {
+    opacity: 1;
+  }
   100% {
-    background-position: -60% 0;
+    opacity: 1;
+    stroke-dashoffset: 0;
   }
+}
+
+.skyline-sun {
+  opacity: 0;
+  transform: translateY(90px);
+}
+
+.skyline-on .skyline-sun {
+  animation: skyline-sun-rise 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes skyline-sun-rise {
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+.animate-river {
+  animation: river-ripple 3s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wordmark-fill,
-  .wordmark-shine {
+  .animate-river {
     animation: none;
+  }
+
+  .skyline-draw,
+  .skyline-on .skyline-draw {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .skyline-sun,
+  .skyline-on .skyline-sun {
+    animation: none;
+    opacity: 0.9;
+    transform: none;
   }
 }
 

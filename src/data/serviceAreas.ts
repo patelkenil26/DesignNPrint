@@ -1,6 +1,6 @@
 /**
  * Places we print for — drives /areas, /areas/[area], the sitemap, footer links and llms.txt.
- * Copy stays factual: we are one press in Naroda GIDC, so every other area is "delivered to", never "located in".
+ * Copy stays factual: we are one press in Ahmedabad (Naroda), so every other area is "delivered to", never "located in".
  * NOTE: keep this file free of `@/` imports — scripts may read it directly.
  */
 
@@ -25,11 +25,11 @@ export interface ServiceArea {
 export const serviceAreas: ServiceArea[] = [
   {
     slug: 'naroda-gidc',
-    name: 'Naroda GIDC',
+    name: 'Naroda',
     kind: 'home',
-    headline: 'Printing press in Naroda GIDC, Ahmedabad',
+    headline: 'Printing press in Ahmedabad',
     intro:
-      'Design N Print runs from Naroda GIDC itself — walk in with your artwork, sit with a designer, approve a proof and collect your job the same week. Offset printing and packaging for the industrial estate and the neighbourhood around it, since 2008.',
+      'Design N Print runs from Naroda, Ahmedabad itself — walk in with your artwork, sit with a designer, approve a proof and collect your job the same week. Offset printing and packaging for the industrial estate and the neighbourhood around it, since 2008.',
     localAngle:
       'Being inside the estate means no courier wait: factories and traders in Naroda can send a runner for proofs, approve colour on paper in person and pick up urgent jobs from our press.',
     industryIds: ['pharma', 'cosmetics', 'agro', 'corporate'],
@@ -43,7 +43,7 @@ export const serviceAreas: ServiceArea[] = [
     intro:
       'From start-ups in SG Highway offices to old-city traders, Ahmedabad businesses use Design N Print for visiting cards, brochures, boxes, stickers, pouches and more — designed and printed under one roof at our Naroda press.',
     localAngle:
-      'Share your brief on WhatsApp, approve the digital proof from your desk and we deliver across Ahmedabad — or you can drop in at Naroda GIDC to check colour and paper first.',
+      'Share your brief on WhatsApp, approve the digital proof from your desk and we deliver across Ahmedabad — or you can drop in at our Ahmedabad press to check colour and paper first.',
     industryIds: ['corporate', 'cosmetics', 'events', 'pharma'],
     productSlugs: ['visiting-card', 'brochure', 'box', 'pouch', 'sticker', 'flex-banner'],
   },

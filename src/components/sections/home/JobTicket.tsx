@@ -8,8 +8,6 @@ import { ArrowRight, Check } from 'lucide-react';
 import { jobTicketLines, type JobTicketLine } from '@/data/homeData';
 import { siteConfig } from '@/data/siteConfig';
 
-/** Scroll length of the section on top of the pinned screen, in viewport heights. */
-const SCROLL_LENGTH_VH = 260;
 
 const formatNumber = (value: number) => String(value).padStart(2, '0');
 
@@ -80,8 +78,7 @@ export default function JobTicket() {
   return (
     <section
       ref={trackRef}
-      className="relative"
-      style={{ height: `calc(100svh + ${SCROLL_LENGTH_VH}vh)` }}
+      className="relative h-[calc(100svh+150vh)] sm:h-[calc(100svh+260vh)]"
       aria-labelledby="ticket-heading"
     >
       <div
@@ -92,8 +89,8 @@ export default function JobTicket() {
           {formatNumber(activeIndex + 1)}
         </span>
 
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-4 px-5 sm:px-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16 max-sm:gap-2">
-          <div className="order-2 lg:order-1">
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-4 px-5 sm:px-10 md:grid-cols-[1fr_0.95fr] md:gap-10 lg:gap-16 max-sm:gap-2">
+          <div className="order-2 md:order-1">
             <p className="hidden text-xs font-semibold uppercase tracking-[0.25em] text-muted sm:block">How a job moves</p>
             <h2 id="ticket-heading" className="mt-2 hidden font-display text-2xl font-bold leading-tight text-ink sm:text-4xl sm:block lg:mt-3 lg:text-6xl">
               Your job, from brief to doorstep.
@@ -129,7 +126,7 @@ export default function JobTicket() {
           </div>
 
           {/* printer + ticket */}
-          <div className="order-1 mx-auto w-full max-w-[26rem] lg:order-2">
+          <div className="order-1 mx-auto w-full max-w-[26rem] md:order-2">
             <div className="relative z-10 flex h-8 items-center justify-between rounded-t-2xl bg-ink px-4 shadow-xl sm:h-10">
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">{siteConfig.name}</span>
               <span className="flex items-center gap-1.5">

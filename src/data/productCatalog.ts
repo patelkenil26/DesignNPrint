@@ -430,7 +430,7 @@ export function buildProductFaqs(product: Product): ProductFaq[] {
     {
       id: 'delivery',
       question: 'Do you deliver outside Ahmedabad?',
-      answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press at Naroda GIDC.',
+      answer: 'Yes — we dispatch across Gujarat and India. You can also visit our press in Ahmedabad.',
     },
   ];
 }
