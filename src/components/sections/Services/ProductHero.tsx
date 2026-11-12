@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowDown, ChevronRight, Layers, MessageCircle, Sparkles } from 'lucide-react';
 import InkReveal from '@/components/shared/InkReveal';
+import ViewerTrigger from '@/components/shared/ImageViewer/ViewerTrigger';
 import LinkButton from '@/components/shared/LinkButton';
 import ProductArt from '@/components/shared/ProductArt';
 import Reveal from '@/components/shared/Reveal';
@@ -109,6 +110,7 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
                   )}
                 </InkReveal>
                 <span className="crop-marks crop-marks-always absolute inset-0" aria-hidden="true" />
+                {coverImage && <ViewerTrigger itemId="cover" label={product.name} />}
                 <span className="absolute inset-x-0 top-0 z-10 h-1.5" style={{ backgroundColor: accentColor }} />
               </div>
 

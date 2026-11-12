@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react';
 import InkReveal from '@/components/shared/InkReveal';
+import ViewerTrigger from '@/components/shared/ImageViewer/ViewerTrigger';
 import ProductArt from '@/components/shared/ProductArt';
 import SafeImage from '@/components/shared/SafeImage';
 import type { ProductAccent } from '@/data/productCatalog';
@@ -48,6 +49,7 @@ export default function TypeCard({ type, productName, accent, revealDelay = 0 }:
           )}
         </InkReveal>
         <span className="crop-marks absolute inset-0" aria-hidden="true" />
+        {type.image && <ViewerTrigger itemId={type.slug} label={type.name} />}
         <span className="absolute left-2 top-2 z-10 rounded-full bg-white/90 px-2 py-0.5 font-display text-[11px] font-bold sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 text-ink shadow-sm backdrop-blur">
           {formatNumber(type.number)}
         </span>

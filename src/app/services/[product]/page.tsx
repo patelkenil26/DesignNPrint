@@ -9,6 +9,8 @@ import ProductSpecs from '@/components/sections/Services/ProductSpecs';
 import ProductSwatchCard from '@/components/sections/Services/ProductSwatchCard';
 import TypeCard from '@/components/sections/Services/TypeCard';
 import TypeJumpBar from '@/components/sections/Services/TypeJumpBar';
+import ImageViewerProvider from '@/components/shared/ImageViewer/ImageViewerProvider';
+import type { ViewerItem } from '@/components/shared/ImageViewer/ImageViewerContext';
 import JsonLd from '@/components/shared/JsonLd';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import LinkButton from '@/components/shared/LinkButton';
@@ -75,6 +77,36 @@ export default async function ProductPage({ params }: ProductPageProps) {
     image: getTypeImage(product, type),
   }));
 
+  /** every real photo on this page, in reading order — the cover first, then each type */
+  const viewerItems: ViewerItem[] = [
+    ...(coverImage
+      ? [
+          {
+            id: 'cover',
+            src: coverImage,
+            alt: product.coverAlt,
+            title: product.name,
+            line: product.tagline,
+            whatsappMessage: `Hi Design N Print, I would like a quote for ${product.name}.`,
+          },
+        ]
+      : []),
+    ...typeCards.flatMap((type) =>
+      type.image
+        ? [
+            {
+              id: type.slug,
+              src: type.image,
+              alt: `${type.name} — ${product.name.toLowerCase()} sample`,
+              title: type.name,
+              line: type.line,
+              whatsappMessage: `Hi Design N Print, I would like a quote for ${product.name} — ${type.name}.`,
+            },
+          ]
+        : [],
+    ),
+  ];
+
   const keepExploring = [1, 2, 3, 4]
     .map((offset) => productCatalog[(number - 1 + offset) % productCatalog.length])
     .map(toProductCard);
@@ -118,6 +150,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ]),
         ]}
       />
+      <ImageViewerProvider items={viewerItems}>
       <ProductHero product={product} number={number} coverImage={coverImage} />
       <ProductQuickAnswer product={product} />
       {/* wrapper keeps the sticky jump bar inside the types section only */}
@@ -166,6 +199,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </section>
       </div>
+
+      </ImageViewerProvider>
 
       <ProductSpecs product={product} />
       <ProductProcess />
