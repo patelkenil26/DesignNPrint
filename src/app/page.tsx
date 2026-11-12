@@ -16,11 +16,21 @@ import ProofSection from '@/components/sections/home/ProofSection';
 import StartPaths from '@/components/sections/home/StartPaths';
 import HomeFaq from '@/components/sections/home/HomeFaq';
 import QuoteLaunch from '@/components/sections/home/QuoteLaunch';
+import HomeSeoCopy from '@/components/sections/home/HomeSeoCopy';
+import JsonLd from '@/components/shared/JsonLd';
+import { productCatalog } from '@/data/productCatalog';
+import { siteConfig } from '@/data/siteConfig';
 import { getAllProductCards } from '@/lib/productCards';
+import { buildBreadcrumbSchema, buildItemListSchema, buildPageMetadata, buildWebPageSchema } from '@/lib/seo';
 
 // Title, description and Open Graph come from the root layout; only the canonical is set here.
 // (FAQPage schema is emitted by the shared FaqAccordion.)
-export const metadata: Metadata = { alternates: { canonical: '/' } };
+export const metadata: Metadata = buildPageMetadata({
+  title: siteConfig.seoTitle,
+  description: siteConfig.seoDescription,
+  path: '/',
+  keywords: [...siteConfig.seoKeywords],
+});
 
 /**
  * Home page — every section answers one question, in the order a buyer asks them, and each one moves differently:
@@ -41,6 +51,16 @@ export default function Home() {
   const productCards = getAllProductCards();
   return (
     <SmoothScrollProvider>
+      <JsonLd
+        data={[
+          buildWebPageSchema({ name: siteConfig.seoTitle, description: siteConfig.seoDescription, path: '/' }),
+          buildItemListSchema(
+            'Printing and packaging products',
+            productCatalog.map((product) => ({ name: `${product.name} printing`, path: `/services/${product.slug}` })),
+          ),
+          buildBreadcrumbSchema([{ name: 'Home', path: '/' }]),
+        ]}
+      />
       <ScrollProgressBar />
       <HeroPrintDrop />
       <TrustStrip />
@@ -64,6 +84,7 @@ export default function Home() {
       <ClientLogos />
       <StartPaths />
       <HomeFaq />
+      <HomeSeoCopy />
       <QuoteLaunch />
     </SmoothScrollProvider>
   );

@@ -5,17 +5,43 @@ export const siteConfig = {
   siteUrl: 'https://designnprint.in',
   /** coordinates of the press (Google Maps pin) */
   geo: { latitude: 23.0685788, longitude: 72.64642 },
+  /** the homepage's search identity — reused by layout, schema and share cards */
+  seoTitle: 'Printing Press in Ahmedabad | Packaging & Cards | Design N Print',
+  seoDescription:
+    'Printing press in Naroda, Ahmedabad — offset printing and packaging: boxes, visiting cards, brochures, stickers, pouches. Design help, proof before print, delivery across Gujarat.',
+  shareDescription:
+    'Printing press in Ahmedabad — boxes, visiting cards, brochures, stickers and packaging, designed and printed under one roof since 2008.',
   seoKeywords: [
     'printing press in Ahmedabad',
+    'printing press near me',
     'offset printing Ahmedabad',
     'packaging printing Ahmedabad',
-    'visiting card printing Ahmedabad',
     'box printing Ahmedabad',
+    'visiting card printing Ahmedabad',
+    'brochure printing Ahmedabad',
+    'sticker printing Ahmedabad',
+    'pharma carton printing Ahmedabad',
+    'printing press in Naroda',
+    'Naroda GIDC printing',
+    'packaging box manufacturer Gujarat',
     'brochure printing Gujarat',
+    'Design N Print',
   ],
+  /** short brand tag lines — used in schema and the home SEO copy */
+  taglines: [
+    'Designed and printed under one roof.',
+    'Print that you can feel.',
+    'Your printing press in Ahmedabad since 2008.',
+  ],
+  /** Bing / Yandex IndexNow key — the same string is served at /<key>.txt (public/) */
+  indexNowKey: 'b7d3f1a94c2e48d6a05f9e1c7b3a8d24',
+  /** square brand mark (256×256) — used for share-card, schema logo and favicons */
+  logoMarkPath: '/images/Logo/favicon-mark.png',
+  /** full wordmark logo (967×259) */
+  logoWordmarkPath: '/images/Logo/DesignNPrint.png',
   foundedYear: 2008,
   /** bump when page content is reviewed — feeds sitemap lastModified, schema dateModified and llms.txt */
-  contentLastUpdated: '2026-11-09',
+  contentLastUpdated: '2026-11-12',
   /** other names customers (and Google Maps) use for the business — helps entity matching */
   alternateNames: ['Design N Prints', 'DesignNPrint'],
   slogan: 'Designed and printed under one roof.',

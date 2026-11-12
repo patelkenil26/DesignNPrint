@@ -13,6 +13,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     'Design N Print prints and delivers across Ahmedabad, Odhav, Vatva, Sanand, Gandhinagar, Morbi, Surat, Vadodara and Rajkot.',
   path: '/areas',
+  keywords: ['printing press Ahmedabad', 'printing delivery Gujarat', 'printing services Surat Vadodara Rajkot', 'printing press Naroda'],
 });
 
 const accentCycle = ['red', 'yellow', 'green', 'blue'] as const;

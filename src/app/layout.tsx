@@ -48,29 +48,38 @@ export const metadata: Metadata = {
   category: "printing and packaging",
   formatDetection: { telephone: true, email: true, address: true },
   title: {
-    default: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
+    default: siteConfig.seoTitle,
     template: "%s",
   },
-  description:
-    "Design N Print is an offset printing and packaging press in Ahmedabad — visiting cards, brochures, boxes, stickers and more, designed and printed under one roof since 2008.",
+  description: siteConfig.seoDescription,
   keywords: [...siteConfig.seoKeywords],
   applicationName: siteConfig.name,
-  alternates: { canonical: "/", types: { "text/plain": "/llms.txt" } },
+  alternates: {
+    canonical: "/",
+    languages: { "en-IN": "/", "x-default": "/" },
+    types: { "text/plain": "/llms.txt" },
+  },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
     locale: "en_IN",
     url: "/",
-    title: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
-    description:
-      "Offset printing and packaging press in Ahmedabad. Designed and printed under one roof since 2008.",
-    images: [{ url: defaultOgImage, alt: "Design N Print — printing press in Ahmedabad" }],
+    title: siteConfig.seoTitle,
+    description: siteConfig.shareDescription,
+    images: [{ url: defaultOgImage, width: 1200, height: 630, alt: "Design N Print — printing press in Ahmedabad" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
-    description: "Offset printing and packaging press in Ahmedabad. Since 2008.",
+    title: siteConfig.seoTitle,
+    description: siteConfig.shareDescription,
     images: [defaultOgImage],
+  },
+  // local-search hints (Bing and other engines read these; harmless for Google)
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Naroda, Ahmedabad",
+    "geo.position": `${siteConfig.geo.latitude};${siteConfig.geo.longitude}`,
+    ICBM: `${siteConfig.geo.latitude}, ${siteConfig.geo.longitude}`,
   },
   robots: { index: true, follow: true },
   // Set in the host's environment after claiming the site in Google Search Console / Bing Webmaster Tools.

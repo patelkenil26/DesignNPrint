@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { ProductAccent } from '@/data/productCatalog';
 import { siteConfig } from '@/data/siteConfig';
@@ -26,6 +28,12 @@ const accentColour: Record<ProductAccent, string> = {
   blue: ogTheme.blue,
 };
 
+/** The square brand mark as a data URI — share cards are rendered at build time, so reading from /public is safe. */
+async function loadLogoDataUri(): Promise<string> {
+  const logoFile = await readFile(path.join(process.cwd(), 'public', siteConfig.logoMarkPath));
+  return `data:image/png;base64,${logoFile.toString('base64')}`;
+}
+
 interface OgCardInput {
   eyebrow: string;
   title: string;
@@ -34,8 +42,9 @@ interface OgCardInput {
 }
 
 /** 1200×630 branded share card — CMYK strip, big title, location footer. */
-export function renderOgCard({ eyebrow, title, subtitle, accent = 'red' }: OgCardInput) {
-  const titleSize = title.length > 34 ? 64 : title.length > 22 ? 78 : 92;
+export async function renderOgCard({ eyebrow, title, subtitle, accent = 'red' }: OgCardInput) {
+  const logoDataUri = await loadLogoDataUri();
+  const titleSize = title.length > 50 ? 52 : title.length > 34 ? 64 : title.length > 22 ? 78 : 92;
   return new ImageResponse(
     (
       <div
@@ -82,7 +91,8 @@ export function renderOgCard({ eyebrow, title, subtitle, accent = 'red' }: OgCar
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ width: 20, height: 56, background: accentColour[accent], borderRadius: 6, marginRight: 20 }} />
+            {/* eslint-disable-next-line @next/next/no-img-element -- next/og renders plain <img>, not next/image */}
+            <img src={logoDataUri} width={84} height={84} alt="Design N Print logo" style={{ marginRight: 24, borderRadius: 18 }} />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: 38, fontWeight: 800 }}>{siteConfig.name}</div>
               <div style={{ fontSize: 24, color: ogTheme.muted }}>

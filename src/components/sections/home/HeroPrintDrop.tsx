@@ -134,7 +134,7 @@ export default function HeroPrintDrop() {
           </Link>
         </div>
 
-        <div className="relative order-1 h-[25rem] w-full sm:h-[34rem] lg:order-none lg:h-[38rem]">
+        <div className="relative order-1 mx-auto mb-6 aspect-[1/1.15] w-full max-w-[28rem] sm:max-w-[32rem] lg:order-none lg:mx-0 lg:mb-0 lg:aspect-auto lg:h-[38rem] lg:max-w-none">
           {heroProofs.map((layout) => (
             <HeroProof
               key={layout.id}

@@ -14,10 +14,11 @@ import QuoteBand from '@/components/shared/QuoteBand';
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'About Us | Design N Print — Offset Printing Press, Ahmedabad',
+  title: 'About Design N Print | Offset Printing Press in Ahmedabad Since 2008',
   description:
     'Design N Print is a leading offset press in Ahmedabad, specialised in fine-quality printing and supporting services for commerce and industry of Gujarat since 2008.',
   path: '/about',
+  keywords: ['about Design N Print', 'offset printing press Ahmedabad', 'printing press since 2008', 'Naroda printing press'],
 });
 
 /**

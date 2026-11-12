@@ -1,3 +1,4 @@
+import { getGuideHref, guides } from '@/data/guides';
 import { homeFaqs } from '@/data/homeData';
 import { buildProductFaqs, priceDrivers, productCatalog, type Product } from '@/data/productCatalog';
 import { getAreaHref, serviceAreas, type ServiceArea } from '@/data/serviceAreas';
@@ -46,10 +47,14 @@ export function buildLlmsTxt(): string {
     '## Areas served',
     ...serviceAreas.map((area) => `- [${area.name}](${absoluteUrl(getAreaHref(area.slug))}): ${area.headline}`),
     '',
+    '## Buying guides',
+    ...guides.map((guide) => `- [${guide.title}](${absoluteUrl(getGuideHref(guide.slug))}): ${guide.summary}`),
+    '',
     '## Key pages',
     `- [Home](${absoluteUrl('/')})`,
     `- [All products](${absoluteUrl('/services')})`,
     `- [Areas we serve](${absoluteUrl('/areas')})`,
+    `- [Printing guides](${absoluteUrl('/guides')})`,
     `- [About](${absoluteUrl('/about')})`,
     `- [Contact & directions](${absoluteUrl('/contact')})`,
     `- [Full details for AI agents](${absoluteUrl('/llms-full.txt')})`,
@@ -104,6 +109,8 @@ export function buildLlmsFullTxt(): string {
     ...productSections,
     '## Areas served',
     ...areaSections,
+    '## Buying guides',
+    ...guides.flatMap((guide) => [`### ${guide.title}`, `URL: ${absoluteUrl(getGuideHref(guide.slug))}`, guide.quickAnswer, '']),
     '## Frequently asked questions',
     ...homeFaqs.flatMap((faq) => [`### ${faq.question}`, faq.answer, '']),
     '## Contact',
