@@ -11,10 +11,11 @@ import QuoteChecklist from '@/components/sections/contact/QuoteChecklist';
 import Reveal from '@/components/shared/Reveal';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Contact Design N Print | Naroda, Ahmedabad',
+  title: 'Contact Design N Print | Printing Press in Naroda, Ahmedabad',
   description:
     'Get a quote or visit our press in Naroda, Ahmedabad. Call, WhatsApp or fill a job ticket — we reply the same day.',
   path: '/contact',
+  keywords: ['printing press Naroda contact', 'printing quote Ahmedabad', 'Design N Print phone', 'printing press near me'],
 });
 
 /**

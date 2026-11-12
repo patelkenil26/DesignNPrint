@@ -8,6 +8,16 @@
 - `/llms.txt` and `/llms-full.txt` — generated from the site data, never edit by hand (`src/lib/llmsContent.ts`).
 - `/areas` + 11 area pages (`src/data/serviceAreas.ts`) — add a new area by adding one object.
 
+## Added in the 2026-11-12 SEO pass
+- **Titles / descriptions:** keyword-first titles on every page (home: "Printing Press in Ahmedabad | Packaging & Cards"; products: "<Product> Printing in Ahmedabad – N Types"); descriptions auto-trimmed to ≤158 chars (`fitDescription` in `src/lib/seo.ts`). Home title/description live in `siteConfig.seoTitle` / `seoDescription`.
+- **Keywords:** `siteConfig.seoKeywords` + per-product (`buildProductKeywords`) and per-area (`buildAreaKeywords`) phrases, including "near me" and "manufacturer" variants.
+- **Share cards with the logo:** every Open Graph image (home, product, area, guide) now carries the square DNP mark; schema `logo` is the same square mark (`siteConfig.logoMarkPath`).
+- **hreflang** (`en-IN` + `x-default`) and geo meta tags (`geo.region`, `geo.position`, `ICBM`).
+- **Schema:** LocalBusiness gets ImageObject logo, contactPoint, OfferCatalog, city-level `areaServed`; WebSite gets alternate names; home gets WebPage + ItemList; products get image / url / keywords; guides get Article.
+- **/guides** — 6 buying guides (`src/data/guides.ts`): each has a quotable "short answer", FAQs (FAQPage schema), Article + Breadcrumb schema, its own share card, sitemap entry and llms.txt entry. Add a guide by adding one object. Product pages link to their guide.
+- **Home SEO copy** (`HomeSeoCopy`) — crawlable summary text plus internal links to every product, area and guide.
+- **IndexNow** — key served at `/<siteConfig.indexNowKey>.txt`; after each deploy run `node scripts/indexnow.mjs` to ping Bing / Yandex / Seznam with every sitemap URL (or pass paths: `node scripts/indexnow.mjs /guides`).
+
 ## One-time setup (owner's accounts — cannot be done from code)
 1. **Search Console** — add the property `https://designnprint.in` (URL prefix) → choose "HTML tag" → copy the `content` value
    → set env var `GOOGLE_SITE_VERIFICATION` on the host → redeploy → Verify → Sitemaps → submit `sitemap.xml`.

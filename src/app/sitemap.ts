@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getGuideHref, guides } from '@/data/guides';
 import { productCatalog, type Product } from '@/data/productCatalog';
 import { getAreaHref, serviceAreas } from '@/data/serviceAreas';
 import { siteConfig } from '@/data/siteConfig';
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/'), lastModified, changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/services'), lastModified, changeFrequency: 'weekly', priority: 0.9 },
     { url: absoluteUrl('/areas'), lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: absoluteUrl('/guides'), lastModified, changeFrequency: 'weekly', priority: 0.7 },
     { url: absoluteUrl('/about'), lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: absoluteUrl('/contact'), lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: absoluteUrl('/privacy-policy'), lastModified, changeFrequency: 'yearly', priority: 0.2 },
@@ -37,5 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: area.kind === 'home' ? 0.7 : 0.6,
   }));
 
-  return [...staticPages, ...productPages, ...areaPages];
+  const guidePages: MetadataRoute.Sitemap = guides.map((guide) => ({
+    url: absoluteUrl(getGuideHref(guide.slug)),
+    lastModified: new Date(guide.dateModified),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+    images: [absoluteUrl(`${getGuideHref(guide.slug)}/opengraph-image`)],
+  }));
+
+  return [...staticPages, ...productPages, ...areaPages, ...guidePages];
 }
