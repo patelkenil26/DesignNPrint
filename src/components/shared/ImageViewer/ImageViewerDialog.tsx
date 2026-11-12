@@ -49,6 +49,7 @@ export default function ImageViewerDialog({ items, startIndex, origin, onClose }
   const [tossedSheet, setTossedSheet] = useState<TossedSheet | null>(null);
   const tossCounter = useRef(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const total = items.length;
   const activeItem = items[activeIndex];
@@ -77,11 +78,27 @@ export default function ImageViewerDialog({ items, startIndex, origin, onClose }
     document.body.style.overflow = 'hidden';
     closeButtonRef.current?.focus();
 
+    // keeps Tab / Shift+Tab cycling inside the dialog so keyboard users never end up behind it (WCAG 2.4.3)
+    const trapFocus = (event: KeyboardEvent) => {
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])');
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
+      else if (event.key === 'Tab') trapFocus(event);
       else if (event.key === 'ArrowRight') showOther(1);
       else if (event.key === 'ArrowLeft') showOther(-1);
-      else if (event.key.toLowerCase() === 'l') setIsLoupeOn((current) => !current);
+      else if (event.key.toLowerCase() === 'l' && !event.ctrlKey && !event.metaKey && !event.altKey) setIsLoupeOn((current) => !current);
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -114,6 +131,7 @@ export default function ImageViewerDialog({ items, startIndex, origin, onClose }
 
   return (
     <motion.div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label={`${activeItem.title} — enlarged view`}

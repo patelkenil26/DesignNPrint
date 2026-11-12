@@ -44,7 +44,7 @@ export default function LegalPage({ document }: LegalPageProps) {
               <Reveal key={section.id} className="scroll-mt-28 border-b border-ink/10 py-8 first:pt-0 last:border-b-0">
                 <article id={section.id} className="scroll-mt-28">
                   <h2 className="flex items-baseline gap-3 font-display text-2xl font-bold text-ink">
-                    <span className="text-sm font-bold text-brand-red">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="text-sm font-bold text-brand-red-text">{String(index + 1).padStart(2, '0')}</span>
                     {section.title}
                   </h2>
                   {section.paragraphs?.map((paragraph) => (

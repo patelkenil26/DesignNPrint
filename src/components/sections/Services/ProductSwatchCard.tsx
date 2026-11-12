@@ -71,7 +71,7 @@ export default function ProductSwatchCard({ product, revealDelay = 0 }: ProductS
         <div className="min-w-0">
           <h3 className="font-display text-base font-bold leading-tight text-ink sm:text-xl">{product.name}</h3>
           <p className="mt-1 hidden text-sm leading-snug text-ink/60 sm:block">{product.tagline}</p>
-          <p className="mt-1 line-clamp-1 text-[11px] leading-snug text-ink/55 md:hidden">
+          <p className="mt-1 line-clamp-1 text-[11px] leading-snug text-ink/65 md:hidden">
             {product.typeNames.slice(0, 2).join(" · ")}
             {product.typeNames.length > 2 ? ` +${product.typeNames.length - 2}` : ""}
           </p>

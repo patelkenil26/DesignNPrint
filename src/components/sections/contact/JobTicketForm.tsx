@@ -44,7 +44,7 @@ const emptyValues: TicketValues = {
 };
 
 const fieldClasses =
-  'w-full rounded-2xl bg-white px-4 py-3.5 text-base text-ink ring-1 sm:text-sm ring-ink/10 transition placeholder:text-ink/35 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
+  'w-full rounded-2xl bg-white px-4 py-3.5 text-base text-ink ring-1 sm:text-sm ring-ink/10 transition placeholder:text-ink/60 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
 
 const chipClasses = (isActive: boolean) =>
   `rounded-full px-4 py-2.5 text-sm font-semibold transition-all sm:py-2 duration-300 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
@@ -73,7 +73,7 @@ function buildTicketNumber(): string {
 function StepHeading({ step, title, hint, isDone }: { step: number; title: string; hint?: string; isDone: boolean }) {
   return (
     <div className="mb-3 flex items-center gap-3">
-      <span className="font-display text-sm font-bold text-brand-red">0{step}</span>
+      <span className="font-display text-sm font-bold text-brand-red-text">0{step}</span>
       <h3 className="font-display text-lg font-bold text-ink">{title}</h3>
       {hint && <span className="text-xs text-muted">{hint}</span>}
       <AnimatePresence>
@@ -215,7 +215,7 @@ export default function JobTicketForm() {
 
   const renderError = (field: keyof TicketErrors) =>
     errors[field] ? (
-      <span id={`${field}-error`} role="alert" className="mt-1.5 block text-xs font-medium text-brand-red">
+      <span id={`${field}-error`} role="alert" className="mt-1.5 block text-xs font-medium text-brand-red-text">
         {errors[field]}
       </span>
     ) : null;

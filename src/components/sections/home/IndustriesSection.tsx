@@ -73,7 +73,7 @@ function IndustryCard({ industry, cardIndex, isLast }: IndustryCardProps) {
         </div>
 
         <div className="relative flex flex-col justify-end">
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink/55">What we usually print</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink/65">What we usually print</p>
           <ul className="mt-3 flex flex-wrap gap-2" aria-label={`${industry.name} products`}>
             {industry.products.map((product) => (
               <li key={product} className="rounded-full bg-white/80 px-3.5 py-1.5 text-sm font-medium shadow-sm">

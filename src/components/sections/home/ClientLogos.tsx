@@ -18,7 +18,7 @@ function LogoTile({ client }: LogoTileProps) {
           <SafeImage src={client.logo} alt={client.name} fill sizes="11rem" className="object-contain py-3" />
         </span>
       ) : (
-        <span className="flex items-center gap-2 text-ink/30" aria-label={client.name}>
+        <span className="flex items-center gap-2 text-ink/60" aria-label={client.name}>
           <Building2 className="h-5 w-5" aria-hidden="true" />
           <span className="text-xs font-semibold uppercase tracking-widest">Logo</span>
         </span>

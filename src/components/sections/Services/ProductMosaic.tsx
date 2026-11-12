@@ -106,7 +106,7 @@ export default function ProductMosaic({ products }: ProductMosaicProps) {
                 >
                   {chip.id !== 'all' && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: `var(--color-brand-${chip.accent})` }} aria-hidden="true" />}
                   {chip.name}
-                  <span className={isActive ? 'text-white/60' : 'text-ink/40'}>{chip.count}</span>
+                  <span className={isActive ? 'text-white/70' : 'text-ink/60'}>{chip.count}</span>
                 </button>
               </li>
             );

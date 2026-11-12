@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import WhatsAppFab from "@/components/shared/WhatsAppFab";
+import WebMcpTools from "@/components/shared/WebMcpTools";
 import JsonLd from "@/components/shared/JsonLd";
 import { siteConfig } from "@/data/siteConfig";
 import { buildLocalBusinessSchema, buildWebSiteSchema, defaultOgImage } from "@/lib/seo";
@@ -30,8 +31,21 @@ const sora = Sora({
   variable: "--font-sora",
 });
 
+/** Browser chrome colour matches the dark navbar; pinch-zoom stays enabled (WCAG 1.4.4). */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#101114",
+  colorScheme: "light",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
+  authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "printing and packaging",
+  formatDetection: { telephone: true, email: true, address: true },
   title: {
     default: "Design N Print - Premium Printing & Packaging Press in Ahmedabad",
     template: "%s",
@@ -40,7 +54,7 @@ export const metadata: Metadata = {
     "Design N Print is an offset printing and packaging press in Ahmedabad — visiting cards, brochures, boxes, stickers and more, designed and printed under one roof since 2008.",
   keywords: [...siteConfig.seoKeywords],
   applicationName: siteConfig.name,
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: { "text/plain": "/llms.txt" } },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
@@ -86,6 +100,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppFab />
+        <WebMcpTools />
         <ScrollToTopButton />
       </body>
     </html>
