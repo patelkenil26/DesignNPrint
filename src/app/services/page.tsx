@@ -6,6 +6,7 @@ import ProductMosaic from '@/components/sections/Services/ProductMosaic';
 import ServicesHero from '@/components/sections/Services/ServicesHero';
 import StartPaths from '@/components/sections/home/StartPaths';
 import QuoteBand from '@/components/shared/QuoteBand';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import Reveal from '@/components/shared/Reveal';
 import { productCatalog, totalTypeCount } from '@/data/productCatalog';
 import { getAllProductCards } from '@/lib/productCards';
@@ -47,6 +48,7 @@ export default function ServicesPage() {
           ),
         ]}
       />
+      <ScrollProgressBar />
       <ServicesHero fanProducts={fanProducts} />
       <ProductMarquee />
 
@@ -54,7 +56,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-10">
           <Reveal className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Choose a product</p>
-            <h2 id="range-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+            <h2 id="range-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
               Every product. Every type. One click away.
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">

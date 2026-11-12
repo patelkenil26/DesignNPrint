@@ -11,6 +11,7 @@ import AboutValues from '@/components/sections/About/AboutValues';
 import AboutVisit from '@/components/sections/About/AboutVisit';
 import ProductMarquee from '@/components/sections/Services/ProductMarquee';
 import QuoteBand from '@/components/shared/QuoteBand';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'About Us | Design N Print — Offset Printing Press, Ahmedabad',
@@ -41,6 +42,7 @@ export default function AboutPage() {
           ]),
         ]}
       />
+      <ScrollProgressBar />
       <AboutHero />
       <AboutManifesto />
       <AboutStory />

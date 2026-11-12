@@ -36,7 +36,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Peel. Stick. Stand out.',
     blurb: 'Bottle labels, die-cut stickers and product labels — printed sharp and cut to any shape.',
     accent: 'blue',
-    image: '/images/categories/stickers-labels.jpg',
+    image: '/images/products/bottle-label/waterproof-bottle-label.jpg',
     productSlugs: ['sticker', 'bottle-label'],
     imageAlt: 'Printed stickers and product labels',
     subCategories: [
@@ -55,7 +55,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'First impressions, in your hand.',
     blurb: 'Visiting cards, letterheads, envelopes and certificates in premium stock and finishes.',
     accent: 'red',
-    image: '/images/categories/cards-stationery.jpg',
+    image: '/images/products/visiting-card/cover.jpg',
     productSlugs: ['visiting-card', 'letterhead', 'envelope', 'bill-book'],
     imageAlt: 'Visiting cards, letterhead and envelope set',
     subCategories: [
@@ -74,7 +74,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Fold it open. Tell the story.',
     blurb: 'Brochures, pamphlets, booklets, catalogues and calendars that carry your message.',
     accent: 'yellow',
-    image: '/images/categories/brochures-flyers.jpg',
+    image: '/images/products/brochure/cover.jpg',
     productSlugs: ['brochure', 'pamphlet-flyer', 'book'],
     imageAlt: 'Printed brochures and flyers',
     subCategories: [
@@ -93,7 +93,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Horizontal. Vertical. Yours.',
     blurb: 'Rigid, folding and tuck-end boxes in every shape — from pharma cartons to gift packaging.',
     accent: 'red',
-    image: '/images/categories/boxes-packaging.jpg',
+    image: '/images/products/box/cover.jpg',
     productSlugs: ['box', 'rigid-box', 'corrugated-box'],
     imageAlt: 'Printed premium product boxes',
     subCategories: [
@@ -113,7 +113,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Your brand in every meeting.',
     blurb: 'Company files, doctor files, mica and ceramic display folders built to last.',
     accent: 'green',
-    image: '/images/categories/files-folders.jpg',
+    image: '/images/products/book/cover.jpg',
     productSlugs: ['file'],
     imageAlt: 'Branded company file folders',
     subCategories: [
@@ -131,7 +131,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Carry it. Display it.',
     blurb: 'Cotton and custom pouches, flex banners and roller standees for retail and events.',
     accent: 'yellow',
-    image: '/images/categories/pouches-display.jpg',
+    image: '/images/products/pouch/cover.jpg',
     productSlugs: ['pouch', 'bopp-bag', 'flex-banner', 'acrylic-board'],
     imageAlt: 'Custom printed pouches',
     subCategories: [

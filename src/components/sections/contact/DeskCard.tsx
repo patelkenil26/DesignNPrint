@@ -45,7 +45,7 @@ export default function DeskCard() {
           </div>
         </dl>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 hidden flex-wrap gap-3 lg:flex">
           <LinkButton href={buildWhatsAppLink('Hi Design N Print, I would like a quote.')} isExternal variant="whatsapp">
             <MessageCircle className="h-4 w-4" /> WhatsApp us
           </LinkButton>

@@ -1,8 +1,14 @@
 import type { MetadataRoute } from 'next';
-import { productCatalog } from '@/data/productCatalog';
+import { productCatalog, type Product } from '@/data/productCatalog';
 import { getAreaHref, serviceAreas } from '@/data/serviceAreas';
 import { siteConfig } from '@/data/siteConfig';
 import { absoluteUrl } from '@/lib/seo';
+import { getProductCover, getTypeImage } from '@/lib/productImages';
+
+function getProductImageUrls(product: Product): string[] {
+  const urls = [getProductCover(product), ...product.types.map((type) => getTypeImage(product, type))];
+  return urls.flatMap((imagePath) => (imagePath ? [absoluteUrl(imagePath)] : []));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date(siteConfig.contentLastUpdated);
@@ -18,8 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const productPages: MetadataRoute.Sitemap = productCatalog.map((product) => ({
     url: absoluteUrl(`/services/${product.slug}`),
-    lastModified, changeFrequency: 'monthly',
+    lastModified,
+    changeFrequency: 'monthly',
     priority: 0.8,
+    // lets Google Images discover the real product photo
+    images: getProductImageUrls(product),
   }));
 
   const areaPages: MetadataRoute.Sitemap = serviceAreas.map((area) => ({

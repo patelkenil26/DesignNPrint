@@ -16,6 +16,8 @@ interface Channel {
   iconClasses: string;
   spotColor: string;
   span: string;
+  /** small tag such as "Fastest" */
+  badge?: string;
 }
 
 const channels: Channel[] = [
@@ -31,6 +33,7 @@ const channels: Channel[] = [
     iconClasses: 'bg-ink text-whatsapp',
     spotColor: 'rgba(255,255,255,0.45)',
     span: 'col-span-2 lg:col-span-2',
+    badge: 'Fastest',
   },
   {
     id: 'call',
@@ -80,7 +83,7 @@ export default function ContactChannels() {
       <div className="mx-auto max-w-7xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Pick your channel</p>
-          <h2 id="channels-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+          <h2 id="channels-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
             However you like to talk, we are there.
           </h2>
         </Reveal>
@@ -94,7 +97,7 @@ export default function ContactChannels() {
                 <Reveal delay={index * 0.08} className="h-full">
                   <SpotlightCard
                     spotColor={channel.spotColor}
-                    className={`h-full rounded-3xl shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl ${channel.cardClasses}`}
+                    className={`h-full rounded-3xl shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl active:scale-[0.98] ${channel.cardClasses}`}
                   >
                     <a
                       href={channel.href}
@@ -105,6 +108,12 @@ export default function ContactChannels() {
                         <span className={`flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110 ${channel.iconClasses}`}>
                           <Icon className="h-5 w-5" />
                         </span>
+                        {channel.badge && (
+                          <span className="ml-3 mr-auto mt-1 inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-whatsapp" aria-hidden="true" />
+                            {channel.badge}
+                          </span>
+                        )}
                         <ArrowUpRight className="h-5 w-5 opacity-50 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
                       </span>
                       <span className="mt-auto pt-6 sm:pt-10">

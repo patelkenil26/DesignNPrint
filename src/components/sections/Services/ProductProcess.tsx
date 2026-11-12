@@ -8,19 +8,19 @@ export default function ProductProcess() {
       <div className="mx-auto max-w-7xl px-5 sm:px-10">
         <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">How it works</p>
-          <h2 id="process-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+          <h2 id="process-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
             From your idea to your doorstep.
           </h2>
         </Reveal>
 
-        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4">
           {pressSteps.map((step, index) => (
             <li key={step.id}>
               <Reveal delay={index * 0.08} className="h-full">
-                <div className="relative h-full rounded-3xl bg-white p-6 shadow-sm ring-1 ring-ink/5">
-                  <span className="font-display text-4xl font-black text-outline">{step.number}</span>
-                  <h3 className="mt-3 font-display text-lg font-bold text-ink">{step.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink/65">{step.body}</p>
+                <div className="relative h-full rounded-2xl bg-white p-4 shadow-sm ring-1 ring-ink/5 sm:rounded-3xl sm:p-6">
+                  <span className="font-display text-3xl font-black text-outline sm:text-4xl">{step.number}</span>
+                  <h3 className="mt-2 font-display text-base font-bold leading-tight text-ink sm:mt-3 sm:text-lg">{step.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink/65 sm:text-sm">{step.body}</p>
                   <span className="cmyk-strip mt-5 block h-1 w-10 rounded-full" />
                 </div>
               </Reveal>

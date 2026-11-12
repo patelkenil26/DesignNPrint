@@ -4,11 +4,15 @@ import { MessageCircle } from 'lucide-react';
 import ProductHero from '@/components/sections/Services/ProductHero';
 import ProductPager from '@/components/sections/Services/ProductPager';
 import ProductQuickAnswer from '@/components/sections/Services/ProductQuickAnswer';
+import ProductStickyCta from '@/components/sections/Services/ProductStickyCta';
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import ProductProcess from '@/components/sections/Services/ProductProcess';
 import ProductSpecs from '@/components/sections/Services/ProductSpecs';
 import ProductSwatchCard from '@/components/sections/Services/ProductSwatchCard';
 import TypeCard from '@/components/sections/Services/TypeCard';
 import TypeJumpBar from '@/components/sections/Services/TypeJumpBar';
+import ImageViewerProvider from '@/components/shared/ImageViewer/ImageViewerProvider';
+import type { ViewerItem } from '@/components/shared/ImageViewer/ImageViewerContext';
 import JsonLd from '@/components/shared/JsonLd';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import LinkButton from '@/components/shared/LinkButton';
@@ -75,6 +79,36 @@ export default async function ProductPage({ params }: ProductPageProps) {
     image: getTypeImage(product, type),
   }));
 
+  /** every real photo on this page, in reading order — the cover first, then each type */
+  const viewerItems: ViewerItem[] = [
+    ...(coverImage
+      ? [
+          {
+            id: 'cover',
+            src: coverImage,
+            alt: product.coverAlt,
+            title: product.name,
+            line: product.tagline,
+            whatsappMessage: `Hi Design N Print, I would like a quote for ${product.name}.`,
+          },
+        ]
+      : []),
+    ...typeCards.flatMap((type) =>
+      type.image
+        ? [
+            {
+              id: type.slug,
+              src: type.image,
+              alt: `${type.name} — ${product.name.toLowerCase()} sample`,
+              title: type.name,
+              line: type.line,
+              whatsappMessage: `Hi Design N Print, I would like a quote for ${product.name} — ${type.name}.`,
+            },
+          ]
+        : [],
+    ),
+  ];
+
   const keepExploring = [1, 2, 3, 4]
     .map((offset) => productCatalog[(number - 1 + offset) % productCatalog.length])
     .map(toProductCard);
@@ -118,6 +152,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ]),
         ]}
       />
+      <ScrollProgressBar />
+      <ProductStickyCta productName={product.name} />
+      <ImageViewerProvider items={viewerItems}>
       <ProductHero product={product} number={number} coverImage={coverImage} />
       <ProductQuickAnswer product={product} />
       {/* wrapper keeps the sticky jump bar inside the types section only */}
@@ -128,7 +165,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="mx-auto max-w-7xl px-5 sm:px-10">
           <Reveal className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Everything we make</p>
-            <h2 id="types-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+            <h2 id="types-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
               All {typeCards.length} types of {product.name.toLowerCase()}.
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-ink/70">
@@ -138,7 +175,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
             {typeCards.map((type, index) => (
-              <li key={type.slug}>
+              <li key={type.slug} className={type.image ? '' : 'col-span-2 sm:col-span-1'}>
                 <TypeCard type={type} productName={product.name} accent={product.accent} revealDelay={(index % 3) * 0.12} />
               </li>
             ))}
@@ -167,6 +204,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
       </div>
 
+      </ImageViewerProvider>
+
       <ProductSpecs product={product} />
       <ProductProcess />
 
@@ -174,7 +213,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-10 lg:grid-cols-5 lg:gap-16">
           <Reveal className="lg:col-span-2">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Before you order</p>
-            <h2 id="product-faq-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+            <h2 id="product-faq-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
               {product.name} — your questions.
             </h2>
           </Reveal>

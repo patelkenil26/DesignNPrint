@@ -12,7 +12,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-10 sm:py-24 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-yellow">Make it yours</p>
-          <h2 id="specs-heading" className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
+          <h2 id="specs-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight sm:text-4xl">
             Finishes &amp; add-ons for {product.name.toLowerCase()}.
           </h2>
           <ul className="mt-7 flex flex-wrap gap-2.5">
@@ -32,7 +32,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
 
         <Reveal delay={0.1}>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-yellow">Clear pricing logic</p>
-          <h2 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">What decides the price.</h2>
+          <h2 className="mt-3 text-balance font-display text-3xl font-bold leading-tight sm:text-4xl">What decides the price.</h2>
           <dl className="mt-7 divide-y divide-white/15 border-y border-white/15">
             {priceDrivers.map((driver, index) => (
               <div key={driver.id} className="flex items-baseline gap-5 py-4">

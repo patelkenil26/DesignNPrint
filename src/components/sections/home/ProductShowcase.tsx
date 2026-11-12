@@ -206,7 +206,7 @@ export default function ProductShowcase({ products }: ProductShowcaseProps) {
                       aria-hidden="true"
                     />
                     {category.name.split(',')[0]}
-                    <span className={isActiveCategory ? 'text-white/60' : 'text-ink/40'}>{category.productSlugs.length}</span>
+                    <span className={isActiveCategory ? 'text-white/70' : 'text-ink/60'}>{category.productSlugs.length}</span>
                   </button>
                 </li>
               );
@@ -252,7 +252,7 @@ export default function ProductShowcase({ products }: ProductShowcaseProps) {
                       </li>
                     ))}
                     {hiddenTypeCount > 0 && (
-                      <li className="rounded-full bg-ink/5 px-2.5 py-1 text-xs font-medium text-ink/55">+{hiddenTypeCount} more</li>
+                      <li className="rounded-full bg-ink/5 px-2.5 py-1 text-xs font-medium text-ink/65">+{hiddenTypeCount} more</li>
                     )}
                   </ul>
                   <Link

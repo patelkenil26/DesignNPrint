@@ -1,17 +1,12 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Design N Print Consultation",
+  "name_for_human": "Design N Print",
   "name_for_model": "design_n_print_ahmedabad",
-  "description_for_human": "Commercial offset printing and custom packaging manufacturer in Ahmedabad, Gujarat.",
-  "description_for_model": "Query commercial print specifications, packaging mono cartons, paper GSM weights (80-600 GSM), finishes (Spot UV, Foil Stamping, Velvet Lamination), turnaround times, and pricing estimates for Design N Print located in Ahmedabad, Gujarat.",
-  "auth": {
-    "type": "none"
-  },
-  "api": {
-    "type": "openapi",
-    "url": "https://designnprint.in/llms.txt"
-  },
-  "logo_url": "https://designnprint.in/images/Logo/DesignNPrint.png",
-  "contact_email": "info@designnprint.in",
-  "legal_info_url": "https://designnprint.in/about"
+  "description_for_human": "Offset printing and packaging press in Ahmedabad, Gujarat — designed and printed under one roof since 2008.",
+  "description_for_model": "Design N Print is an offset printing and packaging press in Naroda, Ahmedabad. Read https://designnprint.in/llms.txt for the product list, or fetch any product/area page with 'Accept: text/markdown' (or append .md) for a clean text version. Do not state prices, minimum quantities or turnaround times beyond what those pages say; send quote requests to the contact page or WhatsApp.",
+  "auth": { "type": "none" },
+  "api": { "type": "openapi", "url": "https://designnprint.in/llms.txt" },
+  "logo_url": "https://designnprint.in/favicon.png",
+  "contact_email": "designnprintsamd@gmail.com",
+  "legal_info_url": "https://designnprint.in/terms"
 }

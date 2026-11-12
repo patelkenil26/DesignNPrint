@@ -4,6 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { storyHighlights } from '@/data/aboutData';
 
+/** Phones: each card pins a little lower than the one before, so the three sheets pile up as you scroll. */
+const phoneStackTops = [
+  'max-sm:top-[calc(var(--nav-height)+1rem)]',
+  'max-sm:top-[calc(var(--nav-height)+1.9rem)]',
+  'max-sm:top-[calc(var(--nav-height)+2.8rem)]',
+] as const;
+
 /** `sm:` offsets place the cards in an overlapping stack on larger screens; on phones they simply stack down the page. */
 const cardPoses = [
   { rotate: -4, mobileRotate: -1.5, rise: [60, -30], className: 'sm:left-2 sm:top-0', ink: 'var(--color-brand-blue)' },
@@ -35,13 +42,13 @@ export default function StoryStack() {
   const risers = [firstRise, secondRise, thirdRise];
 
   return (
-    <div ref={containerRef} className="relative mx-auto flex w-full max-w-md flex-col gap-4 sm:block sm:h-[34rem]">
+    <div ref={containerRef} className="relative mx-auto flex w-full max-w-md flex-col gap-6 sm:block sm:h-[34rem]">
       {storyHighlights.map((highlight, index) => {
         const pose = cardPoses[index];
         return (
           <motion.article
             key={highlight.id}
-            className={`relative w-full rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-ink/10 sm:absolute sm:w-[80%] sm:p-7 ${pose.className}`}
+            className={`relative w-full rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-ink/10 max-sm:sticky ${phoneStackTops[index]} sm:absolute sm:w-[80%] sm:p-7 ${pose.className}`}
             style={{
               y: prefersReducedMotion || !isStackLayout ? 0 : risers[index],
               rotate: isStackLayout ? pose.rotate : pose.mobileRotate,

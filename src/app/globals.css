@@ -20,6 +20,8 @@
   --color-muted: #6a6d75;
 
   --color-brand-red: #e52421;
+  /* darker red for small TEXT on paper/white — brand-red itself is only ~4.1:1 there; this is ~5.9:1 (WCAG 1.4.3 AA) */
+  --color-brand-red-text: #c4201d;
   --color-brand-yellow: #ffd500;
   --color-brand-green: #009b48;
   --color-brand-blue: #00a0e3;
@@ -38,6 +40,29 @@
 
 html {
   scroll-behavior: smooth;
+  /* anchor jumps and keyboard focus never land underneath the fixed navbar */
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+}
+
+/* Visible keyboard focus everywhere, even on elements that forgot their own focus style (WCAG 2.4.7) */
+:where(a, button, input, select, textarea, summary, [role='button'], [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 2px;
+}
+
+/* Safety net for people who asked their system for less motion (WCAG 2.3.3): nothing loops or glides */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* `clip` (not `hidden`) so position: sticky keeps working on the scroll-story sections */
@@ -276,6 +301,27 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .animate-bar-in,
   .animate-spin-slow {
+    animation: none;
+  }
+}
+
+/* soft attention ring that breathes around the main call-to-action */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-whatsapp) 55%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 14px color-mix(in srgb, var(--color-whatsapp) 0%, transparent);
+  }
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ring-pulse {
     animation: none;
   }
 }

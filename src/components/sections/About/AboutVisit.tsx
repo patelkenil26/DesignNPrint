@@ -10,7 +10,7 @@ export default function AboutVisit() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Come and see</p>
-          <h2 id="visit-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+          <h2 id="visit-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
             Visit our press in Naroda.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/70">

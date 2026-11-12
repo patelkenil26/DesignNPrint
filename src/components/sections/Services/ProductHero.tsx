@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowDown, ChevronRight, Layers, MessageCircle, Sparkles } from 'lucide-react';
 import InkReveal from '@/components/shared/InkReveal';
+import ViewerTrigger from '@/components/shared/ImageViewer/ViewerTrigger';
 import LinkButton from '@/components/shared/LinkButton';
 import ProductArt from '@/components/shared/ProductArt';
 import Reveal from '@/components/shared/Reveal';
@@ -35,8 +36,8 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
         {formatNumber(number)}
       </span>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-10 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-10 sm:gap-10 sm:px-10 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="order-2 lg:order-none">
           <nav aria-label="Breadcrumb" className="mb-5">
             <ol className="flex flex-wrap items-center gap-1 text-xs font-medium text-ink/60">
               <li className="flex items-center gap-1">
@@ -67,7 +68,7 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
             </p>
             <h1
               id="product-heading"
-              className="mt-3 font-display text-5xl font-bold leading-[1.02] tracking-tight text-ink sm:text-7xl"
+              className="mt-3 text-balance font-display text-[clamp(2.5rem,11.5vw,3.4rem)] font-bold leading-[1.02] tracking-tight text-ink sm:text-7xl"
             >
               {product.name}
             </h1>
@@ -90,7 +91,7 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
           </Reveal>
         </div>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} className="order-1 lg:order-none">
           <TiltCard>
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-ink/10">
@@ -109,6 +110,7 @@ export default function ProductHero({ product, number, coverImage }: ProductHero
                   )}
                 </InkReveal>
                 <span className="crop-marks crop-marks-always absolute inset-0" aria-hidden="true" />
+                {coverImage && <ViewerTrigger itemId="cover" label={product.name} />}
                 <span className="absolute inset-x-0 top-0 z-10 h-1.5" style={{ backgroundColor: accentColor }} />
               </div>
 

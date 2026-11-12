@@ -47,7 +47,7 @@ function StackTicket({ line, ticketIndex, totalTickets, progress, isMotionAllowe
         <span className="absolute -left-2 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full" style={{ backgroundColor: TICKET_BACKDROP }} aria-hidden="true" />
         <div className="flex items-center gap-4 py-5 pl-7 pr-5 sm:gap-6 sm:py-7 sm:pl-10 sm:pr-8">
           <div className="min-w-0 flex-1">
-            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink/50">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink/65">
               Step {formatNumber(ticketIndex + 1)} / {formatNumber(totalTickets)}
             </p>
             <h3 className="mt-1 font-display text-xl font-bold leading-tight text-ink sm:text-3xl">{line.title}</h3>
@@ -65,7 +65,7 @@ function StackTicket({ line, ticketIndex, totalTickets, progress, isMotionAllowe
         </div>
         {isLast && (
           <motion.span
-            className="absolute bottom-3 right-4 -rotate-12 rounded-lg border-4 border-brand-red bg-white/85 px-3 py-1 font-display text-lg font-black uppercase tracking-widest text-brand-red sm:text-2xl"
+            className="absolute bottom-3 right-4 -rotate-12 rounded-lg border-4 border-brand-red bg-white/85 px-3 py-1 font-display text-lg font-black uppercase tracking-widest text-brand-red-text sm:text-2xl"
             initial={isMotionAllowed ? { scale: 2.4, opacity: 0 } : false}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true, margin: '-30%' }}

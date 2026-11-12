@@ -7,9 +7,15 @@ import Logo from "./Navbar/Logo";
 import DesktopMenu from "./Navbar/DesktopMenu";
 import MobileMenu from "./Navbar/MobileMenu";
 import SearchBox from "./Navbar/SearchBox";
+import type { ProductCardData } from "@/lib/productCards";
 import { buildWhatsAppLink } from "@/data/siteConfig";
 
-const Navbar = () => {
+interface NavbarProps {
+  /** product cards (with cover photos) shown in the Services mega menu */
+  menuProducts: ProductCardData[];
+}
+
+const Navbar = ({ menuProducts }: NavbarProps) => {
   const pathname = usePathname();
   // The menu remembers the page it was opened on, so navigating anywhere closes it automatically.
   const [menuOpenedOn, setMenuOpenedOn] = useState<string | null>(null);
@@ -28,7 +34,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-ink text-white font-poppins shadow-md" aria-label="Main navigation">
       <div className="mx-auto flex h-[var(--nav-height)] max-w-7xl items-center justify-between gap-4 px-4 sm:px-8">
         <Logo />
-        <DesktopMenu pathname={pathname} />
+        <DesktopMenu pathname={pathname} products={menuProducts} />
         <div className="flex items-center gap-3">
           <SearchBox />
           <a

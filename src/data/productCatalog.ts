@@ -33,7 +33,7 @@ export interface Product {
   needsConfirmation?: boolean;
 }
 
-export const productCatalog: Product[] = [
+const catalogInWritingOrder: Product[] = [
   {
     slug: 'visiting-card',
     name: 'Visiting Card',
@@ -360,6 +360,16 @@ export const productCatalog: Product[] = [
     finishes: ['Eyelets', 'Pocket stitching', 'Matt flex', 'Glossy flex'],
   },
 ];
+
+const alphabetical = (first: string, second: string) => first.localeCompare(second, "en", { sensitivity: "base", numeric: true });
+
+/**
+ * Every list on the site (services page, menus, footer, pagers, search ties) follows this order:
+ * products A–Z, and the types inside each product A–Z — so visitors can find things quickly.
+ */
+export const productCatalog: Product[] = catalogInWritingOrder
+  .map((product) => ({ ...product, types: [...product.types].sort((a, b) => alphabetical(a.name, b.name)) }))
+  .sort((a, b) => alphabetical(a.name, b.name));
 
 /* ───────────── helpers ───────────── */
 

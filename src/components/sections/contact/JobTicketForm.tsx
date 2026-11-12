@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CheckCircle2, Loader2, MessageCircle, XCircle } from 'lucide-react';
+import { Check, CheckCircle2, Loader2, Lock, MessageCircle, XCircle } from 'lucide-react';
 import JobTicketPreview, { type TicketRow } from '@/components/sections/contact/JobTicketPreview';
 import MobileTicketBar from '@/components/sections/contact/MobileTicketBar';
 import { deadlineChoices, productChoices, quantityChoices } from '@/data/contactData';
@@ -44,10 +44,10 @@ const emptyValues: TicketValues = {
 };
 
 const fieldClasses =
-  'w-full rounded-2xl bg-white px-4 py-3.5 text-base text-ink ring-1 sm:text-sm ring-ink/10 transition placeholder:text-ink/35 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
+  'w-full rounded-2xl bg-white px-4 py-3.5 text-base text-ink ring-1 sm:text-sm ring-ink/10 transition placeholder:text-ink/60 focus:outline-none focus:ring-2 focus:ring-brand-blue aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-brand-red';
 
 const chipClasses = (isActive: boolean) =>
-  `rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
+  `rounded-full px-4 py-2.5 text-sm font-semibold transition-all sm:py-2 duration-300 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
     isActive ? 'bg-ink text-white shadow-lg' : 'bg-white text-ink/75 ring-1 ring-ink/10 hover:-translate-y-0.5 hover:text-ink hover:ring-ink/30'
   }`;
 
@@ -69,12 +69,28 @@ function buildTicketNumber(): string {
   return `DNP-${monthDay}-${Math.floor(100 + Math.random() * 900)}`;
 }
 
-function StepHeading({ step, title, hint }: { step: number; title: string; hint?: string }) {
+/** Step title; a green tick pops in as soon as the step has an answer — small wins keep people moving. */
+function StepHeading({ step, title, hint, isDone }: { step: number; title: string; hint?: string; isDone: boolean }) {
   return (
-    <div className="mb-3 flex items-baseline gap-3">
-      <span className="font-display text-sm font-bold text-brand-red">0{step}</span>
+    <div className="mb-3 flex items-center gap-3">
+      <span className="font-display text-sm font-bold text-brand-red-text">0{step}</span>
       <h3 className="font-display text-lg font-bold text-ink">{title}</h3>
       {hint && <span className="text-xs text-muted">{hint}</span>}
+      <AnimatePresence>
+        {isDone && (
+          <motion.span
+            className="ml-auto flex h-6 w-6 items-center justify-center rounded-full bg-brand-green text-white"
+            initial={{ scale: 0, rotate: -90 }}
+            animate={{ scale: 1, rotate: 0 }}
+            exit={{ scale: 0 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+            role="img"
+            aria-label="Step done"
+          >
+            <Check className="h-3.5 w-3.5" />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -142,6 +158,8 @@ export default function JobTicketForm() {
   const progressSteps = [productText || values.notes.trim(), quantityText, deadlineText, values.name.trim(), values.phone.trim()];
   const filledStepCount = progressSteps.filter(Boolean).length;
   const ticketProgress = filledStepCount / progressSteps.length;
+  const stepsLeft = progressSteps.length - filledStepCount;
+  const isTicketReady = stepsLeft === 0;
 
   const updateValue = <Key extends keyof TicketValues>(key: Key, value: TicketValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -197,7 +215,7 @@ export default function JobTicketForm() {
 
   const renderError = (field: keyof TicketErrors) =>
     errors[field] ? (
-      <span id={`${field}-error`} role="alert" className="mt-1.5 block text-xs font-medium text-brand-red">
+      <span id={`${field}-error`} role="alert" className="mt-1.5 block text-xs font-medium text-brand-red-text">
         {errors[field]}
       </span>
     ) : null;
@@ -222,7 +240,7 @@ export default function JobTicketForm() {
         <form id={FORM_ID} onSubmit={handleTicketSubmit} noValidate className="space-y-8 rounded-3xl bg-paper p-5 shadow-xl ring-1 ring-ink/5 sm:space-y-9 sm:p-9">
           <fieldset>
             <legend className="sr-only">What do you need?</legend>
-            <StepHeading step={1} title="What do you need?" hint="pick one or more" />
+            <StepHeading step={1} title="What do you need?" hint="pick one or more" isDone={Boolean(progressSteps[0])} />
             <div className="flex flex-wrap gap-2" role="group" aria-label="Products">
               {productChoices.map((choice) => (
                 <button
@@ -271,7 +289,7 @@ export default function JobTicketForm() {
 
           <fieldset>
             <legend className="sr-only">How many?</legend>
-            <StepHeading step={2} title="How many?" />
+            <StepHeading step={2} title="How many?" isDone={Boolean(progressSteps[1])} />
             <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Quantity">
               {quantityChoices.map((choice) => (
                 <button
@@ -298,7 +316,7 @@ export default function JobTicketForm() {
 
           <fieldset>
             <legend className="sr-only">When do you need it?</legend>
-            <StepHeading step={3} title="When do you need it?" />
+            <StepHeading step={3} title="When do you need it?" isDone={Boolean(progressSteps[2])} />
             <div className="flex flex-wrap gap-2" role="group" aria-label="Deadline">
               {deadlineChoices.map((choice) => (
                 <button
@@ -317,7 +335,7 @@ export default function JobTicketForm() {
 
           <fieldset>
             <legend className="sr-only">Who should we reply to?</legend>
-            <StepHeading step={4} title="Who should we reply to?" />
+            <StepHeading step={4} title="Who should we reply to?" isDone={Boolean(progressSteps[3] && progressSteps[4])} />
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block">
                 <span className="mb-1.5 block text-sm font-semibold text-ink">Name *</span>
@@ -342,6 +360,7 @@ export default function JobTicketForm() {
                   onChange={handleFieldChange}
                   placeholder="10-digit mobile number"
                   autoComplete="tel"
+                  inputMode="tel"
                   aria-invalid={Boolean(errors.phone)}
                   aria-describedby={errors.phone ? 'phone-error' : undefined}
                   className={fieldClasses}
@@ -380,7 +399,7 @@ export default function JobTicketForm() {
           <button
             type="submit"
             disabled={isSending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue lg:hidden"
+            className={`inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue lg:hidden${isTicketReady ? ' animate-ring-pulse' : ''}`}
           >
             {isSending ? (
               <>
@@ -392,6 +411,12 @@ export default function JobTicketForm() {
               </>
             )}
           </button>
+          <p className="-mt-3 flex items-center justify-center gap-1.5 text-center text-xs leading-relaxed text-muted sm:-mt-4" aria-live="polite">
+            <Lock className="h-3 w-3 shrink-0" aria-hidden="true" />
+            {isTicketReady
+              ? 'All set — opens in WhatsApp, nothing is stored on this site.'
+              : `${stepsLeft} quick ${stepsLeft === 1 ? 'step' : 'steps'} left — or send now and we will ask the rest.`}
+          </p>
         </form>
 
         <div className="hidden lg:sticky lg:top-[calc(var(--nav-height)+1.5rem)] lg:block">

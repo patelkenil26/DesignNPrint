@@ -12,7 +12,7 @@ export default function AboutRange() {
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">What we do</p>
-            <h2 id="about-range-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
+            <h2 id="about-range-heading" className="mt-3 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-5xl">
               {productCatalog.length} products, one reliable press.
             </h2>
           </div>

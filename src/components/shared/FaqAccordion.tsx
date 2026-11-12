@@ -71,7 +71,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
               >
                 <span
                   className={`font-display text-sm font-bold tabular-nums transition-colors duration-300 ${
-                    isOpen ? 'text-ink' : 'text-ink/35 group-hover:text-ink/60'
+                    isOpen ? 'text-ink' : 'text-ink/60 group-hover:text-ink'
                   }`}
                 >
                   {String(index + 1).padStart(2, '0')}

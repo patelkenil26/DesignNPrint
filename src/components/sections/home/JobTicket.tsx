@@ -26,7 +26,7 @@ function TicketRow({ line, rowIndex, totalRows, progress }: TicketRowProps) {
 
   return (
     <li className="relative flex items-center gap-3 border-b border-dashed border-ink/20 py-1.5 [@media(max-height:700px)]:py-1 sm:gap-4 sm:py-3.5">
-      <span className="w-5 shrink-0 font-mono text-[11px] font-bold text-ink/40">{formatNumber(rowIndex + 1)}</span>
+      <span className="w-5 shrink-0 font-mono text-[11px] font-bold text-ink/60">{formatNumber(rowIndex + 1)}</span>
       <motion.div className="min-w-0 flex-1" style={{ opacity: rowInk }}>
         <p className="font-mono text-[13px] font-bold uppercase leading-tight tracking-wide text-ink sm:text-sm">{line.title}</p>
         <p className="mt-0.5 hidden text-xs leading-snug text-ink/65 sm:block">{line.note}</p>
@@ -143,7 +143,7 @@ export default function JobTicket() {
               >
                 <div className="flex items-start justify-between border-b-2 border-ink pb-2 sm:pb-3">
                   <div>
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-ink/50">Job ticket</p>
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-ink/65">Job ticket</p>
                     <p className="font-display text-lg font-black text-ink sm:text-2xl">No. DNP-2026</p>
                   </div>
                   <span className="cmyk-strip mt-1 h-5 w-12 rounded sm:h-6 sm:w-14" aria-hidden="true" />
@@ -161,11 +161,11 @@ export default function JobTicket() {
                       <span key={index} className="bg-ink" style={{ width }} />
                     ))}
                   </span>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink/50">{siteConfig.location}</p>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink/65">{siteConfig.location}</p>
                 </div>
 
                 <motion.span
-                  className="absolute -bottom-1 right-2 scale-90 sm:bottom-10 sm:right-4 sm:scale-100 -rotate-12 rounded-lg border-4 bg-white/80 border-brand-red px-4 py-1.5 font-display text-2xl font-black uppercase tracking-widest text-brand-red sm:right-8 sm:text-4xl"
+                  className="absolute -bottom-1 right-2 scale-90 sm:bottom-10 sm:right-4 sm:scale-100 -rotate-12 rounded-lg border-4 bg-white/80 border-brand-red px-4 py-1.5 font-display text-2xl font-black uppercase tracking-widest text-brand-red-text sm:right-8 sm:text-4xl"
                   style={isMotionAllowed ? { scale: stampScale, opacity: stampOpacity } : undefined}
                   aria-hidden="true"
                 >

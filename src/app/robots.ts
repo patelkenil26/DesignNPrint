@@ -28,8 +28,8 @@ const aiCrawlers = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
-      { userAgent: aiCrawlers, allow: '/' },
+      { userAgent: '*', allow: '/', disallow: ['/api/', '/preview/'] },
+      { userAgent: aiCrawlers, allow: '/', disallow: ['/api/', '/preview/'] },
     ],
     sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
     host: siteConfig.siteUrl,
