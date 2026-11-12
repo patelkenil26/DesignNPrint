@@ -44,7 +44,7 @@ export default function ImageViewerDialog({ items, startIndex, origin, onClose }
   const [activeIndex, setActiveIndex] = useState(startIndex);
   const [hasNavigated, setHasNavigated] = useState(false);
   const [direction, setDirection] = useState<1 | -1>(1);
-  const [isLoupeOn, setIsLoupeOn] = useState(true);
+  const [isLoupeOn, setIsLoupeOn] = useState(false);
   const [aspectRatios, setAspectRatios] = useState<Record<string, number>>({});
   const [tossedSheet, setTossedSheet] = useState<TossedSheet | null>(null);
   const tossCounter = useRef(0);
