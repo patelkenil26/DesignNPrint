@@ -9,7 +9,7 @@ import MobileCategoryScroller from '@/components/sections/home/MobileCategoryScr
 import ClientLogos from '@/components/sections/home/ClientLogos';
 import ProductShowcase from '@/components/sections/home/ProductShowcase';
 import MobileProductShowcase from '@/components/sections/home/MobileProductShowcase';
-import PressGallery from '@/components/sections/home/PressGallery';
+import HomeInvitations from '@/components/sections/home/HomeInvitations';
 import JobTicket from '@/components/sections/home/JobTicket';
 import IndustriesSection from '@/components/sections/home/IndustriesSection';
 import ProofSection from '@/components/sections/home/ProofSection';
@@ -39,7 +39,7 @@ export const metadata: Metadata = buildPageMetadata({
  *  3. Category explorer  WHAT     — six family panels; the hovered one opens wide
  *  4. Product showcase   WHAT+    — all products, each shown once, dealt like cards in category order
  *  5. Type marquee       —        — oversized "Design · Print · Finish · Pack · Deliver" band
- *  6. Press gallery      PROOF    — a swipeable rail of real work; cards ease into the centre as you swipe
+ *  6. Invitations        WOW+     — a swipeable rail of video invitations that play as they reach the centre (old press gallery: branch archive/home-press-gallery)
  *  7. Job ticket         HOW      — a job ticket prints out of a slot as you scroll, ticking off each step
  *  8. Industries         FOR ME?  — cards that pile up as you scroll
  *  9. Proof              TRUST    — counting numbers + a review spotlight
@@ -77,7 +77,7 @@ export default function Home() {
         <MobileProductShowcase products={productCards} />
       </div>
       <TypeMarquee />
-      <PressGallery products={productCards} />
+      <HomeInvitations />
       <JobTicket />
       <IndustriesSection />
       <ProofSection />

@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import ServicesMegaMenu from './ServicesMegaMenu';
+import { invitationsCopy } from '@/data/invitationsData';
 import type { ProductCardData } from '@/lib/productCards';
 
 const linksBeforeServices = [{ label: 'Home', href: '/' }];
 const linksAfterServices = [
+  { label: invitationsCopy.navLabel, href: invitationsCopy.path },
   { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import SiteChrome from "@/components/shared/SiteChrome";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import WhatsAppFab from "@/components/shared/WhatsAppFab";
 import WebMcpTools from "@/components/shared/WebMcpTools";
@@ -108,10 +109,12 @@ export default function RootLayout({
         <main id="main-content" tabIndex={-1} className="flex-grow focus:outline-none">
           {children}
         </main>
-        <Footer />
-        <WhatsAppFab />
+        <SiteChrome>
+          <Footer />
+          <WhatsAppFab />
+          <ScrollToTopButton />
+        </SiteChrome>
         <WebMcpTools />
-        <ScrollToTopButton />
       </body>
     </html>
   );

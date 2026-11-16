@@ -395,24 +395,6 @@ export const homeFaqs: FaqItem[] = [
   },
 ];
 
-/* ───────────── Press gallery ("Fresh off the press") ───────────── */
-export interface PressGalleryWork {
-  /** product whose cover photo and link the card uses */
-  slug: string;
-  /** short line shown on the card */
-  tag: string;
-}
-
-export const pressGalleryWorks: PressGalleryWork[] = [
-  { slug: 'visiting-card', tag: 'First impressions, in your hand' },
-  { slug: 'box', tag: 'Shelf-ready cartons' },
-  { slug: 'brochure', tag: 'Photos and copy, edge to edge' },
-  { slug: 'letterhead', tag: 'Crisp corporate stationery' },
-  { slug: 'bottle-label', tag: 'Crisp, scannable small print' },
-  { slug: 'pouch', tag: 'Ready to ship' },
-  { slug: 'sticker', tag: 'Any shape, any surface' },
-];
-
 /* ───────────── Job ticket (how a job moves through the press) ───────────── */
 export interface JobTicketLine {
   id: string;
