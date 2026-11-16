@@ -464,3 +464,71 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* ───────── Video invitations (home + invitations page) ───────── */
+/* sound equaliser — three bars that bounce while a card's audio is on */
+@keyframes eq-bounce {
+  0%, 100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  display: block;
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: bottom;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(2) {
+  animation-delay: 0.18s;
+  animation-duration: 0.7s;
+}
+
+.eq-bar:nth-child(3) {
+  animation-delay: 0.36s;
+  animation-duration: 1.1s;
+}
+
+/* a soft light sweep across a card on hover */
+@keyframes shine-sweep {
+  from {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+.shine-on-hover {
+  transform: translateX(-130%) skewX(-18deg);
+}
+
+.group:hover .shine-on-hover {
+  animation: shine-sweep 1.1s ease-out;
+}
+
+/* slow rotating brand-colour ring around the card that has sound */
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-ring-spin {
+  animation: ring-spin 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar,
+  .group:hover .shine-on-hover,
+  .animate-ring-spin {
+    animation: none;
+  }
+}
