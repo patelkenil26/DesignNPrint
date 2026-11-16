@@ -54,6 +54,7 @@ export function buildLlmsTxt(): string {
     `- [Home](${absoluteUrl('/')})`,
     `- [All products](${absoluteUrl('/services')})`,
     `- [Areas we serve](${absoluteUrl('/areas')})`,
+    `- [Video invitations](${absoluteUrl('/invitations')}): personalised wedding, engagement and birthday video invitations — choose a design, order on WhatsApp`,
     `- [Printing guides](${absoluteUrl('/guides')})`,
     `- [About](${absoluteUrl('/about')})`,
     `- [Contact & directions](${absoluteUrl('/contact')})`,

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, MessageCircle, Phone } from 'lucide-react';
 import SearchBox from '@/components/shared/Navbar/SearchBox';
+import { invitationsCopy } from '@/data/invitationsData';
 import { productCatalog } from '@/data/productCatalog';
 import { buildWhatsAppLink, siteConfig } from '@/data/siteConfig';
 
@@ -95,6 +96,16 @@ export default function MobileMenu({ isOpen, pathname, onNavigate }: MobileMenuP
               </AnimatePresence>
             </li>
 
+            <li>
+              <Link
+                href={invitationsCopy.path}
+                onClick={onNavigate}
+                aria-current={pathname === invitationsCopy.path ? 'page' : undefined}
+                className={linkClasses(invitationsCopy.path)}
+              >
+                {invitationsCopy.navLabel}
+              </Link>
+            </li>
             <li>
               <Link href="/about" onClick={onNavigate} aria-current={pathname === '/about' ? 'page' : undefined} className={linkClasses('/about')}>
                 About Us

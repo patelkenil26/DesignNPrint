@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import FooterOpenStatus from "@/components/shared/Footer/FooterOpenStatus";
 import AhmedabadSkyline from "@/components/shared/Footer/AhmedabadSkyline";
+import { invitationsCopy } from "@/data/invitationsData";
 import { productCatalog } from "@/data/productCatalog";
 import { buildWhatsAppLink, siteConfig } from "@/data/siteConfig";
 
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "All products", href: "/services" },
+  { label: invitationsCopy.navLabel, href: invitationsCopy.path },
   { label: "Areas we serve", href: "/areas" },
   { label: "Printing guides", href: "/guides" },
   { label: "About Us", href: "/about" },

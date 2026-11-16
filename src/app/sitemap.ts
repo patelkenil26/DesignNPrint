@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/'), lastModified, changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/services'), lastModified, changeFrequency: 'weekly', priority: 0.9 },
     { url: absoluteUrl('/areas'), lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: absoluteUrl('/invitations'), lastModified, changeFrequency: 'weekly', priority: 0.8 },
     { url: absoluteUrl('/guides'), lastModified, changeFrequency: 'weekly', priority: 0.7 },
     { url: absoluteUrl('/about'), lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: absoluteUrl('/contact'), lastModified, changeFrequency: 'monthly', priority: 0.7 },
