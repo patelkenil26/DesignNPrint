@@ -36,7 +36,7 @@ export interface ChecklistItem {
 }
 
 export const quoteChecklist: ChecklistItem[] = [
-  { id: 'product', title: 'Product & type', detail: 'Which of our 17 products, and the type you like.' },
+  { id: 'product', title: 'Product & type', detail: 'Which of our 19 products, and the type you like.' },
   { id: 'quantity', title: 'Quantity', detail: 'A rough number is fine — bigger runs cost less per piece.' },
   { id: 'size', title: 'Size', detail: 'Standard or custom, with dimensions if you have them.' },
   { id: 'finish', title: 'Paper & finish', detail: 'Not sure? Tell us where it will be used and we will suggest.' },

@@ -6,10 +6,10 @@ export default function ProductMarquee() {
 
   return (
     <div className="overflow-hidden border-y border-ink/10 bg-paper py-5 sm:py-7" aria-hidden="true">
-      <div className="animate-marquee flex w-max items-center gap-8 whitespace-nowrap sm:gap-12">
+      <div className="animate-marquee animate-marquee-products flex w-max items-center gap-8 whitespace-nowrap sm:gap-12">
         {tickerItems.map((product, index) => (
           <span key={`${product.slug}-${index}`} className="flex items-center gap-8 sm:gap-12">
-            <span className="text-outline font-display text-4xl font-black uppercase leading-none sm:text-6xl">
+            <span className="text-outline text-outline-fine font-display text-4xl font-black uppercase leading-none sm:text-6xl">
               {product.name}
             </span>
             <span

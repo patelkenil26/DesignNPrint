@@ -36,7 +36,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Peel. Stick. Stand out.',
     blurb: 'Bottle labels, die-cut stickers and product labels — printed sharp and cut to any shape.',
     accent: 'blue',
-    image: '/images/products/bottle-label/waterproof-bottle-label.jpg',
+    image: '/images/products/bottle-label/non-tearable-waterproof-label.jpg',
     productSlugs: ['sticker', 'bottle-label'],
     imageAlt: 'Printed stickers and product labels',
     subCategories: [
@@ -63,7 +63,6 @@ export const productCategories: ProductCategory[] = [
       { name: 'Letterheads', blurb: 'Corporate letterheads on fine paper.' },
       { name: 'Envelopes', blurb: 'Window and non-window, branded to match.' },
       { name: 'Certificates', blurb: 'Awards and certificates with a premium feel.' },
-      { name: 'Digital cards', blurb: 'Shareable digital visiting cards.' },
     ],
   },
   {
@@ -75,7 +74,7 @@ export const productCategories: ProductCategory[] = [
     blurb: 'Brochures, pamphlets, booklets, catalogues and calendars that carry your message.',
     accent: 'yellow',
     image: '/images/products/brochure/cover.jpg',
-    productSlugs: ['brochure', 'pamphlet-flyer', 'book'],
+    productSlugs: ['brochure', 'pamphlet-flyer', 'book', 'catalogue', 'calendar'],
     imageAlt: 'Printed brochures and flyers',
     subCategories: [
       { name: 'Brochures', blurb: 'Bi-fold, tri-fold and gate-fold designs.' },
@@ -113,7 +112,7 @@ export const productCategories: ProductCategory[] = [
     tagline: 'Your brand in every meeting.',
     blurb: 'Company files, doctor files, mica and ceramic display folders built to last.',
     accent: 'green',
-    image: '/images/products/book/cover.jpg',
+    image: '/images/products/file/cover.jpg',
     productSlugs: ['file'],
     imageAlt: 'Branded company file folders',
     subCategories: [

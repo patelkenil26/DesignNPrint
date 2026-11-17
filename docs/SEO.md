@@ -3,7 +3,7 @@
 ## Built into the site (all generated from `siteConfig`, `productCatalog`, `serviceAreas`)
 - Metadata: `metadataBase`, canonical, Open Graph and Twitter on every page (`src/lib/seo.ts`).
 - Share cards: generated per page — site (`src/app/opengraph-image.tsx`), product, area (`src/lib/ogImage.tsx`).
-- `/robots.txt`, `/sitemap.xml` (home, services, 17 products, areas, about, contact, legal) and `/manifest.webmanifest`.
+- `/robots.txt`, `/sitemap.xml` (home, services, 19 products, areas, about, contact, legal) and `/manifest.webmanifest`.
 - JSON-LD: LocalBusiness + WebSite (every page), Service + Breadcrumb (products, areas), FAQPage (via `FaqAccordion`), About/Contact page.
 - `/llms.txt` and `/llms-full.txt` — generated from the site data, never edit by hand (`src/lib/llmsContent.ts`).
 - `/areas` + 11 area pages (`src/data/serviceAreas.ts`) — add a new area by adding one object.

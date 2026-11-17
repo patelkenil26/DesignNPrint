@@ -14,8 +14,6 @@ export default function ProductQuickAnswer({ product }: ProductQuickAnswerProps)
   const name = product.name.toLowerCase();
   const typeNames = product.types.map((type) => type.name);
   const facts = [
-    { label: 'Made at', value: `${siteConfig.name}, ${siteConfig.location} (since ${siteConfig.foundedYear})` },
-    { label: 'Express dispatch', value: `${siteConfig.expressDispatch} on selected jobs` },
     { label: 'Get a price', value: 'Message us on WhatsApp with type, size, quantity and finish' },
   ];
 

@@ -429,6 +429,17 @@ html.lenis body {
   }
 }
 
+/* product-name ticker: many long words, so phones get a slower loop than the short "Design · Print" band */
+@media (max-width: 639px) {
+  .animate-marquee.animate-marquee-products {
+    animation-duration: 40s;
+  }
+  /* thinner outline so the smaller glyphs keep the same open look as desktop */
+  .text-outline-fine {
+    -webkit-text-stroke-width: 1px;
+  }
+}
+
 /* light sweeping across a finish card when nobody is pointing at it (touch screens) */
 @keyframes sheen-sweep {
   0%,
