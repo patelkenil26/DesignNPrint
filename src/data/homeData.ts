@@ -158,7 +158,7 @@ export const industries: IndustryItem[] = [
     line: 'Sturdy sample folders and catalogues for Morbi and Gujarat tile makers.',
     products: ['Tile display folders', 'Product catalogues', 'Box packaging'],
     icon: 'ceramic',
-    href: getProductHref('file', 'Ceramic & Tile Display Folder'),
+    href: getProductHref('folder', 'Ceramic & Tile Display Folder'),
     accent: 'green',
   },
   {

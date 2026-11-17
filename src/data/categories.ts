@@ -56,7 +56,7 @@ export const productCategories: ProductCategory[] = [
     blurb: 'Visiting cards, letterheads, envelopes and certificates in premium stock and finishes.',
     accent: 'red',
     image: '/images/products/visiting-card/cover.jpg',
-    productSlugs: ['visiting-card', 'letterhead', 'envelope', 'bill-book'],
+    productSlugs: ['visiting-card', 'letterhead', 'certificate', 'envelope', 'bill-book'],
     imageAlt: 'Visiting cards, letterhead and envelope set',
     subCategories: [
       { name: 'Visiting cards', blurb: 'Matt, gloss, UV, foil and textured finishes.' },
@@ -113,7 +113,7 @@ export const productCategories: ProductCategory[] = [
     blurb: 'Company files, doctor files, mica and ceramic display folders built to last.',
     accent: 'green',
     image: '/images/products/file/cover.jpg',
-    productSlugs: ['file'],
+    productSlugs: ['file', 'folder'],
     imageAlt: 'Branded company file folders',
     subCategories: [
       { name: 'Company files', blurb: 'Presentation folders with pockets and card slots.' },

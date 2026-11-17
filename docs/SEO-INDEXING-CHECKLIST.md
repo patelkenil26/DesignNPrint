@@ -50,7 +50,7 @@ Har step ke aage `[ ]` hai — kar do to `[x]` kar dena.
 - [ ] Primary category: **Commercial printer** / **Printing service**; secondary: Packaging company, Offset printing service, Screen printer (jo lagu ho).
 - [ ] Hours site ke saath same: Mon–Sat 10:00–19:00, Sunday closed.
 - [ ] Phone, address bilkul site jaisa (NAP same: naam, address, phone).
-- [ ] Services / Products add karo (19 products ki list `src/data/productCatalog.ts` me hai).
+- [ ] Services / Products add karo (21 products ki list `src/data/productCatalog.ts` me hai).
 - [ ] Kam se kam 10–15 real photos: press, machines, finished work, team.
 - [ ] Description me "printing press in Ahmedabad since 2008" likho (750 chars tak).
 - [ ] Review link customers ko bhejo: `https://search.google.com/local/writereview?placeid=ChIJD_1aL2sKCGwRynL88rkay5s`

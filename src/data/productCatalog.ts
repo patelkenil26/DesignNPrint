@@ -1,5 +1,5 @@
 /**
- * The 19 products — single source of truth for /services, /services/[product], the navbar,
+ * The 21 products — single source of truth for /services, /services/[product], the navbar,
  * the footer, search and the home-page product index.
  *
  * Images are NOT listed here. Drop files in `public/images/products/<slug>/`:
@@ -110,19 +110,31 @@ const catalogInWritingOrder: Product[] = [
     name: 'Letterhead',
     tagline: 'Your brand, on every page you send.',
     intro:
-      'Corporate letterheads and certificates on fine paper — the stationery that makes every letter, quotation and award feel official.',
+      'Corporate letterheads and matching stationery sets on fine paper — the stationery that makes every letter and quotation feel official.',
     accent: 'red',
     coverAlt: 'Printed corporate letterhead',
     types: [
       { name: 'Corporate Letterhead', line: 'Clean, professional letterheads for everyday business.' },
       { name: 'Textured Paper Letterhead', line: 'Special-finish paper for a premium first page.' },
+      { name: 'Stationery Set', line: 'Letterhead, envelope and card that match perfectly.' },
+    ],
+    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Spot UV'],
+  },
+  {
+    slug: 'certificate',
+    name: 'Certificate',
+    tagline: 'Recognition, worth framing.',
+    intro:
+      'Appreciation, achievement, training and school certificates on premium paper — with gold foil, embossing and seals that make every award feel earned.',
+    accent: 'yellow',
+    coverAlt: 'Printed appreciation and award certificates',
+    types: [
       { name: 'Appreciation Certificate', line: 'Recognise effort with an elegant, formal layout.' },
       { name: 'Achievement Award Certificate', line: 'For milestones, wins and top performers.' },
       { name: 'Training Completion Certificate', line: 'Branded certificates for courses and workshops.' },
       { name: 'School & College Certificate', line: 'Customised for institutions and events.' },
-      { name: 'Stationery Set', line: 'Letterhead, envelope and card that match perfectly.' },
     ],
-    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Spot UV'],
+    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Gloss lamination', 'Foil seal', 'Spot UV'],
   },
   {
     slug: 'envelope',
@@ -163,17 +175,29 @@ const catalogInWritingOrder: Product[] = [
   {
     slug: 'file',
     name: 'File',
-    tagline: 'Your brand in every meeting.',
+    tagline: 'Paperwork, neatly in order.',
     intro:
-      'Company files, doctor files, mica and ceramic display folders — sturdy, well-finished and built to carry your brand into every meeting.',
+      'Document holders, clip and spiral files and doctor files — sturdy, well-finished files built to keep paperwork in order and carry your brand.',
     accent: 'green',
-    coverAlt: 'Branded company file folders',
+    coverAlt: 'Branded document files and doctor files',
     types: [
-      { name: 'Corporate File Folder', line: 'Presentation folders with pockets and card slots.' },
       { name: 'Document Holder', line: 'A slim holder for proposals and paperwork.' },
-      { name: 'Flap Folder with Slots', line: 'Flaps keep papers in, slots hold your card.' },
       { name: 'Clip & Spiral File', line: 'Clip or spiral bound for reports and records.' },
       { name: 'Doctor File', line: 'Patient, prescription and diagnostic-report files.' },
+    ],
+    finishes: ['Matt lamination', 'Gloss lamination', 'Spot UV', 'Spiral binding', 'Clip fitting'],
+  },
+  {
+    slug: 'folder',
+    name: 'Folder',
+    tagline: 'Your brand in every meeting.',
+    intro:
+      'Corporate presentation folders, flap folders, and mica and ceramic display folders — sturdy, well-finished and built to carry your brand into every meeting.',
+    accent: 'green',
+    coverAlt: 'Branded company presentation folders',
+    types: [
+      { name: 'Corporate File Folder', line: 'Presentation folders with pockets and card slots.' },
+      { name: 'Flap Folder with Slots', line: 'Flaps keep papers in, slots hold your card.' },
       { name: 'Mica & Laminate Sample Folder', line: 'Swatch and sample folders for laminate makers.' },
       { name: 'Ceramic & Tile Display Folder', line: 'Heavy-duty folders for tile and ceramic collections.' },
     ],

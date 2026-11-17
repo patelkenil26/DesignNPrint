@@ -40,6 +40,11 @@ export const promptsA = {
     'textured-paper-letterhead': shot(
       `Artisanal luxury hero shot on a warm linen cloth with soft leaf-shadow light. A letterhead printed on thick handmade cotton paper with natural deckled edges, blind-embossed monogram "A" in the top corner and the wordmark "AURELIA INTERIORS" in gold foil, a few lines of a typeset sample letter, the rich fibre texture clearly visible, a burgundy wax seal and brass seal stamp beside it, and a dried pampas sprig. A second sheet in soft sage tone peeking out underneath.`,
     ),
+    'stationery-set': shot(
+      `Refined flat-lay hero shot on soft ivory linen with gentle window shadows. A complete matching stationery set for a fictional boutique hotel in forest-green and copper-foil: an A4 letterhead, a DL envelope, a business card and a compliment slip, all with the wordmark "THE BANYAN HOTEL" with a small tree emblem in copper foil, a copper-foil rule, the Udaipur address and "+91 98250 67890". A copper fountain pen, a sprig of eucalyptus and a brass paper clip complete the arrangement.`,
+    ),
+  },
+  certificate: {
     'appreciation-certificate': shot(
       `Prestigious recognition hero shot on a dark walnut desk with warm golden light and a blurred bookshelf behind. A landscape certificate on cream parchment-style paper with an ornate gold-foil border and corner flourishes, the heading "CERTIFICATE OF APPRECIATION", the line "is proudly presented to", the name "Rohan Mehta" in elegant script, a short line "in recognition of outstanding dedication and service", two signature lines "Managing Director" and "Head of HR", and a gold embossed seal with a deep-red ribbon. A gold fountain pen and a small trophy at the edge.`,
     ),
@@ -51,9 +56,6 @@ export const promptsA = {
     ),
     'school-college-certificate': shot(
       `Joyful school-event hero shot on a sunny desk with colourful confetti and a pastel blue backdrop. A bright landscape certificate with a red, blue and yellow ribbon border and a school crest, the heading "ANNUAL SPORTS DAY", the name "Aarav Patel", the line "First Prize · 100 m Race · Class 7", signature lines "Principal" and "Sports Teacher". A gold medal on a ribbon, a small trophy cup and a whistle beside it.`,
-    ),
-    'stationery-set': shot(
-      `Refined flat-lay hero shot on soft ivory linen with gentle window shadows. A complete matching stationery set for a fictional boutique hotel in forest-green and copper-foil: an A4 letterhead, a DL envelope, a business card and a compliment slip, all with the wordmark "THE BANYAN HOTEL" with a small tree emblem in copper foil, a copper-foil rule, the Udaipur address and "+91 98250 67890". A copper fountain pen, a sprig of eucalyptus and a brass paper clip complete the arrangement.`,
     ),
   },
   envelope: {
