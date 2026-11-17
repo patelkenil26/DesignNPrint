@@ -110,15 +110,15 @@ const catalogInWritingOrder: Product[] = [
     name: 'Letterhead',
     tagline: 'Your brand, on every page you send.',
     intro:
-      'Corporate letterheads and matching stationery sets on fine paper — the stationery that makes every letter and quotation feel official.',
+      'Corporate letterheads, letterpads and bound letterpad books on fine paper — the stationery that makes every letter, quotation and invoice feel official.',
     accent: 'red',
     coverAlt: 'Printed corporate letterhead',
     types: [
       { name: 'Corporate Letterhead', line: 'Clean, professional letterheads for everyday business.' },
-      { name: 'Textured Paper Letterhead', line: 'Special-finish paper for a premium first page.' },
-      { name: 'Stationery Set', line: 'Letterhead, envelope and card that match perfectly.' },
+      { name: 'Letterpad', line: 'Pads of letterheaded sheets, glued at the head and ready to write on.' },
+      { name: 'Book Letterpad', line: 'Bound letterpad books with a board back and your branding on every page.' },
     ],
-    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Spot UV'],
+    finishes: ['Multi-colour printing', 'Pad binding', 'Board back'],
   },
   {
     slug: 'certificate',
@@ -147,10 +147,8 @@ const catalogInWritingOrder: Product[] = [
     types: [
       { name: 'Window Envelope', line: 'A clear window so the address shows through.' },
       { name: 'Non-window Envelope', line: 'Classic, fully printed and sealed.' },
-      { name: 'Textured Paper Envelope', line: 'Premium paper with a tactile finish.' },
-      { name: 'Document Envelope', line: 'Larger sizes for documents, files and proposals.' },
     ],
-    finishes: ['Gold foil', 'Spot UV', 'Embossing'],
+    finishes: ['Multi-colour printing', 'Gummed flap', 'Peel-and-seal strip', 'Window film'],
   },
   {
     slug: 'sticker',
