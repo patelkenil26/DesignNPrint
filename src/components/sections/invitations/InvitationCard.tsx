@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { MessageCircle, Pause, Play } from 'lucide-react';
+import { MessageCircle, Pause, Play, Volume2, VolumeX } from 'lucide-react';
 import SafeImage from '@/components/shared/SafeImage';
 import { invitationWhatsAppMessage } from '@/data/invitationsData';
 import { buildWhatsAppLink } from '@/data/siteConfig';
@@ -24,6 +24,9 @@ function whenPageHasLoaded(callback: () => void): () => void {
   return () => window.removeEventListener('load', callback);
 }
 
+/** Fired when a card turns its sound on, so every other card goes quiet — only one plays audio at a time. */
+const SOUND_ON_EVENT = 'invitation-sound-on';
+
 interface InvitationCardProps {
   card: InvitationCardData;
   /** true for the first cards on a page — their poster loads straight away */
@@ -40,16 +43,19 @@ interface InvitationCardProps {
  *  2. the clip is requested only when the card is on screen, the page has finished loading, and a short
  *     staggered delay has passed — so it never competes with the page itself or with its neighbours;
  *  3. when the card leaves the screen the <video> is removed, which cancels the download and frees memory.
- * Tap the card to pause or play.
+ * Tap the card to pause or play. Clips start muted (browsers block autoplay with sound), so each card has a
+ * speaker button: tapping it turns the clip's own music on, and silences any other card that was playing sound.
  */
 export default function InvitationCard({ card, isPriority = false, startDelay = 0, className = '' }: InvitationCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [canAutoplay, setCanAutoplay] = useState(false);
   const [isClipAllowed, setIsClipAllowed] = useState(false);
   const [isVideoShowing, setIsVideoShowing] = useState(false);
   /** the visitor's own tap — overrides autoplay until the card leaves the screen */
   const [viewerChoice, setViewerChoice] = useState<'play' | 'pause' | null>(null);
+  const [isSoundOn, setIsSoundOn] = useState(false);
 
   const hasClip = card.clip !== null;
   const shouldPlay = hasClip && isClipAllowed && (viewerChoice === 'play' || (viewerChoice === null && canAutoplay));
@@ -70,6 +76,7 @@ export default function InvitationCard({ card, isPriority = false, startDelay = 
           setIsClipAllowed(false);
           setIsVideoShowing(false);
           setViewerChoice(null);
+          setIsSoundOn(false);
         }
       },
       { threshold: 0.45 },
@@ -77,6 +84,20 @@ export default function InvitationCard({ card, isPriority = false, startDelay = 
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
+
+  // the <video> element's muted flag is set directly: the `muted` attribute alone does not react to state
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = !isSoundOn;
+  }, [isSoundOn, shouldPlay]);
+
+  // another card turned its sound on — go quiet
+  useEffect(() => {
+    const handleOtherCardSound = (event: Event) => {
+      if ((event as CustomEvent<string>).detail !== card.id) setIsSoundOn(false);
+    };
+    window.addEventListener(SOUND_ON_EVENT, handleOtherCardSound);
+    return () => window.removeEventListener(SOUND_ON_EVENT, handleOtherCardSound);
+  }, [card.id]);
 
   useEffect(() => {
     if (!isInView || !hasClip) return;
@@ -90,11 +111,24 @@ export default function InvitationCard({ card, isPriority = false, startDelay = 
     };
   }, [isInView, hasClip, startDelay]);
 
+  const handleSoundToggle = () => {
+    if (isSoundOn) {
+      setIsSoundOn(false);
+      return;
+    }
+    // a tap is a user gesture, so the browser lets this clip play with sound
+    setIsClipAllowed(true);
+    setViewerChoice('play');
+    setIsSoundOn(true);
+    window.dispatchEvent(new CustomEvent(SOUND_ON_EVENT, { detail: card.id }));
+  };
+
   const handleCardPress = () => {
     setIsClipAllowed(true);
     if (shouldPlay) {
       setViewerChoice('pause');
       setIsVideoShowing(false);
+      setIsSoundOn(false);
     } else {
       setViewerChoice('play');
     }
@@ -114,6 +148,7 @@ export default function InvitationCard({ card, isPriority = false, startDelay = 
         />
         {shouldPlay && (
           <video
+            ref={videoRef}
             src={card.clip ?? undefined}
             poster={card.poster}
             autoPlay
@@ -137,6 +172,25 @@ export default function InvitationCard({ card, isPriority = false, startDelay = 
           />
         )}
         <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent" aria-hidden="true" />
+
+        {hasClip && (
+          <button
+            type="button"
+            onClick={handleSoundToggle}
+            aria-pressed={isSoundOn}
+            aria-label={isSoundOn ? `Turn sound off for ${card.title}` : `Turn sound on for ${card.title}`}
+            className="absolute left-3 top-3 z-10 flex h-9 items-center gap-1.5 rounded-full bg-ink/60 px-2.5 text-white backdrop-blur transition-all hover:bg-ink/80 active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
+          >
+            {isSoundOn ? <Volume2 className="h-4 w-4" aria-hidden="true" /> : <VolumeX className="h-4 w-4" aria-hidden="true" />}
+            {isSoundOn && (
+              <span className="flex h-3 items-end gap-0.5 text-brand-yellow" aria-hidden="true">
+                <span className="eq-bar" />
+                <span className="eq-bar" />
+                <span className="eq-bar" />
+              </span>
+            )}
+          </button>
+        )}
 
         {hasClip && (
           <span
