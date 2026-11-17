@@ -54,7 +54,7 @@ export const heroProofs: HeroProofLayout[] = [
   },
   {
     id: 'catalogue',
-    image: '/images/products/book/cover.jpg',
+    image: '/images/products/catalogue/cover.jpg',
     alt: 'Printed company catalogues on a green Design N Print page',
     label: 'Catalogues',
     className: 'left-[31%] top-[44%] w-[38%] sm:left-[26%] sm:top-[44%] sm:w-[38%]',
@@ -158,7 +158,7 @@ export const industries: IndustryItem[] = [
     line: 'Sturdy sample folders and catalogues for Morbi and Gujarat tile makers.',
     products: ['Tile display folders', 'Product catalogues', 'Box packaging'],
     icon: 'ceramic',
-    href: getProductHref('file', 'Ceramic & Tile Display Folder'),
+    href: getProductHref('folder', 'Ceramic & Tile Display Folder'),
     accent: 'green',
   },
   {
@@ -185,7 +185,7 @@ export const industries: IndustryItem[] = [
     line: 'Brochures, catalogues, files and gifting calendars for every pitch.',
     products: ['Brochures', 'Company files', 'Calendars'],
     icon: 'corporate',
-    href: getProductHref('book', 'Product Catalogue'),
+    href: getProductHref('catalogue', 'Product Catalogue'),
     accent: 'yellow',
   },
   {
@@ -283,7 +283,7 @@ export const quoteCollage: QuoteCollagePiece[] = [
     rotate: 5,
   },
   {
-    image: '/images/products/book/cover.jpg',
+    image: '/images/products/catalogue/cover.jpg',
     alt: 'Printed company catalogues on a green Design N Print page',
     className: 'left-[18%] top-[50%] w-[54%] lg:top-[46%]',
     rotate: -2,

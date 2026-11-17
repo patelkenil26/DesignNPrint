@@ -29,20 +29,22 @@ export const promptsB = {
     ),
   },
   file: {
-    'corporate-file-folder': shot(
-      `Prestigious boardroom hero shot on a polished walnut table with warm light and blurred leather chairs. A set of presentation folders for a fictional conglomerate: the front folder in crisp white with a deep emerald spine, gold-foil wordmark "KARNAVATI GROUP" and a glossy spot-UV emblem, open to show two inner pockets with a business card in the card slot and neatly printed documents, a second folder in emerald beneath. A gold pen and a glass of water at the frame edge.`,
-    ),
     'document-holder': shot(
       `Minimal executive hero shot on a pale concrete surface with soft side light. A slim A4 document holder in matt charcoal with a debossed gold wordmark "NORTHSTAR", an open one in tan faux leather holding a stack of proposal sheets and a sleek pen loop, a clean elastic closure, crisp stitched edges, a smartphone and a leather notebook blurred beside it.`,
-    ),
-    'flap-folder-with-slots': shot(
-      `Polished corporate hero shot on a pale oak desk with soft daylight. A flap folder in rich teal with three inner flaps holding papers securely, die-cut card slots holding two business cards, a silver-foil wordmark "TEALWAVE TECH" on the cover, one folder open to show the inside layout and a second closed copy in navy beneath it. A pen and a sample brochure beside them.`,
     ),
     'clip-spiral-file': shot(
       `Tidy project-review hero shot on a white desk with soft light and a blurred plant. A transparent-front clip file in cobalt blue with a metal clip holding a neat report, a spiral-bound report file with a matt red cover and clear front sheet with the title "ANNUAL REPORT 2026-27", and a stack of coloured clip files in green and yellow, a highlighter and a sticky-note tab beside them.`,
     ),
     'doctor-file': shot(
       `Trustworthy medical hero shot on a clean white surface with a soft aqua backdrop and a stethoscope. A set of patient files for a fictional hospital in white and teal with a heart-and-cross emblem and the wordmark "SANJEEVANI HOSPITAL", the cover with a blank "Patient Name / OPD No." panel, one file open showing a printed prescription sheet, a lab-report holder and a transparent pocket. A pen and a small reflex hammer beside them.`,
+    ),
+  },
+  folder: {
+    'corporate-file-folder': shot(
+      `Prestigious boardroom hero shot on a polished walnut table with warm light and blurred leather chairs. A set of presentation folders for a fictional conglomerate: the front folder in crisp white with a deep emerald spine, gold-foil wordmark "KARNAVATI GROUP" and a glossy spot-UV emblem, open to show two inner pockets with a business card in the card slot and neatly printed documents, a second folder in emerald beneath. A gold pen and a glass of water at the frame edge.`,
+    ),
+    'flap-folder-with-slots': shot(
+      `Polished corporate hero shot on a pale oak desk with soft daylight. A flap folder in rich teal with three inner flaps holding papers securely, die-cut card slots holding two business cards, a silver-foil wordmark "TEALWAVE TECH" on the cover, one folder open to show the inside layout and a second closed copy in navy beneath it. A pen and a sample brochure beside them.`,
     ),
     'mica-laminate-sample-folder': shot(
       `Design-studio hero shot on a pale grey surface with soft light. A sample folder for a fictional laminate maker opened flat to reveal rows of beautiful laminate swatches in wood grains, marble and solid colours slotted into neat holders, the cover in warm walnut tone with a gold-foil wordmark "WOODCRAFT LAMINATES", a second closed copy, a fan deck of colour chips and a pencil beside it.`,

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { preconnect } from 'react-dom';
 import { ArrowRight } from 'lucide-react';
-import InvitationVideoRail from '@/components/sections/invitations/InvitationVideoRail';
+import InvitationFanRail from '@/components/sections/home/InvitationFanRail';
 import Reveal from '@/components/shared/Reveal';
 import { invitationMediaHosts } from '@/data/invitationCatalogue';
 import { invitationsCopy } from '@/data/invitationsData';
@@ -37,7 +37,7 @@ export default function HomeInvitations() {
       </div>
 
       <div className="relative mt-8">
-        <InvitationVideoRail cards={getFeaturedInvitationCards()} label="Sample video invitations" />
+        <InvitationFanRail cards={getFeaturedInvitationCards()} label="Sample video invitations" />
       </div>
     </section>
   );

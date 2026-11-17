@@ -339,7 +339,7 @@ export const guides: Guide[] = [
     readMinutes: 3,
     datePublished: '2026-11-12',
     dateModified: '2026-11-12',
-    productSlugs: ['brochure', 'pamphlet-flyer', 'book'],
+    productSlugs: ['brochure', 'pamphlet-flyer', 'book', 'catalogue', 'calendar'],
     keywords: [
       'offset printing vs digital printing',
       'offset printing Ahmedabad',

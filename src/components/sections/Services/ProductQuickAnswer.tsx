@@ -1,5 +1,6 @@
 import Reveal from '@/components/shared/Reveal';
 import type { Product } from '@/data/productCatalog';
+import { getProductSpecs } from '@/data/productSpecs';
 import { siteConfig } from '@/data/siteConfig';
 
 interface ProductQuickAnswerProps {
@@ -13,9 +14,8 @@ interface ProductQuickAnswerProps {
 export default function ProductQuickAnswer({ product }: ProductQuickAnswerProps) {
   const name = product.name.toLowerCase();
   const typeNames = product.types.map((type) => type.name);
+  const specs = getProductSpecs(product.slug);
   const facts = [
-    { label: 'Made at', value: `${siteConfig.name}, ${siteConfig.location} (since ${siteConfig.foundedYear})` },
-    { label: 'Express dispatch', value: `${siteConfig.expressDispatch} on selected jobs` },
     { label: 'Get a price', value: 'Message us on WhatsApp with type, size, quantity and finish' },
   ];
 
@@ -40,6 +40,26 @@ export default function ProductQuickAnswer({ product }: ProductQuickAnswerProps)
                 </li>
               ))}
             </ul>
+            {specs ? (
+              <>
+                <p className="font-semibold text-ink">Sizes</p>
+                <ul className="flex flex-wrap gap-1.5">
+                  {specs.sizes.map((size) => (
+                    <li key={size} className="rounded-full border border-ink/15 px-3 py-1 text-xs font-medium text-ink/75">
+                      {size}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-semibold text-ink">Materials</p>
+                <ul className="flex flex-wrap gap-1.5">
+                  {specs.materials.map((material) => (
+                    <li key={material} className="rounded-full border border-ink/15 px-3 py-1 text-xs font-medium text-ink/75">
+                      {material}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
             <p className="font-semibold text-ink">Finishes</p>
             <ul className="flex flex-wrap gap-1.5">
               {product.finishes.map((finish) => (

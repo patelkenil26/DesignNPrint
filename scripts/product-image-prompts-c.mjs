@@ -58,29 +58,38 @@ export const promptsC = {
     ),
   },
   'bopp-bag': {
-    'printed-bopp-bag': shot(
-      `Glossy retail hero shot on a clean white surface with a soft peach backdrop. A set of printed BOPP bags for a fictional bakery with a vibrant full-colour design of golden bread and croissants, the wordmark "GOLDEN CRUST BAKERY" and a heart icon, a glossy film with soft reflections, a bag open showing a fresh loaf, a few flour sprinkles and wheat ears.`,
+    'fertilizer-bag': shot(
+      `Realistic agro-warehouse hero shot inside a bright godown with soft light from a roller shutter. A neat stack of BOPP laminated woven 50 kg NPK fertilizer bags, glossy laminated woven polypropylene with a visible weave and stitched seams, white and orange design for a fictional brand with the wordmark "KISAN SHAKTI", the text "NPK 12:32:16" and "Net Weight 50 kg", a leaf-and-sun emblem, a printed batch box; one bag lying in front with a slightly crumpled realistic fold and a few fertilizer granules spilled beside it, a farmer's weathered hands (no face) resting on the top bag.`,
     ),
-    'self-adhesive-bopp-bag': shot(
-      `Clean packaging hero shot on a pale surface with a soft sky-blue backdrop. Clear BOPP bags with a self-adhesive peel-and-seal strip being closed, a folded white shirt in one bag, a printed small logo "THREADWORKS" in black, a peeled liner strip curling on the table, and a stack of bags with a ready-to-seal flap.`,
+    'dap-bag': shot(
+      `Farm-supply hero shot on a rustic wooden pallet with a blurred green field behind and warm morning light. A pallet of BOPP laminated woven 50 kg DAP bags in a bold green and white design for a fictional brand "HARIYALI AGRO", with the large letters "DAP", the text "Di-Ammonium Phosphate 18-46-0", "Net Weight 50 kg", a wheat-ear emblem and a farmer illustration, glossy lamination catching the light, visible woven polypropylene texture, stitched top; a cut-open bag in front showing the granules pouring out onto the ground.`,
     ),
-    'zip-lock-bopp-bag': shot(
-      `Fresh hero shot on a bright surface with a soft mint backdrop. Resealable zip-lock BOPP bags with a printed pattern and a blue zipper track, filled with colourful baby socks and toys, the printed wordmark "LITTLE STEPS" in pink and blue, bags hung neatly in a row, shiny film and crisp print.`,
+    'urea-bag': shot(
+      `Agro-retail hero shot in front of a fertilizer shop with a roller shutter and blurred sacks stacked behind, bright daylight. A stack of BOPP laminated woven 45 kg urea bags in a deep royal-blue and white design for a fictional brand "BHARAT KISAN", with the large word "UREA", the text "46% Nitrogen" and "Net Weight 45 kg", a bold shining sun and wheat-field illustration, glossy lamination with a soft highlight, heavy realistic folds, stitched seam; a farmer in a turban (back view, no face) carrying one bag on his shoulder.`,
     ),
-    'flap-bopp-bag': shot(
-      `Neat presentation hero shot on a pale surface with a soft lilac backdrop. Clear BOPP bags with a tuck-in flap and a printed header card in coral reading "RANGOLI COLOURS", holding bright rangoli powder packets in a tidy stack, crisp folded flaps, a pile of loose coloured powder in front.`,
+    'wheat-bag': shot(
+      `Harvest-season hero shot on a sunlit threshing yard with golden wheat stalks and a hint of a tractor in the background. A set of laminated woven 50 kg wheat grain bags in cream and golden-yellow with a printed design of a golden wheat ear for a fictional brand "SONA SHARBATI", the text "Premium Wheat" and "Net Weight 50 kg", filled and slightly bulging with realistic folds and a stitched top, one bag open at the mouth showing plump golden wheat grains spilling onto a jute mat, a brass measuring scoop beside it.`,
     ),
-    'loop-handle-bopp-bag': shot(
-      `Retail-counter hero shot on a warm wooden counter with soft shop lights. Loop-handle BOPP bags with a printed festive design in saffron and magenta and the wordmark "UTSAV BOUTIQUE", carried by die-cut loop handles, one bag holding a folded dupatta and a small gift box, another bag standing empty.`,
+    'cattle-feed-bag': shot(
+      `Rural dairy-farm hero shot in front of a clean cattle shed with a blurred healthy dairy cow and warm morning light. A stack of BOPP laminated woven 50 kg cattle feed bags in a bold red and cream design for a fictional brand "GOKUL POSHAN", with a large cow-head emblem, the text "Cattle Feed", "High Protein Pellets" and "Net Weight 50 kg", a glossy laminated surface with a visible woven weave, stitched top and realistic heavy folds; one bag open at the mouth with brown feed pellets pouring into a steel bucket, a farmer's weathered hands (no face) holding a scoop. A pure full-frame photograph only: no infographic strip, no info bar and no caption band.`,
     ),
-    'garment-retail-bag': shot(
-      `Boutique-fashion hero shot on a pale linen surface with a soft blush backdrop. A set of garment-sized BOPP bags in matt and gloss finish with a printed minimal wordmark "VASTRA" and a thin gold line, filled with neatly folded kurtas and a shirt on hangers, a small tag and a hanger beside them.`,
+    'seed-bag': shot(
+      `Fresh agri-input hero shot on a rustic wooden table at the edge of a green farm, soft golden light and a blurred field behind. A set of BOPP laminated woven 5 kg, 10 kg and 20 kg hybrid seed bags in a vivid green and yellow design for a fictional brand "KHETI BEEJ", with a large corn-cob and sprouting-seedling emblem, the text "Hybrid Maize Seed" and "Net Weight 10 kg", a glossy laminated surface with a fine woven texture, stitched top and a white tag; a wooden scoop with yellow maize seeds and a small pile of seeds spilled on the table, a few green seedlings in a tray beside it. A pure full-frame photograph only: no infographic strip, no info bar and no caption band.`,
     ),
-    'food-packaging-bag': shot(
-      `Mouth-watering snack hero shot on a bright surface with a warm yellow backdrop. Glossy printed BOPP snack bags in red and yellow with a photograph of crispy namkeen, the wordmark "CRUNCHY WALA" and "Masala Mix · 200 g · ₹40", a few spilled snacks and a green chilli in front, a clean heat-sealed top.`,
+    'atta-maida-bag': shot(
+      `Warm kitchen-grocery hero shot on a rustic wooden counter with soft window light, a few fresh rotis and a bowl of wheat flour blurred beside them. A fan of BOPP laminated woven wheat-flour (atta) bags in 5 kg, 10 kg and 25 kg sizes, a glossy cream and orange design for a fictional brand "ANNAPURNA", the text "Chakki Fresh Atta" and "100% Whole Wheat", a golden wheat-ear emblem, a clear window showing the flour texture, a small handful of flour dusted on the counter, a stitched top and a convenient carry handle on the 5 kg bag. A pure full-frame photograph only: no infographic strip, no info bar, no price list, no address or phone panel and no caption band anywhere in the frame.`,
     ),
   },
   'corrugated-box': {
+    'led-box': shot(
+      `Premium electrical-packaging hero shot on a dark slate surface with a cool-white rim light and a subtle glow behind. A set of printed brown and white corrugated LED bulb cartons for a fictional brand "LUMINEX", crisp flexo print with a bright bulb illustration, the text "LED BULB", "9W · Cool Daylight" and "Handle With Care", a fragile glass icon, slightly open flap showing a corrugated honeycomb partition holding a glowing LED bulb; a stack of three cartons behind and a second, larger LED panel-light carton leaning on the side, clean tape seams and sharp die-cut edges. A pure full-frame photograph only: no infographic strip, no info bar and no caption band.`,
+    ),
+    'wire-box': shot(
+      `Premium industrial-packaging hero shot on a clean concrete floor in a bright warehouse with soft light from a window. A sturdy stack of printed 5-ply brown corrugated cartons for a fictional cable brand "VOLTEX CABLES", bold black and red flexo print with the text "FR PVC Wire · 1.5 sq mm · 90 m" and a lightning-bolt icon, heavy-duty tape seams and strong box corners; the top carton open showing a neat red coil of electrical wire inside, a second coil of wire in yellow and green beside it, a roll of brown tape and a steel measuring tape at the edge. A pure full-frame photograph only: no infographic strip, no info bar and no caption band.`,
+    ),
+    'food-oil-box': shot(
+      `Premium food-packaging hero shot on a warm wooden counter in a bright kitchen-store setting with soft window light. A stack of printed brown corrugated cartons for edible oil, bold green and yellow flexo print for a fictional brand "SONA GOLD", the text "Refined Sunflower Oil", "1 Litre × 12 Pouches", "This Side Up" with two arrows and an umbrella icon, sharp print and strong taped corners; the top carton open showing neatly packed golden oil pouches inside, a clear glass bottle of golden cooking oil and a fresh yellow sunflower beside it. A pure full-frame photograph only: no infographic strip, no info bar and no caption band.`,
+    ),
     '3-ply-corrugated-box': shot(
       `Clean logistics hero shot on a warm off-white surface with a long soft shadow. A set of 3-ply brown corrugated cartons in three sizes, flaps taped shut, a simple one-colour print "FRAGILE · THIS SIDE UP", the cut edge showing a clean three-layer flute, a roll of tape and a marker beside it.`,
     ),

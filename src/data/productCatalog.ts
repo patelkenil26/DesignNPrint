@@ -1,5 +1,5 @@
 /**
- * The 17 products — single source of truth for /services, /services/[product], the navbar,
+ * The 21 products — single source of truth for /services, /services/[product], the navbar,
  * the footer, search and the home-page product index.
  *
  * Images are NOT listed here. Drop files in `public/images/products/<slug>/`:
@@ -39,7 +39,7 @@ const catalogInWritingOrder: Product[] = [
     name: 'Visiting Card',
     tagline: 'First impressions, in your hand.',
     intro:
-      'Visiting cards in premium stock and finishes — from everyday art cards to non-tearable, metallic and digital NFC cards. Designed and printed under one roof in Ahmedabad.',
+      'Visiting cards in premium stock and finishes — from everyday art cards to non-tearable and metallic cards. Designed and printed under one roof in Ahmedabad.',
     accent: 'red',
     coverAlt: 'Premium printed visiting cards',
     types: [
@@ -50,7 +50,6 @@ const catalogInWritingOrder: Product[] = [
       { name: 'Non-tearable (NT) Card', line: 'Waterproof, tear-proof and built to last in a wallet.' },
       { name: 'Silver Metallic Card', line: 'A mirror-like metallic finish that stops the hand.' },
       { name: 'Textured Paper Card', line: 'Special-finish papers with a tactile, handmade feel.' },
-      { name: 'Digital Visiting Card', line: 'NFC and QR cards that share your details with a tap.' },
     ],
     finishes: ['Matt lamination', 'Gloss lamination', 'Spot UV', 'Gold foil', 'Embossing', 'Rounded corners'],
   },
@@ -89,14 +88,15 @@ const catalogInWritingOrder: Product[] = [
   },
   {
     slug: 'bottle-label',
-    name: 'Bottle Label',
+    name: 'Label',
     tagline: 'Peel. Stick. Stand out.',
     intro:
       'Waterproof, scratch-resistant labels for bottles, jars, cans and agro products — printed sharp and cut to the exact shape of your pack.',
     accent: 'blue',
     coverAlt: 'Printed bottle label and carton designs',
     types: [
-      { name: 'Waterproof Bottle Label', line: 'Stays crisp on chilled, wet or oily bottles.' },
+      { name: 'Non-tearable & Waterproof Label', line: 'Tear-proof, water-proof synthetic labels that stay crisp when wet, oily or chilled.' },
+      { name: 'Water Bottle Label', line: 'Sharp labels for packaged drinking-water bottles, sized to the bottle.' },
       { name: 'Wrap-around Label', line: 'Full-wrap labels with room for all the details.' },
       { name: 'Jar & Can Label', line: 'Sized and cut for jars, tins and cans.' },
       { name: 'Transparent Label', line: 'A clear base for the “no-label” premium look.' },
@@ -110,19 +110,31 @@ const catalogInWritingOrder: Product[] = [
     name: 'Letterhead',
     tagline: 'Your brand, on every page you send.',
     intro:
-      'Corporate letterheads and certificates on fine paper — the stationery that makes every letter, quotation and award feel official.',
+      'Corporate letterheads, letterpads and bound letterpad books on fine paper — the stationery that makes every letter, quotation and invoice feel official.',
     accent: 'red',
     coverAlt: 'Printed corporate letterhead',
     types: [
       { name: 'Corporate Letterhead', line: 'Clean, professional letterheads for everyday business.' },
-      { name: 'Textured Paper Letterhead', line: 'Special-finish paper for a premium first page.' },
+      { name: 'Letterpad', line: 'Pads of letterheaded sheets, glued at the head and ready to write on.' },
+      { name: 'Book Letterpad', line: 'Bound letterpad books with a board back and your branding on every page.' },
+    ],
+    finishes: ['Multi-colour printing', 'Pad binding', 'Board back'],
+  },
+  {
+    slug: 'certificate',
+    name: 'Certificate',
+    tagline: 'Recognition, worth framing.',
+    intro:
+      'Appreciation, achievement, training and school certificates on premium paper — with gold foil, embossing and seals that make every award feel earned.',
+    accent: 'yellow',
+    coverAlt: 'Printed appreciation and award certificates',
+    types: [
       { name: 'Appreciation Certificate', line: 'Recognise effort with an elegant, formal layout.' },
       { name: 'Achievement Award Certificate', line: 'For milestones, wins and top performers.' },
       { name: 'Training Completion Certificate', line: 'Branded certificates for courses and workshops.' },
       { name: 'School & College Certificate', line: 'Customised for institutions and events.' },
-      { name: 'Stationery Set', line: 'Letterhead, envelope and card that match perfectly.' },
     ],
-    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Spot UV'],
+    finishes: ['Gold foil', 'Embossing', 'Textured paper', 'Gloss lamination', 'Foil seal', 'Spot UV'],
   },
   {
     slug: 'envelope',
@@ -135,10 +147,8 @@ const catalogInWritingOrder: Product[] = [
     types: [
       { name: 'Window Envelope', line: 'A clear window so the address shows through.' },
       { name: 'Non-window Envelope', line: 'Classic, fully printed and sealed.' },
-      { name: 'Textured Paper Envelope', line: 'Premium paper with a tactile finish.' },
-      { name: 'Document Envelope', line: 'Larger sizes for documents, files and proposals.' },
     ],
-    finishes: ['Gold foil', 'Spot UV', 'Embossing'],
+    finishes: ['Multi-colour printing', 'Gummed flap', 'Peel-and-seal strip', 'Window film'],
   },
   {
     slug: 'sticker',
@@ -163,17 +173,29 @@ const catalogInWritingOrder: Product[] = [
   {
     slug: 'file',
     name: 'File',
-    tagline: 'Your brand in every meeting.',
+    tagline: 'Paperwork, neatly in order.',
     intro:
-      'Company files, doctor files, mica and ceramic display folders — sturdy, well-finished and built to carry your brand into every meeting.',
+      'Document holders, clip and spiral files and doctor files — sturdy, well-finished files built to keep paperwork in order and carry your brand.',
     accent: 'green',
-    coverAlt: 'Branded company file folders',
+    coverAlt: 'Branded document files and doctor files',
     types: [
-      { name: 'Corporate File Folder', line: 'Presentation folders with pockets and card slots.' },
       { name: 'Document Holder', line: 'A slim holder for proposals and paperwork.' },
-      { name: 'Flap Folder with Slots', line: 'Flaps keep papers in, slots hold your card.' },
       { name: 'Clip & Spiral File', line: 'Clip or spiral bound for reports and records.' },
       { name: 'Doctor File', line: 'Patient, prescription and diagnostic-report files.' },
+    ],
+    finishes: ['Matt lamination', 'Gloss lamination', 'Spot UV', 'Spiral binding', 'Clip fitting'],
+  },
+  {
+    slug: 'folder',
+    name: 'Folder',
+    tagline: 'Your brand in every meeting.',
+    intro:
+      'Corporate presentation folders, flap folders, and mica and ceramic display folders — sturdy, well-finished and built to carry your brand into every meeting.',
+    accent: 'green',
+    coverAlt: 'Branded company presentation folders',
+    types: [
+      { name: 'Corporate File Folder', line: 'Presentation folders with pockets and card slots.' },
+      { name: 'Flap Folder with Slots', line: 'Flaps keep papers in, slots hold your card.' },
       { name: 'Mica & Laminate Sample Folder', line: 'Swatch and sample folders for laminate makers.' },
       { name: 'Ceramic & Tile Display Folder', line: 'Heavy-duty folders for tile and ceramic collections.' },
     ],
@@ -184,20 +206,18 @@ const catalogInWritingOrder: Product[] = [
     name: 'Box',
     tagline: 'Horizontal. Vertical. Yours.',
     intro:
-      'Folding and tuck-end cartons in every shape — from pharma and cosmetic packaging to display and mailer boxes — printed with sharp detail.',
+      'Folding and tuck-end cartons in every shape — from pharma and cosmetic packaging to display and gift boxes — printed with sharp detail.',
     accent: 'blue',
     coverAlt: 'Printed product boxes',
     types: [
       { name: 'Custom Product Box', line: 'Cartons cut and printed to your product.' },
       { name: 'Tablet Box', line: 'Clean mono-cartons with barcode-sharp printing.' },
       { name: 'Syrup Box', line: 'Tall cartons for bottles with clear labelling space.' },
-      { name: 'Injection Box', line: 'Compact, secure cartons for vials and ampoules.' },
       { name: 'Capsule Box', line: 'Neat, tamper-evident capsule packaging.' },
       { name: 'Cosmetic Box', line: 'Foil, spot UV and soft-touch for beauty brands.' },
       { name: 'Perfume Box', line: 'Elegant boxes that match the scent inside.' },
       { name: 'Display Box', line: 'Counter-top boxes that sell the product for you.' },
       { name: 'Gift Box', line: 'Gifting packs with a premium unboxing feel.' },
-      { name: 'Mailer Box', line: 'Tuck-in mailers built for e-commerce.' },
       { name: 'Agro & Pesticide Box', line: 'Durable, clearly labelled agro packaging.' },
     ],
     finishes: ['Matt lamination', 'Gloss lamination', 'Spot UV', 'Gold foil', 'Embossing', 'Window patching'],
@@ -207,22 +227,50 @@ const catalogInWritingOrder: Product[] = [
     name: 'Book',
     tagline: 'Pages that carry your story.',
     intro:
-      'Booklets, catalogues and calendars — stitched or bound, on premium paper, with consistent branding on every page.',
+      'Company profiles, manuals, programme and study booklets — stitched or bound, on premium paper, with consistent branding on every page.',
     accent: 'yellow',
     coverAlt: 'Printed booklets stacked on a table',
     types: [
       { name: 'Company Profile Booklet', line: 'Your story, services and credentials in one book.' },
-      { name: 'Product Catalogue', line: 'Multi-page catalogues, bound beautifully.' },
       { name: 'Training Manual', line: 'Clear, durable manuals for teams and trainees.' },
       { name: 'Event & Program Booklet', line: 'Agendas and programmes for events and conferences.' },
       { name: 'Educational Booklet', line: 'Study material and guides, neatly printed.' },
       { name: 'Promotional Booklet', line: 'Offers and launches in a keep-me format.' },
+    ],
+    finishes: ['Staple binding', 'Spiral binding', 'Perfect binding', 'Gloss lamination', 'Matt lamination', 'UV finish'],
+  },
+  {
+    slug: 'catalogue',
+    name: 'Catalogue',
+    tagline: 'Every product, beautifully in order.',
+    intro:
+      'Product catalogues, lookbooks and price lists — wire-bound or perfect-bound, with sharp photography and clean layouts that help your buyers choose.',
+    accent: 'blue',
+    coverAlt: 'Printed product catalogues on a desk',
+    types: [
+      { name: 'Product Catalogue', line: 'Multi-page catalogues, bound beautifully.' },
+      { name: 'Industrial Catalogue', line: 'Technical ranges with specs, codes and part tables.' },
+      { name: 'Fashion & Jewellery Lookbook', line: 'Image-led books for collections and seasonal launches.' },
+      { name: 'Price List Catalogue', line: 'Compact rate books with codes, sizes and prices.' },
+    ],
+    finishes: ['Perfect binding', 'Wire-o binding', 'Spiral binding', 'Gloss lamination', 'Matt lamination', 'Index tabs'],
+  },
+  {
+    slug: 'calendar',
+    name: 'Calendar',
+    tagline: 'Your brand, every day of the year.',
+    intro:
+      'Wall, poster, desk, card and magnetic calendars — printed in time for the new year, so your name stays in view for twelve months.',
+    accent: 'red',
+    coverAlt: 'Printed wall and desk calendars',
+    types: [
       { name: 'Wall Calendar', line: 'Brand impressions on the wall for a whole year.' },
       { name: 'Poster Calendar', line: 'One big sheet, twelve months, all yours.' },
+      { name: 'Desk Calendar', line: 'Table-top calendars that sit beside the keyboard.' },
       { name: 'Card Calendar', line: 'Wallet-size calendars for everyday giveaways.' },
       { name: 'Magnetic Calendar', line: 'Sticks to the fridge and stays in view.' },
     ],
-    finishes: ['Staple binding', 'Spiral binding', 'Perfect binding', 'Gloss lamination', 'Matt lamination', 'UV finish'],
+    finishes: ['Wire-o binding', 'Gloss lamination', 'Matt lamination', 'Spot UV', 'Magnetic backing', 'Hanger bars'],
   },
   {
     slug: 'bill-book',
@@ -238,9 +286,6 @@ const catalogInWritingOrder: Product[] = [
       { name: 'Bill / Invoice Book', line: 'Branded bill books for counters and field sales.' },
       { name: 'Cash Memo Book', line: 'Quick cash memos for retail and wholesale.' },
       { name: 'Receipt Book', line: 'Payment receipts with clear, numbered copies.' },
-      { name: 'Duplicate (Carbonless) Book', line: 'Two copies, no carbon paper needed.' },
-      { name: 'Triplicate Book', line: 'Three copies — customer, office and accounts.' },
-      { name: 'Numbered & Perforated Book', line: 'Serial numbering and tear-off perforation.' },
     ],
     finishes: ['Serial numbering', 'Perforation', 'Pad binding', 'Hard cover'],
   },
@@ -269,22 +314,20 @@ const catalogInWritingOrder: Product[] = [
   {
     slug: 'bopp-bag',
     name: 'BOPP Bag',
-    tagline: 'Glossy. Clear. Shelf-ready.',
+    tagline: 'Strong bags for the field and the mill.',
     intro:
-      'Printed BOPP bags with a glossy, crystal-clear finish — for retail, garments, food and everyday packaging.',
+      'Printed BOPP laminated PP woven bags for fertilizer (urea, DAP, NPK), wheat, atta and cattle feed — 5 kg to 50 kg, with sharp multi-colour print that stays bright through storage, stacking and transport.',
     accent: 'yellow',
-    coverAlt: 'Printed BOPP bags',
+    coverAlt: 'Printed BOPP laminated fertilizer, wheat and atta bags',
     needsConfirmation: true,
     types: [
-      { name: 'Printed BOPP Bag', line: 'Your brand printed on a clear, glossy bag.' },
-      { name: 'Self-adhesive BOPP Bag', line: 'Peel-and-seal strip for fast, tidy closing.' },
-      { name: 'Zip-lock BOPP Bag', line: 'Resealable for repeat use.' },
-      { name: 'Flap BOPP Bag', line: 'Tuck-in flap for a neat presentation.' },
-      { name: 'Loop-handle BOPP Bag', line: 'Easy-carry bags for retail counters.' },
-      { name: 'Garment & Retail Bag', line: 'Sized for clothing, accessories and gifts.' },
-      { name: 'Food Packaging Bag', line: 'Clean, glossy bags for snacks and bakery.' },
+      { name: 'Fertilizer Bag', line: 'Strong 25 kg and 50 kg bags for urea, DAP, NPK and other fertilizers.' },
+      { name: 'Wheat Bag', line: 'Tough, printed bags for wheat (gehu) and other grain.' },
+      { name: 'Atta & Maida Bag', line: 'Food-safe bags for atta, maida and flour in 5 to 25 kg packs.' },
+      { name: 'Cattle Feed Bag', line: 'Moisture-resistant laminated bags for cattle and poultry feed.' },
+      { name: 'Seed Bag', line: 'Printed bags for hybrid and field seed, from 5 kg upwards.' },
     ],
-    finishes: ['Gloss', 'Matt', 'Multi-colour printing', 'Custom sizes'],
+    finishes: ['BOPP lamination', 'Gloss', 'Matt', 'Multi-colour printing', '5–50 kg sizes', 'Stitched mouth'],
   },
   {
     slug: 'corrugated-box',
@@ -302,6 +345,9 @@ const catalogInWritingOrder: Product[] = [
       { name: 'E-commerce Mailer Box', line: 'Self-locking mailers for online orders.' },
       { name: 'Die-cut Corrugated Box', line: 'Custom shapes cut to hold your product snugly.' },
       { name: 'Shipping Carton', line: 'Standard export and transit cartons.' },
+      { name: 'LED Box', line: 'Protective corrugated cartons for LED bulbs, battery lights and fittings.' },
+      { name: 'Wire Box', line: 'Strong, stackable cartons for wire coils, cable bundles and electricals.' },
+      { name: 'Food Oil Box', line: 'Leak-safe corrugated cartons for oil pouches, tins and bottles.' },
     ],
     finishes: ['Flexo printing', 'Offset-laminated', 'Die-cutting', 'Custom sizes'],
   },

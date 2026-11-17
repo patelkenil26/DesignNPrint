@@ -7,7 +7,7 @@ interface ProductPagerProps {
   next: Product;
 }
 
-/** Big previous / next links so browsing the 17 products never hits a dead end. */
+/** Big previous / next links so browsing the 21 products never hits a dead end. */
 export default function ProductPager({ previous, next }: ProductPagerProps) {
   const pagerCards = [
     { product: previous, direction: 'Previous', href: `/services/${previous.slug}`, Icon: ArrowLeft, alignEnd: false },
